@@ -1,0 +1,352 @@
+body {
+    /* Base sizing and typography */
+    --focustracker-cell-fontfamily: "Ubuntu", sans-serif;
+    --focustracker-cell-font-size: 13px;
+
+    /* Component dimensions */
+    --focustracker-border-width: 1px;
+    --focustracker-tick-height: 13px;
+    --focustracker-tick-width: 13px;
+    --focustracker-tick-radius: 10px;
+
+    /* Colors and states */
+    --focustracker-border-color: var(--color-base-30);
+    --focustracker-tick-color: var(--checkbox-color);
+    --focustracker-tick-hover-color: var(--color-base-30);
+    --focustracker-row-hover-color: var(--color-base-10);
+
+    /* Layout configuration */
+    --focustracker-alternate-row-color: var(--background-secondary-alt);
+    --focustracker-header-border-color: var(--background-modifier-border);
+    --focustracker-bottom-border-color: var(--background-modifier-border);
+    --focustracker-date-column-spacing: 4px;
+    --focustracker-date-column-borders: 0px solid var(--background-modifier-border);
+
+    /* Special states */
+    /* --focustracker-today-column-color: var(--background-modifier-success); */
+    /* --focustracker-focal-date-color: var(--background-modifier-accent); */
+    --focustracker-today-column-color: var(--background-modifier-success);
+    /* --focustracker-focal-date-color: var(--background-secondary); */
+
+}
+
+.theme-light {
+    --focustracker-background-color: #00000010;
+    --focustracker-weekend-color: #00000020;
+    --today-column-text-color: var(--text-muted);
+    --focustracker-alternate-row-color: rgba(0, 0, 0, 0.1);
+}
+
+.theme-dark {
+    --focustracker-background-color: #ffffff10;
+    --focustracker-weekend-color: #ffffff10;
+    --focustracker-alternate-row-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Main Container */
+.focus-tracker-container {
+    margin: 1rem 0;
+    padding: 1rem;
+    border-radius: 0.8rem;
+    background-color: var(--focustracker-background-color);
+    overflow-x: auto;
+    max-width: 100%;
+}
+
+/* Controls Section */
+.focus-tracker__controls {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background-color: var(--background-secondary);
+    border-radius: 0.375rem;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.focus-tracker__control-section {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    white-space: nowrap;
+    padding-right: 1rem;
+    border-right: 1px solid var(--background-modifier-border);
+}
+
+.focus-tracker__control-section:last-child {
+    padding-right: 0;
+    border-right: none;
+}
+
+.focus-tracker__control-label {
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--text-muted);
+}
+
+/* Input Elements */
+.focus-tracker__days-input,
+.focus-tracker__focal-date {
+    padding: 0.125rem 0.25rem;
+    border: 1px solid var(--background-modifier-border);
+    border-radius: 0.25rem;
+    font-size: 0.75rem;
+}
+
+.focus-tracker__days-input {
+    width: 2.5rem;
+    text-align: center;
+}
+
+.focus-tracker__days-input:focus,
+.focus-tracker__focal-date:focus {
+    outline: none;
+    border-color: var(--interactive-accent);
+    box-shadow: 0 0 0 2px var(--interactive-accent-hover);
+}
+
+/* Button Styles */
+.focus-tracker__btn {
+    padding: 0.125rem 0.375rem;
+    border: 1px solid var(--background-modifier-border);
+    border-radius: 0.25rem;
+    font-size: 0.75rem;
+    background-color: var(--background-primary);
+    color: var(--text-normal);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 1.5rem;
+}
+
+.focus-tracker__btn-reset,
+.focus-tracker__btn-today {
+    background-color: var(--interactive-accent);
+    color: var(--text-on-accent);
+    border: none;
+    margin: 0 0.25rem;
+}
+
+.focus-tracker__btn:hover {
+    background-color: var(--background-modifier-hover);
+}
+
+.focus-tracker__btn-reset:hover,
+.focus-tracker__btn-today:hover {
+    background-color: var(--interactive-accent-hover);
+}
+
+.focus-tracker__btn:active {
+    transform: translateY(1px);
+}
+
+/* Table Layout */
+.focus-tracker {
+    display: table;
+    table-layout: fixed;
+    border-collapse: collapse;
+    min-width: max-content;
+    border-bottom: 1px solid var(--focustracker-bottom-border-color);
+}
+
+.focus-tracker__row {
+    display: table-row;
+    height: 20px;
+}
+
+.focus-tracker__row:not(.focus-tracker__header):nth-child(even) {
+    background-color: var(--focustracker-alternate-row-color);
+}
+
+/* Header Styles */
+.focus-tracker__header {
+    height: 18px;
+    border-bottom: 1px solid var(--focustracker-header-border-color);
+}
+
+.focus-tracker__header .focus-tracker__cell {
+    font-size: 80%;
+    padding-bottom: 0.3rem;
+    text-align: center;
+    font-weight: 600;
+}
+
+.focus-tracker__header .focus-tracker__cell--custom,
+.focus-tracker__header .focus-tracker__cell--focus-target-label {
+    text-align: left;
+    padding-left: 8px;
+    color: var(--text-normal);
+    text-transform: capitalize;
+}
+
+/* Cell Base Styles */
+.focus-tracker__cell {
+    box-sizing: border-box;
+    display: table-cell;
+    font-family: var(--focustracker-cell-fontfamily);
+    font-size: var(--focustracker-cell-font-size);
+    vertical-align: middle;
+    position: relative;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.focus-tracker__cell--prefix {
+    border-right: 1px solid var(--background-modifier-border);
+}
+
+.focus-tracker__cell--postfix {
+    border-left: 1px solid var(--background-modifier-border);
+}
+
+/* Date Column Styles */
+.focus-tracker__cell:not(.focus-tracker__cell--custom):not(.focus-tracker__cell--focus-target-label) {
+    padding: 0 var(--focustracker-date-column-spacing);
+    border-left: var(--focustracker-date-column-borders);
+    border-right: var(--focustracker-date-column-borders);
+    text-align: center;
+}
+
+
+/* Special States */
+/* .focus-tracker__header .focus-tracker__cell--today { */
+.focus-tracker__cell--today {
+    background-color: var(--focustracker-today-column-color) !important;
+}
+
+.focus-tracker__cell--focal-date {
+    /* background-color: var(--focustracker-focal-date-color) !important; */
+    /* border: solid 1px var(--focustracker-focal-date-color); */
+}
+
+.focus-tracker__cell--future {
+    opacity: 0.5;
+    font-weight: 100;
+    /* font-style: italic; */
+}
+
+.focus-tracker__cell--saturday,
+.focus-tracker__cell--sunday {
+    background-color: var(--focustracker-weekend-color);
+}
+
+/* Header Indicators */
+.focus-tracker__header .focus-tracker__cell--today::after,
+.focus-tracker__header .focus-tracker__cell--focal-date::after {
+    position: absolute;
+    top: 0px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 8px;
+}
+.focus-tracker__header .focus-tracker__cell--today::after {
+}
+.focus-tracker__header .focus-tracker__cell--focal-date::after {
+    border-top: solid 2px;
+    /* border-left: solid 2px red; */
+    /* border-right: solid 2px red; */
+    /* border-radius: 5px; */
+    color: var(--focustracker-focal-date-color);
+    content: "▔▔▔";
+}
+
+.focus-tracker__header .focus-tracker__cell--today::after {
+    color: var(--focustracker-today-column-color);
+}
+
+.focus-tracker__header .focus-tracker__cell--focal-date::after {
+    color: var(--focustracker-focal-date-color);
+}
+
+/* Focus Tick Styles */
+.focus-tick {
+    line-height: 0;
+    text-align: center;
+    cursor: pointer;
+}
+
+.theme-light .focus-tick--false::before {
+    content: "⚪";
+}
+
+.theme-dark .focus-tick--false::before {
+    content: "⚫";
+}
+
+/* Resize Handle Styles */
+.focus-tracker__resize-handle {
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: var(--background-modifier-border);
+    cursor: col-resize;
+    transition: width 0.2s, background-color 0.2s;
+}
+
+.focus-tracker__resize-handle:hover,
+.focus-tracker__resize-handle:active {
+    width: 2px;
+    background: var(--interactive-accent);
+}
+
+/* Responsive Styles */
+@media (max-width: 399px) {
+    .focus-tracker__cell {
+        display: none;
+    }
+
+    .focus-tracker__cell--focus-target-label,
+    .focus-tracker__cell:nth-last-child(-n + 7) {
+        display: table-cell;
+    }
+}
+
+
+/* Custom Column Styles */
+.focus-tracker__cell--custom {
+    max-width: 8rem;  /* Maybe slightly smaller than title column */
+    min-width: 0.5rem;
+    width: 2rem;
+    padding: 0 8px;
+    color: var(--text-muted);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* Remove these redundant properties from the combined selector */
+.focus-tracker__cell--custom,
+.focus-tracker__cell--focus-target-label {
+    padding: 0 8px;
+    color: var(--text-muted);
+}
+
+/* Keep border styles separate */
+.focus-tracker__cell--prefix {
+    border-right: 1px solid var(--background-modifier-border);
+}
+
+.focus-tracker__cell--postfix {
+    border-left: 1px solid var(--background-modifier-border);
+}
+
+.focus-tracker__cell--focus-target-label {
+    max-width: 12rem;
+    min-width: 0.5rem;
+    width: 2rem;
+}
+
+.focus-tracker__cell--focus-target-label a {
+    display: block;
+    font-weight: 500;
+    font-size: 0.8rem;
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}

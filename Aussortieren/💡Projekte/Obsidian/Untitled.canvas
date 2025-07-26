@@ -1,0 +1,29 @@
+{
+	"nodes":[
+		{"id":"3c1762852ce0f16e","type":"group","x":-3520,"y":-2560,"width":8960,"height":5070,"label":"Untitled group"},
+		{"id":"90dd2d5c8c7cce27","type":"group","x":-2966,"y":-2107,"width":3766,"height":3657,"label":"Ticketsystem Templates"},
+		{"id":"90a77e414d6c8148","type":"group","x":1920,"y":-2107,"width":2720,"height":2082,"label":"Legende"},
+		{"id":"a77c603dec270976","type":"group","x":-800,"y":-1550,"width":1040,"height":1060,"label":"Ticketkategorietemplates"},
+		{"id":"035b1893b7f33e2d","type":"group","x":1269,"y":1003,"width":1371,"height":677,"label":"Plugins"},
+		{"id":"09e7768c44e86a25","type":"group","x":-800,"y":320,"width":360,"height":400,"label":"Zentrate Übersichten Templates"},
+		{"id":"2b11820f3d5794ff","type":"file","file":"Aussortieren/💡Projekte/Obsidian/T.S/T.S TPL/Ticketkategorien/Routinen TPL DSN.md","x":-720,"y":-930,"width":400,"height":400},
+		{"id":"1375e1b67a1ca9f8","type":"file","file":"Aussortieren/💡Projekte/Obsidian/T.S/T.S TPL/Ticketkategorien/Gesundheit TPL DSN.md","x":-240,"y":-930,"width":400,"height":400},
+		{"id":"ff0a322c8a04f236","type":"file","file":"Aussortieren/💡Projekte/Obsidian/T.S/T.S TPL/Zentrale Übersichten/Main TPL DSB.md","x":-760,"y":360,"width":200,"height":180},
+		{"id":"fa1681e7706a7333","type":"file","file":"Aussortieren/💡Projekte/Obsidian/T.S/T.S TPL/Ticket YAML.md","x":-2080,"y":-1143,"width":400,"height":400},
+		{"id":"60a3ed3cbb3e595d","type":"file","file":"Aussortieren/💡Projekte/Obsidian/T.S/Legende/Subtickets.md","x":2240,"y":-1250,"width":400,"height":400},
+		{"id":"63d42548cd3d0b9b","type":"file","file":"Aussortieren/💡Projekte/Obsidian/T.S/T.S TPL/Ticketkategorien/Hobbys TPL DSN.md","x":-720,"y":-1450,"width":400,"height":400},
+		{"id":"c7ba623f9da4bdef","type":"file","file":"Aussortieren/💡Projekte/Obsidian/T.S/Legende/Prioritäten.md","x":2240,"y":-1920,"width":400,"height":400},
+		{"id":"f0ea4c2f3448eb12","type":"file","file":"Aussortieren/💡Projekte/Obsidian/T.S/Legende/Wiederkehrende Tickets.md","x":3200,"y":-1850,"width":400,"height":400},
+		{"id":"0baa62dd95eaa850","type":"file","file":"Aussortieren/💡Projekte/Obsidian/T.S/Legende/Zeitabhängige tickets.md","x":3200,"y":-1050,"width":400,"height":400},
+		{"id":"fbf3eb9d5114698f","x":2400,"y":-650,"width":400,"height":400,"type":"file","file":"Aussortieren/💡Projekte/Obsidian/T.S/Legende/Postpone.md"},
+		{"id":"cfcba567630f4ed3","type":"file","file":"🎛-Obsidian-/🎛Funktionen/Plugin Funktionen/Diagramme/Dataview.md","x":1440,"y":1098,"width":188,"height":200},
+		{"id":"d5e0b77c704daac3","type":"file","file":"🎛-Obsidian-/🎛Funktionen/Plugin Funktionen/Templater.md","x":1434,"y":1398,"width":200,"height":200},
+		{"id":"721c4cb0b89fe87e","type":"file","file":"🎛-Obsidian-/🎛Funktionen/Plugin Funktionen/Reminder.md","x":1760,"y":1398,"width":200,"height":200},
+		{"id":"faf6c6045916e562","x":2200,"y":1098,"width":240,"height":400,"type":"file","file":"🎛-Obsidian-/🎛Funktionen/Plugin Funktionen/Tasks.md"},
+		{"id":"23c5af37d5f26745","x":1691,"y":94,"width":1589,"height":626,"type":"text","text":"Sachen die Chatgpt gefragt werden müssen:\nErweiterungen Glantdigrame + kaban board, welche plugins oder wie gehört zu Ticketsywetm erstellne\nIm meine Legende auflisten vom ticketsystem und nach mehr vorschlägen fragen\nTicketkategorien nach fragen wie geld und was ich schon habe aber mehr\nwelche zentralen überischeten benötige ich"}
+	],
+	"edges":[
+		{"id":"5171ddfd2bf6ee92","fromNode":"ff0a322c8a04f236","fromSide":"bottom","toNode":"cfcba567630f4ed3","toSide":"left"},
+		{"id":"31c121c919298629","fromNode":"90dd2d5c8c7cce27","fromSide":"right","toNode":"90a77e414d6c8148","toSide":"left","fromEnd":"arrow"}
+	]
+}

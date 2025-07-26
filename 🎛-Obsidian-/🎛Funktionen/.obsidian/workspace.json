@@ -1,0 +1,159 @@
+{
+  "main": {
+    "id": "1a977cb95b5d3e05",
+    "type": "split",
+    "children": [
+      {
+        "id": "fe74b2569b89c1c2",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "c88a56c675869712",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Plugin Funktionen/Dataview Serializer.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "79aae966a0915ec9",
+    "type": "split",
+    "children": [
+      {
+        "id": "7d969e893b58fa89",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "4a170bac28fee293",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "416f04930eb73f1c",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "Bad",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "c68c17a233e97291",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "f4eee2bb30201c0d",
+    "type": "split",
+    "children": [
+      {
+        "id": "176ce7a5408e2ee2",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "787488dbd1649feb",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "Plugin Funktionen/Dataview Serializer.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "fcbf579804d3a76d",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "Plugin Funktionen/Dataview Serializer.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "222efa98a3b83df8",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              }
+            }
+          },
+          {
+            "id": "fd88f16244075b36",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "Plugin Funktionen/Dataview Serializer.md"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false
+    }
+  },
+  "active": "4a170bac28fee293",
+  "lastOpenFiles": [
+    "Plugin Funktionen/Notiz ästhetik/Card View Mode.md",
+    "Plugin Funktionen/Grundfunktion/Better Word Count.md",
+    "Plugin Funktionen/Diagramme/Badge.md",
+    "o.md",
+    "Plugin Funktionen/Grundfunktion/Notiz ästhetik/Untitled.md",
+    "Plugin Funktionen/Notiz ästhetik",
+    "Plugin Funktionen/Input"
+  ]
+}

@@ -1,0 +1,131 @@
+# 💡Projekte Overview
+ 
+```ccard
+type: folder_brief_live
+```
+%% Begin Waypoint %%
+- [[_MoC Projekte]]
+- **[[3D Drucker]]**
+- **Feier**
+	- **Silvester**
+		- **Cocktails**
+			- [[+Annanasmojito]]
+			- [[+fAurora Glow Cocktail]]
+			- [[+gCosmopoliton]]
+			- [[+sLiquid Rainbow]]
+			- [[+Tropical Sunrise]]
+			- [[einkaufsliste]]
+			- [[Grund ideen]]
+- **[[Obsidian]]**
+	- **[[T.S]]**
+		- **Legende**
+			- [[Postpone]]
+			- [[Prioritäten]]
+			- [[Subtickets]]
+			- [[Wiederkehrende Tickets]]
+			- [[Zeitabhängige tickets]]
+		- **[[T.S TPL]]**
+			- **[[T.S Plugins]]**
+				- [[T.S Buttons]]
+				- [[T.S Calendar]]
+				- [[T.S Charts]]
+				- [[T.S Colored Tags]]
+				- [[T.S Datview]]
+				- [[T.S Folder Note]]
+				- [[T.S Group Snippet]]
+				- [[T.S Heatmap]]
+				- [[T.S Kanban]]
+				- [[T.S Minimal Theme Settings]]
+				- [[T.S Pixel Banner]]
+				- [[T.S QuickAdd]]
+				- [[T.S Style Settings]]
+				- [[T.S Table Extended]]
+				- [[T.S Tasks]]
+				- [[T.S Templater]]
+				- [[T.S Workspaces Plus]]
+			- [[Ticket YAML]]
+			- **Ticketkategorien**
+				- [[3D Druck TPL DSN]]
+				- [[Arbeit TPL DSN]]
+				- [[Bildung TPL DSN]]
+				- [[Finanzen TPL DSN]]
+				- [[Freizeit  TPL DSN]]
+				- [[Genereller Ticket TPL DSN]]
+				- [[Gesundheit TPL DSN]]
+				- [[Haushalt TPL DSN]]
+				- [[Hobbys TPL DSN]]
+				- [[Pflege TPL DSN]]
+				- [[Reisen TPL DSN]]
+				- [[Routinen TPL DSN]]
+				- [[Technologie TPL DSN]]
+			- **Zentrale Übersichten**
+				- [[Archive TPL DSB]]
+				- **Kategorien TPL DSB**
+					- [[3D Druck TPL DSB]]
+					- [[Arbeit TPL DSB]]
+					- [[Bildung TPL DSB]]
+					- [[Finanzen TPL DSB]]
+					- [[Freizeit TPL DSB]]
+					- [[Genrelle Ticket TPL DSB]]
+					- [[Gesundheits TPL DSB]]
+					- [[Haushalt TPL DSB]]
+					- [[Hobbys TPL DSB]]
+					- [[Pflege TPL DSB]]
+					- [[Reisen TPL DSB]]
+					- [[Routinen TPL DSB]]
+					- [[Technologie TPL DSB]]
+				- [[Langzeit Ticket TPL DSB]]
+				- [[Main TPL DSB]]
+				- **Priorität TPL DSB**
+					- [[Dringend TPL DSB]]
+				- [[Subticket TPL DSB]]
+				- [[Überfällige Tickets TPL DSB]]
+				- **Zeitversetzte TPL DSB**
+					- [[1 Woche - TPL DSB]]
+					- [[1 Woche + TPL DSB]]
+		- [[Was Chatgpt sagt]]
+- **PC-Skripte**
+	- [[Pc Einrichtung 100% geschwindihkeit]]
+- **Programme programmieren**
+	- **Gewinnspiel anmelder**
+	- **Kostenlosesachen anmelden**
+- **Website erstellen**
+	- **Alles Website**
+		- **Bild converter**
+		- **Mathe rechner**
+		- **Youtube converter**
+		- **Zinseszin rechner**
+- **Zauberstab (Fernbedinung)**
+	- [[Funktionen]]
+	- [[Programmierung]]
+	- [[Steuerungen]]
+	- [[Zaubersprüche]]
+- **Zimmer**
+	- [[_MoC Zimmer]]
+	- **Bett**
+		- **Matrazen**
+	- [[Insektengitter]]
+	- **Lampen & Licht**
+		- [[_MoC Lampen & Licht]]
+		- **Beleuchtungskonzepte**
+			- **Lampenposition**
+			- **Lichtstreuung und -richtung**
+		- **Lampenwahl**
+		- **Lichtfarbe und Intensität**
+	- **Lärmdemmung**
+		- [[_MoC Lärmdemmung]]
+		- **Materialien**
+		- **Schalldämmtechniken**
+			- [[Schalldämpfende Möbel]]
+			- [[Schallschutzpaneele]]
+			- [[Teppiche und Vorhänge]]
+	- **Pflanzen**
+		- **Pflanzenarten**
+		- **Pflegeautomatisierungen**
+	- [[Rollo]]
+	- **Schreibtisch**
+		- [[höchenverstellbares Gestell]]
+	- **Soundsysteme**
+		- **Lautsprecher**
+
+%% End Waypoint %%

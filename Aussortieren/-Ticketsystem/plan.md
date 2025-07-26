@@ -1,0 +1,23 @@
+parts
+- Offene Tickets
+	- alle
+	- tag
+	- woche
+	- monat
+	- jahr
+- Geschlossenen Tickets
+- verschobene Tickets
+- fällige tickets
+- überfällige ticktes
+- ticket statistik
+	- offene tickets
+	- geschlossene tickets
+	- ticktets diese woche 
+	- monat
+	-  jahr
+	- fällig
+	- überfällig
+- quick actions wie notiz erstellen oder alle DSB zu sehen
+- priorisierte tickets
+- Kategorien tickets
+	- 

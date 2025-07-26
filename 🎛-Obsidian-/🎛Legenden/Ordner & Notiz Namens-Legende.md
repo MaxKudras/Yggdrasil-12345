@@ -1,0 +1,11 @@
+T.S -> Ticketsystem
+TPL -> Template
+DSN -> Design
+DSB -> Dashboard
+TCK -> Tickets
+WSC -> Wissenschaften
+GDM -> Geldmanagment
+LPL -> Lebensplan
+FZT -> Freizeit
+ZTM -> Zeitmanagment
+GSD -> Gesundheit

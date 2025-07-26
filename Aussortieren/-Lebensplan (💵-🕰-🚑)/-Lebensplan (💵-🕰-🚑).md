@@ -1,0 +1,199 @@
+# -Lebensplan (💵-🕰-🚑) Overview
+ 
+```ccard
+type: folder_brief_live
+```
+%% Begin Waypoint %%
+- [[_MoC Lebensplan]]
+- **[[💵Geldmanagment (💼-〽️-📊)]]**
+- **🕰Zeitmanagment (⌛-🌀-💼-📅-📆-🗓)**
+	- [[_MoC Zeitmanagment]]
+	- **[[⌛Zukunftsplan]]**
+		- **Karriereplanung**
+			- [[Berufliche Netzwerke]]
+			- [[Weiterbildungspläne]]
+			- [[Ziele]]
+		- **Langfristige Ziele**
+			- [[Karriereziele]]
+			- [[Persönliche Entwicklung]]
+		- **[[Lebensziele]]**
+			- [[Lebensvision]]
+			- [[Persönliche Meilensteine]]
+		- **[[Zukunftsplan Aufgaben]]**
+	- **🌀Routinen**
+		- [[_MoC Routinen]]
+		- **🌀Jahresroutine**
+			- **Jahreshaushalt**
+		- **🌀Monatsroutine**
+			- **Moantshaushalt**
+		- **🌀Tagesroutine**
+		- **🌀Wochenroutine**
+			- [[_MoC Wochenroutine]]
+			- **Wochenshaushalt**
+	- **💼Arbeitsplan**
+		- [[_MoC Arbeitsplan]]
+		- **Arbeitsaufgaben**
+	- **[[📅Kalender]]**
+		- **📆Monatsplan**
+			- [[_MoC Monatsplan]]
+			- [[Monatsaufgaben]]
+			- **Monatsübersicht**
+			- **Monatsziele**
+			- **Untitled**
+		- **🗓Jahresplan**
+			- [[_MoC Jahresplan]]
+			- **Feiertage und wichtige Ereignisse**
+				- **Feiertage**
+				- **Geburtstage**
+			- [[Jahresaufgaben]]
+			- **Jahresübersicht**
+			- **Jahresziele**
+		- **Tagesplan**
+			- [[Tagesaufgaben]]
+			- **Tagesziele**
+		- **Wochenplan**
+			- [[Wochenaufgaben]]
+			- **Wochenziele**
+	- [[Haushaltsaufgabenlisten]]
+	- **ToDos**
+		- [[_MoC ToDos]]
+		- **Langfristige Projekte**
+			- **Jahresprojekte**
+			- **Lebensprojekte**
+		- [[Monatsaufgaben]]
+		- [[Projekte]]
+		- [[Tagesaufgaben]]
+		- [[Wochenaufgaben]]
+- **🚑Gesundheit (🍽-💤-🧘‍♂️-🚬-🚵)**
+	- [[_MoC Gesundheit]]
+	- **🍽Ernährung**
+		- [[_MoC Ernährung]]
+		- **Mahlzeitplanung**
+			- **Wochenplanung**
+		- **Rezepte**
+	- **💤Schlaf**
+		- [[_MoC Schlaf]]
+		- [[Schlafgewohnheiten]]
+		- [[Schlafqualität]]
+		- [[Schlafverbesserung]]
+	- **🚬Drogenplan**
+		- **Alkoholplan**
+			- [[Entwöhnungsstrategien]]
+			- [[Konsumgewohnheiten]]
+			- [[Reduktionsstrategien]]
+		- **Grasplan**
+			- [[Entwöhnungsstrategien]]
+			- [[Konsumgewohnheiten]]
+			- [[Reduktionsstrategien]]
+		- **Zigarettenplan**
+			- [[Entwöhnungsstrategien]]
+			- [[Konsumgewohnheiten]]
+			- [[Reduktionsstrategien]]
+	- **🚵Sport**
+		- [[_MoC Sport]]
+		- **Fitnessziele**
+			- **Kurzfristige Ziele**
+				- [[Monatliche Fortschritte]]
+			- **Langfristige Ziele**
+				- [[Jahresziele]]
+				- [[Lebensziele]]
+		- **Sportarten**
+			- **Duosportarten**
+			- **Individuelle Sportarten**
+				- [[Laufen]]
+				- [[Radfahren]]
+			- **Teamsportarten**
+				- [[Basketball]]
+				- [[Fußball]]
+		- **Trainingspläne**
+			- **Ausdauertraining**
+				- **Trainingspläne**
+					- [[Laufpläne]]
+				- **Übungen**
+					- [[Herz-Kreislauf-Übungen]]
+			- **Krafttraining**
+				- **Trainingspläne**
+				- **Übungen**
+	- **Psychische Gesundheit**
+		- **🧘‍♂️Meditation**
+			- [[_MoC Meditieren]]
+			- **Meditationsmethoden und Techniken**
+				- **Achtsamkeitstechniken**
+					- [[Atemübungen]]
+					- [[Körperwahrnehmung]]
+			- [[Meditationsziele]]
+- **Accounts**
+	- [[Killtheblackdragon@gmail.com]]
+	- [[Kudras.max@gmail.com]]
+	- [[Kudrasov.max@gmail.com]]
+	- [[max-123-der-beste@web.de]]
+- **Freizeit ()**
+	- [[_MoC Freizeit]]
+	- **Audio (🎧)**
+		- [[_MoC Audio]]
+		- **🎧Musik**
+	- **Hobbies ()**
+		- [[_MoC Hobbies]]
+		- **Malen**
+			- **Artikelentwicklung**
+			- **Kunst**
+				- **UV Kunst**
+		- **Musik machen**
+		- **Programmieren**
+		- **Schreiben**
+			- **Buch schreiben**
+			- **DnD Kampane**
+			- **Worldbuilding**
+	- **Literatur**
+		- **Bücher**
+		- **Comics**
+			- **Amerikanische Comics**
+			- **Manga**
+				- **Webmanga**
+			- **Manhua**
+				- **Webmanhua**
+			- **Manwha**
+				- **Webtoon**
+	- **Spiele (🎮-♟️)**
+		- [[_MoC Spiele]]
+		- **♟️Brettspiele**
+		- **🎮Videospiele**
+	- **Viedeo  (🎞-🎬)**
+		- [[_MoC Filme-Serien]]
+		- **🎞Filme**
+			- **🎞Blade Runner**
+			- **🎞DC Universum**
+			- **🎞Der Exorcist**
+			- **🎞Der Herr der Ringe Franchise**
+				- **Der Herr der Ringe**
+				- **Der Hobbit**
+			- [[🎞Dunkirk]]
+			- **🎞Fluch der Karibik**
+			- [[🎞Gravity]]
+			- **🎞Hangover**
+			- **🎞Harry Potter Franchise**
+				- **Fantastische Tierwesen**
+				- **Harry Potter**
+			- [[🎞Inception]]
+			- **🎞Indiana Jones**
+			- [[🎞Interstellar]]
+			- **🎞James Bond**
+			- **🎞Jurassic Park**
+			- **🎞Looney Tunes Franchise**
+			- **🎞Mad Max**
+			- **🎞Marvel Cinematic Universe**
+			- **🎞Matrix**
+			- **🎞Police Academy**
+			- **🎞Star Trek**
+			- **🎞Star Wars**
+			- **🎞Stephen King Franchise**
+			- [[🎞Tenet]]
+			- **🎞The Lego Movie**
+			- **🎞Zurück in die Zukunft**
+		- **🎬Serien**
+	- **Welt erleben (🗺)**
+		- **🗺Reisen**
+			- [[_MoC Reisen]]
+
+%% End Waypoint %%
+ 

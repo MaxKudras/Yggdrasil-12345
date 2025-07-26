@@ -1,0 +1,329 @@
+{
+  "main": {
+    "id": "dfbffd440b2f29b6",
+    "type": "split",
+    "children": [
+      {
+        "id": "286d31d29bce6cf4",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "ab12b20d0ff02d22",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "03.Alltagsmanagemnt/02.Haustiere&Pflanzen/02.Pflanzen/Pflanzen für die Wohnung.md",
+                "mode": "source",
+                "source": true,
+                "backlinks": true,
+                "backlinkOpts": {
+                  "collapseAll": false,
+                  "extraContext": false,
+                  "sortOrder": "alphabetical",
+                  "showSearch": false,
+                  "searchQuery": "",
+                  "backlinkCollapsed": false,
+                  "unlinkedCollapsed": true
+                }
+              },
+              "icon": "lucide-file",
+              "title": "Pflanzen für die Wohnung"
+            }
+          },
+          {
+            "id": "48d3ddb149379baf",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "00.📖Lebensplan/Gesamter Lebensplan.md",
+                "mode": "source",
+                "source": true,
+                "backlinks": true,
+                "backlinkOpts": {
+                  "collapseAll": false,
+                  "extraContext": false,
+                  "sortOrder": "alphabetical",
+                  "showSearch": false,
+                  "searchQuery": "",
+                  "backlinkCollapsed": false,
+                  "unlinkedCollapsed": true
+                }
+              },
+              "icon": "lucide-file",
+              "title": "Gesamter Lebensplan"
+            }
+          },
+          {
+            "id": "e44ac6400f91ad30",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "03.Alltagsmanagemnt/02.Haustiere&Pflanzen/02.Pflanzen/Notizen zum einsortieren.md",
+                "mode": "source",
+                "source": true,
+                "backlinks": true,
+                "backlinkOpts": {
+                  "collapseAll": false,
+                  "extraContext": false,
+                  "sortOrder": "alphabetical",
+                  "showSearch": false,
+                  "searchQuery": "",
+                  "backlinkCollapsed": false,
+                  "unlinkedCollapsed": true
+                }
+              },
+              "icon": "lucide-file",
+              "title": "Notizen zum einsortieren"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "679ccf2205e1d311",
+    "type": "split",
+    "children": [
+      {
+        "id": "d6484c60b651150d",
+        "type": "tabs",
+        "dimension": 70.50147492625369,
+        "children": [
+          {
+            "id": "413fb37392e1b459",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
+            "id": "5bc8afe300537ed3",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          },
+          {
+            "id": "8642e3c6be21b6dc",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "systempl",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": true,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "36542e157302fbf4",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          }
+        ]
+      },
+      {
+        "id": "ef35bb1c65177942",
+        "type": "tabs",
+        "dimension": 29.498525073746315,
+        "children": [
+          {
+            "id": "2c452d335dcd1786",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "Untitled 2.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline of Untitled 2"
+            }
+          },
+          {
+            "id": "946acff72038598b",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "03.Alltagsmanagemnt/02.Haustiere&Pflanzen/02.Pflanzen/Pflanzen für die Wohnung.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": false
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links from Pflanzen für die Wohnung"
+            }
+          }
+        ],
+        "currentTab": 1
+      }
+    ],
+    "direction": "horizontal",
+    "width": 295.5
+  },
+  "right": {
+    "id": "b064cccbba5473b0",
+    "type": "split",
+    "children": [
+      {
+        "id": "9f4ad3adaec7f04f",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "26e8016252b43b4d",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "-Ticketsystem/Tickets/T-001 - hallo.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks for T-001 - hallo"
+            }
+          },
+          {
+            "id": "e9d33a352f98a594",
+            "type": "leaf",
+            "state": {
+              "type": "advanced-tables-toolbar",
+              "state": {},
+              "icon": "lucide-file",
+              "title": "Plugin no longer active"
+            }
+          },
+          {
+            "id": "c860797e5d3ea4fa",
+            "type": "leaf",
+            "state": {
+              "type": "recent-files",
+              "state": {},
+              "icon": "lucide-file",
+              "title": "Plugin no longer active"
+            }
+          },
+          {
+            "id": "c8dd34acbefc4c5f",
+            "type": "leaf",
+            "state": {
+              "type": "full-calendar-sidebar-view",
+              "state": {},
+              "icon": "lucide-file",
+              "title": "Plugin no longer active"
+            }
+          }
+        ],
+        "currentTab": 2
+      }
+    ],
+    "direction": "horizontal",
+    "width": 246.5,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
+      "markdown-importer:Open format converter": false,
+      "random-note:Open random note": false,
+      "workspaces:Manage workspace layouts": false,
+      "obsidian-full-calendar:Open Full Calendar": false,
+      "templater-obsidian:Templater": false,
+      "obsidian-kanban:Create new board": false,
+      "pexels-banner:🚩 Pixel Banner Menu": false,
+      "obsidian-shellcommands:Shell commands: Custom variables": false,
+      "table-editor-obsidian:Advanced Tables Toolbar": false,
+      "most-used:Show most used words graph": false,
+      "obsidian-git:Open Git source control": false
+    }
+  },
+  "active": "ab12b20d0ff02d22",
+  "lastOpenFiles": [
+    "PandorasBox/README.md",
+    "PandorasBox",
+    "03.Alltagsmanagemnt/02.Haustiere&Pflanzen/02.Pflanzen/Notizen zum einsortieren.md",
+    "00.📖Lebensplan/Gesamter Lebensplan.md",
+    "03.Alltagsmanagemnt/02.Haustiere&Pflanzen/02.Pflanzen/Pflanzen für die Wohnung.md",
+    "To-Do/Datenbanken Rezepte und Allergene.md",
+    "04.🧘‍♂️Vitaloase/01.AllgemeineGesundheit",
+    "03.Alltagsmanagemnt/04.Recht,Dokumente&Sicherheit/03.Sicherheit",
+    "03.Alltagsmanagemnt/04.Recht,Dokumente&Sicherheit/02.Dokumente",
+    "03.Alltagsmanagemnt/04.Recht,Dokumente&Sicherheit/01.Recht",
+    "03.Alltagsmanagemnt/04.Recht,Dokumente&Sicherheit",
+    "03.Alltagsmanagemnt/03.Mobilität",
+    "03.Alltagsmanagemnt/02.Haustiere&Pflanzen/02.Pflanzen",
+    "03.Alltagsmanagemnt/02.Haustiere&Pflanzen/01.Haustiere",
+    "03.Alltagsmanagemnt/02.Haustiere&Pflanzen",
+    "01.Lebenskompass/01.Lebenskompass.md",
+    "00.📖Lebensplan/00.📖Lebensplan.md",
+    "🗂️Ticketsystem/ToDo.md",
+    "00.📖Lebensplan/Alleszusdammen/Plan fürs Leben.md",
+    "00.📖Lebensplan/Alleszusdammen/Test notiz.md",
+    "00.📖Lebensplan/Alleszusdammen/lebens keinej.md",
+    "00.📖Lebensplan/Alleszusdammen/gggggg.md",
+    "00.📖Lebensplan/Lebensplan Grundstruktur.md",
+    "10.⚙️Systemschmiede/Windows11 System apps skripte.md",
+    "10.⚙️Systemschmiede/Untitled 1.md",
+    "Aussortieren/hda/wichtig.md",
+    "Aussortieren/hda/untitled.md",
+    "Aussortieren/hda/family.md",
+    "Aussortieren/💡Projekte/💡Projekte.md",
+    "Aussortieren/-Ticketsystem/-Ticketsystem.md",
+    "dataviewjs Slider with %.md",
+    "To-Do/aussortieren/Langfristige ToDo.md",
+    "To-Do/aussortieren/Ideen 13.08.24.md",
+    "Aussortieren/12-Jan-2025.md",
+    "Aussortieren/_attachments/_attachments.md",
+    "10.⚙️Systemschmiede/Systemplan/PC/Autogen/Lebensplan/AutoGen Lebensplan aufarbeitung.canvas",
+    "10.⚙️Systemschmiede/Systemplan/PC/Autogen/Lebensplan/AutoGen Ausbildingsplan.canvas",
+    "10.⚙️Systemschmiede/Systemplan/Systemplan.canvas",
+    "10.⚙️Systemschmiede/Systemplan/PC/Skriptplan.canvas",
+    "AusbildungsVault/Plan/Abarbeiten/Abarbeiten.canvas",
+    "AusbildungsVault/Plan/Fachinformatiker Lernplan.canvas",
+    "Grichische Mythology Stammbaum.canvas",
+    "Aussortieren/-Ticketsystem/DSB/Haupt-DSB.canvas",
+    "Aussortieren/-Ticketsystem/DSB/Zentral-DSB.canvas",
+    "Aussortieren/-Ticketsystem/plan/Ticketsystem plan.canvas",
+    "Aussortieren/_attachments/Farbspektrum.png"
+  ]
+}

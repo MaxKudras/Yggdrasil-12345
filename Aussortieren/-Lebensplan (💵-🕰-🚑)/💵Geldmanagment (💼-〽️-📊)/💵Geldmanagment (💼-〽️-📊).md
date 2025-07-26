@@ -1,0 +1,84 @@
+# 💵Geldmanagment (💼-〽️-📊) Overview
+ 
+```ccard
+type: folder_brief_live
+```
+%% Begin Waypoint %%
+- [[_MoC Geldmanagment]]
+- **[[〽️Investieren]]**
+- **💼Arbeit**
+	- [[_MoC Arbeit]]
+- **📊Geldverlauf**
+	- [[_MoC Geldverlauf]]
+	- **Abos**
+		- [[_MoC Abos]]
+		- **Abokosten**
+			- [[Jährliche Kosten]]
+			- [[Monatliche Kosten]]
+	- **[[Ausgabenplan]]**
+		- [[_MoC Ausgabenplan]]
+		- **Einsparpotentiale**
+			- [[Budgetanpassungen]]
+			- **Einsparmöglichkeiten**
+				- [[Brotmaschine]]
+				- [[Getränkemischen]]
+				- [[Leitungswasserfiltern]]
+				- [[Stromanbieter wechseln]]
+				- [[Stromsparen]]
+				- **Versicherungen wechsel**
+				- [[Wärmeisolierung]]
+			- [[Einsparstrategien]]
+		- **Monatliche Ausgaben**
+			- **Fixkosten**
+				- [[Miete]]
+				- **Nebenkosten**
+					- [[Strom]]
+					- [[Wasser]]
+				- [[Telefon und Internet]]
+				- **Versicherungen**
+			- **Variable Kosten**
+				- [[Freizeit]]
+				- [[Lebensmittel]]
+		- **Unregelmäßige Ausgaben**
+			- **Geschenke**
+			- **Reisen**
+	- **Geldgrundplan**
+		- [[Budgetierung]]
+		- [[Finanzielle Ziele]]
+		- [[Notfallfonds]]
+	- **Kontoverlauf**
+		- [[_MoC Kontoverlauf]]
+		- **Haspa**
+			- [[_MoC Haspa]]
+			- [[Kontoübersicht]]
+			- [[Transaktionen]]
+		- **Paypal**
+			- [[_MoC Paypal]]
+			- [[Kontoübersicht]]
+			- [[Transaktionen]]
+	- **Schulden**
+		- [[_MoC Schulden]]
+		- [[Schulden Übersicht]]
+	- **[[Sparplan]]**
+		- [[_MoC Sparplan]]
+		- **Sparstrategien**
+			- [[Automatische Überweisungen]]
+			- [[Regelmäßige Einzahlungen]]
+		- [[Sparstrategien]]
+		- **Sparziele**
+			- [[Kurzfristige Ziele]]
+			- **Langfristige Ziele**
+				- [[Altersvorsorge]]
+		- [[Zins- und Renditeplanung]]
+- **Budgetierung**
+	- **Jahresbudget**
+	- **Monatsbudget**
+- **Finanzielle Ziele**
+	- **Kurzfristige Ziele**
+	- **Langfristige Ziele**
+	- **Mittelfristige Ziele**
+- **Notfallfonds**
+	- **Verwendung**
+	- [[Zielhöhe]]
+
+%% End Waypoint %%

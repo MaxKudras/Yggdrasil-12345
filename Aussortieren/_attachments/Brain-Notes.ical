@@ -1,0 +1,149 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Andrew Brereton//obsidian-ical-plugin v1.19.0//EN
+X-WR-CALNAME:Obsidian Calendar
+NAME:Obsidian Calendar
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:93595d4a-9a32-42be-aaba-cc4b476320cf
+DTSTAMP:20240925T000000
+DTSTART:20240925
+SUMMARY:🔲 Bettwäsche wechseln  due::
+LOCATION:ALTREP="obsidian://open?vault=Brain-Notes&file=Ticketsystem/Tickets/%C2%B013%20Textil-%20Lederarbeit.md":obsidian://open?vault=Brain-Notes&file=Ticketsystem/Tickets/%C2%B013%20Textil-%20Lederarbeit.md
+END:VEVENT
+BEGIN:VEVENT
+UID:76c8ecb9-5bf6-4ed3-acfd-2d7c9e3859df
+DTSTAMP:20240923T000000
+DTSTART:20240923
+SUMMARY:🔲 Tischplatten bestellen  due::
+LOCATION:ALTREP="obsidian://open?vault=Brain-Notes&file=Ticketsystem/Tickets/Lebenverbesserung/Lebenorganisieren/%C2%B01%20Ticketsystemaufbauen.md":obsidian://open?vault=Brain-Notes&file=Ticketsystem/Tickets/Lebenverbesserung/Lebenorganisieren/%C2%B01%20Ticketsystemaufbauen.md
+END:VEVENT
+BEGIN:VEVENT
+UID:8352abd8-bff9-41cd-b2fe-de351153d3a9
+DTSTAMP:20240906T000000
+DTSTART:20240906
+SUMMARY:📅 🔲 Materialien besorgen
+LOCATION:ALTREP="obsidian://open?vault=Brain-Notes&file=Ticketsystem/Tickets/Lebenverbesserung/Lebenorganisieren/%C2%B01%20Ticketsystemaufbauen.md":obsidian://open?vault=Brain-Notes&file=Ticketsystem/Tickets/Lebenverbesserung/Lebenorganisieren/%C2%B01%20Ticketsystemaufbauen.md
+END:VEVENT
+BEGIN:VEVENT
+UID:3baccbe3-190a-4b78-b0bd-01a743b68757
+DTSTAMP:20240923T000000
+DTSTART:20240923
+SUMMARY:📅 🔲 Schrauben nachmessen
+LOCATION:ALTREP="obsidian://open?vault=Brain-Notes&file=Ticketsystem/Tickets/Lebenverbesserung/Lebenorganisieren/%C2%B01%20Ticketsystemaufbauen.md":obsidian://open?vault=Brain-Notes&file=Ticketsystem/Tickets/Lebenverbesserung/Lebenorganisieren/%C2%B01%20Ticketsystemaufbauen.md
+END:VEVENT
+BEGIN:VTODO
+UID:f918eb60-ce3a-402c-baa1-733b206862c1
+SUMMARY:🔲 Neue Buisness-Email erstellen
+LOCATION:ALTREP="obsidian://open?vault=Brain-Notes&file=To-Do/To-Do%2018.12.22.md":obsidian://open?vault=Brain-Notes&file=To-Do/To-Do%2018.12.22.md
+STATUS:NEEDS-ACTION
+END:VTODO
+BEGIN:VTODO
+UID:1e0a6b49-2ece-41fd-ba90-a63fa247d45e
+SUMMARY:🔲 Kudrasov.max@gmail.com Aufräumen und sortieren
+LOCATION:ALTREP="obsidian://open?vault=Brain-Notes&file=To-Do/To-Do%2018.12.22.md":obsidian://open?vault=Brain-Notes&file=To-Do/To-Do%2018.12.22.md
+STATUS:NEEDS-ACTION
+END:VTODO
+BEGIN:VTODO
+UID:80d6b761-16ba-4998-9394-0ce3a5c89395
+SUMMARY:🔲 3D Drucker
+LOCATION:ALTREP="obsidian://open?vault=Brain-Notes&file=To-Do/Need%20to%20Buy.md":obsidian://open?vault=Brain-Notes&file=To-Do/Need%20to%20Buy.md
+STATUS:NEEDS-ACTION
+END:VTODO
+BEGIN:VTODO
+UID:333aefe3-bcc6-4d7c-a61b-aaceb042a3c5
+SUMMARY:🔲 Mikroelektronik Schrabenzieher mit kompletten bit set
+LOCATION:ALTREP="obsidian://open?vault=Brain-Notes&file=To-Do/Need%20to%20Buy.md":obsidian://open?vault=Brain-Notes&file=To-Do/Need%20to%20Buy.md
+STATUS:NEEDS-ACTION
+END:VTODO
+BEGIN:VTODO
+UID:d79bcf06-cee4-476b-8f2f-81a921e8612b
+SUMMARY:🔲 Wärmelichtkamarera
+LOCATION:ALTREP="obsidian://open?vault=Brain-Notes&file=To-Do/Need%20to%20Buy.md":obsidian://open?vault=Brain-Notes&file=To-Do/Need%20to%20Buy.md
+STATUS:NEEDS-ACTION
+END:VTODO
+BEGIN:VTODO
+UID:6886115d-c379-40e7-bf71-4a27bdc17cd4
+SUMMARY:🔲 Lötwerkzeug
+LOCATION:ALTREP="obsidian://open?vault=Brain-Notes&file=To-Do/Need%20to%20Buy.md":obsidian://open?vault=Brain-Notes&file=To-Do/Need%20to%20Buy.md
+STATUS:NEEDS-ACTION
+END:VTODO
+BEGIN:VTODO
+UID:3a5a06ba-06e7-439e-9cb4-0052f865e50e
+SUMMARY:🔲 Mikroscop
+LOCATION:ALTREP="obsidian://open?vault=Brain-Notes&file=To-Do/Need%20to%20Buy.md":obsidian://open?vault=Brain-Notes&file=To-Do/Need%20to%20Buy.md
+STATUS:NEEDS-ACTION
+END:VTODO
+BEGIN:VTODO
+UID:acd16efc-065f-4238-9ee1-00695c73ef5e
+SUMMARY:🔲 Airbrush
+LOCATION:ALTREP="obsidian://open?vault=Brain-Notes&file=To-Do/Need%20to%20Buy.md":obsidian://open?vault=Brain-Notes&file=To-Do/Need%20to%20Buy.md
+STATUS:NEEDS-ACTION
+END:VTODO
+BEGIN:VTODO
+UID:11cf1f6c-e514-4979-b93b-81013dd7664f
+SUMMARY:🔲 Teleskop
+LOCATION:ALTREP="obsidian://open?vault=Brain-Notes&file=To-Do/Need%20to%20Buy.md":obsidian://open?vault=Brain-Notes&file=To-Do/Need%20to%20Buy.md
+STATUS:NEEDS-ACTION
+END:VTODO
+BEGIN:VTODO
+UID:2cd0808f-757c-45a3-8994-e9a6063c91f3
+SUMMARY:🔲 Mikroskop für bakterien/pollen usw.
+LOCATION:ALTREP="obsidian://open?vault=Brain-Notes&file=To-Do/Need%20to%20Buy.md":obsidian://open?vault=Brain-Notes&file=To-Do/Need%20to%20Buy.md
+STATUS:NEEDS-ACTION
+END:VTODO
+BEGIN:VTODO
+UID:e5e64e3d-ffd7-48c8-be83-12a793f36f2e
+SUMMARY:🔲 Führerschein beantragen
+LOCATION:ALTREP="obsidian://open?vault=Brain-Notes&file=01_inbox/wichtig.md":obsidian://open?vault=Brain-Notes&file=01_inbox/wichtig.md
+STATUS:NEEDS-ACTION
+END:VTODO
+BEGIN:VTODO
+UID:1bd80a29-3e3a-4adb-8e81-563f032d658f
+SUMMARY:🔲 Alle Inseln eintragen
+LOCATION:ALTREP="obsidian://open?vault=Brain-Notes&file=01_inbox/wichtig.md":obsidian://open?vault=Brain-Notes&file=01_inbox/wichtig.md
+STATUS:NEEDS-ACTION
+END:VTODO
+BEGIN:VTODO
+UID:48247263-6c2b-4fa7-9cbe-628422483d76
+SUMMARY:🔲 Längengrad eintragen
+LOCATION:ALTREP="obsidian://open?vault=Brain-Notes&file=01_inbox/wichtig.md":obsidian://open?vault=Brain-Notes&file=01_inbox/wichtig.md
+STATUS:NEEDS-ACTION
+END:VTODO
+BEGIN:VTODO
+UID:9b3f511c-4d26-4a5f-92ff-31d3e22f665d
+SUMMARY:🔲 Breitengrad eintragen
+LOCATION:ALTREP="obsidian://open?vault=Brain-Notes&file=01_inbox/wichtig.md":obsidian://open?vault=Brain-Notes&file=01_inbox/wichtig.md
+STATUS:NEEDS-ACTION
+END:VTODO
+BEGIN:VTODO
+UID:300fa557-3a1a-49cd-b0ba-8384702bc95a
+SUMMARY:🔲 Große gewässer eintragen
+LOCATION:ALTREP="obsidian://open?vault=Brain-Notes&file=01_inbox/wichtig.md":obsidian://open?vault=Brain-Notes&file=01_inbox/wichtig.md
+STATUS:NEEDS-ACTION
+END:VTODO
+BEGIN:VTODO
+UID:c67cecf4-9e00-4cad-8c8e-03e749adc2a7
+SUMMARY:🔲 Mythologie mit länder verbinden
+LOCATION:ALTREP="obsidian://open?vault=Brain-Notes&file=01_inbox/wichtig.md":obsidian://open?vault=Brain-Notes&file=01_inbox/wichtig.md
+STATUS:NEEDS-ACTION
+END:VTODO
+BEGIN:VTODO
+UID:8c5c4586-6db9-433f-993a-4766d45d76d9
+SUMMARY:🔲 alle länder mit kontiente verbinden
+LOCATION:ALTREP="obsidian://open?vault=Brain-Notes&file=01_inbox/wichtig.md":obsidian://open?vault=Brain-Notes&file=01_inbox/wichtig.md
+STATUS:NEEDS-ACTION
+END:VTODO
+BEGIN:VTODO
+UID:829186d8-eca8-4412-9806-c7bb562d020e
+SUMMARY:🔲 länder mit ökosysteme verbinden
+LOCATION:ALTREP="obsidian://open?vault=Brain-Notes&file=01_inbox/wichtig.md":obsidian://open?vault=Brain-Notes&file=01_inbox/wichtig.md
+STATUS:NEEDS-ACTION
+END:VTODO
+BEGIN:VTODO
+UID:bddeab5e-09e4-4848-a356-e73e744a9b8e
+SUMMARY:🔲 75€ Führerschein
+LOCATION:ALTREP="obsidian://open?vault=Brain-Notes&file=01_inbox/wichtig.md":obsidian://open?vault=Brain-Notes&file=01_inbox/wichtig.md
+STATUS:NEEDS-ACTION
+END:VTODO
+END:VCALENDAR

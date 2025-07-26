@@ -1,0 +1,6 @@
+/* Example CSS to adjust button placement */
+div.markdown-preview-view .button-column {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Three columns */
+  gap: 20px;
+}

@@ -1,0 +1,10 @@
+{
+  "id": "imdb-sync",
+  "name": "IMDb",
+  "version": "1.0.0",
+  "minAppVersion": "0.12.0",
+  "description": "Sync your IMDb list",
+  "author": "Andrew Chen",
+  "authorUrl": "https://github.com/aaachen",
+  "isDesktopOnly": true
+}

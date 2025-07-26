@@ -1,0 +1,10 @@
+img[alt="movie"] {
+	display: block !important;
+	margin-left: auto !important;
+	margin-right: auto !important;
+}
+.movie {
+	display: block !important;
+	margin-left: auto !important;
+	margin-right: auto !important;
+}

@@ -1,0 +1,8 @@
+[[Kleinere Amerikanische Überseeinseln]]
+[[Kokosinseln (Keelinginseln)]]
+[[Mikronesien]]
+[[Neukaledonien]]
+[[Niederländische Antillen]]
+[[Niue]]
+[[Nördliche Marianen]]
+[[Norfolkinsel]]

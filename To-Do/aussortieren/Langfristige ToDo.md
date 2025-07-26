@@ -1,0 +1,16 @@
+-Shopify store dropshipping (ohne selber bestellen und testen)
+	-Ticktok ADS
+	-Instagram/Tiktok/Youtube hype artikel
+-Seite mit dropshipping mit edelem design und guter Produkt austellung (Produkte besttellen, testen, Fotos machen, videso machen, kategorien mit spezialisierung auf zielgruppe)
+-eigene Seite (villeicht mit blog, Monotarisiert)
+-Amazone FDA
+-Apps programmieren ios und android
+-Templates verkaufen
+-Seiten design verkaufen 
+-Insta/tiktok/youtube promotion 
+-Insta/tiktok/youtubet für meditation oder geld oder sport oder gesundheit mit quotes informations focus
+-Aktien handel
+-Immobilien
+-Amazone reseller
+-Print on demand shop (Klamotten mit designs von mir)
+

@@ -1,0 +1,27 @@
+{
+  "legacyEditor": false,
+  "strictLineBreaks": false,
+  "alwaysUpdateLinks": true,
+  "newFileLocation": "current",
+  "newFileFolderPath": "",
+  "showUnsupportedFiles": true,
+  "attachmentFolderPath": "./",
+  "communityPluginSortOrder": "release",
+  "promptDelete": false,
+  "livePreview": false,
+  "tabSize": 3,
+  "readableLineLength": true,
+  "focusNewTab": false,
+  "defaultViewMode": "preview",
+  "showLineNumber": true,
+  "rightToLeft": false,
+  "spellcheckLanguages": null,
+  "showInlineTitle": false,
+  "spellcheck": true,
+  "pdfExportSettings": {
+    "pageSize": "A4",
+    "landscape": false,
+    "margin": "0",
+    "downscalePercent": 100
+  }
+}

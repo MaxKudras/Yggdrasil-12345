@@ -1,0 +1,15 @@
+{
+  "cssTheme": "Blue Topaz",
+  "translucency": false,
+  "interfaceFontFamily": "",
+  "baseFontSize": 16,
+  "textFontFamily": "",
+  "accentColor": "",
+  "enabledCssSnippets": [
+    "Dashboard",
+    "sss"
+  ],
+  "showViewHeader": true,
+  "baseFontSizeAction": true,
+  "nativeMenus": false
+}

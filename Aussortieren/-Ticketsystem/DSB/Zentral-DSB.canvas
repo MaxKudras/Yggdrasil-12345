@@ -1,0 +1,13 @@
+{
+	"nodes":[
+		{"id":"68bb702c14018351","type":"file","file":"Aussortieren/-Ticketsystem/DSB Parts/Zeitliche Tickets/Statistiken/Heutige Ticket Statistik.md","x":-560,"y":-140,"width":400,"height":400},
+		{"id":"da165647b0040b90","type":"file","file":"Aussortieren/-Ticketsystem/DSB Parts/Zeitliche Tickets/Statistiken/Heutige Ticket Statistik.md","x":-1040,"y":-140,"width":400,"height":400},
+		{"id":"aeb5f2993835fb54","type":"file","file":"Aussortieren/-Ticketsystem/DSB Parts/Offene Tickets.md","x":80,"y":-140,"width":600,"height":400},
+		{"id":"9f5e41290801ba78","type":"file","file":"Aussortieren/-Ticketsystem/DSB Parts/Quick-Actions.md","x":-232,"y":-640,"width":400,"height":400},
+		{"id":"fb059b5e0896cb8a","type":"file","file":"Aussortieren/-Ticketsystem/DSB Parts/Fällige Tickets.md","x":-480,"y":320,"width":400,"height":400},
+		{"id":"cbd37192193aecbd","type":"file","file":"Aussortieren/-Ticketsystem/DSB Parts/Überfällige Tickets.md","x":-32,"y":320,"width":400,"height":400},
+		{"id":"88164226ae578ec4","type":"file","file":"Aussortieren/-Ticketsystem/DSB Parts/Hoche Priorität Ticket.md","x":-232,"y":720,"width":400,"height":400},
+		{"id":"2189385fcb6332c2","type":"file","file":"Aussortieren/-Ticketsystem/DSB Parts/Offene Tickets Statistik.md","x":740,"y":-140,"width":400,"height":400}
+	],
+	"edges":[]
+}

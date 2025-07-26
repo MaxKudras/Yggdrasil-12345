@@ -1,0 +1,7 @@
+{
+	"nodes":[
+		{"id":"9cf63dee7ad8c314","type":"text","text":"# Quiz-Agent","x":-125,"y":-30,"width":250,"height":60},
+		{"id":"eafbf51c58518279","x":-125,"y":-30,"width":250,"height":60,"type":"text","text":"# Lernpfad-Agent"}
+	],
+	"edges":[]
+}

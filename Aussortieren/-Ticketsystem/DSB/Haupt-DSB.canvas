@@ -1,0 +1,24 @@
+{
+	"nodes":[
+		{"id":"97bd7226d085dae3","type":"group","x":-540,"y":-280,"width":1480,"height":900,"label":"Zeitliche Tickets"},
+		{"id":"cbb736f834a8a7e6","type":"group","x":1000,"y":-280,"width":880,"height":880,"label":"Statistiken"},
+		{"id":"738dab9efdf284ce","type":"group","x":-540,"y":680,"width":1480,"height":460,"label":"Untitled group"},
+		{"id":"03f9951839913567","type":"group","x":1000,"y":680,"width":880,"height":460,"label":"Priorität"},
+		{"id":"3b8b21bb0226404a","x":1910,"y":-616,"width":250,"height":60,"type":"text","text":""},
+		{"id":"1fff9398fc49efc2","type":"file","file":"Aussortieren/-Ticketsystem/DSB Parts/Zeitliche Tickets/Übermorgen Tickets.md","x":-520,"y":200,"width":700,"height":400},
+		{"id":"93561702c83eb2dd","type":"file","file":"Aussortieren/-Ticketsystem/DSB Parts/Zeitliche Tickets/Heutige Tickets.md","x":-520,"y":-240,"width":700,"height":400},
+		{"id":"33a5120cc0830fd7","type":"file","file":"Aussortieren/-Ticketsystem/DSB Parts/Fällige Tickets.md","x":-520,"y":720,"width":700,"height":400},
+		{"id":"842ed0dc6c9454ae","type":"file","file":"Aussortieren/-Ticketsystem/DSB Parts/Kategorie Ticket Statistik.md","x":-520,"y":1280,"width":400,"height":400},
+		{"id":"c646daf69eef2793","type":"file","file":"Aussortieren/-Ticketsystem/DSB Parts/Zeitliche Tickets/Statistiken/Heutige Ticket Statistik.md","x":1020,"y":-260,"width":400,"height":400},
+		{"id":"499f9d01798d53df","type":"file","file":"Aussortieren/-Ticketsystem/DSB Parts/Zeitliche Tickets/Statistiken/Morgen Ticket Statistik.md","x":1460,"y":-260,"width":400,"height":400},
+		{"id":"b68e77dbe60209db","type":"file","file":"Aussortieren/-Ticketsystem/DSB Parts/Zeitliche Tickets/Morgen Tickets.md","x":220,"y":-240,"width":700,"height":400},
+		{"id":"22e1319a297dd971","type":"file","file":"Aussortieren/-Ticketsystem/DSB Parts/Zeitliche Tickets/Wochen Tickets.md","x":220,"y":200,"width":700,"height":400},
+		{"id":"92b21c8f9572ac2f","type":"file","file":"Aussortieren/-Ticketsystem/DSB Parts/Überfällige Tickets.md","x":220,"y":720,"width":700,"height":400},
+		{"id":"95b55fa461298110","type":"file","file":"Aussortieren/-Ticketsystem/DSB Parts/Zeitliche Tickets/Statistiken/Übermorgen Ticket Statistik.md","x":1020,"y":180,"width":400,"height":400},
+		{"id":"e39be7f81ca56d6c","type":"file","file":"Aussortieren/-Ticketsystem/DSB Parts/Zeitliche Tickets/Statistiken/Wochen Ticket Statistik.md","x":1460,"y":180,"width":400,"height":400},
+		{"id":"28fa94608ea83e8f","type":"file","file":"Aussortieren/-Ticketsystem/DSB Parts/Hoche Priorität Ticket.md","x":1020,"y":720,"width":400,"height":400},
+		{"id":"4433c6e95af6a53b","type":"file","file":"Aussortieren/-Ticketsystem/DSB Parts/Mittlere Priorität.md","x":1460,"y":720,"width":400,"height":400},
+		{"id":"842252e799fffdcf","type":"file","file":"Aussortieren/-Ticketsystem/DSB Parts/Quick-Actions.md","x":-1000,"y":-280,"width":410,"height":240}
+	],
+	"edges":[]
+}

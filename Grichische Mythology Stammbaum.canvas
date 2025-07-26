@@ -1,0 +1,15 @@
+{
+	"nodes":[
+		{"type":"text","text":"[[Gaia]] ","id":"0210f6adc2fb4025","x":-560,"y":-80,"width":250,"height":60},
+		{"type":"text","text":"[[Chaos]] ","id":"c0dc21071d7f44ad","x":-560,"y":-220,"width":250,"height":60},
+		{"type":"text","text":"[[Eros Elder (Phanes)]]","id":"c48c190af528d43b","x":250,"y":-80,"width":250,"height":60},
+		{"type":"text","text":"[[Tartarus]]","id":"e276bae9d694640b","x":-290,"y":-80,"width":250,"height":60},
+		{"type":"text","text":"[[Nyx]]","id":"58da1e89f165c036","x":-20,"y":-80,"width":250,"height":60}
+	],
+	"edges":[
+		{"id":"87b32ba8c7ebcf76","fromNode":"c0dc21071d7f44ad","fromSide":"bottom","toNode":"0210f6adc2fb4025","toSide":"top"},
+		{"id":"7b87b7e3df88856a","fromNode":"c0dc21071d7f44ad","fromSide":"bottom","toNode":"e276bae9d694640b","toSide":"top"},
+		{"id":"1ee63e78e1cc7999","fromNode":"c0dc21071d7f44ad","fromSide":"bottom","toNode":"58da1e89f165c036","toSide":"top"},
+		{"id":"2752c9dae45ded06","fromNode":"c0dc21071d7f44ad","fromSide":"bottom","toNode":"c48c190af528d43b","toSide":"top"}
+	]
+}

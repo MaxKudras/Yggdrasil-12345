@@ -1,0 +1,21 @@
+{
+	"nodes":[
+		{"id":"4acb04a75b61c01c","type":"group","x":-162,"y":-181,"width":1282,"height":620,"label":"Skripte"},
+		{"id":"d49327ae471af591","type":"group","x":-400,"y":-1120,"width":1058,"height":561,"label":"Dashboards"},
+		{"id":"1cb85ef591207cbf","type":"group","x":960,"y":-1151,"width":723,"height":763,"label":"Plugins"},
+		{"id":"2a273b824f930c27","type":"group","x":-1014,"y":-388,"width":622,"height":881,"label":"Tickets"},
+		{"id":"ebbb17ed4cb9c3ae","type":"group","x":-124,"y":800,"width":507,"height":525,"label":"Templates"},
+		{"id":"8578d0d9d93cf33e","type":"file","file":"Aussortieren/-Ticketsystem/plan/Notiz erstellen.md","x":-120,"y":-120,"width":400,"height":400},
+		{"id":"6ed4c88f9fd40c5f","type":"file","file":"Aussortieren/-Ticketsystem/DSB/Haupt-DSB.canvas","x":-302,"y":-1052,"width":400,"height":400},
+		{"id":"2f859eedadf261f4","type":"file","file":"Aussortieren/-Ticketsystem/DSB/Zentral-DSB.canvas","x":98,"y":-1052,"width":400,"height":400},
+		{"id":"6e183a93cdfe55ef","type":"file","file":"Aussortieren/-Ticketsystem/plan/Plugins/Dataview.md","x":1040,"y":-1052,"width":400,"height":400},
+		{"id":"44c489ec36c8f6e5","type":"text","text":"- Priorität soll Farblich in der sichtbaren Notiz angezeigt werden.\n- Kategorie soll in der Notiz angezeigt werden wie die sub kategroien","x":593,"y":707,"width":467,"height":213},
+		{"id":"47e7e503b12ba07c","x":1264,"y":499,"width":250,"height":60,"type":"text","text":"Sub tickets brauchen ein eigenes Template wo klar wird das es ein Sub tivcket isz"},
+		{"id":"432031f7b79d00b4","x":924,"y":571,"width":250,"height":60,"type":"text","text":"Im skrtip müss die Subtickets mit dem Haupt ticket verlinkt werden können"}
+	],
+	"edges":[
+		{"id":"e7b3d6dc0d1d06d2","fromNode":"ebbb17ed4cb9c3ae","fromSide":"top","toNode":"8578d0d9d93cf33e","toSide":"bottom","label":"Nutzt die Templates"},
+		{"id":"8baddc4527f6cdb8","fromNode":"d49327ae471af591","fromSide":"bottom","toNode":"8578d0d9d93cf33e","toSide":"top","label":"Aktivierung durch link/Button"},
+		{"id":"0cd4ed6174f8614e","fromNode":"8578d0d9d93cf33e","fromSide":"left","toNode":"2a273b824f930c27","toSide":"right","label":"Erstellt ein Ticket"}
+	]
+}

@@ -1,0 +1,247 @@
+{
+  "main": {
+    "id": "dfbffd440b2f29b6",
+    "type": "split",
+    "children": [
+      {
+        "id": "1257f29fb02609bd",
+        "type": "leaf",
+        "state": {
+          "type": "empty",
+          "state": {}
+        }
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "679ccf2205e1d311",
+    "type": "split",
+    "children": [
+      {
+        "id": "d6484c60b651150d",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "413fb37392e1b459",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {}
+            }
+          },
+          {
+            "id": "8642e3c6be21b6dc",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "tag:#␀",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "bb7b2fa8ed4d3406",
+            "type": "leaf",
+            "state": {
+              "type": "file-tree-view",
+              "state": {}
+            }
+          },
+          {
+            "id": "2c452d335dcd1786",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {}
+            }
+          },
+          {
+            "id": "36542e157302fbf4",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              }
+            }
+          },
+          {
+            "id": "1b7da1ddfd130cef",
+            "type": "leaf",
+            "state": {
+              "type": "starred",
+              "state": {}
+            }
+          }
+        ]
+      },
+      {
+        "id": "38ff6a020ba9cebd",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "c860797e5d3ea4fa",
+            "type": "leaf",
+            "state": {
+              "type": "recent-files",
+              "state": {}
+            }
+          },
+          {
+            "id": "946acff72038598b",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "8d2157e8279fc819",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 323.5
+  },
+  "right": {
+    "id": "b064cccbba5473b0",
+    "type": "split",
+    "children": [
+      {
+        "id": "9f4ad3adaec7f04f",
+        "type": "tabs",
+        "dimension": 48.137931034482754,
+        "children": [
+          {
+            "id": "f5b6eb3ff65cd4bb",
+            "type": "leaf",
+            "state": {
+              "type": "calendar",
+              "state": {}
+            }
+          },
+          {
+            "id": "cc72adf8c9505a5d",
+            "type": "leaf",
+            "state": {
+              "type": "graph",
+              "state": {}
+            }
+          },
+          {
+            "id": "b917da8228af45a6",
+            "type": "leaf",
+            "state": {
+              "type": "FANTASY_CALENDAR",
+              "state": {}
+            }
+          },
+          {
+            "id": "6058ec094effdc37",
+            "type": "leaf",
+            "state": {
+              "type": "graph-analysis",
+              "state": {}
+            }
+          },
+          {
+            "id": "f53f591447dfd5f8",
+            "type": "leaf",
+            "state": {
+              "type": "ob-gallery",
+              "state": {}
+            }
+          }
+        ]
+      },
+      {
+        "id": "dac7e37538f0290a",
+        "type": "tabs",
+        "dimension": 51.86206896551724,
+        "children": [
+          {
+            "id": "7162d64e18b1ab39",
+            "type": "leaf",
+            "state": {
+              "type": "reminder-list",
+              "state": {}
+            }
+          },
+          {
+            "id": "b838091b3bf84226",
+            "type": "leaf",
+            "state": {
+              "type": "todo",
+              "state": {}
+            }
+          },
+          {
+            "id": "cfa17cc64cb22710",
+            "type": "leaf",
+            "state": {
+              "type": "review-queue-list-view",
+              "state": {}
+            }
+          },
+          {
+            "id": "616dacd556100fd3",
+            "type": "leaf",
+            "state": {
+              "type": "advanced-tables-toolbar",
+              "state": {}
+            }
+          },
+          {
+            "id": "4e4f41ab6166038a",
+            "type": "leaf",
+            "state": {
+              "type": "memos_view",
+              "state": {}
+            }
+          }
+        ],
+        "currentTab": 3
+      }
+    ],
+    "direction": "horizontal",
+    "width": 294.669677734375,
+    "collapsed": true
+  },
+  "active": "1257f29fb02609bd",
+  "lastOpenFiles": [
+    "-Obsidian-/Templates/Frontmatter Template.md",
+    "Wissenschaften/Kulturwissenschaften/Geisteswissenschaften/Geschichte/Alte Geschichte/Mythologie/Griechische Mythologie/Griechische Urgötter/Pontus.md",
+    "Wissenschaften/Kulturwissenschaften/Geisteswissenschaften/Geschichte/Alte Geschichte/Mythologie/Griechische Mythologie/Griechische Urgötter/Uranus.md",
+    "Wissenschaften/Kulturwissenschaften/Geisteswissenschaften/Geschichte/Alte Geschichte/Mythologie/Griechische Mythologie/Griechische Urgötter/Ourea.md",
+    "Wissenschaften/Kulturwissenschaften/Geisteswissenschaften/Geschichte/Alte Geschichte/Mythologie/Griechische Mythologie/Griechische Urgötter/Ananke.md",
+    "Wissenschaften/Kulturwissenschaften/Geisteswissenschaften/Geschichte/Alte Geschichte/Mythologie/Griechische Mythologie/Griechische Urgötter/Chronos.md",
+    "Wissenschaften/Kulturwissenschaften/Geisteswissenschaften/Geschichte/Alte Geschichte/Mythologie/Griechische Mythologie/Griechische Urgötter/Nyx.md",
+    "Wissenschaften/Kulturwissenschaften/Geisteswissenschaften/Geschichte/Alte Geschichte/Mythologie/Griechische Mythologie/Griechische Urgötter/Erebus.md",
+    "Wissenschaften/Kulturwissenschaften/Geisteswissenschaften/Geschichte/Alte Geschichte/Mythologie/Griechische Mythologie/Griechische Urgötter/Gaia.md",
+    "Wissenschaften/Kulturwissenschaften/Geisteswissenschaften/Geschichte/Alte Geschichte/Mythologie/Griechische Mythologie/Griechische Urgötter/Tatarus.md"
+  ]
+}
