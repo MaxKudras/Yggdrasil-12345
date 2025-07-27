@@ -7,15 +7,15 @@ type: folder_brief_live
 - [[_MoC Aktien]]
 - **[[Aktienanalyse]]**
 - **[[Daytrading]]**
-- **ETFs**
+- **[[ETFs]]**
 	- [[_MoC ETFs]]
 	- [[ETF-Strategien]]
-	- **Risikostreuung**
+	- **[[Risikostreuung]]**
 		- [[Anlageklassen]]
-		- [[Aussortieren/-Lebensplan (💵-🕰-🚑)/💵Geldmanagment (💼-〽️-📊)/〽️Investieren/Aktien/ETFs/Risikostreuung/Diversifikation]]
-- **Investitionsstrategien**
+		- [[Diversifikation]]
+- **[[Investitionsstrategien]]**
 	- [[Buy and Hold]]
-	- [[Aussortieren/-Lebensplan (💵-🕰-🚑)/💵Geldmanagment (💼-〽️-📊)/〽️Investieren/Aktien/ETFs/Risikostreuung/Diversifikation]]
+	- [[Diversifikation]]
 - [[Investitionsstrategien]]
 
 %% End Waypoint %%

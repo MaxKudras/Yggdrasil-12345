@@ -4,10 +4,10 @@
 type: folder_brief_live
 ```
 %% Begin Waypoint %%
-- **3D-Modelle**
-	- **3D-Drucker prints**
-- **Drucktechniken**
-- **Materialien**
+- **[[3D-Modelle]]**
+	- **[[3D-Drucker prints]]**
+- **[[Drucktechniken]]**
+- **[[Materialien]]**
 
 %% End Waypoint %%
  

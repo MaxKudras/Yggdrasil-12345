@@ -6,20 +6,20 @@ type: folder_brief_live
 %% Begin Waypoint %%
 - [[_MoC Geldmanagment]]
 - **[[〽️Investieren]]**
-- **💼Arbeit**
+- **[[💼Arbeit]]**
 	- [[_MoC Arbeit]]
-- **📊Geldverlauf**
+- **[[📊Geldverlauf]]**
 	- [[_MoC Geldverlauf]]
-	- **Abos**
+	- **[[Abos]]**
 		- [[_MoC Abos]]
-		- **Abokosten**
+		- **[[Abokosten]]**
 			- [[Jährliche Kosten]]
 			- [[Monatliche Kosten]]
 	- **[[Ausgabenplan]]**
 		- [[_MoC Ausgabenplan]]
-		- **Einsparpotentiale**
+		- **[[Einsparpotentiale]]**
 			- [[Budgetanpassungen]]
-			- **Einsparmöglichkeiten**
+			- **[[Einsparmöglichkeiten]]**
 				- [[Brotmaschine]]
 				- [[Getränkemischen]]
 				- [[Leitungswasserfiltern]]
@@ -28,57 +28,57 @@ type: folder_brief_live
 				- **Versicherungen wechsel**
 				- [[Wärmeisolierung]]
 			- [[Einsparstrategien]]
-		- **Monatliche Ausgaben**
-			- **Fixkosten**
+		- **[[Monatliche Ausgaben]]**
+			- **[[Fixkosten]]**
 				- [[Miete]]
-				- **Nebenkosten**
+				- **[[Nebenkosten]]**
 					- [[Strom]]
 					- [[Wasser]]
 				- [[Telefon und Internet]]
-				- **Versicherungen**
-			- **Variable Kosten**
+				- **[[Versicherungen]]**
+			- **[[Variable Kosten]]**
 				- [[Freizeit]]
 				- [[Lebensmittel]]
-		- **Unregelmäßige Ausgaben**
-			- **Geschenke**
-			- **Reisen**
-	- **Geldgrundplan**
+		- **[[Unregelmäßige Ausgaben]]**
+			- **[[Geschenke]]**
+			- **[[Reisen]]**
+	- **[[Geldgrundplan]]**
 		- [[Budgetierung]]
 		- [[Finanzielle Ziele]]
 		- [[Notfallfonds]]
-	- **Kontoverlauf**
+	- **[[Kontoverlauf]]**
 		- [[_MoC Kontoverlauf]]
-		- **Haspa**
+		- **[[Haspa]]**
 			- [[_MoC Haspa]]
 			- [[Kontoübersicht]]
 			- [[Transaktionen]]
-		- **Paypal**
+		- **[[Paypal]]**
 			- [[_MoC Paypal]]
 			- [[Kontoübersicht]]
 			- [[Transaktionen]]
-	- **Schulden**
+	- **[[Schulden]]**
 		- [[_MoC Schulden]]
 		- [[Schulden Übersicht]]
 	- **[[Sparplan]]**
 		- [[_MoC Sparplan]]
-		- **Sparstrategien**
+		- **[[Sparstrategien]]**
 			- [[Automatische Überweisungen]]
 			- [[Regelmäßige Einzahlungen]]
 		- [[Sparstrategien]]
-		- **Sparziele**
+		- **[[Sparziele]]**
 			- [[Kurzfristige Ziele]]
-			- **Langfristige Ziele**
+			- **[[Langfristige Ziele]]**
 				- [[Altersvorsorge]]
 		- [[Zins- und Renditeplanung]]
-- **Budgetierung**
-	- **Jahresbudget**
-	- **Monatsbudget**
-- **Finanzielle Ziele**
-	- **Kurzfristige Ziele**
-	- **Langfristige Ziele**
-	- **Mittelfristige Ziele**
-- **Notfallfonds**
-	- **Verwendung**
+- **[[Budgetierung]]**
+	- **[[Jahresbudget]]**
+	- **[[Monatsbudget]]**
+- **[[Finanzielle Ziele]]**
+	- **[[Kurzfristige Ziele]]**
+	- **[[Langfristige Ziele]]**
+	- **[[Mittelfristige Ziele]]**
+- **[[Notfallfonds]]**
+	- **[[Verwendung]]**
 	- [[Zielhöhe]]
 
 %% End Waypoint %%

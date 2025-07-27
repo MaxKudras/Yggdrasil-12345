@@ -6,9 +6,9 @@ type: folder_brief_live
 %% Begin Waypoint %%
 - [[_MoC Projekte]]
 - **[[3D Drucker]]**
-- **Feier**
-	- **Silvester**
-		- **Cocktails**
+- **[[Feier]]**
+	- **[[Silvester]]**
+		- **[[Cocktails]]**
 			- [[+Annanasmojito]]
 			- [[+fAurora Glow Cocktail]]
 			- [[+gCosmopoliton]]
@@ -18,7 +18,7 @@ type: folder_brief_live
 			- [[Grund ideen]]
 - **[[Obsidian]]**
 	- **[[T.S]]**
-		- **Legende**
+		- **[[Legende]]**
 			- [[Postpone]]
 			- [[Prioritäten]]
 			- [[Subtickets]]
@@ -44,7 +44,7 @@ type: folder_brief_live
 				- [[T.S Templater]]
 				- [[T.S Workspaces Plus]]
 			- [[Ticket YAML]]
-			- **Ticketkategorien**
+			- **[[Ticketkategorien]]**
 				- [[3D Druck TPL DSN]]
 				- [[Arbeit TPL DSN]]
 				- [[Bildung TPL DSN]]
@@ -58,9 +58,9 @@ type: folder_brief_live
 				- [[Reisen TPL DSN]]
 				- [[Routinen TPL DSN]]
 				- [[Technologie TPL DSN]]
-			- **Zentrale Übersichten**
+			- **[[Zentrale Übersichten]]**
 				- [[Archive TPL DSB]]
-				- **Kategorien TPL DSB**
+				- **[[Kategorien TPL DSB]]**
 					- [[3D Druck TPL DSB]]
 					- [[Arbeit TPL DSB]]
 					- [[Bildung TPL DSB]]
@@ -76,56 +76,56 @@ type: folder_brief_live
 					- [[Technologie TPL DSB]]
 				- [[Langzeit Ticket TPL DSB]]
 				- [[Main TPL DSB]]
-				- **Priorität TPL DSB**
+				- **[[Priorität TPL DSB]]**
 					- [[Dringend TPL DSB]]
 				- [[Subticket TPL DSB]]
 				- [[Überfällige Tickets TPL DSB]]
-				- **Zeitversetzte TPL DSB**
+				- **[[Zeitversetzte TPL DSB]]**
 					- [[1 Woche - TPL DSB]]
 					- [[1 Woche + TPL DSB]]
 		- [[Was Chatgpt sagt]]
-- **PC-Skripte**
+- **[[PC-Skripte]]**
 	- [[Pc Einrichtung 100% geschwindihkeit]]
-- **Programme programmieren**
-	- **Gewinnspiel anmelder**
-	- **Kostenlosesachen anmelden**
-- **Website erstellen**
-	- **Alles Website**
-		- **Bild converter**
-		- **Mathe rechner**
-		- **Youtube converter**
-		- **Zinseszin rechner**
-- **Zauberstab (Fernbedinung)**
+- **[[Programme programmieren]]**
+	- **[[Gewinnspiel anmelder]]**
+	- **[[Kostenlosesachen anmelden]]**
+- **[[Website erstellen]]**
+	- **[[Alles Website]]**
+		- **[[Bild converter]]**
+		- **[[Mathe rechner]]**
+		- **[[Youtube converter]]**
+		- **[[Zinseszin rechner]]**
+- **[[Zauberstab (Fernbedinung)]]**
 	- [[Funktionen]]
 	- [[Programmierung]]
 	- [[Steuerungen]]
 	- [[Zaubersprüche]]
-- **Zimmer**
+- **[[Zimmer]]**
 	- [[_MoC Zimmer]]
-	- **Bett**
-		- **Matrazen**
+	- **[[Bett]]**
+		- **[[Matrazen]]**
 	- [[Insektengitter]]
-	- **Lampen & Licht**
+	- **[[Lampen & Licht]]**
 		- [[_MoC Lampen & Licht]]
-		- **Beleuchtungskonzepte**
-			- **Lampenposition**
-			- **Lichtstreuung und -richtung**
+		- **[[Beleuchtungskonzepte]]**
+			- **[[Lampenposition]]**
+			- **[[Lichtstreuung und -richtung]]**
 		- **Lampenwahl**
 		- **Lichtfarbe und Intensität**
-	- **Lärmdemmung**
+	- **[[Lärmdemmung]]**
 		- [[_MoC Lärmdemmung]]
-		- **Materialien**
+		- **[[Materialien]]**
 		- **Schalldämmtechniken**
 			- [[Schalldämpfende Möbel]]
 			- [[Schallschutzpaneele]]
 			- [[Teppiche und Vorhänge]]
-	- **Pflanzen**
-		- **Pflanzenarten**
-		- **Pflegeautomatisierungen**
+	- **[[Pflanzen]]**
+		- **[[Pflanzenarten]]**
+		- **[[Pflegeautomatisierungen]]**
 	- [[Rollo]]
-	- **Schreibtisch**
+	- **[[Schreibtisch]]**
 		- [[höchenverstellbares Gestell]]
-	- **Soundsysteme**
-		- **Lautsprecher**
+	- **[[Soundsysteme]]**
+		- **[[Lautsprecher]]**
 
 %% End Waypoint %%

@@ -5,10 +5,10 @@ type: folder_brief_live
 ```
 %% Begin Waypoint %%
 - [[_MoC Daytrading]]
-- **Handelsstrategien**
+- **[[Handelsstrategien]]**
 	- [[Momentum-Trading]]
 	- [[Scalping]]
-- **Risikomanagement**
+- **[[Risikomanagement]]**
 	- [[Positionsgröße]]
 	- [[Stop-Loss]]
 

@@ -8,60 +8,12 @@
         "type": "tabs",
         "children": [
           {
-            "id": "ab12b20d0ff02d22",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "03.Alltagsmanagemnt/02.Haustiere&Pflanzen/02.Pflanzen/Pflanzen für die Wohnung.md",
-                "mode": "source",
-                "source": true,
-                "backlinks": true,
-                "backlinkOpts": {
-                  "collapseAll": false,
-                  "extraContext": false,
-                  "sortOrder": "alphabetical",
-                  "showSearch": false,
-                  "searchQuery": "",
-                  "backlinkCollapsed": false,
-                  "unlinkedCollapsed": true
-                }
-              },
-              "icon": "lucide-file",
-              "title": "Pflanzen für die Wohnung"
-            }
-          },
-          {
-            "id": "48d3ddb149379baf",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "00.📖Lebensplan/Gesamter Lebensplan.md",
-                "mode": "source",
-                "source": true,
-                "backlinks": true,
-                "backlinkOpts": {
-                  "collapseAll": false,
-                  "extraContext": false,
-                  "sortOrder": "alphabetical",
-                  "showSearch": false,
-                  "searchQuery": "",
-                  "backlinkCollapsed": false,
-                  "unlinkedCollapsed": true
-                }
-              },
-              "icon": "lucide-file",
-              "title": "Gesamter Lebensplan"
-            }
-          },
-          {
             "id": "e44ac6400f91ad30",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "03.Alltagsmanagemnt/02.Haustiere&Pflanzen/02.Pflanzen/Notizen zum einsortieren.md",
+                "file": "🎛-Obsidian-/🎛Templates/GenerellesYAMLTemplate.md",
                 "mode": "source",
                 "source": true,
                 "backlinks": true,
@@ -76,10 +28,179 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "Notizen zum einsortieren"
+              "title": "GenerellesYAMLTemplate"
+            }
+          },
+          {
+            "id": "2a00e57b01749c7d",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Aussortieren/📒Wisften(👨‍🔬️-💵-🔢)/Kulturwissenschaften/Geisteswissenschaften(🏺-🤸‍♂️-🙏)/🧠Psychologie/Kognitive Psychologie/Wahrnehmung und Gedächtnis/Interpersonale Beziehungen/Interpersonale Beziehungen.md",
+                "mode": "source",
+                "source": true,
+                "backlinks": true,
+                "backlinkOpts": {
+                  "collapseAll": false,
+                  "extraContext": false,
+                  "sortOrder": "alphabetical",
+                  "showSearch": false,
+                  "searchQuery": "",
+                  "backlinkCollapsed": false,
+                  "unlinkedCollapsed": true
+                }
+              },
+              "icon": "lucide-file",
+              "title": "Interpersonale Beziehungen"
+            }
+          },
+          {
+            "id": "ca8ebf38004fa5dd",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Aussortieren/📒Wisften(👨‍🔬️-💵-🔢)/👨‍🔬️Naturwissenschaften (⚕-🌐-🦠-🧪-🧲)/🦠Biologie/🦠🦠Zellbiologie/Histologie/Histologie.md",
+                "mode": "preview",
+                "source": true,
+                "backlinks": true,
+                "backlinkOpts": {
+                  "collapseAll": false,
+                  "extraContext": false,
+                  "sortOrder": "alphabetical",
+                  "showSearch": false,
+                  "searchQuery": "",
+                  "backlinkCollapsed": false,
+                  "unlinkedCollapsed": true
+                }
+              },
+              "icon": "lucide-file",
+              "title": "Histologie"
+            }
+          },
+          {
+            "id": "aa07660f2b2e22db",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Aussortieren/📒Wisften(👨‍🔬️-💵-🔢)/👨‍🔬️Naturwissenschaften (⚕-🌐-🦠-🧪-🧲)/🌐Geographie/Reginale Geographie/Meere/Arktischer Ozean/Foxe Basin.md",
+                "mode": "preview",
+                "source": true,
+                "backlinks": true,
+                "backlinkOpts": {
+                  "collapseAll": false,
+                  "extraContext": false,
+                  "sortOrder": "alphabetical",
+                  "showSearch": false,
+                  "searchQuery": "",
+                  "backlinkCollapsed": false,
+                  "unlinkedCollapsed": true
+                }
+              },
+              "icon": "lucide-file",
+              "title": "Foxe Basin"
+            }
+          },
+          {
+            "id": "5ce63d6d9fe55bfc",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Aussortieren/📒Wisften(👨‍🔬️-💵-🔢)/👨‍🔬️Naturwissenschaften (⚕-🌐-🦠-🧪-🧲)/🌐Geographie/Reginale Geographie/Meere/Arktischer Ozean/Grönlandsee/Isfjorden/Isfjorden.md",
+                "mode": "preview",
+                "source": true,
+                "backlinks": true,
+                "backlinkOpts": {
+                  "collapseAll": false,
+                  "extraContext": false,
+                  "sortOrder": "alphabetical",
+                  "showSearch": false,
+                  "searchQuery": "",
+                  "backlinkCollapsed": false,
+                  "unlinkedCollapsed": true
+                }
+              },
+              "icon": "lucide-file",
+              "title": "Isfjorden"
+            }
+          },
+          {
+            "id": "33abf2edf75c4a3e",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Aussortieren/📒Wisften(👨‍🔬️-💵-🔢)/👨‍🔬️Naturwissenschaften (⚕-🌐-🦠-🧪-🧲)/🌐Geographie/Reginale Geographie/Meere/Arktischer Ozean/Beaufortsee/Rasmussen Basin/Rasmussen Basin.md",
+                "mode": "preview",
+                "source": true,
+                "backlinks": true,
+                "backlinkOpts": {
+                  "collapseAll": false,
+                  "extraContext": false,
+                  "sortOrder": "alphabetical",
+                  "showSearch": false,
+                  "searchQuery": "",
+                  "backlinkCollapsed": false,
+                  "unlinkedCollapsed": true
+                }
+              },
+              "icon": "lucide-file",
+              "title": "Rasmussen Basin"
+            }
+          },
+          {
+            "id": "75b8f83bebfcc355",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Aussortieren/-Lebensplan (💵-🕰-🚑)/💵Geldmanagment (💼-〽️-📊)/Finanzielle Ziele/Langfristige Ziele/Langfristige Ziele.md",
+                "mode": "preview",
+                "source": true,
+                "backlinks": true,
+                "backlinkOpts": {
+                  "collapseAll": false,
+                  "extraContext": false,
+                  "sortOrder": "alphabetical",
+                  "showSearch": false,
+                  "searchQuery": "",
+                  "backlinkCollapsed": false,
+                  "unlinkedCollapsed": true
+                }
+              },
+              "icon": "lucide-file",
+              "title": "Langfristige Ziele"
+            }
+          },
+          {
+            "id": "f2eb26ced32bd591",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Aussortieren/-Lebensplan (💵-🕰-🚑)/💵Geldmanagment (💼-〽️-📊)/Finanzielle Ziele/Kurzfristige Ziele/Kurzfristige Ziele.md",
+                "mode": "preview",
+                "source": true,
+                "backlinks": true,
+                "backlinkOpts": {
+                  "collapseAll": false,
+                  "extraContext": false,
+                  "sortOrder": "alphabetical",
+                  "showSearch": false,
+                  "searchQuery": "",
+                  "backlinkCollapsed": false,
+                  "unlinkedCollapsed": true
+                }
+              },
+              "icon": "lucide-file",
+              "title": "Kurzfristige Ziele"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -176,12 +297,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "03.Alltagsmanagemnt/02.Haustiere&Pflanzen/02.Pflanzen/Pflanzen für die Wohnung.md",
+                "file": "Aussortieren/📒Wisften(👨‍🔬️-💵-🔢)/Kulturwissenschaften/Geisteswissenschaften(🏺-🤸‍♂️-🙏)/🧠Psychologie/Kognitive Psychologie/Wahrnehmung und Gedächtnis/Interpersonale Beziehungen/Interpersonale Beziehungen.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": false
               },
               "icon": "links-going-out",
-              "title": "Outgoing links from Pflanzen für die Wohnung"
+              "title": "Outgoing links from Interpersonale Beziehungen"
             }
           }
         ],
@@ -189,7 +310,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 295.5
+    "width": 375.5
   },
   "right": {
     "id": "b064cccbba5473b0",
@@ -277,43 +398,44 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "ab12b20d0ff02d22",
+  "active": "2a00e57b01749c7d",
   "lastOpenFiles": [
-    "PandorasBox/README.md",
+    "Aussortieren/📒Wisften(👨‍🔬️-💵-🔢)/Kulturwissenschaften/Geisteswissenschaften(🏺-🤸‍♂️-🙏)/🧠Psychologie/Kognitive Psychologie/Wahrnehmung und Gedächtnis/Gruppendynamik/Gruppendynamik.md",
+    "Aussortieren/📒Wisften(👨‍🔬️-💵-🔢)/Kulturwissenschaften/Geisteswissenschaften(🏺-🤸‍♂️-🙏)/🧠Psychologie/Kognitive Psychologie/Entscheidungsfindung/Entscheidungsfindung.md",
+    "Aussortieren/📒Wisften(👨‍🔬️-💵-🔢)/Kulturwissenschaften/Geisteswissenschaften(🏺-🤸‍♂️-🙏)/🧠Psychologie/Kognitive Psychologie/Wahrnehmung und Gedächtnis/Interpersonale Beziehungen/Interpersonale Beziehungen.md",
+    "Aussortieren/📒Wisften(👨‍🔬️-💵-🔢)/Kulturwissenschaften/Geisteswissenschaften(🏺-🤸‍♂️-🙏)/🧠Psychologie/Kognitive Psychologie/Kognitive Psychologie.md",
+    "Aussortieren/📒Wisften(👨‍🔬️-💵-🔢)/Kulturwissenschaften/Geisteswissenschaften(🏺-🤸‍♂️-🙏)/🧠Psychologie/Sozialpsychologie/Sozialpsychologie.md",
+    "Aussortieren/📒Wisften(👨‍🔬️-💵-🔢)/Kulturwissenschaften/Geisteswissenschaften(🏺-🤸‍♂️-🙏)/🤸‍♂️Sportwissenschaften/🤸‍♂️Sportwissenschaften.md",
+    "Aussortieren/📒Wisften(👨‍🔬️-💵-🔢)/Kulturwissenschaften/Geisteswissenschaften(🏺-🤸‍♂️-🙏)/🙏Religon/🙏Religon.md",
+    "Aussortieren/📒Wisften(👨‍🔬️-💵-🔢)/Kulturwissenschaften/Geisteswissenschaften(🏺-🤸‍♂️-🙏)/Neuer Ordner/Neuer Ordner.md",
+    "Aussortieren/📒Wisften(👨‍🔬️-💵-🔢)/Kulturwissenschaften/Geisteswissenschaften(🏺-🤸‍♂️-🙏)/Philosophie/Ethik/Moralische Theorien/Erkenntnistheorie/Erkenntnistheorie.md",
+    "Aussortieren/📒Wisften(👨‍🔬️-💵-🔢)/Kulturwissenschaften/Geisteswissenschaften(🏺-🤸‍♂️-🙏)/Philosophie/Ethik/Moralische Theorien/Ontologie/Ontologie.md",
+    "Aussortieren/📒Wisften(👨‍🔬️-💵-🔢)/Kulturwissenschaften/Geisteswissenschaften(🏺-🤸‍♂️-🙏)/Philosophie/Ethik/Angewandte Ethik/Angewandte Ethik.md",
+    "Aussortieren/📒Wisften(👨‍🔬️-💵-🔢)/Kulturwissenschaften/Geisteswissenschaften(🏺-🤸‍♂️-🙏)/Philosophie/Ethik/Ethik.md",
+    "Aussortieren/📒Wisften(👨‍🔬️-💵-🔢)/Kulturwissenschaften/Geisteswissenschaften(🏺-🤸‍♂️-🙏)/Philosophie/Metaphysik/Metaphysik.md",
+    "Aussortieren/📒Wisften(👨‍🔬️-💵-🔢)/Kulturwissenschaften/Geisteswissenschaften(🏺-🤸‍♂️-🙏)/Philosophie/Philosophie.md",
+    "Aussortieren/📒Wisften(👨‍🔬️-💵-🔢)/Kulturwissenschaften/Geisteswissenschaften(🏺-🤸‍♂️-🙏)/Geisteswissenschaften(🏺-🤸‍♂️-🙏).md",
+    "Aussortieren/📒Wisften(👨‍🔬️-💵-🔢)/Kulturwissenschaften/Sozialwissenschaften/Soziologie/Gesellschaftsstrukturen/Soziale Schichten/Armut und Ungleichheit/Armut und Ungleichheit.md",
+    "Aussortieren/📒Wisften(👨‍🔬️-💵-🔢)/Kulturwissenschaften/Sozialwissenschaften/Soziologie/Gesellschaftsstrukturen/Soziale Schichten/Kriminalität und Deviantverhalten/Kriminalität und Deviantverhalten.md",
+    "Aussortieren/📒Wisften(👨‍🔬️-💵-🔢)/Kulturwissenschaften/Sozialwissenschaften/Soziologie/Gesellschaftsstrukturen/Institutionen/Institutionen.md",
+    "Aussortieren/📒Wisften(👨‍🔬️-💵-🔢)/Kulturwissenschaften/Sozialwissenschaften/Soziologie/Gesellschaftsstrukturen/Soziale Schichten/Soziale Schichten.md",
+    "Aussortieren/📒Wisften(👨‍🔬️-💵-🔢)/Kulturwissenschaften/Sozialwissenschaften/Soziologie/Gesellschaftsstrukturen/Gesellschaftsstrukturen.md",
+    "Aussortieren/📒Wisften(👨‍🔬️-💵-🔢)/Kulturwissenschaften/Sozialwissenschaften/Soziologie/Soziale Probleme/Soziale Probleme.md",
+    "Aussortieren/📒Wisften(👨‍🔬️-💵-🔢)/Kulturwissenschaften/Sozialwissenschaften/Politikwissenschaften/Politikwissenschaften.md",
+    "Aussortieren/📒Wisften(👨‍🔬️-💵-🔢)/Kulturwissenschaften/Sozialwissenschaften/Soziologie/Soziologie.md",
+    "Aussortieren/📒Wisften(👨‍🔬️-💵-🔢)/Kulturwissenschaften/Sozialwissenschaften/Sozialwissenschaften.md",
+    "Aussortieren/📒Wisften(👨‍🔬️-💵-🔢)/Kulturwissenschaften/Kulturwissenschaften.md",
+    "Aussortieren/📒Wisften(👨‍🔬️-💵-🔢)/Ingenieurswissenschaften/Ingenieurswissenschaften.md",
+    "03.Alltagsmanagemnt/02.Haustiere&Pflanzen/02.Pflanzen",
+    "🎛-Obsidian-/🎛Templates/aussortieren",
+    "Brain-Notes.ical",
     "PandorasBox",
-    "03.Alltagsmanagemnt/02.Haustiere&Pflanzen/02.Pflanzen/Notizen zum einsortieren.md",
-    "00.📖Lebensplan/Gesamter Lebensplan.md",
-    "03.Alltagsmanagemnt/02.Haustiere&Pflanzen/02.Pflanzen/Pflanzen für die Wohnung.md",
-    "To-Do/Datenbanken Rezepte und Allergene.md",
     "04.🧘‍♂️Vitaloase/01.AllgemeineGesundheit",
     "03.Alltagsmanagemnt/04.Recht,Dokumente&Sicherheit/03.Sicherheit",
     "03.Alltagsmanagemnt/04.Recht,Dokumente&Sicherheit/02.Dokumente",
     "03.Alltagsmanagemnt/04.Recht,Dokumente&Sicherheit/01.Recht",
     "03.Alltagsmanagemnt/04.Recht,Dokumente&Sicherheit",
     "03.Alltagsmanagemnt/03.Mobilität",
-    "03.Alltagsmanagemnt/02.Haustiere&Pflanzen/02.Pflanzen",
-    "03.Alltagsmanagemnt/02.Haustiere&Pflanzen/01.Haustiere",
-    "03.Alltagsmanagemnt/02.Haustiere&Pflanzen",
-    "01.Lebenskompass/01.Lebenskompass.md",
-    "00.📖Lebensplan/00.📖Lebensplan.md",
-    "🗂️Ticketsystem/ToDo.md",
-    "00.📖Lebensplan/Alleszusdammen/Plan fürs Leben.md",
-    "00.📖Lebensplan/Alleszusdammen/Test notiz.md",
-    "00.📖Lebensplan/Alleszusdammen/lebens keinej.md",
-    "00.📖Lebensplan/Alleszusdammen/gggggg.md",
-    "00.📖Lebensplan/Lebensplan Grundstruktur.md",
-    "10.⚙️Systemschmiede/Windows11 System apps skripte.md",
-    "10.⚙️Systemschmiede/Untitled 1.md",
-    "Aussortieren/hda/wichtig.md",
-    "Aussortieren/hda/untitled.md",
-    "Aussortieren/hda/family.md",
-    "Aussortieren/💡Projekte/💡Projekte.md",
-    "Aussortieren/-Ticketsystem/-Ticketsystem.md",
-    "dataviewjs Slider with %.md",
-    "To-Do/aussortieren/Langfristige ToDo.md",
-    "To-Do/aussortieren/Ideen 13.08.24.md",
-    "Aussortieren/12-Jan-2025.md",
-    "Aussortieren/_attachments/_attachments.md",
     "10.⚙️Systemschmiede/Systemplan/PC/Autogen/Lebensplan/AutoGen Lebensplan aufarbeitung.canvas",
     "10.⚙️Systemschmiede/Systemplan/PC/Autogen/Lebensplan/AutoGen Ausbildingsplan.canvas",
     "10.⚙️Systemschmiede/Systemplan/Systemplan.canvas",
