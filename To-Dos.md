@@ -1,0 +1,66 @@
+- [ ] Besseres offnen von obsidian auf linux und Windows im dual boot
+- [ ] Passwortmanager
+	- [ ] Bitwarden instllieren
+- [ ] dualboot manager
+- [ ] windows und Linux 
+	- [ ] Apps
+		- [ ] Bitwarden
+			- [ ] Bitwarden erweiterung
+	- [ ] Installations skript
+		- [ ] Bitwarden
+			- [ ] sudo snap install bitwarden
+	- [ ] Update sktipt
+- [ ] Windows setuppen
+- [ ] linux setuppen
+	- [ ] flatpack
+	- [ ] Snap
+		- [ ] sudo apt install snap
+	- [ ] git
+- [ ] Pflege plan
+- [ ] Projekt plan
+- [ ] Projektplan für arbeit
+- [ ] Vorbereitung für Urlaub
+- [ ] Datenbanken von 
+	- [ ] Bambulab
+	- [ ] Instagramm
+	- [ ] Spotif
+	- [ ] Pintnerest
+	- [ ] github
+	- [ ] Lesezeichen
+	- [ ] yoiutube
+	- [ ] Filme/serien
+		- [ ] Plex?
+	- [ ] Spiele
+- [ ] Partition für shared files
+- [ ] AIs
+	- [ ] Chatgpt
+	- [ ] perplexity
+	- [ ] weitere?
+- [ ] Mail client
+- [ ] Virtuelle maschine
+- [ ] gnome ???
+- [ ] Steam
+	- [ ] Lutris?
+	- [ ] HeroicGamesLauncher?
+	- [ ] prismlauncher?
+- [ ] backup meiner distros (snapshots)
+- [ ] Browser
+	- [ ] Firefox
+- [ ] bambulab desktop
+- [ ] programmier editor
+- [ ] discord
+	- [ ] Plugins
+	- [ ] Vencord
+- [ ] usebottles
+- [ ] Flatseal
+- [ ] Zimmer Projekt
+	- [ ] Schreibtisch projekt
+		- [ ] Hochernverstellbarer tisch
+			- [ ] Tische Design
+				- [ ] Platte
+				- [ ] Wormwod magnet bahn und accessour
+				- [ ] Schubladen
+		- [ ] Prrojekte ablagen am schreibtisch
+	- [ ] Schuhablegen
+	- [ ] 3d bereich verbunden mit bastlerbereich
+	- [ ] bastlerbereich

@@ -329,14 +329,20 @@
 .iron-vault-mechanics .detail {
   color: var(--text-muted);
   --blockquote-background-color: var(--background-secondary);
-  --blockquote-color: var(--text-muted);
-  border-radius: 10px;
-  & .markdown-wrapper > :first-child {
+  background-color: var(--blockquote-background-color);
+  border-inline-start: var(--blockquote-border-thickness) solid var(--blockquote-border-color);
+  padding-inline-start: var(--size-4-6);
+  margin-left: 0.5em;
+  padding-left: 1.2em;
+  & > :first-child {
+    display: block;
+    font-style: italic;
+  }
+  & > :not(:first-child) {
+    border-inline-start: var(--blockquote-border-thickness) dashed var(--blockquote-border-color);
+    padding-inline-start: var(--size-4-6);
     margin-left: 0.5em;
     padding-left: 1.2em;
-  }
-  & .markdown-wrapper > :first-child:not(blockquote) {
-    display: inline;
   }
 }
 
@@ -608,6 +614,18 @@
   }
 }
 
+/* src/mechanics/css/dlist-dice-expr.css */
+.iron-vault-mechanics dl.dice-expr {
+  &:before {
+    content: "\1f3b2";
+  }
+  & dd {
+    &.expr:after {
+      content: " \2192  ";
+    }
+  }
+}
+
 /* src/mechanics/css/dlist-roll.css */
 .iron-vault-mechanics dl.roll {
   &:before {
@@ -846,7 +864,17 @@
     }
     &.track-name:has(~ .track-status[data-value=removed]) {
       &:before {
-        content: "Track removed: ";
+        content: "Track completed: ";
+      }
+    }
+    &.track-name:has(~ .track-status[data-value=completed]) {
+      &:before {
+        content: "Track completed: ";
+      }
+    }
+    &.track-name:has(~ .track-status[data-value=reopened]) {
+      &:before {
+        content: "Track marked incomplete: ";
       }
     }
     &.track-status {
@@ -1178,13 +1206,6 @@
 }
 
 /* src/sidebar/css/tab-content-shared.css */
-.iron-vault-sidebar-view.tabs > .tab > .content {
-  position: absolute;
-  top: 2.6em;
-  left: 0;
-  right: 0;
-  bottom: 0;
-}
 .search-box:has(+ :is(.iron-vault-moves-list, .iron-vault-oracles-list, .iron-vault-asset-list)) {
   width: 100%;
   height: 2em;
@@ -1261,8 +1282,6 @@ ul.iron-vault-asset-list {
 [data-type=iron-vault-sidebar-view] {
   & .view-content {
     padding: 0;
-    display: flex;
-    flex-flow: column nowrap;
     & > :first-child {
       padding: 0.5em 0;
     }
@@ -1281,48 +1300,13 @@ ul.iron-vault-asset-list {
   }
   &.tabs {
     clear: both;
-    padding: 25px 0;
-    display: flex;
-    flex-flow: row nowrap;
-    flex: 1 1 auto;
-  }
-  & > .tab {
-    & > label {
-      font-size: 1.1em;
-      font-weight: var(--font-semibold);
-      background-color: var(--background-primary-alt);
-      padding: 0.5em;
-      border: 2px solid var(--background-modifier-border);
-      margin: 0;
-      left: 1px;
-      transition: background-color 200ms ease;
-      z-index: 3;
-      &:hover {
-        background-color: var(--background-modifier-hover);
-      }
-      &:active {
-        background-color: var(--background-modifier-active-hover);
-      }
-    }
-    & > [type=radio] {
+    & > .content {
+      overflow-y: scroll;
+      padding-bottom: var(--size-4-8);
       display: none;
-      & ~ .content {
-        overflow-y: scroll;
-        padding-bottom: var(--size-4-8);
-        display: none;
-      }
-      &:checked ~ label {
-        background-color: var(--background-secondary-alt);
-        &:hover {
-          background-color: var(--background-modifier-hover);
-        }
-        &:active {
-          background-color: var(--background-modifier-active-hover);
-        }
-        & ~ .content {
-          z-index: 1;
-          display: block;
-        }
+      &.is-active {
+        display: block;
+        z-index: 1;
       }
     }
   }
@@ -1449,6 +1433,7 @@ table.iron-vault-oracle-table {
   }
   & .track-rank,
   & .track-type,
+  & .track-completion,
   & .track-xp {
     color: var(--text-muted);
   }
@@ -1468,6 +1453,19 @@ table.iron-vault-oracle-table {
     margin: 0.6em 0;
     border: none;
     box-shadow: none;
+  }
+  & .track-completion {
+    font-size: 1em;
+    font-weight: var(--font-semibold);
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    &:has(> input:not(:checked))::after {
+      content: "Incomplete";
+    }
+    &:has(> input:checked)::after {
+      content: "Complete";
+    }
   }
   & > .track-widget {
     display: flex;

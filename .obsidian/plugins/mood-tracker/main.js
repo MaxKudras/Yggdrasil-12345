@@ -18806,7 +18806,7 @@ var FileService = class {
           `Mood Tracker`
         );
       }
-      let original_content = content.replace(/\n+$/g, "");
+      const original_content = content.replace(/\n+$/g, "");
       this._plugin.app.vault.modify(file, original_content + "\n" + result);
     }
     return;
@@ -18819,7 +18819,7 @@ var FileService = class {
     }).replace(/{{DATE(:.*?)?}}/g, (match, format2) => {
       const dateFormat = format2 ? format2.substring(1) : "YYYY-MM-DD";
       return window.moment(entry.dateTime).format(dateFormat);
-    }).replace("{{ICON}}", this._plugin.settings.moodRatingLabelDict[entry.moodRating]).replace("{{EMOTIONS}}", entry.emotions.join(", ")).replace("{{NOTE}}", entry.note).replace("{{LINEBREAK}}", "\n");
+    }).replace(/{{ICON}}/g, this._plugin.settings.moodRatingLabelDict[entry.moodRating]).replace(/{{EMOTIONS}}/g, entry.emotions.join(", ")).replace(/{{NOTE}}/g, entry.note).replace(/{{LINEBREAK}}/g, "\n");
   }
 };
 

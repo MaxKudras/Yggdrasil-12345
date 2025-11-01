@@ -5755,6 +5755,7 @@ var TEMPLATE_VARIABLES = {
   file: "Binary content of file",
   filepath: "Path of PDF file",
   pageNumber: "Page number of annotation with reference to PDF pages",
+  pageLabel: "Page label (page number defined by author) of annotation with reference to PDF pages",
   author: "Author of annotation",
   body: "Body of annotation"
 };
@@ -6023,7 +6024,7 @@ function extractHighlight(annot, items) {
   }, "");
   return highlight;
 }
-function loadPage(page, pagenum, file, containingFolder, total, desiredAnnotations) {
+function loadPage(page, pagenum, pageLabel, file, containingFolder, total, desiredAnnotations) {
   return __async(this, null, function* () {
     let annotations = yield page.getAnnotations();
     annotations = annotations.filter(function(anno) {
@@ -6048,6 +6049,7 @@ function loadPage(page, pagenum, file, containingFolder, total, desiredAnnotatio
         anno.file = file;
         anno.filepath = file.path;
         anno.pageNumber = pagenum;
+        anno.pageLabel = pageLabel;
         anno.author = anno.titleObj.str;
         anno.body = anno.contentsObj.str;
         total.push(anno);
@@ -6058,11 +6060,19 @@ function loadPage(page, pagenum, file, containingFolder, total, desiredAnnotatio
 function loadPDFFile(file, pdfjsLib, containingFolder, total, desiredAnnotations) {
   return __async(this, null, function* () {
     const pdf = yield pdfjsLib.getDocument(file.content).promise;
+    const pageLabels = yield pdf.getPageLabels();
     for (let i = 1; i <= pdf.numPages; i++) {
       const page = yield pdf.getPage(i);
+      let pageLabel = "";
+      if (pageLabels && pageLabels[i - 1]) {
+        pageLabel = pageLabels[i - 1];
+      } else {
+        pageLabel = i.toString();
+      }
       yield loadPage(
         page,
         i,
+        pageLabel,
         file,
         containingFolder,
         total,
@@ -6196,6 +6206,7 @@ var PDFAnnotationPluginFormatter = class {
       file: annotation.file,
       filepath: annotation.filepath,
       pageNumber: annotation.pageNumber,
+      pageLabel: annotation.pageLabel,
       author: annotation.author,
       body: annotation.body
     };
@@ -6304,12 +6315,12 @@ var PDFAnnotationPlugin = class extends import_obsidian2.Plugin {
     });
   }
   extractTagsFromAnnotationsAndAddHeaderToNote(note, annotations) {
-    const extractedTagsFromAnnotations = [];
+    const extractedTagsFromAnnotations = /* @__PURE__ */ new Set();
     annotations.forEach((annotation) => {
       const tagPattern = /#([\wöäü_\/-]*[A-Za-zöäü][\wöäü_\/-]*)/g;
       let match;
       while ((match = tagPattern.exec(annotation.body)) !== null) {
-        extractedTagsFromAnnotations.push(match[1]);
+        extractedTagsFromAnnotations.add(match[1]);
       }
     });
     let obsidianHeaderWithTags = "---\ntags:\n";
@@ -6324,22 +6335,22 @@ var PDFAnnotationPlugin = class extends import_obsidian2.Plugin {
     return __async(this, null, function* () {
       const grandtotal = [];
       try {
-        const filePathWithoutQuotes = filePathFromClipboard.replace(
-          /"/g,
+        const filePathWithoutBeginningAndEndQuotes = filePathFromClipboard.replace(
+          /^["']|["']$/g,
           ""
         );
-        const stats = fs.statSync(filePathWithoutQuotes);
+        const stats = fs.statSync(filePathWithoutBeginningAndEndQuotes);
         if (stats.isFile()) {
           const pdfjsLib = yield (0, import_obsidian2.loadPdfJs)();
           const binaryContent = yield import_obsidian2.FileSystemAdapter.readLocalFile(
-            filePathWithoutQuotes
+            filePathWithoutBeginningAndEndQuotes
           );
-          const filePathWithSlashs = filePathWithoutQuotes.replace(/\\/g, "/");
+          const filePathWithSlashs = filePathWithoutBeginningAndEndQuotes.replace(/\\/g, "/");
           const filePathSplits = filePathWithSlashs.split("/");
           const fileName = filePathSplits.last();
           const extension = fileName.split(".").last();
           const encodedFilePath = encodeURI(
-            "file://" + filePathWithoutQuotes
+            "file://" + filePathWithoutBeginningAndEndQuotes
           );
           const file = new PDFFile(
             fileName,
@@ -6413,9 +6424,6 @@ var PDFAnnotationPlugin = class extends import_obsidian2.Plugin {
           const grandtotal = [];
           const desiredAnnotations = this.settings.parsedSettings.desiredAnnotations;
           const pdfjsLib = yield (0, import_obsidian2.loadPdfJs)();
-          editor.replaceSelection(
-            "Extracting PDF Comments from " + folder.name + "\n"
-          );
           const promises = [];
           import_obsidian2.Vault.recurseChildren(folder, (file2) => __async(this, null, function* () {
             if (file2 instanceof import_obsidian2.TFile) {

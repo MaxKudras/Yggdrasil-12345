@@ -27,10 +27,10 @@ __export(main_exports, {
   default: () => AutoClassifierPlugin
 });
 module.exports = __toCommonJS(main_exports);
-var import_obsidian3 = require("obsidian");
+var import_obsidian4 = require("obsidian");
 
 // src/settings.ts
-var import_obsidian = require("obsidian");
+var import_obsidian2 = require("obsidian");
 
 // node_modules/openai/internal/qs/formats.mjs
 var default_format = "RFC3986";
@@ -5204,6 +5204,66 @@ var ChatGPT = class {
   }
 };
 
+// src/jina-api.ts
+var import_obsidian = require("obsidian");
+var JinaAI = class {
+  static async callAPI(apiKey, baseURL, model, inputText, labels) {
+    const apiUrl = `${baseURL}/classify`;
+    const requestBody = {
+      model,
+      input: inputText.map((text) => ({ text })),
+      labels
+    };
+    console.log("Jina AI Request:", { url: apiUrl, body: requestBody });
+    try {
+      const response = await (0, import_obsidian.requestUrl)({
+        url: apiUrl,
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${apiKey}`
+        },
+        body: JSON.stringify(requestBody),
+        throw: false
+        // To handle errors manually
+      });
+      console.log("Jina AI Response Status:", response.status);
+      console.log("Jina AI Response Body:", response.text);
+      if (response.status !== 200) {
+        let errorDetails = response.text;
+        try {
+          const jsonError = JSON.parse(response.text);
+          errorDetails = jsonError.detail || JSON.stringify(jsonError);
+        } catch (e) {
+        }
+        let userFriendlyMessage = `Jina AI API Error (${response.status})`;
+        if (response.status === 401) {
+          userFriendlyMessage = "Invalid Jina AI API key. Please check your API key in settings.";
+        } else if (response.status === 403) {
+          userFriendlyMessage = "Jina AI API access denied. Please check your API key permissions.";
+        } else if (response.status === 429) {
+          userFriendlyMessage = "Jina AI API rate limit exceeded. Please try again later.";
+        } else if (response.status === 500) {
+          userFriendlyMessage = "Jina AI server error. Please try again later.";
+        } else {
+          userFriendlyMessage = `Jina AI API Error: ${errorDetails}`;
+        }
+        console.error(`Jina AI API Error: ${response.status} - ${errorDetails}`);
+        throw new Error(userFriendlyMessage);
+      }
+      const responseData = response.json;
+      console.log("Jina AI Parsed Response Data:", responseData);
+      return responseData;
+    } catch (error) {
+      console.error("Error calling Jina AI API:", error);
+      if (error instanceof Error) {
+        throw error;
+      }
+      throw new Error("An unknown error occurred while calling Jina AI API.");
+    }
+  }
+};
+
 // src/template.ts
 var DEFAULT_CHAT_ROLE = `You are a JSON answer bot. Don't answer other words.`;
 var DEFAULT_PROMPT_TEMPLATE = `Classify this content:
@@ -5211,7 +5271,8 @@ var DEFAULT_PROMPT_TEMPLATE = `Classify this content:
 {{input}}
 """
 Answer format is JSON {reliability:0~1, outputs:[tag1,tag2,...]}. 
-Even if you are not sure, qualify the reliability and select the best matches.
+Even if you are unsure, qualify the reliability and select the best matches.
+Respond only with valid JSON. Do not write an introduction or summary.
 Output tags must be from these options:
 
 {{reference}}
@@ -5222,7 +5283,7 @@ var DEFAULT_PROMPT_TEMPLATE_WO_REF = `Classify this content:
 """
 Answer format is JSON {reliability:0~1, output:selected_category}. 
 Even if you are not sure, qualify the reliability and recommend a proper category.
-
+Respond only with valid JSON. Do not write an introduction or summary.
 `;
 
 // src/settings.ts
@@ -5230,6 +5291,12 @@ var DEFAULT_SETTINGS = {
   apiKey: "",
   apiKeyCreatedAt: null,
   baseURL: "https://api.openai.com/v1",
+  classifierEngine: 0 /* ChatGPT */,
+  // Default to ChatGPT
+  jinaApiKey: "jina_***",
+  // Default Jina API Key
+  jinaBaseURL: "https://api.jina.ai/v1",
+  // Default Jina Base URL
   commandOption: {
     useRef: true,
     refs: [],
@@ -5246,12 +5313,13 @@ var DEFAULT_SETTINGS = {
     useCustomCommand: false,
     chat_role: DEFAULT_CHAT_ROLE,
     prmpt_template: DEFAULT_PROMPT_TEMPLATE,
-    model: "gpt-3.5-turbo",
+    model: "gpt-4.1-mini",
+    // 기본값 및 추천 모델
     max_tokens: 150,
     max_suggestions: 3
   }
 };
-var AutoClassifierSettingTab = class extends import_obsidian.PluginSettingTab {
+var AutoClassifierSettingTab = class extends import_obsidian2.PluginSettingTab {
   constructor(app2, plugin) {
     super(app2, plugin);
     this.plugin = plugin;
@@ -5260,7 +5328,7 @@ var AutoClassifierSettingTab = class extends import_obsidian.PluginSettingTab {
     const { containerEl } = this;
     const commandOption = this.plugin.settings.commandOption;
     containerEl.empty();
-    const shortcutEl = new import_obsidian.Setting(this.containerEl).setDesc("").addButton((cb) => {
+    const shortcutEl = new import_obsidian2.Setting(this.containerEl).setDesc("").addButton((cb) => {
       cb.setButtonText("Specify shortcuts").setCta().onClick(() => {
         app.setting.openTabById("hotkeys");
         const tab = app.setting.activeTab;
@@ -5272,51 +5340,138 @@ var AutoClassifierSettingTab = class extends import_obsidian.PluginSettingTab {
     shortcutEl.descEl.createEl("br");
     shortcutEl.descEl.createSpan({ text: "Assign your own shortcuts to run commands for different input types." });
     containerEl.createEl("h1", { text: "API Setting" });
-    new import_obsidian.Setting(containerEl).setName("API Base URL").setDesc("Optional: Set a different base URL for API calls (e.g. for proxies)").addText(
-      (text) => text.setPlaceholder("https://api.openai.com/v1").setValue(this.plugin.settings.baseURL).onChange((value) => {
-        this.plugin.settings.baseURL = value;
-        this.plugin.saveSettings();
-      })
-    );
-    new import_obsidian.Setting(containerEl).setName("Custom Model").setDesc("ID of the model to use. See https://platform.openai.com/docs/models").addText(
-      (text) => text.setPlaceholder("gpt-3.5-turbo").setValue(commandOption.model).onChange(async (value) => {
-        commandOption.model = value;
-        await this.plugin.saveSettings();
-      })
-    );
-    const apiKeySetting = new import_obsidian.Setting(containerEl).setName("ChatGPT API Key").setDesc("").addText(
-      (text) => text.setPlaceholder("API key").setValue(this.plugin.settings.apiKey).onChange((value) => {
-        this.plugin.settings.apiKey = value;
-        this.plugin.saveSettings();
-      })
-    );
-    apiKeySetting.descEl.createSpan({ text: "Enter your ChatGPT API key. If you don't have one yet, you can create it at " });
-    apiKeySetting.descEl.createEl("a", { href: "https://platform.openai.com/account/api-keys", text: "here" });
-    const apiTestMessageEl = document.createElement("div");
-    apiKeySetting.descEl.appendChild(apiTestMessageEl);
-    if (this.plugin.settings.apiKey && this.plugin.settings.apiKeyCreatedAt) {
-      apiTestMessageEl.setText(`This key was tested at ${this.plugin.settings.apiKeyCreatedAt.toString()}`);
-      apiTestMessageEl.style.color = "var(--success-color)";
-    }
-    apiKeySetting.addButton((cb) => {
-      cb.setButtonText("Test API call").setCta().onClick(async () => {
-        this.plugin.settings.apiKeyCreatedAt;
-        apiTestMessageEl.setText("Testing api call...");
-        apiTestMessageEl.style.color = "var(--text-normal)";
-        try {
-          await ChatGPT.callAPI("", "test", this.plugin.settings.apiKey, this.plugin.settings.commandOption.model, void 0, void 0, void 0, void 0, void 0, this.plugin.settings.baseURL);
-          apiTestMessageEl.setText("Success! API working.");
-          apiTestMessageEl.style.color = "var(--success-color)";
-          this.plugin.settings.apiKeyCreatedAt = new Date();
-        } catch (error) {
-          apiTestMessageEl.setText("Error: API is not working.");
-          apiTestMessageEl.style.color = "var(--warning-color)";
-          this.plugin.settings.apiKeyCreatedAt = null;
+    new import_obsidian2.Setting(containerEl).setName("Classifier Engine").setDesc("Select the classification engine to use.").addDropdown((dropdown) => {
+      dropdown.addOption(String(0 /* ChatGPT */), "OpenAI-compatible API").addOption(String(1 /* JinaAI */), "Jina AI Classifier").setValue(String(this.plugin.settings.classifierEngine)).onChange(async (value) => {
+        this.plugin.settings.classifierEngine = parseInt(value);
+        if (this.plugin.settings.classifierEngine === 0 /* ChatGPT */) {
+          if (!commandOption.model || commandOption.model === "jina-embeddings-v3") {
+            commandOption.model = "gpt-4.1-mini";
+          }
+        } else if (this.plugin.settings.classifierEngine === 1 /* JinaAI */) {
+          if (!commandOption.model || commandOption.model === "gpt-4.1-mini" || commandOption.model === "gpt-4o" || commandOption.model === "gpt-4.1") {
+            commandOption.model = "jina-embeddings-v3";
+          }
         }
+        await this.plugin.saveSettings();
+        this.display();
       });
     });
+    if (this.plugin.settings.classifierEngine === 0 /* ChatGPT */) {
+      new import_obsidian2.Setting(containerEl).setName("API Base URL").setDesc("Base URL for OpenAI-compatible API calls").addText(
+        (text) => text.setPlaceholder("https://api.openai.com/v1").setValue(this.plugin.settings.baseURL).onChange((value) => {
+          this.plugin.settings.baseURL = value;
+          this.plugin.saveSettings();
+        })
+      );
+      const baseUrlSetting = containerEl.createDiv();
+      baseUrlSetting.createEl("div", { text: "Common configurations:" });
+      baseUrlSetting.createEl("div", { text: "\u2022 OpenAI: https://api.openai.com/v1" });
+      baseUrlSetting.createEl("div", { text: "\u2022 Local OpenAI-compatible API (Ollama, LocalAI):" });
+      baseUrlSetting.createEl("div", { text: "   - Ollama: http://localhost:11434/v1" });
+      baseUrlSetting.createEl("div", { text: "   - LocalAI: http://localhost:8080/v1" });
+      baseUrlSetting.createEl("div", { text: "   \u26A0\uFE0F Ollama/LocalAI are not fully compatible currently." });
+      baseUrlSetting.style.marginLeft = "20px";
+      baseUrlSetting.style.fontSize = "0.9em";
+      baseUrlSetting.style.color = "var(--text-muted)";
+      baseUrlSetting.style.marginBottom = "10px";
+      new import_obsidian2.Setting(containerEl).setName("Model").setDesc("Model ID to use for classification. (Recommended: gpt-4.1-mini, gpt-4.1, gpt-4o)").addText(
+        (text) => text.setPlaceholder("gpt-4.1-mini").setValue(commandOption.model).onChange(async (value) => {
+          commandOption.model = value;
+          await this.plugin.saveSettings();
+        })
+      );
+      const modelSetting = containerEl.createDiv();
+      modelSetting.createEl("div", { text: "Recommended for OpenAI: gpt-4.1-mini, gpt-4.1, gpt-4o" });
+      modelSetting.createEl("div", { text: "\u2022 OpenAI: gpt-4.1-mini, gpt-4.1, gpt-4o" });
+      modelSetting.createEl("div", { text: "\u2022 Local OpenAI-compatible API (Ollama, LocalAI): llama3, mistral, phi3, qwen2 \uB4F1" });
+      modelSetting.style.marginLeft = "20px";
+      modelSetting.style.fontSize = "0.9em";
+      modelSetting.style.color = "var(--text-muted)";
+      modelSetting.style.marginBottom = "10px";
+      const apiKeySetting = new import_obsidian2.Setting(containerEl).setName("API Key").setDesc("").addText(
+        (text) => text.setPlaceholder("API key (leave empty for local AI)").setValue(this.plugin.settings.apiKey).onChange((value) => {
+          this.plugin.settings.apiKey = value;
+          this.plugin.saveSettings();
+        })
+      );
+      apiKeySetting.descEl.createSpan({ text: "Enter your API key. Required for OpenAI and etc. Leave empty for local AI (Ollama, LocalAI). " });
+      apiKeySetting.descEl.createEl("a", { href: "https://platform.openai.com/account/api-keys", text: "Get OpenAI API key" });
+      const apiTestMessageEl = document.createElement("div");
+      apiKeySetting.descEl.appendChild(apiTestMessageEl);
+      if (this.plugin.settings.apiKey && this.plugin.settings.apiKeyCreatedAt) {
+        apiTestMessageEl.setText(`This key was tested at ${this.plugin.settings.apiKeyCreatedAt.toString()}`);
+        apiTestMessageEl.style.color = "var(--success-color)";
+      }
+      apiKeySetting.addButton((cb) => {
+        cb.setButtonText("Test API call").setCta().onClick(async () => {
+          apiTestMessageEl.setText("Testing API call...");
+          apiTestMessageEl.style.color = "var(--text-normal)";
+          try {
+            await ChatGPT.callAPI("", "test", this.plugin.settings.apiKey, commandOption.model, void 0, void 0, void 0, void 0, void 0, this.plugin.settings.baseURL);
+            apiTestMessageEl.setText("Success! API working.");
+            apiTestMessageEl.style.color = "var(--success-color)";
+            this.plugin.settings.apiKeyCreatedAt = new Date();
+          } catch (error) {
+            apiTestMessageEl.setText("Error: API is not working. Check console for details.");
+            apiTestMessageEl.style.color = "var(--warning-color)";
+            this.plugin.settings.apiKeyCreatedAt = null;
+            console.error("ChatGPT API Test Error:", error);
+          }
+        });
+      });
+    } else if (this.plugin.settings.classifierEngine === 1 /* JinaAI */) {
+      new import_obsidian2.Setting(containerEl).setName("Jina AI API Base URL").setDesc("Optional: Set a different base URL for Jina AI API calls.").addText(
+        (text) => text.setPlaceholder("https://api.jina.ai/v1").setValue(this.plugin.settings.jinaBaseURL).onChange((value) => {
+          this.plugin.settings.jinaBaseURL = value;
+          this.plugin.saveSettings();
+        })
+      );
+      new import_obsidian2.Setting(containerEl).setName("Jina AI Model").setDesc("ID of the Jina AI model to use. Default: jina-embeddings-v3 (supports 8192 tokens, 256 classes).").addText(
+        (text) => text.setPlaceholder("jina-embeddings-v3").setValue(commandOption.model).onChange(async (value) => {
+          commandOption.model = value;
+          await this.plugin.saveSettings();
+        })
+      );
+      const jinaApiKeySetting = new import_obsidian2.Setting(containerEl).setName("Jina AI API Key").setDesc("").addText(
+        (text) => text.setPlaceholder("Jina API key").setValue(this.plugin.settings.jinaApiKey).onChange((value) => {
+          this.plugin.settings.jinaApiKey = value;
+          this.plugin.saveSettings();
+        })
+      );
+      jinaApiKeySetting.descEl.createSpan({ text: "Enter your Jina AI API key. Get a free API key (10M tokens) at " });
+      jinaApiKeySetting.descEl.createEl("a", { href: "https://jina.ai/", text: "jina.ai" });
+      jinaApiKeySetting.descEl.createSpan({ text: ". No account creation often required." });
+      const jinaApiTestMessageEl = document.createElement("div");
+      jinaApiKeySetting.descEl.appendChild(jinaApiTestMessageEl);
+      jinaApiKeySetting.addButton((cb) => {
+        cb.setButtonText("Test Jina API").setCta().onClick(async () => {
+          jinaApiTestMessageEl.setText("Testing Jina API call...");
+          jinaApiTestMessageEl.style.color = "var(--text-normal)";
+          try {
+            const response = await JinaAI.callAPI(
+              this.plugin.settings.jinaApiKey,
+              this.plugin.settings.jinaBaseURL,
+              commandOption.model || "jina-embeddings-v3",
+              // Fallback to default if model is not set
+              ["This is a test sentence for classification."],
+              ["positive", "negative", "neutral"]
+            );
+            let tokenInfo = "";
+            if (response.usage && response.usage.total_tokens) {
+              tokenInfo = ` (${response.usage.total_tokens} tokens used)`;
+            }
+            jinaApiTestMessageEl.setText(`Success! Jina AI API working${tokenInfo}.`);
+            jinaApiTestMessageEl.style.color = "var(--success-color)";
+          } catch (error) {
+            jinaApiTestMessageEl.setText(`Error: ${error.message}`);
+            jinaApiTestMessageEl.style.color = "var(--warning-color)";
+            console.error("Jina AI API Test Error:", error);
+          }
+        });
+      });
+    }
     containerEl.createEl("h1", { text: "Tag Reference Setting" });
-    new import_obsidian.Setting(containerEl).setName("Use Reference").setDesc("If not, it will recommend new tags").addToggle(
+    new import_obsidian2.Setting(containerEl).setName("Use Reference").setDesc("If not, it will recommend new tags").addToggle(
       (toggle) => toggle.setValue(commandOption.useRef).onChange(async (value) => {
         commandOption.useRef = value;
         await this.plugin.saveSettings();
@@ -5324,7 +5479,7 @@ var AutoClassifierSettingTab = class extends import_obsidian.PluginSettingTab {
       })
     );
     if (commandOption.useRef) {
-      new import_obsidian.Setting(containerEl).setName("Reference type").setDesc("Choose the type of reference tag").setClass("setting-item-child").addDropdown((dropdown) => {
+      new import_obsidian2.Setting(containerEl).setName("Reference type").setDesc("Choose the type of reference tag").setClass("setting-item-child").addDropdown((dropdown) => {
         dropdown.addOption(String(0 /* All */), "All tags").addOption(String(1 /* Filter */), "Filtered tags").addOption(String(2 /* Manual */), "Manual tags").setValue(String(commandOption.refType)).onChange(async (refTye) => {
           this.setRefType(parseInt(refTye));
           this.setRefs(parseInt(refTye));
@@ -5335,13 +5490,13 @@ var AutoClassifierSettingTab = class extends import_obsidian.PluginSettingTab {
         this.setRefs(0 /* All */);
       }
       if (commandOption.refType == 1 /* Filter */) {
-        new import_obsidian.Setting(containerEl).setName("Filter regex").setDesc("Specify a regular expression to filter tags").setClass("setting-item-child").addText(
+        new import_obsidian2.Setting(containerEl).setName("Filter regex").setDesc("Specify a regular expression to filter tags").setClass("setting-item-child").addText(
           (text) => text.setPlaceholder("Regular expression").setValue(commandOption.filterRegex).onChange(async (value) => {
             this.setRefs(1 /* Filter */, value);
           })
         );
       } else if (commandOption.refType == 2 /* Manual */) {
-        new import_obsidian.Setting(containerEl).setName("Manual tags").setDesc("Manually specify tags to reference.").setClass("setting-item-child").setClass("height10-text-area").addTextArea((text) => {
+        new import_obsidian2.Setting(containerEl).setName("Manual tags").setDesc("Manually specify tags to reference.").setClass("setting-item-child").setClass("height10-text-area").addTextArea((text) => {
           var _a2;
           text.setPlaceholder("Tags").setValue((_a2 = commandOption.manualRefs) == null ? void 0 : _a2.join("\n")).onChange(async (value) => {
             this.setRefs(2 /* Manual */, value);
@@ -5356,16 +5511,22 @@ var AutoClassifierSettingTab = class extends import_obsidian.PluginSettingTab {
           });
         });
       }
-      new import_obsidian.Setting(containerEl).setClass("setting-item-child").addButton((cb) => {
+      new import_obsidian2.Setting(containerEl).setClass("setting-item-child").addButton((cb) => {
         cb.setButtonText("View Reference Tags").onClick(async () => {
           var _a2;
           const tags = (_a2 = commandOption.refs) != null ? _a2 : [];
-          new import_obsidian.Notice(`${tags.join("\n")}`);
+          let message = `${tags.join("\n")}`;
+          if (this.plugin.settings.classifierEngine === 1 /* JinaAI */ && tags.length > 256) {
+            message += `
+
+\u26A0\uFE0F Warning: Jina AI supports maximum 256 tags, but ${tags.length} were found. Please reduce the number of tags.`;
+          }
+          new import_obsidian2.Notice(message);
         });
       });
     }
     containerEl.createEl("h1", { text: "Output Setting" });
-    new import_obsidian.Setting(containerEl).setName("Output Type").setDesc("Specify output type").addDropdown((cb) => {
+    new import_obsidian2.Setting(containerEl).setName("Output Type").setDesc("Specify output type").addDropdown((cb) => {
       cb.addOption(String(2 /* Tag */), "#Tag").addOption(String(3 /* Wikilink */), "[[Wikilink]]").addOption(String(0 /* FrontMatter */), "FrontMatter").addOption(String(1 /* Title */), "Title alternative").setValue(String(commandOption.outType)).onChange(async (value) => {
         commandOption.outType = parseInt(value);
         commandOption.outLocation = 0;
@@ -5374,7 +5535,7 @@ var AutoClassifierSettingTab = class extends import_obsidian.PluginSettingTab {
       });
     });
     if (commandOption.outType == 2 /* Tag */) {
-      new import_obsidian.Setting(containerEl).setName("Output Location").setClass("setting-item-child").setDesc("Specify where to put the output tag").addDropdown((cb) => {
+      new import_obsidian2.Setting(containerEl).setName("Output Location").setClass("setting-item-child").setDesc("Specify where to put the output tag").addDropdown((cb) => {
         cb.addOption(String(0 /* Cursor */), "Current Cursor").addOption(String(1 /* ContentTop */), "Top of Content").setValue(String(commandOption.outLocation)).onChange(async (value) => {
           commandOption.outLocation = parseInt(value);
           await this.plugin.saveSettings();
@@ -5382,7 +5543,7 @@ var AutoClassifierSettingTab = class extends import_obsidian.PluginSettingTab {
         });
       });
     } else if (commandOption.outType == 3 /* Wikilink */) {
-      new import_obsidian.Setting(containerEl).setName("Output Location").setClass("setting-item-child").setDesc("Specify where to put the output wikilink").addDropdown((cb) => {
+      new import_obsidian2.Setting(containerEl).setName("Output Location").setClass("setting-item-child").setDesc("Specify where to put the output wikilink").addDropdown((cb) => {
         cb.addOption(String(0 /* Cursor */), "Current Cursor").addOption(String(1 /* ContentTop */), "Top of Content").setValue(String(commandOption.outLocation)).onChange(async (value) => {
           commandOption.outLocation = parseInt(value);
           await this.plugin.saveSettings();
@@ -5390,7 +5551,7 @@ var AutoClassifierSettingTab = class extends import_obsidian.PluginSettingTab {
         });
       });
     } else if (commandOption.outType == 0 /* FrontMatter */) {
-      new import_obsidian.Setting(containerEl).setName("FrontMatter key").setDesc("Specify FrontMatter key to put the output tag").setClass("setting-item-child").addText(
+      new import_obsidian2.Setting(containerEl).setName("FrontMatter key").setDesc("Specify FrontMatter key to put the output tag").setClass("setting-item-child").addText(
         (text) => text.setPlaceholder("Key").setValue(commandOption.key).onChange(async (value) => {
           commandOption.key = value;
           await this.plugin.saveSettings();
@@ -5405,7 +5566,7 @@ var AutoClassifierSettingTab = class extends import_obsidian.PluginSettingTab {
         overwriteName = "Overwrite whole title. If false, add to end of title.";
       if (commandOption.outType == 0 /* FrontMatter */)
         overwriteName = "Overwrite value of the key.";
-      new import_obsidian.Setting(containerEl).setName(overwriteName).setClass("setting-item-child").addToggle(
+      new import_obsidian2.Setting(containerEl).setName(overwriteName).setClass("setting-item-child").addToggle(
         (toggle) => toggle.setValue(commandOption.overwrite).onChange(async (value) => {
           commandOption.overwrite = value;
           await this.plugin.saveSettings();
@@ -5413,21 +5574,21 @@ var AutoClassifierSettingTab = class extends import_obsidian.PluginSettingTab {
         })
       );
     }
-    new import_obsidian.Setting(containerEl).setName("Add Prefix & Suffix").setDesc(`Output: {prefix} + {output} + {suffix}`);
-    new import_obsidian.Setting(containerEl).setName("Prefix").setClass("setting-item-child").addText(
+    new import_obsidian2.Setting(containerEl).setName("Add Prefix & Suffix").setDesc(`Output: {prefix} + {output} + {suffix}`);
+    new import_obsidian2.Setting(containerEl).setName("Prefix").setClass("setting-item-child").addText(
       (text) => text.setPlaceholder("prefix").setValue(commandOption.outPrefix).onChange(async (value) => {
         commandOption.outPrefix = value;
         await this.plugin.saveSettings();
       })
     );
-    new import_obsidian.Setting(containerEl).setName("Suffix").setClass("setting-item-child").addText(
+    new import_obsidian2.Setting(containerEl).setName("Suffix").setClass("setting-item-child").addText(
       (text) => text.setPlaceholder("suffix").setValue(commandOption.outSuffix).onChange(async (value) => {
         commandOption.outSuffix = value;
         await this.plugin.saveSettings();
       })
     );
     containerEl.createEl("h1", { text: "Advanced Setting" });
-    new import_obsidian.Setting(containerEl).setName("Maximum Tag Suggestions").setDesc("Maximum number of tags to suggest (1-10)").addText(
+    new import_obsidian2.Setting(containerEl).setName("Maximum Tag Suggestions").setDesc("Maximum number of tags to suggest (1-10)").addText(
       (text) => text.setPlaceholder("3").setValue(String(commandOption.max_suggestions)).onChange(async (value) => {
         const num = parseInt(value);
         if (num >= 1 && num <= 10) {
@@ -5436,66 +5597,122 @@ var AutoClassifierSettingTab = class extends import_obsidian.PluginSettingTab {
         }
       })
     );
-    new import_obsidian.Setting(containerEl).setName("Use Custom Request Template").addToggle(
-      (toggle) => toggle.setValue(commandOption.useCustomCommand).onChange(async (value) => {
-        commandOption.useCustomCommand = value;
-        await this.plugin.saveSettings();
-        this.display();
-      })
-    );
-    if (commandOption.useCustomCommand) {
-      if (commandOption.useRef) {
-        if (commandOption.prmpt_template == DEFAULT_PROMPT_TEMPLATE_WO_REF)
-          commandOption.prmpt_template = DEFAULT_PROMPT_TEMPLATE;
-      } else {
-        if (commandOption.prmpt_template == DEFAULT_PROMPT_TEMPLATE)
-          commandOption.prmpt_template = DEFAULT_PROMPT_TEMPLATE_WO_REF;
-      }
-      const customPromptTemplateEl = new import_obsidian.Setting(containerEl).setName("Custom Prompt Template").setDesc("").setClass("setting-item-child").setClass("block-control-item").setClass("height20-text-area").addTextArea(
-        (text) => text.setPlaceholder("Write custom prompt template.").setValue(commandOption.prmpt_template).onChange(async (value) => {
-          commandOption.prmpt_template = value;
-          await this.plugin.saveSettings();
-        })
-      ).addExtraButton((cb) => {
-        cb.setIcon("reset").setTooltip("Restore to default").onClick(async () => {
-          if (commandOption.useRef)
-            commandOption.prmpt_template = DEFAULT_PROMPT_TEMPLATE;
-          else
-            commandOption.prmpt_template = DEFAULT_PROMPT_TEMPLATE_WO_REF;
+    if (this.plugin.settings.classifierEngine === 0 /* ChatGPT */) {
+      new import_obsidian2.Setting(containerEl).setName("Use Custom Request Template").setDesc("Enable advanced prompt customization for better results").addToggle(
+        (toggle) => toggle.setValue(commandOption.useCustomCommand).onChange(async (value) => {
+          commandOption.useCustomCommand = value;
           await this.plugin.saveSettings();
           this.display();
-        });
-      });
-      customPromptTemplateEl.descEl.createSpan({ text: "This plugin is based on the ChatGPT answer." });
-      customPromptTemplateEl.descEl.createEl("br");
-      customPromptTemplateEl.descEl.createSpan({ text: "You can use your own template when making a request to ChatGPT." });
-      customPromptTemplateEl.descEl.createEl("br");
-      customPromptTemplateEl.descEl.createEl("br");
-      customPromptTemplateEl.descEl.createSpan({ text: "Variables:" });
-      customPromptTemplateEl.descEl.createEl("br");
-      customPromptTemplateEl.descEl.createSpan({ text: "- {{input}}: The text to classify will be inserted here." });
-      customPromptTemplateEl.descEl.createEl("br");
-      customPromptTemplateEl.descEl.createSpan({ text: "- {{reference}}: The reference tags will be inserted here." });
-      customPromptTemplateEl.descEl.createEl("br");
-      const customChatRoleEl = new import_obsidian.Setting(containerEl).setName("Custom Chat Role").setDesc("").setClass("setting-item-child").setClass("block-control-item").setClass("height10-text-area").addTextArea(
-        (text) => text.setPlaceholder("Write custom chat role for gpt system.").setValue(commandOption.chat_role).onChange(async (value) => {
-          commandOption.chat_role = value;
-          await this.plugin.saveSettings();
-        })
-      ).addExtraButton((cb) => {
-        cb.setIcon("reset").setTooltip("Restore to default").onClick(async () => {
-          commandOption.chat_role = DEFAULT_CHAT_ROLE;
-          await this.plugin.saveSettings();
-          this.display();
-        });
-      });
-      customChatRoleEl.descEl.createSpan({ text: "Define custom role to ChatGPT system." });
-      new import_obsidian.Setting(containerEl).setName("Custom Max Tokens").setDesc("The maximum number of tokens that can be generated in the completion.").setClass("setting-item-child").addText(
-        (text) => text.setPlaceholder("150").setValue(String(commandOption.max_tokens)).onChange(async (value) => {
-          commandOption.max_tokens = parseInt(value);
-          await this.plugin.saveSettings();
         })
       );
+      if (commandOption.useCustomCommand) {
+        if (commandOption.useRef) {
+          if (commandOption.prmpt_template == DEFAULT_PROMPT_TEMPLATE_WO_REF)
+            commandOption.prmpt_template = DEFAULT_PROMPT_TEMPLATE;
+        } else {
+          if (commandOption.prmpt_template == DEFAULT_PROMPT_TEMPLATE)
+            commandOption.prmpt_template = DEFAULT_PROMPT_TEMPLATE_WO_REF;
+        }
+        const customPromptTemplateEl = new import_obsidian2.Setting(containerEl).setName("Custom Prompt Template (ChatGPT)").setDesc("").setClass("setting-item-child").setClass("block-control-item").setClass("height20-text-area").addTextArea(
+          (text) => text.setPlaceholder("Write custom prompt template.").setValue(commandOption.prmpt_template).onChange(async (value) => {
+            commandOption.prmpt_template = value;
+            await this.plugin.saveSettings();
+          })
+        ).addExtraButton((cb) => {
+          cb.setIcon("reset").setTooltip("Restore to default").onClick(async () => {
+            if (commandOption.useRef)
+              commandOption.prmpt_template = DEFAULT_PROMPT_TEMPLATE;
+            else
+              commandOption.prmpt_template = DEFAULT_PROMPT_TEMPLATE_WO_REF;
+            await this.plugin.saveSettings();
+            this.display();
+          });
+        });
+        customPromptTemplateEl.descEl.createSpan({ text: "This plugin is based on the ChatGPT answer." });
+        customPromptTemplateEl.descEl.createEl("br");
+        customPromptTemplateEl.descEl.createSpan({ text: "You can use your own template when making a request to ChatGPT." });
+        customPromptTemplateEl.descEl.createEl("br");
+        customPromptTemplateEl.descEl.createEl("br");
+        customPromptTemplateEl.descEl.createSpan({ text: "Variables:" });
+        customPromptTemplateEl.descEl.createEl("br");
+        customPromptTemplateEl.descEl.createSpan({ text: "- {{input}}: The text to classify will be inserted here." });
+        customPromptTemplateEl.descEl.createEl("br");
+        customPromptTemplateEl.descEl.createSpan({ text: "- {{reference}}: The reference tags will be inserted here." });
+        customPromptTemplateEl.descEl.createEl("br");
+        const customChatRoleEl = new import_obsidian2.Setting(containerEl).setName("Custom Chat Role (ChatGPT)").setDesc("").setClass("setting-item-child").setClass("block-control-item").setClass("height10-text-area").addTextArea(
+          (text) => text.setPlaceholder("Write custom chat role for gpt system.").setValue(commandOption.chat_role).onChange(async (value) => {
+            commandOption.chat_role = value;
+            await this.plugin.saveSettings();
+          })
+        ).addExtraButton((cb) => {
+          cb.setIcon("reset").setTooltip("Restore to default").onClick(async () => {
+            commandOption.chat_role = DEFAULT_CHAT_ROLE;
+            await this.plugin.saveSettings();
+            this.display();
+          });
+        });
+        customChatRoleEl.descEl.createSpan({ text: "Define custom role to ChatGPT system." });
+        new import_obsidian2.Setting(containerEl).setName("Custom Max Tokens (ChatGPT)").setDesc("The maximum number of tokens that can be generated in the completion.").setClass("setting-item-child").addText(
+          (text) => text.setPlaceholder("150").setValue(String(commandOption.max_tokens)).onChange(async (value) => {
+            commandOption.max_tokens = parseInt(value);
+            await this.plugin.saveSettings();
+          })
+        );
+      }
+      if (commandOption.useCustomCommand) {
+        if (commandOption.useRef) {
+          if (commandOption.prmpt_template == DEFAULT_PROMPT_TEMPLATE_WO_REF)
+            commandOption.prmpt_template = DEFAULT_PROMPT_TEMPLATE;
+        } else {
+          if (commandOption.prmpt_template == DEFAULT_PROMPT_TEMPLATE)
+            commandOption.prmpt_template = DEFAULT_PROMPT_TEMPLATE_WO_REF;
+        }
+        const customPromptTemplateEl = new import_obsidian2.Setting(containerEl).setName("Custom Prompt Template").setDesc("").setClass("setting-item-child").setClass("block-control-item").setClass("height20-text-area").addTextArea(
+          (text) => text.setPlaceholder("Write custom prompt template.").setValue(commandOption.prmpt_template).onChange(async (value) => {
+            commandOption.prmpt_template = value;
+            await this.plugin.saveSettings();
+          })
+        ).addExtraButton((cb) => {
+          cb.setIcon("reset").setTooltip("Restore to default").onClick(async () => {
+            if (commandOption.useRef)
+              commandOption.prmpt_template = DEFAULT_PROMPT_TEMPLATE;
+            else
+              commandOption.prmpt_template = DEFAULT_PROMPT_TEMPLATE_WO_REF;
+            await this.plugin.saveSettings();
+            this.display();
+          });
+        });
+        customPromptTemplateEl.descEl.createSpan({ text: "This plugin is based on the LLM response." });
+        customPromptTemplateEl.descEl.createEl("br");
+        customPromptTemplateEl.descEl.createSpan({ text: "You can use your own template when making a request to the API." });
+        customPromptTemplateEl.descEl.createEl("br");
+        customPromptTemplateEl.descEl.createEl("br");
+        customPromptTemplateEl.descEl.createSpan({ text: "Variables:" });
+        customPromptTemplateEl.descEl.createEl("br");
+        customPromptTemplateEl.descEl.createSpan({ text: "- {{input}}: The text to classify will be inserted here." });
+        customPromptTemplateEl.descEl.createEl("br");
+        customPromptTemplateEl.descEl.createSpan({ text: "- {{reference}}: The reference tags will be inserted here." });
+        customPromptTemplateEl.descEl.createEl("br");
+        const customChatRoleEl = new import_obsidian2.Setting(containerEl).setName("Custom Chat Role").setDesc("").setClass("setting-item-child").setClass("block-control-item").setClass("height10-text-area").addTextArea(
+          (text) => text.setPlaceholder("Write custom chat role for system.").setValue(commandOption.chat_role).onChange(async (value) => {
+            commandOption.chat_role = value;
+            await this.plugin.saveSettings();
+          })
+        ).addExtraButton((cb) => {
+          cb.setIcon("reset").setTooltip("Restore to default").onClick(async () => {
+            commandOption.chat_role = DEFAULT_CHAT_ROLE;
+            await this.plugin.saveSettings();
+            this.display();
+          });
+        });
+        customChatRoleEl.descEl.createSpan({ text: "Define custom role for the AI system." });
+        new import_obsidian2.Setting(containerEl).setName("Custom Max Tokens").setDesc("The maximum number of tokens that can be generated in the completion.").setClass("setting-item-child").addText(
+          (text) => text.setPlaceholder("150").setValue(String(commandOption.max_tokens)).onChange(async (value) => {
+            commandOption.max_tokens = parseInt(value);
+            await this.plugin.saveSettings();
+          })
+        );
+      }
     }
   }
   setRefType(refType) {
@@ -5524,7 +5741,7 @@ var AutoClassifierSettingTab = class extends import_obsidian.PluginSettingTab {
 };
 
 // src/view-manager.ts
-var import_obsidian2 = require("obsidian");
+var import_obsidian3 = require("obsidian");
 var ViewManager = class {
   constructor(app2) {
     this.app = app2;
@@ -5533,14 +5750,14 @@ var ViewManager = class {
     if (editor) {
       return editor.getSelection();
     }
-    const activeView = this.app.workspace.getActiveViewOfType(import_obsidian2.MarkdownView);
+    const activeView = this.app.workspace.getActiveViewOfType(import_obsidian3.MarkdownView);
     if (activeView) {
       return activeView.editor.getSelection();
     }
     return null;
   }
   async getTitle() {
-    const activeView = this.app.workspace.getActiveViewOfType(import_obsidian2.MarkdownView);
+    const activeView = this.app.workspace.getActiveViewOfType(import_obsidian3.MarkdownView);
     if (activeView) {
       return activeView.file.basename;
     }
@@ -5548,7 +5765,7 @@ var ViewManager = class {
   }
   async getFrontMatter() {
     var _a2;
-    const activeView = this.app.workspace.getActiveViewOfType(import_obsidian2.MarkdownView);
+    const activeView = this.app.workspace.getActiveViewOfType(import_obsidian3.MarkdownView);
     if (activeView) {
       const file = activeView.file;
       const frontmatter = (_a2 = this.app.metadataCache.getFileCache(file)) == null ? void 0 : _a2.frontmatter;
@@ -5561,7 +5778,7 @@ var ViewManager = class {
   }
   async getContent() {
     var _a2;
-    const activeView = this.app.workspace.getActiveViewOfType(import_obsidian2.MarkdownView);
+    const activeView = this.app.workspace.getActiveViewOfType(import_obsidian3.MarkdownView);
     if (activeView) {
       let content = activeView.getViewData();
       const file = activeView.file;
@@ -5586,7 +5803,7 @@ var ViewManager = class {
   }
   async insertAtFrontMatter(key, value, overwrite = false, prefix = "", suffix = "") {
     value = `${prefix}${value}${suffix}`;
-    const activeView = this.app.workspace.getActiveViewOfType(import_obsidian2.MarkdownView);
+    const activeView = this.app.workspace.getActiveViewOfType(import_obsidian3.MarkdownView);
     if (activeView) {
       const file = activeView.file;
       await this.app.fileManager.processFrontMatter(file, (frontmatter) => {
@@ -5619,7 +5836,7 @@ var ViewManager = class {
     await this.app.fileManager.renameFile(file, newPath);
   }
   async insertAtCursor(value, overwrite = false, outType, prefix = "", suffix = "") {
-    const activeView = this.app.workspace.getActiveViewOfType(import_obsidian2.MarkdownView);
+    const activeView = this.app.workspace.getActiveViewOfType(import_obsidian3.MarkdownView);
     const output = this.preprocessOutput(value, outType, prefix, suffix);
     if (activeView) {
       const editor = activeView.editor;
@@ -5632,7 +5849,7 @@ var ViewManager = class {
   }
   async insertAtContentTop(value, outType, prefix = "", suffix = "") {
     var _a2;
-    const activeView = this.app.workspace.getActiveViewOfType(import_obsidian2.MarkdownView);
+    const activeView = this.app.workspace.getActiveViewOfType(import_obsidian3.MarkdownView);
     const output = this.preprocessOutput(value, outType, prefix, suffix);
     if (activeView) {
       const editor = activeView.editor;
@@ -5660,7 +5877,7 @@ var ViewManager = class {
 };
 
 // src/main.ts
-var AutoClassifierPlugin = class extends import_obsidian3.Plugin {
+var AutoClassifierPlugin = class extends import_obsidian4.Plugin {
   constructor() {
     super(...arguments);
     this.viewManager = new ViewManager(this.app);
@@ -5707,7 +5924,7 @@ var AutoClassifierPlugin = class extends import_obsidian3.Plugin {
   }
   // create loading spin in the Notice message
   createLoadingNotice(text, number = 1e4) {
-    const notice = new import_obsidian3.Notice("", number);
+    const notice = new import_obsidian4.Notice("", number);
     const loadingContainer = document.createElement("div");
     loadingContainer.addClass("loading-container");
     const loadingIcon = document.createElement("div");
@@ -5732,13 +5949,25 @@ var AutoClassifierPlugin = class extends import_obsidian3.Plugin {
   // Main Classification
   async classifyTag(inputType) {
     const commandOption = this.settings.commandOption;
-    if (!this.settings.apiKey) {
-      new import_obsidian3.Notice(`\u26D4 ${this.manifest.name}: You shuld input your API Key`);
+    const currentEngine = this.settings.classifierEngine;
+    if (currentEngine === 0 /* ChatGPT */ && !this.settings.apiKey) {
+      const baseUrl = this.settings.baseURL.toLowerCase();
+      if (!baseUrl.includes("localhost") && !baseUrl.includes("127.0.0.1") && !baseUrl.includes("192.168.")) {
+        new import_obsidian4.Notice(`\u26D4 ${this.manifest.name}: API Key is missing. Required for most cloud APIs.`);
+        return null;
+      }
+    }
+    if (currentEngine === 1 /* JinaAI */ && !this.settings.jinaApiKey) {
+      new import_obsidian4.Notice(`\u26D4 ${this.manifest.name}: Jina AI API Key is missing.`);
       return null;
     }
     const refs = this.settings.commandOption.refs;
     if (this.settings.commandOption.useRef && (!refs || refs.length == 0)) {
-      new import_obsidian3.Notice(`\u26D4 ${this.manifest.name}: no reference tags`);
+      new import_obsidian4.Notice(`\u26D4 ${this.manifest.name}: no reference tags`);
+      return null;
+    }
+    if (currentEngine === 1 /* JinaAI */ && refs.length > 256) {
+      new import_obsidian4.Notice(`\u26D4 ${this.manifest.name}: Jina AI supports maximum 256 reference tags, but ${refs.length} were provided. Please reduce the number of tags.`);
       return null;
     }
     let input = "";
@@ -5752,87 +5981,121 @@ var AutoClassifierPlugin = class extends import_obsidian3.Plugin {
       input = await this.viewManager.getContent();
     }
     if (!input) {
-      new import_obsidian3.Notice(`\u26D4 ${this.manifest.name}: no input data`);
+      new import_obsidian4.Notice(`\u26D4 ${this.manifest.name}: no input data`);
       return null;
     }
-    let user_prompt = this.settings.commandOption.prmpt_template;
-    user_prompt = user_prompt.replace("{{input}}", input);
-    user_prompt = user_prompt.replace("{{reference}}", refs.join(","));
-    const system_role = this.settings.commandOption.prmpt_template;
-    const responseRaw = await ChatGPT.callAPI(
-      system_role,
-      user_prompt,
-      this.settings.apiKey,
-      this.settings.commandOption.model,
-      this.settings.commandOption.max_tokens,
-      void 0,
-      void 0,
-      void 0,
-      void 0,
-      this.settings.baseURL
-    );
+    let user_prompt = "";
+    let system_role = "";
+    if (currentEngine === 0 /* ChatGPT */) {
+      user_prompt = this.settings.commandOption.prmpt_template;
+      user_prompt = user_prompt.replace("{{input}}", input);
+      user_prompt = user_prompt.replace("{{reference}}", refs.join(","));
+      system_role = this.settings.commandOption.chat_role;
+    }
     try {
-      try {
-        const response = JSON.parse(responseRaw);
-        const resReliability = response.reliability;
-        const resOutputs = response.outputs;
-        if (!Array.isArray(resOutputs)) {
-          new import_obsidian3.Notice(`\u26D4 ${this.manifest.name}: output format error (expected array)`);
+      let outputs = [];
+      let jinaResponse = null;
+      if (currentEngine === 0 /* ChatGPT */) {
+        const responseRaw = await ChatGPT.callAPI(
+          system_role,
+          user_prompt,
+          this.settings.apiKey,
+          this.settings.commandOption.model,
+          this.settings.commandOption.max_tokens,
+          void 0,
+          void 0,
+          void 0,
+          void 0,
+          this.settings.baseURL
+        );
+        try {
+          const response = JSON.parse(responseRaw.replace(/^```json\n/, "").replace(/\n```$/, ""));
+          const resReliability = response.reliability;
+          const resOutputs = response.outputs;
+          if (!Array.isArray(resOutputs)) {
+            new import_obsidian4.Notice(`\u26D4 ${this.manifest.name}: ChatGPT output format error (expected array)`);
+            return null;
+          }
+          if (resReliability <= 0.2 && commandOption.useRef) {
+            new import_obsidian4.Notice(
+              `\u26D4 ${this.manifest.name}: ChatGPT response has low reliability (${resReliability})`
+            );
+            return null;
+          }
+          outputs = resOutputs;
+        } catch (error) {
+          new import_obsidian4.Notice(`\u26D4 ${this.manifest.name}: ChatGPT JSON parsing error - ${error}`);
+          console.error("ChatGPT JSON parsing error:", error, "Raw response:", responseRaw);
           return null;
         }
-        const limitedOutputs = resOutputs.slice(0, this.settings.commandOption.max_suggestions);
-        if (!Array.isArray(limitedOutputs)) {
-          new import_obsidian3.Notice(`\u26D4 ${this.manifest.name}: output format error (expected array)`);
+      } else if (currentEngine === 1 /* JinaAI */) {
+        jinaResponse = await JinaAI.callAPI(
+          this.settings.jinaApiKey,
+          this.settings.jinaBaseURL,
+          this.settings.commandOption.model || "jina-embeddings-v3",
+          // Ensure model is passed
+          [input],
+          // Jina expects an array of texts
+          refs
+        );
+        if (jinaResponse.data && jinaResponse.data.length > 0) {
+          const sortedPredictions = jinaResponse.data[0].predictions.sort((a, b) => b.score - a.score);
+          outputs = sortedPredictions.map((p) => p.label);
+        } else {
+          new import_obsidian4.Notice(`\u26D4 ${this.manifest.name}: Jina AI returned no data.`);
           return null;
         }
-        if (resReliability <= 0.2) {
-          new import_obsidian3.Notice(
-            `\u26D4 ${this.manifest.name}: response has low reliability (${resReliability})`
-          );
-          return null;
-        }
-        for (const resOutput of limitedOutputs) {
-          if (commandOption.outType == 2 /* Tag */ || commandOption.outType == 3 /* Wikilink */) {
-            if (commandOption.outLocation == 0 /* Cursor */) {
-              this.viewManager.insertAtCursor(
-                resOutput,
-                commandOption.overwrite,
-                commandOption.outType,
-                commandOption.outPrefix,
-                commandOption.outSuffix
-              );
-            } else if (commandOption.outLocation == 1 /* ContentTop */) {
-              this.viewManager.insertAtContentTop(
-                resOutput,
-                commandOption.outType,
-                commandOption.outPrefix,
-                commandOption.outSuffix
-              );
-            }
-          } else if (commandOption.outType == 0 /* FrontMatter */) {
-            this.viewManager.insertAtFrontMatter(
-              commandOption.key,
+      }
+      const limitedOutputs = outputs.slice(0, this.settings.commandOption.max_suggestions);
+      if (limitedOutputs.length === 0) {
+        new import_obsidian4.Notice(`\u26D4 ${this.manifest.name}: No tags were classified.`);
+        return null;
+      }
+      for (const resOutput of limitedOutputs) {
+        if (commandOption.outType == 2 /* Tag */ || commandOption.outType == 3 /* Wikilink */) {
+          if (commandOption.outLocation == 0 /* Cursor */) {
+            this.viewManager.insertAtCursor(
               resOutput,
               commandOption.overwrite,
+              commandOption.outType,
               commandOption.outPrefix,
               commandOption.outSuffix
             );
-          } else if (commandOption.outType == 1 /* Title */) {
-            this.viewManager.insertAtTitle(
+          } else if (commandOption.outLocation == 1 /* ContentTop */) {
+            this.viewManager.insertAtContentTop(
               resOutput,
-              commandOption.overwrite,
+              commandOption.outType,
               commandOption.outPrefix,
               commandOption.outSuffix
             );
           }
+        } else if (commandOption.outType == 0 /* FrontMatter */) {
+          this.viewManager.insertAtFrontMatter(
+            commandOption.key,
+            resOutput,
+            commandOption.overwrite,
+            commandOption.outPrefix,
+            commandOption.outSuffix
+          );
+        } else if (commandOption.outType == 1 /* Title */) {
+          this.viewManager.insertAtTitle(
+            resOutput,
+            commandOption.overwrite,
+            commandOption.outPrefix,
+            commandOption.outSuffix
+          );
         }
-        new import_obsidian3.Notice(`\u2705 ${this.manifest.name}: classified with ${limitedOutputs.length} tags`);
-      } catch (error) {
-        new import_obsidian3.Notice(`\u26D4 ${this.manifest.name}: JSON parsing error - ${error}`);
-        return null;
       }
+      let tokenInfo = "";
+      if (currentEngine === 1 /* JinaAI */ && jinaResponse && jinaResponse.usage) {
+        tokenInfo = ` (${jinaResponse.usage.total_tokens} tokens used)`;
+      }
+      const engineName = currentEngine === 0 /* ChatGPT */ ? "OpenAI-compatible API" : "Jina AI";
+      new import_obsidian4.Notice(`\u2705 ${this.manifest.name}: classified with ${limitedOutputs.length} tags using ${engineName}${tokenInfo}.`);
     } catch (error) {
-      new import_obsidian3.Notice(`\u26D4 ${this.manifest.name}: ${error}`);
+      const engineName = currentEngine === 0 /* ChatGPT */ ? "OpenAI-compatible API" : "Jina AI";
+      new import_obsidian4.Notice(`\u26D4 ${this.manifest.name} API Error: ${error.message || error}`);
+      console.error(`${engineName} API Error:`, error);
       return null;
     }
   }

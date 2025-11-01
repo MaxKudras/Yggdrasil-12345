@@ -32727,11 +32727,11 @@ var import_neovim2 = __toESM(require_lib());
 var import_obsidian = require("obsidian");
 var import_neovim = __toESM(require_lib());
 var child_process = __toESM(require("child_process"));
-var os = __toESM(require("os"));
 
 // src/utils.ts
 var import_node_path = require("path");
 var import_node_fs = require("fs");
+var os = __toESM(require("os"));
 var import_systeminformation = __toESM(require_lib2());
 var windows = process.platform === "win32";
 var searchDirs = windows ? [] : [
@@ -32749,6 +32749,47 @@ async function isPortInUse(port) {
 }
 function normalizePath(path) {
   return (0, import_node_path.normalize)(windows ? path.toLowerCase() : path);
+}
+function configureProcessSpawnArgs(spawnOptions, terminalName, terminalPath, nvimPath, port) {
+  if (!windows) {
+    spawnOptions.spawnArgs = ["-e", nvimPath, "--listen", port];
+    spawnOptions.shell = os.userInfo().shell || true;
+    console.debug(`edit-in-neovim:
+Process spawn config for macos/linux: ${JSON.stringify(spawnOptions, null, 2)}`);
+    return spawnOptions;
+  }
+  if (terminalName === "alacritty.exe" || terminalName === "wezterm.exe" || terminalName === "kitty.exe") {
+    spawnOptions.spawnArgs = ["-e", nvimPath, "--listen", port];
+    console.debug(`edit-in-neovim:
+Process spawn config for windows and ${terminalName}: ${JSON.stringify(spawnOptions, null, 2)}`);
+    return spawnOptions;
+  }
+  if (terminalName === "wt.exe") {
+    spawnOptions.spawnArgs = ["new-tab", "--title", "Neovim", nvimPath, "--listen", port];
+    console.debug(`edit-in-neovim:
+Process spawn config for windows terminal: ${JSON.stringify(spawnOptions, null, 2)}`);
+    return spawnOptions;
+  }
+  if (terminalName === "powershell.exe" || terminalName === "pwsh.exe") {
+    const command = `Start-Process -FilePath '${nvimPath}' -ArgumentList '--listen ${port}' -WindowStyle Normal`;
+    spawnOptions.spawnArgs = ["-ExecutionPolicy", "Bypass", "-NoProfile", "-NoExit", "-Command", command];
+    spawnOptions.shell = true;
+    console.debug(`edit-in-neovim:
+Process spawn config for powershell: ${JSON.stringify(spawnOptions, null, 2)}`);
+    return spawnOptions;
+  }
+  if (terminalName === "cmd.exe") {
+    spawnOptions.spawnArgs = ["/c", "start", `"Neovim"`, `"${nvimPath}"`, "--listen", port];
+    spawnOptions.shell = true;
+    console.debug(`edit-in-neovim:
+Process spawn config for ${terminalName}: ${JSON.stringify(spawnOptions, null, 2)}`);
+    return spawnOptions;
+  }
+  console.warn(`Unknown/unhandled Windows terminal: ${terminalPath}. Using fallback, this is likely to fail.`);
+  spawnOptions.spawnArgs = ["-e", nvimPath, "--listen", port];
+  console.info(`edit-in-neovim:
+Process spawn config for ${terminalName}: ${JSON.stringify(spawnOptions, null, 2)}`);
+  return spawnOptions;
 }
 function searchForBinary(name) {
   const paths = /* @__PURE__ */ new Set();
@@ -32801,27 +32842,77 @@ var Neovim = class {
   constructor(settings, adapter, apiKey) {
     this.getBuffers = async () => {
       if (!this.instance)
-        return Promise.resolve([]);
-      return this.instance.buffers;
+        return [];
+      try {
+        return await this.instance.buffers;
+      } catch (error) {
+        new import_obsidian.Notice(`edit-in-neovim:
+Unable to get Neovim buffers due to: ${error.message}`, 5e3);
+        return [];
+      }
     };
     this.openFile = async (file) => {
+      var _a, _b, _c;
       if (!file)
         return;
-      if (!this.settings.supportedFileTypes.includes(file.extension) || // condition for the excalidraw filetype
-      file.extension == "md" && !this.settings.supportedFileTypes.includes("excalidraw") && file.name.endsWith(".excalidraw"))
+      if (!((_a = this.nvimBinary) == null ? void 0 : _a.path))
         return;
-      if (!this.instance) {
-        const port = this.settings.listenOn.split(":").at(-1);
-        if (!port)
+      const isExcalidrawMd = file.extension === "md" && file.path.endsWith(".excalidraw.md");
+      let isSupported = this.settings.supportedFileTypes.includes(file.extension);
+      isSupported = isSupported || isExcalidrawMd && this.settings.supportedFileTypes.includes("excalidraw");
+      if (!isSupported)
+        return;
+      const port = this.settings.listenOn.split(":").at(-1);
+      if (!(this.instance && this.process) && !port) {
+        console.debug("No known neovim instance is running");
+        return;
+      }
+      ;
+      try {
+        if (!(port && await isPortInUse(port))) {
+          console.debug("Port is either missing, or nothing was listening on it, skipping command");
           return;
-        if (!await isPortInUse(port))
-          return;
+        }
+      } catch (error) {
+        console.error(`Error checking port ${port}: ${error.message}`);
       }
       const absolutePath = this.adapter.getFullPath(file.path);
-      console.log(`Opening ${absolutePath} in neovim`);
+      const args = ["--server", this.settings.listenOn, "--remote", absolutePath];
+      console.debug(`Opening ${absolutePath} in neovim`);
       child_process.exec(
-        `${this.nvimBinary.path} --server ${this.settings.listenOn} --remote '${absolutePath}'`
+        `${(_b = this.nvimBinary) == null ? void 0 : _b.path} --server ${this.settings.listenOn} --remote '${absolutePath}'`
       );
+      try {
+        child_process.execFile((_c = this.nvimBinary) == null ? void 0 : _c.path, args, (error, stdout, stderr) => {
+          var _a2;
+          if (error) {
+            let noticeMessage = `edit-in-neovim:
+Error opening file in Neovim: ${error.message}`;
+            if (error.code === "ENOENT") {
+              noticeMessage = `edit-in-neovim:
+Neovim executable not found at: ${(_a2 = this.nvimBinary) == null ? void 0 : _a2.path}`;
+            } else if (stderr && (stderr.includes("ECONNREFUSED") || stderr.includes("Connection refused"))) {
+              noticeMessage = `edit-in-neovim:
+Could not connect to Neovim server at ${this.settings.listenOn}. Is it running?`;
+            } else if (stderr && stderr.includes("No such file or directory") && stderr.includes(absolutePath)) {
+              noticeMessage = `edit-in-neovim:
+Neovim server reported error finding file: ${file.basename}`;
+            } else if (stderr) {
+              noticeMessage = `edit-in-neovim:
+Error opening file in Neovim: ${stderr.split("\n")[0]}`;
+            }
+            new import_obsidian.Notice(noticeMessage, 1e4);
+            return;
+          }
+          if (stdout)
+            console.log(`Neovim --remote stdout: ${stdout}`);
+          if (stderr)
+            console.warn(`Neovim --remote stderr: ${stderr}`);
+        });
+      } catch (execFileError) {
+        console.error("Error opening file in neovim", execFileError);
+        new import_obsidian.Notice(`Failed to run Neovim command: ${execFileError.message}`, 1e4);
+      }
     };
     this.close = () => {
       var _a, _b;
@@ -32829,79 +32920,125 @@ var Neovim = class {
       (_b = this.instance) == null ? void 0 : _b.quit();
       this.instance = void 0;
       this.process = void 0;
+      new import_obsidian.Notice("edit-in-neovim:\nNeovim instance closed.", 3e3);
     };
+    var _a, _b;
     this.adapter = adapter;
     this.settings = settings;
     this.apiKey = apiKey;
     this.termBinary = searchForBinary(settings.terminal);
-    if (this.settings.pathToBinary)
-      this.nvimBinary = { path: this.settings.pathToBinary, nvimVersion: "manual_path" };
-    else
-      this.nvimBinary = (0, import_neovim.findNvim)({ orderBy: "desc", paths: searchDirs }).matches[0];
-    if (this.nvimBinary.path && !this.nvimBinary.nvimVersion) {
-      new import_obsidian.Notice(`Could not find neovim at the given path: ${this.nvimBinary.path}, this could be due to:
-
-- A custom path that doesn't point to a directory containing a neovim binary
-- The directory containing neovim is not on your PATH
-`);
+    this.nvimBinary = void 0;
+    if (!this.termBinary) {
+      console.warn(`Could find binary for ${settings.terminal}, double check it's on your PATH`);
     }
-    if (this.nvimBinary.error) {
-      console.log(`Failed to find nvim binary due to: ${this.nvimBinary.error}`);
-    } else {
+    if (this.settings.pathToBinary) {
+      this.nvimBinary = { path: this.settings.pathToBinary, nvimVersion: "manual_path" };
       console.log(`Neovim Information:
-  - Term Path: ${this.termBinary}
+  - Term Path: ${this.termBinary || "NOT FOUND"}
   - Nvim Path: ${this.nvimBinary.path}
   - Version: ${this.nvimBinary.nvimVersion}
-  - Error: ${this.nvimBinary.error}
+  - Error: ${(_a = this.nvimBinary.error) == null ? void 0 : _a.message}
 `);
+      return;
+    }
+    const foundNvimBinaries = (0, import_neovim.findNvim)({ orderBy: "desc", paths: searchDirs });
+    if (foundNvimBinaries.matches.length > 0) {
+      this.nvimBinary = foundNvimBinaries.matches[0];
+      console.log(`Neovim Information:
+  - Term Path: ${this.termBinary || "NOT FOUND"}
+  - Nvim Path: ${this.nvimBinary.path}
+  - Version: ${this.nvimBinary.nvimVersion}
+  - Error: ${(_b = this.nvimBinary.error) == null ? void 0 : _b.message}
+`);
+      return;
+    }
+    this.nvimBinary = { path: "", nvimVersion: void 0, error: new Error("Neovim binary not found, and no manual path specified") };
+    console.warn("Using fallback neovim configuration, plugin will likely not function");
+    if (!this.termBinary || !this.nvimBinary.nvimVersion || this.nvimBinary.error) {
+      new import_obsidian.Notice("edit-in-neovim:\nPotential issues in plugin config, check logs for more details", 5e3);
     }
   }
   async newInstance(adapter) {
-    var _a, _b, _c, _d;
+    var _a, _b, _c, _d, _e, _f;
     if (this.process) {
-      new import_obsidian.Notice("Linked Neovim instance already running", 5e3);
+      new import_obsidian.Notice("edit-in-neovim:\nInstance already running", 5e3);
       return;
     }
     if (!this.termBinary) {
-      new import_obsidian.Notice("Unknown terminal, is it on your PATH?");
+      new import_obsidian.Notice("Terminal undefined, skipping command", 5e3);
+      return;
+    }
+    if (!this.nvimBinary || ((_a = this.nvimBinary) == null ? void 0 : _a.path) === "") {
+      new import_obsidian.Notice("No path to valid nvim binary has been found, skipping command", 5e3);
       return;
     }
     const extraEnvVars = {};
     if (this.apiKey)
       extraEnvVars["OBSIDIAN_REST_API_KEY"] = this.apiKey;
-    this.process = child_process.spawn(
-      this.termBinary,
-      ["-e", this.nvimBinary.path, "--listen", this.settings.listenOn],
-      {
-        cwd: adapter.getBasePath(),
-        shell: os.userInfo().shell || true,
-        env: {
-          ...process.env,
-          ...extraEnvVars
-        }
+    const terminalName = ((_b = this.termBinary.split("\\").pop()) == null ? void 0 : _b.toLowerCase()) || "";
+    const defaultSpawnOptions = {
+      spawnArgs: [],
+      cwd: adapter.getBasePath(),
+      env: { ...process.env, ...extraEnvVars },
+      shell: false,
+      detached: false
+    };
+    const spawnOptions = configureProcessSpawnArgs(defaultSpawnOptions, terminalName, this.termBinary, this.nvimBinary.path, this.settings.listenOn);
+    console.debug(`Attempting to spawn process:
+      Platform: ${process.platform}
+      Executable: ${this.termBinary}
+      Arguments: ${JSON.stringify(spawnOptions.spawnArgs)}
+      Options: ${JSON.stringify(spawnOptions)}`);
+    try {
+      this.process = child_process.spawn(this.termBinary, spawnOptions.spawnArgs, spawnOptions);
+      if (!this.process || this.process.pid === void 0) {
+        new import_obsidian.Notice("Failed to create Neovim process", 5e3);
+        this.process = void 0;
+        return;
       }
-    );
-    (_a = this.process) == null ? void 0 : _a.on("error", (err) => {
-      console.log(err);
+      console.debug(`Neovim process running, PID: ${this.process.pid}`);
+      (_c = this.process) == null ? void 0 : _c.on("error", (err) => {
+        new import_obsidian.Notice("edit-in-neovim:\nNeovim ran into a error, see logs for details");
+        console.error(`Neovim process ran into an error: ${JSON.stringify(err, null, 2)}`);
+        this.process = void 0;
+        this.instance = void 0;
+      });
+      (_d = this.process) == null ? void 0 : _d.on("close", (code) => {
+        console.info(`nvim closed with code: ${code}`);
+        this.process = void 0;
+        this.instance = void 0;
+      });
+      (_e = this.process) == null ? void 0 : _e.on("disconnect", () => {
+        console.info("nvim disconnected");
+        this.process = void 0;
+        this.instance = void 0;
+      });
+      (_f = this.process) == null ? void 0 : _f.on("exit", (code) => {
+        console.info(`nvim closed with code: ${code}`);
+        this.process = void 0;
+        this.instance = void 0;
+      });
+      console.debug("Attaching to Neovim process...");
+      this.instance = (0, import_neovim.attach)({ proc: this.process });
+      setTimeout(async () => {
+        if (!this.instance)
+          return;
+        try {
+          await this.instance.eval("1");
+          console.debug("Neovim RPC connection test successful.");
+          new import_obsidian.Notice("Neovim instance started and connected.", 3e3);
+        } catch (error) {
+          console.error("Neovim RPC connection failed after spawn:", error);
+          new import_obsidian.Notice(`Failed to establish RPC connection: ${error.message}`, 7e3);
+          this.close();
+        }
+      }, 1500);
+    } catch (error) {
+      console.error("Error caught during child_process.spawn call itself:", error);
+      new import_obsidian.Notice(`Error trying to spawn Neovim: ${error.message}`, 1e4);
       this.process = void 0;
       this.instance = void 0;
-    });
-    (_b = this.process) == null ? void 0 : _b.on("close", (code) => {
-      console.log(`nvim closed with code: ${code}`);
-      this.process = void 0;
-      this.instance = void 0;
-    });
-    (_c = this.process) == null ? void 0 : _c.on("disconnect", () => {
-      console.log("nvim disconnected");
-      this.process = void 0;
-      this.instance = void 0;
-    });
-    (_d = this.process) == null ? void 0 : _d.on("exit", (code) => {
-      console.log(`nvim closed with code: ${code}`);
-      this.process = void 0;
-      this.instance = void 0;
-    });
-    this.instance = (0, import_neovim.attach)({ proc: this.process });
+    }
   }
 };
 

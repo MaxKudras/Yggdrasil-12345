@@ -4120,6 +4120,9 @@ var require_sax = __commonJS({
         if (parser.opt.xmlns) {
           parser.ns = Object.create(rootNS);
         }
+        if (parser.opt.unquotedAttributeValues === void 0) {
+          parser.opt.unquotedAttributeValues = !strict;
+        }
         parser.trackPosition = parser.opt.position !== false;
         if (parser.trackPosition) {
           parser.position = parser.line = parser.column = 0;
@@ -5014,15 +5017,21 @@ var require_sax = __commonJS({
               }
               continue;
             case S.SGML_DECL:
-              if ((parser.sgmlDecl + c).toUpperCase() === CDATA) {
+              if (parser.sgmlDecl + c === "--") {
+                parser.state = S.COMMENT;
+                parser.comment = "";
+                parser.sgmlDecl = "";
+                continue;
+              }
+              if (parser.doctype && parser.doctype !== true && parser.sgmlDecl) {
+                parser.state = S.DOCTYPE_DTD;
+                parser.doctype += "<!" + parser.sgmlDecl + c;
+                parser.sgmlDecl = "";
+              } else if ((parser.sgmlDecl + c).toUpperCase() === CDATA) {
                 emitNode(parser, "onopencdata");
                 parser.state = S.CDATA;
                 parser.sgmlDecl = "";
                 parser.cdata = "";
-              } else if (parser.sgmlDecl + c === "--") {
-                parser.state = S.COMMENT;
-                parser.comment = "";
-                parser.sgmlDecl = "";
               } else if ((parser.sgmlDecl + c).toUpperCase() === DOCTYPE) {
                 parser.state = S.DOCTYPE;
                 if (parser.doctype || parser.sawRoot) {
@@ -5071,12 +5080,18 @@ var require_sax = __commonJS({
               }
               continue;
             case S.DOCTYPE_DTD:
-              parser.doctype += c;
               if (c === "]") {
+                parser.doctype += c;
                 parser.state = S.DOCTYPE;
+              } else if (c === "<") {
+                parser.state = S.OPEN_WAKA;
+                parser.startTagPosition = parser.position;
               } else if (isQuote(c)) {
+                parser.doctype += c;
                 parser.state = S.DOCTYPE_DTD_QUOTED;
                 parser.q = c;
+              } else {
+                parser.doctype += c;
               }
               continue;
             case S.DOCTYPE_DTD_QUOTED:
@@ -5111,6 +5126,8 @@ var require_sax = __commonJS({
                 strictFail(parser, "Malformed comment");
                 parser.comment += "--" + c;
                 parser.state = S.COMMENT;
+              } else if (parser.doctype && parser.doctype !== true) {
+                parser.state = S.DOCTYPE_DTD;
               } else {
                 parser.state = S.TEXT;
               }
@@ -5265,7 +5282,9 @@ var require_sax = __commonJS({
                 parser.q = c;
                 parser.state = S.ATTRIB_VALUE_QUOTED;
               } else {
-                strictFail(parser, "Unquoted attribute value");
+                if (!parser.opt.unquotedAttributeValues) {
+                  error(parser, "Unquoted attribute value");
+                }
                 parser.state = S.ATTRIB_VALUE_UNQUOTED;
                 parser.attribValue = c;
               }
@@ -5374,13 +5393,13 @@ var require_sax = __commonJS({
                   break;
               }
               if (c === ";") {
-                if (parser.opt.unparsedEntities) {
-                  var parsedEntity = parseEntity(parser);
+                var parsedEntity = parseEntity(parser);
+                if (parser.opt.unparsedEntities && !Object.values(sax.XML_ENTITIES).includes(parsedEntity)) {
                   parser.entity = "";
                   parser.state = returnState;
                   parser.write(parsedEntity);
                 } else {
-                  parser[buffer] += parseEntity(parser);
+                  parser[buffer] += parsedEntity;
                   parser.entity = "";
                   parser.state = returnState;
                 }
@@ -6433,13 +6452,13 @@ var require_parser2 = __commonJS({
       }
       parseURL(feedUrl, callback, redirectCount = 0) {
         let xml = "";
-        let get = feedUrl.indexOf("https") === 0 ? https.get : http.get;
+        let get2 = feedUrl.indexOf("https") === 0 ? https.get : http.get;
         let urlParts = url.parse(feedUrl);
         let headers = Object.assign({}, DEFAULT_HEADERS, this.options.headers);
         let timeout = null;
         let prom = new Promise((resolve, reject) => {
           const requestOpts = Object.assign({ headers }, urlParts, this.options.requestOptions);
-          let req = get(requestOpts, (res) => {
+          let req = get2(requestOpts, (res) => {
             if (this.options.maxRedirects && res.statusCode >= 300 && res.statusCode < 400 && res.headers["location"]) {
               if (redirectCount === this.options.maxRedirects) {
                 return reject(new Error("Too many redirects"));
@@ -6974,7 +6993,7 @@ var require_mustache = __commonJS({
           set: function set(key, value) {
             this._cache[key] = value;
           },
-          get: function get(key) {
+          get: function get2(key) {
             return this._cache[key];
           },
           clear: function clear() {
@@ -10155,7 +10174,6 @@ var require_turndown_browser_cjs = __commonJS({
     rules.listItem = {
       filter: "li",
       replacement: function(content, node, options) {
-        content = content.replace(/^\n+/, "").replace(/\n+$/, "\n").replace(/\n/gm, "\n    ");
         var prefix = options.bulletListMarker + "   ";
         var parent = node.parentNode;
         if (parent.nodeName === "OL") {
@@ -10163,6 +10181,7 @@ var require_turndown_browser_cjs = __commonJS({
           var index = Array.prototype.indexOf.call(parent.children, node);
           prefix = (start ? Number(start) + index : index + 1) + ".  ";
         }
+        content = content.replace(/^\n+/, "").replace(/\n+$/, "\n").replace(/\n/gm, "\n" + " ".repeat(prefix.length));
         return prefix + content + (node.nextSibling && !/\n$/.test(content) ? "\n" : "");
       }
     };
@@ -10207,9 +10226,11 @@ var require_turndown_browser_cjs = __commonJS({
       },
       replacement: function(content, node) {
         var href = node.getAttribute("href");
+        if (href)
+          href = href.replace(/([()])/g, "\\$1");
         var title = cleanAttribute(node.getAttribute("title"));
         if (title)
-          title = ' "' + title + '"';
+          title = ' "' + title.replace(/"/g, '\\"') + '"';
         return "[" + content + "](" + href + title + ")";
       }
     };
@@ -10477,7 +10498,7 @@ var require_turndown_browser_cjs = __commonJS({
       try {
         document.implementation.createHTMLDocument("").open();
       } catch (e) {
-        if (window.ActiveXObject)
+        if (root.ActiveXObject)
           useActiveX = true;
       }
       return useActiveX;
@@ -10710,6 +10731,7 @@ var rssParser = new Parser({
       "average_rating",
       "user_read_at",
       "user_date_added",
+      "user_date_created",
       "book_published",
       ["book", "identifiers"],
       "user_shelves",
@@ -10765,9 +10787,45 @@ var Frontmatter = class {
   }
 };
 
-// src/Book.ts
+// src/helpers.ts
 var import_path = __toModule(require("path"));
 var nodeFs = __toModule(require("fs"));
+function writeFile2(path, content, app) {
+  return __async(this, null, function* () {
+    if ((0, import_path.isAbsolute)(path)) {
+      nodeFs.writeFile(path, content, (error) => {
+        if (error)
+          console.log(`Error writing ${path}`, error);
+      });
+    } else {
+      try {
+        const fs = app.vault.adapter;
+        yield fs.write(path, content);
+      } catch (error) {
+        console.log(`Error writing ${path}`, error);
+      }
+    }
+  });
+}
+function writeBinaryFile(path, content) {
+  return __async(this, null, function* () {
+    const filePath = (0, import_path.isAbsolute)(path) ? path : `${this.app.vault.adapter.basePath}/${path}`;
+    const directory = (0, import_path.dirname)(filePath);
+    if (!nodeFs.existsSync(directory))
+      nodeFs.mkdirSync(directory);
+    try {
+      nodeFs.writeFileSync(filePath, content, { encoding: "binary" });
+    } catch (error) {
+      console.log(`Error writing ${filePath}`, error);
+    }
+  });
+}
+function pathExist(path) {
+  const filePath = (0, import_path.isAbsolute)(path) ? path : `${this.app.vault.adapter.basePath}/${path}`;
+  return nodeFs.existsSync(filePath);
+}
+
+// src/Book.ts
 var TurndownService = require_turndown_browser_cjs();
 var Book = class {
   constructor(plugin, book) {
@@ -10784,9 +10842,11 @@ var Book = class {
     this.rating = parseInt(book.user_rating) || 0;
     this.avgRating = parseFloat(book.average_rating) || 0;
     this.dateAdded = this.parseDate(book.user_date_added);
+    this.dateCreated = this.parseDate(book.user_date_created);
     this.dateRead = this.parseDate(book.user_read_at);
     this.datePublished = this.parseDate(book.book_published);
     this.cover = book.image_url;
+    this.coverImage = book.image_path;
     this.shelves = this.getShelves(book.user_shelves, this.dateRead);
     this.bookPage = `https://www.goodreads.com/book/show/${this.id}`;
   }
@@ -10828,19 +10888,7 @@ var Book = class {
       if (file && !this.plugin.settings.overwrite)
         return;
       const bookContent = book.getContent();
-      if ((0, import_path.isAbsolute)(fullPath)) {
-        nodeFs.writeFile(fullPath, bookContent, (error) => {
-          if (error)
-            console.log(`Error writing ${fullPath}`, error);
-        });
-      } else {
-        try {
-          const fs = this.plugin.app.vault.adapter;
-          yield fs.write(fullPath, bookContent);
-        } catch (error) {
-          console.log(`Error writing ${fullPath}`, error);
-        }
-      }
+      writeFile2(fullPath, bookContent, this.plugin.app);
     });
   }
   cleanTitle(title, full) {
@@ -10897,12 +10945,14 @@ var Book = class {
 var import_obsidian = __toModule(require("obsidian"));
 var nodeFs2 = __toModule(require("fs"));
 var import_path2 = __toModule(require("path"));
+var import_https = __toModule(require("https"));
 var Shelf = class {
   constructor(plugin, shelfName) {
     this.plugin = plugin;
     this.shelfName = shelfName;
     this.books = [];
-    this.path = `${plugin.settings.targetFolderPath}`;
+    const targetFolder = plugin.settings.targetFolderPath;
+    this.path = targetFolder === "" ? "./" : targetFolder;
     this.url = `${plugin.settings.goodreadsBaseUrl}${shelfName.toLocaleLowerCase()}`;
   }
   setBook(book) {
@@ -10935,11 +10985,31 @@ var Shelf = class {
         const feed = yield rssParser.parseURL(this.url);
         feed.items.forEach((_book) => __async(this, null, function* () {
           const book = new Book(this.plugin, _book);
+          book.coverImage = yield this.fetchCoverImage(book.cover, book.id);
           this.setBook(book);
         }));
       } catch (e) {
         console.warn(e);
       }
+    });
+  }
+  fetchCoverImage(url, title) {
+    return __async(this, null, function* () {
+      if (!this.plugin.settings.coverDownload)
+        return;
+      let coverDownloadLocation = this.plugin.settings.coverDownloadLocation;
+      if (coverDownloadLocation === "")
+        coverDownloadLocation = `${this.plugin.settings.targetFolderPath || "."}/cover`;
+      const fullPath = `${coverDownloadLocation}/${title}.jpg`;
+      if (pathExist(fullPath))
+        return fullPath;
+      (0, import_https.get)(url, (response) => {
+        response.setEncoding("binary");
+        let rawData = new Uint16Array();
+        response.on("data", (chunk) => rawData += chunk);
+        response.on("end", () => writeBinaryFile(fullPath, rawData));
+      });
+      return fullPath;
     });
   }
   createBookFiles() {
@@ -11000,8 +11070,8 @@ var Settings = class extends import_obsidian2.PluginSettingTab {
     containerEl.createEl("p", {
       text: "Only the first 100 items of a shelf are added to the RSS feed. So if you have more than 100 books, you have to split them into multiple shelves."
     });
-    new import_obsidian2.Setting(containerEl).setName("Target Folder").setDesc("Path to where to store the book notes. Can be either a relative path within the vault, or absolute outside of the vault. If you leave this empty, the books will be created in the root directory.").addText((text) => text.setPlaceholder("").setValue(this.plugin.settings.targetFolderPath).onChange((value) => __async(this, null, function* () {
-      this.plugin.settings.targetFolderPath = value.replace(/[\\/]+$/g, "");
+    new import_obsidian2.Setting(containerEl).setName("Target Folder").setDesc("Path to where to store the book notes. Can be either a relative path within the vault, or absolute outside of the vault. If you leave this empty, the books will be created in the root of the vault.").addText((text) => text.setPlaceholder("Vault root").setValue(this.plugin.settings.targetFolderPath).onChange((value) => __async(this, null, function* () {
+      this.plugin.settings.targetFolderPath = value.replace(/[\\/]+$/g, "").trim();
       yield this.plugin.saveSettings();
     })));
     new import_obsidian2.Setting(containerEl).setName("RSS Base URL").setDesc("Please add your RSS Base URL here (everything before the shelf name).").setTooltip("https://www.goodreads.com/ ... &shelf=").addText((text) => {
@@ -11050,6 +11120,21 @@ var Settings = class extends import_obsidian2.PluginSettingTab {
         this.plugin.saveSettings();
       });
     });
+    containerEl.createEl("h4", { text: "Book covers" });
+    new import_obsidian2.Setting(containerEl).setName("Download covers").setDesc("Whether the cover image for each book should be downloaded").addToggle((toggle) => {
+      toggle.setValue(this.plugin.settings.coverDownload);
+      toggle.onChange((value) => __async(this, null, function* () {
+        return this.plugin.settings.coverDownload = value;
+      }));
+    });
+    new import_obsidian2.Setting(containerEl).setName("Cover download folder").setDesc('Path to where the cover images should be downloaded to. Like Target Folder, the path can be relative to the vault or absolute outside of the vault. If left empty, a folder named "cover" will be created under Target Folder.').addText((text) => {
+      text.setPlaceholder("Target Folder/cover");
+      text.setValue(this.plugin.settings.coverDownloadLocation);
+      text.onChange((value) => __async(this, null, function* () {
+        this.plugin.settings.coverDownloadLocation = value.trim();
+        yield this.plugin.saveSettings();
+      }));
+    });
     containerEl.createEl("h3", { text: "Body" });
     containerEl.createEl("p", {
       text: "You can specify the content of the book-note by using {{placeholders}}. You can see the full list of placeholders in the dropdown of the frontmatter. You can choose the frontmatter placeholders you'd like and apply specific formatting to each of them."
@@ -11075,8 +11160,15 @@ var Settings = class extends import_obsidian2.PluginSettingTab {
         text: "You can add custom frontmatter to your books. Please use the dropdown to choose the frontmatter you'd like to add."
       });
     }
-    new import_obsidian2.Setting(containerEl).setName("Available Fields").addDropdown((dropdown) => dropdown.addOption("", `${this.getSelectedCount()}`).addOption("id", `${this.getDisplay("id")}`).addOption("author", `${this.getDisplay("author")}`).addOption("title", `${this.getDisplay("title", "title (formatted for filenames/links)")}`).addOption("fullTitle", `${this.getDisplay("fullTitle", "fullTitle (formatted, includes subtitle)")}`).addOption("rawTitle", `${this.getDisplay("rawTitle")}`).addOption("subtitle", `${this.getDisplay("subtitle")}`).addOption("pages", `${this.getDisplay("pages")}`).addOption("series", `${this.getDisplay("series")}`).addOption("seriesName", `${this.getDisplay("seriesName")}`).addOption("seriesNumber", `${this.getDisplay("seriesNumber")}`).addOption("description", `${this.getDisplay("description")}`).addOption("cover", `${this.getDisplay("cover")}`).addOption("isbn", `${this.getDisplay("isbn")}`).addOption("review", `${this.getDisplay("review")}`).addOption("rating", `${this.getDisplay("rating")}`).addOption("avgRating", `${this.getDisplay("avgRating")}`).addOption("dateAdded", `${this.getDisplay("dateAdded")}`).addOption("dateRead", `${this.getDisplay("dateRead")}`).addOption("datePublished", `${this.getDisplay("datePublished")}`).addOption("shelves", `${this.getDisplay("shelves")}`).addOption("bookPage", `${this.getDisplay("bookPage")}`).onChange((value) => __async(this, null, function* () {
-      this.optionIsSelected(value) ? delete this.currentYAML[value] : this.currentYAML[value] = value;
+    new import_obsidian2.Setting(containerEl).setName("Available Fields").addDropdown((dropdown) => dropdown.addOption("", `${this.getSelectedCount()}`).addOption("id", `${this.getDisplay("id")}`).addOption("author", `${this.getDisplay("author")}`).addOption("title", `${this.getDisplay("title", "title (formatted for filenames/links)")}`).addOption("fullTitle", `${this.getDisplay("fullTitle", "fullTitle (formatted, includes subtitle)")}`).addOption("rawTitle", `${this.getDisplay("rawTitle")}`).addOption("subtitle", `${this.getDisplay("subtitle")}`).addOption("pages", `${this.getDisplay("pages")}`).addOption("series", `${this.getDisplay("series")}`).addOption("seriesName", `${this.getDisplay("seriesName")}`).addOption("seriesNumber", `${this.getDisplay("seriesNumber")}`).addOption("description", `${this.getDisplay("description")}`).addOption("cover", `${this.getDisplay("cover")}`).addOption("coverImage", `${this.getDisplay("coverImage")}`).addOption("isbn", `${this.getDisplay("isbn")}`).addOption("review", `${this.getDisplay("review")}`).addOption("rating", `${this.getDisplay("rating")}`).addOption("avgRating", `${this.getDisplay("avgRating")}`).addOption("dateAdded", `${this.getDisplay("dateAdded")}`).addOption("dateCreated", `${this.getDisplay("dateCreated")}`).addOption("dateRead", `${this.getDisplay("dateRead")}`).addOption("datePublished", `${this.getDisplay("datePublished")}`).addOption("shelves", `${this.getDisplay("shelves")}`).addOption("bookPage", `${this.getDisplay("bookPage")}`).onChange((value) => __async(this, null, function* () {
+      if (this.optionIsSelected(value)) {
+        delete this.currentYAML[value];
+      } else {
+        if (value === "coverImage")
+          this.currentYAML[value] = `[[${value}]]`;
+        else
+          this.currentYAML[value] = value;
+      }
       yield this.plugin.saveSettings();
       this.display();
     }))).addExtraButton((button) => button.onClick(() => __async(this, null, function* () {
@@ -11084,7 +11176,7 @@ var Settings = class extends import_obsidian2.PluginSettingTab {
     })).setIcon("sync").setTooltip("Refresh Previews"));
     Object.keys(this.currentYAML).forEach((key) => {
       const value = this.currentYAML[key];
-      new import_obsidian2.Setting(containerEl).setName(key + ": " + value).addExtraButton((button) => button.onClick(() => __async(this, null, function* () {
+      new import_obsidian2.Setting(containerEl).setName(key + ": " + value).addExtraButton((button) => button.setTooltip("Convert to link").onClick(() => __async(this, null, function* () {
         if (value.startsWith("[[")) {
           this.currentYAML[key] = value.replace(/[[\]]/g, "");
         } else {
@@ -11113,7 +11205,9 @@ var DEFAULT_SETTINGS = {
   frontmatterDictionary: {},
   bodyString: "# {{title}}\n\nauthor::[[{{author}}]]",
   frequency: "0",
-  overwrite: false
+  overwrite: false,
+  coverDownload: false,
+  coverDownloadLocation: ""
 };
 
 // main.ts

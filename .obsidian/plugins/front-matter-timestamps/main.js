@@ -85,10 +85,17 @@ var FrontMatterTimestampsPlugin = class extends import_obsidian.Plugin {
       }
     });
     this.registerEvent(
-      this.app.vault.on("create", (file) => {
+      this.app.vault.on("create", (f) => {
         if (this.settings.debug) {
-          console.log(`File created: ${file.path}`);
+          console.log(`File created: ${f.path}`);
         }
+        switch (f.constructor) {
+          case import_obsidian.TFile:
+            break;
+          default:
+            return;
+        }
+        const file = f;
         if (Date.now() - file.stat.ctime > 3e4) {
           if (this.settings.debug) {
             console.log(

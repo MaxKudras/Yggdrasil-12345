@@ -127,7 +127,7 @@ function applyTemplate(template, data) {
   return template.replace(pattern, (_, token) => data[token] || "{" + token + "}");
 }
 function newProgressBar(el, bar, val) {
-  const labelName = bar.name ? bar.name : bar.kind + "({percentage})";
+  const labelName = bar.name ? bar.name : bar.kind + " ({percentage})";
   const value = (Math.floor(bar.value * 10) / 10).toString();
   const message = applyTemplate(labelName, {
     min: bar.min,
@@ -169,7 +169,7 @@ function increment(blockTextYAML) {
   if (file) {
     let doneOnce = false;
     this.app.vault.process(file, (data) => {
-      const pattern = new RegExp(`\`{3}progressbar[a-zA-Z0-9\\s:{}#\\-"]*id:[\\s]${blockTextYAML.id}[a-zA-Z0-9\\s:{}#\\-"]*\`{3}`, "g");
+      const pattern = new RegExp(`\`{3}progressbar[\\s\\S]*?id:[\\s]*${blockTextYAML.id}[\\s\\S]*?\`{3}`, "g");
       return data.replace(pattern, (source) => {
         if (!doneOnce) {
           blockTextYAML.value = blockTextYAML.value + 1;
@@ -188,7 +188,7 @@ function decrement(blockTextYAML) {
   if (file) {
     let doneOnce = false;
     this.app.vault.process(file, (data) => {
-      const pattern = new RegExp(`\`{3}progressbar[a-zA-Z0-9\\s:{}#\\-"]*id:[\\s]${blockTextYAML.id}[a-zA-Z0-9\\s:{}#\\-"]*\`{3}`, "g");
+      const pattern = new RegExp(`\`{3}progressbar[\\s\\S]*?id:[\\s]*${blockTextYAML.id}[\\s\\S]*?\`{3}`, "g");
       return data.replace(pattern, (source) => {
         if (!doneOnce) {
           blockTextYAML.value = blockTextYAML.value - 1;
@@ -199,3 +199,5 @@ function decrement(blockTextYAML) {
     });
   }
 }
+
+/* nosourcemap */

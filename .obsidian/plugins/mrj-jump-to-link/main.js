@@ -42,6 +42,7 @@ class Settings {
         this.lightspeedCaseSensitive = false;
         this.jumpToLinkIfOneLinkOnly = true;
         this.lightspeedJumpToStartOfWord = true;
+        this.lightspeedCharacterCount = 2;
     }
 }
 
@@ -426,6 +427,7 @@ function getPreviewLinkHints(previewViewEl, letters) {
     return sortedLinkHints;
 }
 function checkIsPreviewElOnScreen(parent, el) {
+    el = el.closest('[data-view-type="table"], table') || el;
     return el.offsetTop < parent.scrollTop || el.offsetTop > parent.scrollTop + parent.offsetHeight;
 }
 function displayPreviewPopovers(linkHints) {
@@ -688,8 +690,8 @@ class JumpToLink extends obsidian.Plugin {
                     keyArray.push(event.key);
                 }
             }
-            // stop when length of array is equal to 2
-            if (keyArray.length === 2) {
+            // stop when length of array is equal to lightspeedCharacterCount
+            if (keyArray.length === this.settings.lightspeedCharacterCount) {
                 const stringToSearch = this.settings.lightspeedJumpToStartOfWord ? "\\b" + keyArray.join("") : keyArray.join("");
                 this.handleJumpToRegex(stringToSearch, this.settings.lightspeedCaseSensitive);
                 // removing eventListener after proceeded
@@ -700,8 +702,14 @@ class JumpToLink extends obsidian.Plugin {
         contentEl.addEventListener('keydown', grabKey, { capture: true });
     }
     handleHotkey(heldShiftKey, link) {
-        if (link.linkText === undefined && link.linkElement) {
-            link.linkElement.click();
+        if ((link.linkText === undefined || link.linkText === '') && link.linkElement) {
+            const event = new MouseEvent("click", {
+                bubbles: true,
+                cancelable: true,
+                view: window,
+                metaKey: heldShiftKey,
+            });
+            link.linkElement.dispatchEvent(event);
         }
         else if (link.type === 'internal') {
             const file = this.app.workspace.getActiveFile();
@@ -901,6 +909,18 @@ class SettingTab extends obsidian.PluginSettingTab {
                 yield this.plugin.saveData(this.plugin.settings);
             }));
         });
+        new obsidian.Setting(containerEl)
+            .setName('Number of characters for Lightspeed jump')
+            .setDesc('Determines how many characters you need to type to perform a Lightspeed jump.')
+            .addText((text) => (text
+            .setValue(String(this.plugin.settings.lightspeedCharacterCount))
+            .onChange((value) => __awaiter(this, void 0, void 0, function* () {
+            const num = Number(value);
+            if (!isNaN(num)) {
+                this.plugin.settings.lightspeedCharacterCount = num;
+                yield this.plugin.saveData(this.plugin.settings);
+            }
+        })).inputEl.type = "number"));
     }
 }
 

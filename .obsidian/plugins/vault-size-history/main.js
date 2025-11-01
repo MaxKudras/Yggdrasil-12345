@@ -104280,6 +104280,11 @@ var GraphData = class {
     if (this.maxDate == null || this.maxDate < normalizedDate) {
       this.maxDate = new Date(normalizedDate);
     }
+    const todayNormalizedDate = new Date();
+    todayNormalizedDate.setHours(12, 0, 0, 0);
+    if (this.maxDate < todayNormalizedDate) {
+      this.maxDate = todayNormalizedDate;
+    }
   }
   getLegendStrings() {
     return this.lines.map((ld) => ld.getCategory().name);

@@ -37,7 +37,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Aussortieren/📒Wisften(👨‍🔬️-💵-🔢)/Kulturwissenschaften/Geisteswissenschaften(🏺-🤸‍♂️-🙏)/🧠Psychologie/Kognitive Psychologie/Wahrnehmung und Gedächtnis/Interpersonale Beziehungen/Interpersonale Beziehungen.md",
+                "file": "00.📖Lebensplan/Abarbeitungsplan.md",
                 "mode": "source",
                 "source": true,
                 "backlinks": true,
@@ -52,7 +52,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "Interpersonale Beziehungen"
+              "title": "Abarbeitungsplan"
             }
           },
           {
@@ -179,10 +179,27 @@
             "id": "f2eb26ced32bd591",
             "type": "leaf",
             "state": {
+              "type": "canvas",
+              "state": {
+                "file": "Sammlung/Untitled.canvas",
+                "viewState": {
+                  "x": 896.5,
+                  "y": -347.5,
+                  "zoom": -1.0209895150235098
+                }
+              },
+              "icon": "lucide-layout-dashboard",
+              "title": "Untitled"
+            }
+          },
+          {
+            "id": "6ff31ef1d6e7869b",
+            "type": "leaf",
+            "state": {
               "type": "markdown",
               "state": {
-                "file": "Aussortieren/-Lebensplan (💵-🕰-🚑)/💵Geldmanagment (💼-〽️-📊)/Finanzielle Ziele/Kurzfristige Ziele/Kurzfristige Ziele.md",
-                "mode": "preview",
+                "file": "10.⚙️Systemschmiede/Systemplan/Server/ContaboVPS/Contabo VPS Setup.md",
+                "mode": "source",
                 "source": true,
                 "backlinks": true,
                 "backlinkOpts": {
@@ -196,11 +213,86 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "Kurzfristige Ziele"
+              "title": "Contabo VPS Setup"
+            }
+          },
+          {
+            "id": "216fc361e4460748",
+            "type": "leaf",
+            "state": {
+              "type": "smart-release-notes-view",
+              "state": {},
+              "icon": "lucide-ghost",
+              "title": "smart-release-notes-view"
+            }
+          },
+          {
+            "id": "57f42f5224bb2452",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "README.md",
+                "mode": "source",
+                "source": true,
+                "backlinks": true,
+                "backlinkOpts": {
+                  "collapseAll": false,
+                  "extraContext": false,
+                  "sortOrder": "alphabetical",
+                  "showSearch": false,
+                  "searchQuery": "",
+                  "backlinkCollapsed": false,
+                  "unlinkedCollapsed": true
+                }
+              },
+              "icon": "lucide-file",
+              "title": "README"
+            }
+          },
+          {
+            "id": "048a295170033a2f",
+            "type": "leaf",
+            "state": {
+              "type": "canvas",
+              "state": {
+                "file": "10.⚙️Systemschmiede/Systemplan/Server/Unbenannt..canvas",
+                "viewState": {
+                  "x": -1529.146306594452,
+                  "y": 1408.0186183774965,
+                  "zoom": -3.2
+                }
+              },
+              "icon": "lucide-layout-dashboard",
+              "title": "Unbenannt."
+            }
+          },
+          {
+            "id": "592722153162dfd6",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "10.⚙️Systemschmiede/Systemplan/Server/Namensgebung für Systeme.md",
+                "mode": "source",
+                "source": true,
+                "backlinks": true,
+                "backlinkOpts": {
+                  "collapseAll": false,
+                  "extraContext": false,
+                  "sortOrder": "alphabetical",
+                  "showSearch": false,
+                  "searchQuery": "",
+                  "backlinkCollapsed": false,
+                  "unlinkedCollapsed": true
+                }
+              },
+              "icon": "lucide-file",
+              "title": "Namensgebung für Systeme"
             }
           }
         ],
-        "currentTab": 1
+        "currentTab": 12
       }
     ],
     "direction": "vertical"
@@ -243,7 +335,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "systempl",
+                "query": "Ubuntu",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": true,
@@ -297,12 +389,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Aussortieren/📒Wisften(👨‍🔬️-💵-🔢)/Kulturwissenschaften/Geisteswissenschaften(🏺-🤸‍♂️-🙏)/🧠Psychologie/Kognitive Psychologie/Wahrnehmung und Gedächtnis/Interpersonale Beziehungen/Interpersonale Beziehungen.md",
+                "file": "10.⚙️Systemschmiede/Systemplan/Server/Namensgebung für Systeme.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": false
               },
               "icon": "links-going-out",
-              "title": "Outgoing links from Interpersonale Beziehungen"
+              "title": "Outgoing links from Namensgebung für Systeme"
             }
           }
         ],
@@ -310,7 +402,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 375.5
+    "width": 200
   },
   "right": {
     "id": "b064cccbba5473b0",
@@ -345,8 +437,8 @@
             "state": {
               "type": "advanced-tables-toolbar",
               "state": {},
-              "icon": "lucide-file",
-              "title": "Plugin no longer active"
+              "icon": "lucide-ghost",
+              "title": "advanced-tables-toolbar"
             }
           },
           {
@@ -355,8 +447,8 @@
             "state": {
               "type": "recent-files",
               "state": {},
-              "icon": "lucide-file",
-              "title": "Plugin no longer active"
+              "icon": "lucide-ghost",
+              "title": "recent-files"
             }
           },
           {
@@ -365,8 +457,8 @@
             "state": {
               "type": "full-calendar-sidebar-view",
               "state": {},
-              "icon": "lucide-file",
-              "title": "Plugin no longer active"
+              "icon": "lucide-ghost",
+              "title": "full-calendar-sidebar-view"
             }
           }
         ],
@@ -388,64 +480,68 @@
       "markdown-importer:Open format converter": false,
       "random-note:Open random note": false,
       "workspaces:Manage workspace layouts": false,
+      "bases:Create new base": false,
       "obsidian-full-calendar:Open Full Calendar": false,
       "templater-obsidian:Templater": false,
-      "obsidian-kanban:Create new board": false,
       "pexels-banner:🚩 Pixel Banner Menu": false,
       "obsidian-shellcommands:Shell commands: Custom variables": false,
       "table-editor-obsidian:Advanced Tables Toolbar": false,
       "most-used:Show most used words graph": false,
-      "obsidian-git:Open Git source control": false
+      "obsidian-git:Open Git source control": false,
+      "obsidian-kanban:Create new board": false,
+      "smart-connections:Open: Smart Chat": false,
+      "smart-connections:Smart Connections: Open connections view": false,
+      "smart-connections:Smart Connections: Open random connection": true,
+      "smart-second-brain:Open S2B Chat": false
     }
   },
-  "active": "2a00e57b01749c7d",
+  "active": "592722153162dfd6",
   "lastOpenFiles": [
-    "Aussortieren/📒Wisften(👨‍🔬️-💵-🔢)/Kulturwissenschaften/Geisteswissenschaften(🏺-🤸‍♂️-🙏)/🧠Psychologie/Kognitive Psychologie/Wahrnehmung und Gedächtnis/Gruppendynamik/Gruppendynamik.md",
-    "Aussortieren/📒Wisften(👨‍🔬️-💵-🔢)/Kulturwissenschaften/Geisteswissenschaften(🏺-🤸‍♂️-🙏)/🧠Psychologie/Kognitive Psychologie/Entscheidungsfindung/Entscheidungsfindung.md",
-    "Aussortieren/📒Wisften(👨‍🔬️-💵-🔢)/Kulturwissenschaften/Geisteswissenschaften(🏺-🤸‍♂️-🙏)/🧠Psychologie/Kognitive Psychologie/Wahrnehmung und Gedächtnis/Interpersonale Beziehungen/Interpersonale Beziehungen.md",
-    "Aussortieren/📒Wisften(👨‍🔬️-💵-🔢)/Kulturwissenschaften/Geisteswissenschaften(🏺-🤸‍♂️-🙏)/🧠Psychologie/Kognitive Psychologie/Kognitive Psychologie.md",
-    "Aussortieren/📒Wisften(👨‍🔬️-💵-🔢)/Kulturwissenschaften/Geisteswissenschaften(🏺-🤸‍♂️-🙏)/🧠Psychologie/Sozialpsychologie/Sozialpsychologie.md",
-    "Aussortieren/📒Wisften(👨‍🔬️-💵-🔢)/Kulturwissenschaften/Geisteswissenschaften(🏺-🤸‍♂️-🙏)/🤸‍♂️Sportwissenschaften/🤸‍♂️Sportwissenschaften.md",
-    "Aussortieren/📒Wisften(👨‍🔬️-💵-🔢)/Kulturwissenschaften/Geisteswissenschaften(🏺-🤸‍♂️-🙏)/🙏Religon/🙏Religon.md",
-    "Aussortieren/📒Wisften(👨‍🔬️-💵-🔢)/Kulturwissenschaften/Geisteswissenschaften(🏺-🤸‍♂️-🙏)/Neuer Ordner/Neuer Ordner.md",
-    "Aussortieren/📒Wisften(👨‍🔬️-💵-🔢)/Kulturwissenschaften/Geisteswissenschaften(🏺-🤸‍♂️-🙏)/Philosophie/Ethik/Moralische Theorien/Erkenntnistheorie/Erkenntnistheorie.md",
-    "Aussortieren/📒Wisften(👨‍🔬️-💵-🔢)/Kulturwissenschaften/Geisteswissenschaften(🏺-🤸‍♂️-🙏)/Philosophie/Ethik/Moralische Theorien/Ontologie/Ontologie.md",
-    "Aussortieren/📒Wisften(👨‍🔬️-💵-🔢)/Kulturwissenschaften/Geisteswissenschaften(🏺-🤸‍♂️-🙏)/Philosophie/Ethik/Angewandte Ethik/Angewandte Ethik.md",
-    "Aussortieren/📒Wisften(👨‍🔬️-💵-🔢)/Kulturwissenschaften/Geisteswissenschaften(🏺-🤸‍♂️-🙏)/Philosophie/Ethik/Ethik.md",
-    "Aussortieren/📒Wisften(👨‍🔬️-💵-🔢)/Kulturwissenschaften/Geisteswissenschaften(🏺-🤸‍♂️-🙏)/Philosophie/Metaphysik/Metaphysik.md",
-    "Aussortieren/📒Wisften(👨‍🔬️-💵-🔢)/Kulturwissenschaften/Geisteswissenschaften(🏺-🤸‍♂️-🙏)/Philosophie/Philosophie.md",
-    "Aussortieren/📒Wisften(👨‍🔬️-💵-🔢)/Kulturwissenschaften/Geisteswissenschaften(🏺-🤸‍♂️-🙏)/Geisteswissenschaften(🏺-🤸‍♂️-🙏).md",
-    "Aussortieren/📒Wisften(👨‍🔬️-💵-🔢)/Kulturwissenschaften/Sozialwissenschaften/Soziologie/Gesellschaftsstrukturen/Soziale Schichten/Armut und Ungleichheit/Armut und Ungleichheit.md",
-    "Aussortieren/📒Wisften(👨‍🔬️-💵-🔢)/Kulturwissenschaften/Sozialwissenschaften/Soziologie/Gesellschaftsstrukturen/Soziale Schichten/Kriminalität und Deviantverhalten/Kriminalität und Deviantverhalten.md",
-    "Aussortieren/📒Wisften(👨‍🔬️-💵-🔢)/Kulturwissenschaften/Sozialwissenschaften/Soziologie/Gesellschaftsstrukturen/Institutionen/Institutionen.md",
-    "Aussortieren/📒Wisften(👨‍🔬️-💵-🔢)/Kulturwissenschaften/Sozialwissenschaften/Soziologie/Gesellschaftsstrukturen/Soziale Schichten/Soziale Schichten.md",
-    "Aussortieren/📒Wisften(👨‍🔬️-💵-🔢)/Kulturwissenschaften/Sozialwissenschaften/Soziologie/Gesellschaftsstrukturen/Gesellschaftsstrukturen.md",
-    "Aussortieren/📒Wisften(👨‍🔬️-💵-🔢)/Kulturwissenschaften/Sozialwissenschaften/Soziologie/Soziale Probleme/Soziale Probleme.md",
-    "Aussortieren/📒Wisften(👨‍🔬️-💵-🔢)/Kulturwissenschaften/Sozialwissenschaften/Politikwissenschaften/Politikwissenschaften.md",
-    "Aussortieren/📒Wisften(👨‍🔬️-💵-🔢)/Kulturwissenschaften/Sozialwissenschaften/Soziologie/Soziologie.md",
-    "Aussortieren/📒Wisften(👨‍🔬️-💵-🔢)/Kulturwissenschaften/Sozialwissenschaften/Sozialwissenschaften.md",
-    "Aussortieren/📒Wisften(👨‍🔬️-💵-🔢)/Kulturwissenschaften/Kulturwissenschaften.md",
-    "Aussortieren/📒Wisften(👨‍🔬️-💵-🔢)/Ingenieurswissenschaften/Ingenieurswissenschaften.md",
-    "03.Alltagsmanagemnt/02.Haustiere&Pflanzen/02.Pflanzen",
-    "🎛-Obsidian-/🎛Templates/aussortieren",
-    "Brain-Notes.ical",
-    "PandorasBox",
-    "04.🧘‍♂️Vitaloase/01.AllgemeineGesundheit",
-    "03.Alltagsmanagemnt/04.Recht,Dokumente&Sicherheit/03.Sicherheit",
-    "03.Alltagsmanagemnt/04.Recht,Dokumente&Sicherheit/02.Dokumente",
-    "03.Alltagsmanagemnt/04.Recht,Dokumente&Sicherheit/01.Recht",
-    "03.Alltagsmanagemnt/04.Recht,Dokumente&Sicherheit",
-    "03.Alltagsmanagemnt/03.Mobilität",
+    "10.⚙️Systemschmiede/Systemplan/Server/Unbenannt..canvas",
+    "10.⚙️Systemschmiede/Systemplan/Server/Namensgebung für Systeme.md",
+    "README.md",
+    "00.📖Lebensplan/Gesamter Lebenspülan nein.md",
+    "00.📖Lebensplan/Gesamter Lebensplan vielleicht.md",
+    "00.📖Lebensplan/00.📖Lebensplan.md",
+    "Sammlung/Unbenannt.md",
+    "10.⚙️Systemschmiede/Systemplan/Server/ContaboVPS/Contabo VPS Setup.md",
+    "Sammlung/Untitled 2.md",
+    "10.⚙️Systemschmiede/Systemplan/Server/ContaboVPS/Unbenannt",
+    "10.⚙️Systemschmiede/Systemplan/Server/ContaboVPS/Lebensplan",
+    "10.⚙️Systemschmiede/Systemplan/Server/ContaboVPS/n8n",
+    "10.⚙️Systemschmiede/Systemplan/Server/ContaboVPS",
+    "10.⚙️Systemschmiede/Systemplan/Server",
+    "Sammlung/Untitled.canvas",
+    "Sammlung/Untitled.md",
+    "Sammlung/Untitled 1.md",
+    "10.⚙️Systemschmiede/Systemplan/PC/Ubuntu/UbuntuSetup/Conky.md",
+    "backup.md",
+    "🎛-Obsidian-/🎛Templates/GenerellesYAMLTemplate.md",
+    "Sammlung/Untitled.base",
+    "Sammlung/Untitled 3.md",
+    "To-Do/Was ich machen kann.md",
+    "To-Do/To-Do.md",
+    "10.⚙️Systemschmiede/Systemplan/PC/Ubuntu/UbuntuSetup/Github Desktop.md",
+    "10.⚙️Systemschmiede/Systemplan/PC/Ubuntu/UbuntuSetup/Bitwarden.md",
+    "10.⚙️Systemschmiede/Systemplan/PC/Ubuntu/UbuntuSetup/ChatGPT Desktop.md",
+    "10.⚙️Systemschmiede/Systemplan/PC/Ubuntu/UbuntuSetup/Obsidian.md.md",
+    "10.⚙️Systemschmiede/Systemplan/PC/Ubuntu/UbuntuSetup/Spotify.md",
+    "10.⚙️Systemschmiede/Systemplan/PC/Ubuntu/UbuntuSetup/git.md",
+    "10.⚙️Systemschmiede/Systemplan/PC/Windows 11 PC/Windows 11 PC.md",
+    "10.⚙️Systemschmiede/Systemplan/Systemplan.md",
+    "10.⚙️Systemschmiede/Systemplan/PC/PC.md",
+    "Sammlung",
+    "00.📖Lebensplan/Plan Definitionen/Untitled",
+    "10.⚙️Systemschmiede/Systemplan/PC/Ubuntu/UbuntuSetup",
+    "10.⚙️Systemschmiede/Systemplan/PC/Ubuntu",
+    "10.⚙️Systemschmiede/Systemplan/Gesamter Systemplan.canvas",
     "10.⚙️Systemschmiede/Systemplan/PC/Autogen/Lebensplan/AutoGen Lebensplan aufarbeitung.canvas",
     "10.⚙️Systemschmiede/Systemplan/PC/Autogen/Lebensplan/AutoGen Ausbildingsplan.canvas",
-    "10.⚙️Systemschmiede/Systemplan/Systemplan.canvas",
     "10.⚙️Systemschmiede/Systemplan/PC/Skriptplan.canvas",
     "AusbildungsVault/Plan/Abarbeiten/Abarbeiten.canvas",
     "AusbildungsVault/Plan/Fachinformatiker Lernplan.canvas",
     "Grichische Mythology Stammbaum.canvas",
     "Aussortieren/-Ticketsystem/DSB/Haupt-DSB.canvas",
-    "Aussortieren/-Ticketsystem/DSB/Zentral-DSB.canvas",
-    "Aussortieren/-Ticketsystem/plan/Ticketsystem plan.canvas",
     "Aussortieren/_attachments/Farbspektrum.png"
   ]
 }

@@ -17,5 +17,7 @@
   "smart_chat_model": "gpt-3.5-turbo",
   "view_open": true,
   "version": "1.6.8",
-  "failed_files": []
+  "failed_files": [],
+  "installed_at": 1748904289162,
+  "last_version": "3.0.80"
 }

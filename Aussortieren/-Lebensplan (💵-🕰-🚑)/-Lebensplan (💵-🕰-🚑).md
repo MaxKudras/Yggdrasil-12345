@@ -39,7 +39,7 @@ type: folder_brief_live
 			- [[Monatsaufgaben]]
 			- **[[Monatsübersicht]]**
 			- **[[Monatsziele]]**
-			- **[[Untitled]]**
+			- **[[Aussortieren/-Lebensplan (💵-🕰-🚑)/🕰Zeitmanagment (⌛-🌀-💼-📅-📆-🗓)/📅Kalender/📆Monatsplan/Untitled/Untitled]]**
 		- **[[🗓Jahresplan]]**
 			- [[_MoC Jahresplan]]
 			- **[[Feiertage und wichtige Ereignisse]]**

@@ -1,0 +1,42 @@
+{
+  "apiKey": "",
+  "apiKeyCreatedAt": null,
+  "baseURL": "https://api.openai.com/v1",
+  "classifierEngine": 0,
+  "jinaApiKey": "jina_***",
+  "jinaBaseURL": "https://api.jina.ai/v1",
+  "commandOption": {
+    "useRef": true,
+    "refs": [
+      "Inktober",
+      "NaNoWriMo",
+      "Gesundheit",
+      "Priorität",
+      "Erfolg",
+      "️⃣",
+      "timeline",
+      "test",
+      "important",
+      "todo",
+      "reference",
+      "Ticket",
+      "Generell",
+      "dringend"
+    ],
+    "manualRefs": [],
+    "refType": 0,
+    "filterRegex": "",
+    "outLocation": 0,
+    "outType": 2,
+    "outPrefix": "",
+    "outSuffix": "",
+    "key": "tags",
+    "overwrite": false,
+    "useCustomCommand": false,
+    "chat_role": "You are a JSON answer bot. Don't answer other words.",
+    "prmpt_template": "Classify this content:\n\"\"\"\n{{input}}\n\"\"\"\nAnswer format is JSON {reliability:0~1, outputs:[tag1,tag2,...]}. \nEven if you are unsure, qualify the reliability and select the best matches.\nRespond only with valid JSON. Do not write an introduction or summary.\nOutput tags must be from these options:\n\n{{reference}}\n",
+    "model": "gpt-4.1-mini",
+    "max_tokens": 150,
+    "max_suggestions": 3
+  }
+}

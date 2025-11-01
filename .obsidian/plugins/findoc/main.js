@@ -1220,22 +1220,31 @@ var require_typed_function = __commonJS({
           }
         }
         typed3.addConversion = function(conversion) {
+          let options = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : {
+            override: false
+          };
           _validateConversion(conversion);
           const to3 = findType(conversion.to);
-          if (to3.conversionsTo.every(function(other) {
-            return other.from !== conversion.from;
-          })) {
-            to3.conversionsTo.push({
-              from: conversion.from,
-              convert: conversion.convert,
-              index: nConversions++
-            });
-          } else {
-            throw new Error('There is already a conversion from "' + conversion.from + '" to "' + to3.name + '"');
+          const existing = to3.conversionsTo.find((other) => other.from === conversion.from);
+          if (existing) {
+            if (options && options.override) {
+              typed3.removeConversion({
+                from: existing.from,
+                to: conversion.to,
+                convert: existing.convert
+              });
+            } else {
+              throw new Error('There is already a conversion from "' + conversion.from + '" to "' + to3.name + '"');
+            }
           }
+          to3.conversionsTo.push({
+            from: conversion.from,
+            convert: conversion.convert,
+            index: nConversions++
+          });
         };
-        typed3.addConversions = function(conversions) {
-          conversions.forEach(typed3.addConversion);
+        typed3.addConversions = function(conversions, options) {
+          conversions.forEach((conversion) => typed3.addConversion(conversion, options));
         };
         typed3.removeConversion = function(conversion) {
           _validateConversion(conversion);
@@ -1270,617 +1279,13 @@ var require_typed_function = __commonJS({
   }
 });
 
-// node_modules/complex.js/complex.js
-var require_complex = __commonJS({
-  "node_modules/complex.js/complex.js"(exports, module2) {
-    (function(root) {
-      "use strict";
-      var cosh4 = Math.cosh || function(x) {
-        return Math.abs(x) < 1e-9 ? 1 - x : (Math.exp(x) + Math.exp(-x)) * 0.5;
-      };
-      var sinh4 = Math.sinh || function(x) {
-        return Math.abs(x) < 1e-9 ? x : (Math.exp(x) - Math.exp(-x)) * 0.5;
-      };
-      var cosm1 = function(x) {
-        var b = Math.PI / 4;
-        if (-b > x || x > b) {
-          return Math.cos(x) - 1;
-        }
-        var xx = x * x;
-        return xx * (xx * (xx * (xx * (xx * (xx * (xx * (xx / 20922789888e3 - 1 / 87178291200) + 1 / 479001600) - 1 / 3628800) + 1 / 40320) - 1 / 720) + 1 / 24) - 1 / 2);
-      };
-      var hypot3 = function(x, y) {
-        var a = Math.abs(x);
-        var b = Math.abs(y);
-        if (a < 3e3 && b < 3e3) {
-          return Math.sqrt(a * a + b * b);
-        }
-        if (a < b) {
-          a = b;
-          b = x / y;
-        } else {
-          b = y / x;
-        }
-        return a * Math.sqrt(1 + b * b);
-      };
-      var parser_exit = function() {
-        throw SyntaxError("Invalid Param");
-      };
-      function logHypot(a, b) {
-        var _a = Math.abs(a);
-        var _b = Math.abs(b);
-        if (a === 0) {
-          return Math.log(_b);
-        }
-        if (b === 0) {
-          return Math.log(_a);
-        }
-        if (_a < 3e3 && _b < 3e3) {
-          return Math.log(a * a + b * b) * 0.5;
-        }
-        a = a / 2;
-        b = b / 2;
-        return 0.5 * Math.log(a * a + b * b) + Math.LN2;
-      }
-      var parse3 = function(a, b) {
-        var z = { "re": 0, "im": 0 };
-        if (a === void 0 || a === null) {
-          z["re"] = z["im"] = 0;
-        } else if (b !== void 0) {
-          z["re"] = a;
-          z["im"] = b;
-        } else
-          switch (typeof a) {
-            case "object":
-              if ("im" in a && "re" in a) {
-                z["re"] = a["re"];
-                z["im"] = a["im"];
-              } else if ("abs" in a && "arg" in a) {
-                if (!Number.isFinite(a["abs"]) && Number.isFinite(a["arg"])) {
-                  return Complex3["INFINITY"];
-                }
-                z["re"] = a["abs"] * Math.cos(a["arg"]);
-                z["im"] = a["abs"] * Math.sin(a["arg"]);
-              } else if ("r" in a && "phi" in a) {
-                if (!Number.isFinite(a["r"]) && Number.isFinite(a["phi"])) {
-                  return Complex3["INFINITY"];
-                }
-                z["re"] = a["r"] * Math.cos(a["phi"]);
-                z["im"] = a["r"] * Math.sin(a["phi"]);
-              } else if (a.length === 2) {
-                z["re"] = a[0];
-                z["im"] = a[1];
-              } else {
-                parser_exit();
-              }
-              break;
-            case "string":
-              z["im"] = z["re"] = 0;
-              var tokens = a.match(/\d+\.?\d*e[+-]?\d+|\d+\.?\d*|\.\d+|./g);
-              var plus = 1;
-              var minus = 0;
-              if (tokens === null) {
-                parser_exit();
-              }
-              for (var i2 = 0; i2 < tokens.length; i2++) {
-                var c = tokens[i2];
-                if (c === " " || c === "	" || c === "\n") {
-                } else if (c === "+") {
-                  plus++;
-                } else if (c === "-") {
-                  minus++;
-                } else if (c === "i" || c === "I") {
-                  if (plus + minus === 0) {
-                    parser_exit();
-                  }
-                  if (tokens[i2 + 1] !== " " && !isNaN(tokens[i2 + 1])) {
-                    z["im"] += parseFloat((minus % 2 ? "-" : "") + tokens[i2 + 1]);
-                    i2++;
-                  } else {
-                    z["im"] += parseFloat((minus % 2 ? "-" : "") + "1");
-                  }
-                  plus = minus = 0;
-                } else {
-                  if (plus + minus === 0 || isNaN(c)) {
-                    parser_exit();
-                  }
-                  if (tokens[i2 + 1] === "i" || tokens[i2 + 1] === "I") {
-                    z["im"] += parseFloat((minus % 2 ? "-" : "") + c);
-                    i2++;
-                  } else {
-                    z["re"] += parseFloat((minus % 2 ? "-" : "") + c);
-                  }
-                  plus = minus = 0;
-                }
-              }
-              if (plus + minus > 0) {
-                parser_exit();
-              }
-              break;
-            case "number":
-              z["im"] = 0;
-              z["re"] = a;
-              break;
-            default:
-              parser_exit();
-          }
-        if (isNaN(z["re"]) || isNaN(z["im"])) {
-        }
-        return z;
-      };
-      function Complex3(a, b) {
-        if (!(this instanceof Complex3)) {
-          return new Complex3(a, b);
-        }
-        var z = parse3(a, b);
-        this["re"] = z["re"];
-        this["im"] = z["im"];
-      }
-      Complex3.prototype = {
-        "re": 0,
-        "im": 0,
-        "sign": function() {
-          var abs3 = this["abs"]();
-          return new Complex3(this["re"] / abs3, this["im"] / abs3);
-        },
-        "add": function(a, b) {
-          var z = new Complex3(a, b);
-          if (this["isInfinite"]() && z["isInfinite"]()) {
-            return Complex3["NAN"];
-          }
-          if (this["isInfinite"]() || z["isInfinite"]()) {
-            return Complex3["INFINITY"];
-          }
-          return new Complex3(this["re"] + z["re"], this["im"] + z["im"]);
-        },
-        "sub": function(a, b) {
-          var z = new Complex3(a, b);
-          if (this["isInfinite"]() && z["isInfinite"]()) {
-            return Complex3["NAN"];
-          }
-          if (this["isInfinite"]() || z["isInfinite"]()) {
-            return Complex3["INFINITY"];
-          }
-          return new Complex3(this["re"] - z["re"], this["im"] - z["im"]);
-        },
-        "mul": function(a, b) {
-          var z = new Complex3(a, b);
-          if (this["isInfinite"]() && z["isZero"]() || this["isZero"]() && z["isInfinite"]()) {
-            return Complex3["NAN"];
-          }
-          if (this["isInfinite"]() || z["isInfinite"]()) {
-            return Complex3["INFINITY"];
-          }
-          if (z["im"] === 0 && this["im"] === 0) {
-            return new Complex3(this["re"] * z["re"], 0);
-          }
-          return new Complex3(this["re"] * z["re"] - this["im"] * z["im"], this["re"] * z["im"] + this["im"] * z["re"]);
-        },
-        "div": function(a, b) {
-          var z = new Complex3(a, b);
-          if (this["isZero"]() && z["isZero"]() || this["isInfinite"]() && z["isInfinite"]()) {
-            return Complex3["NAN"];
-          }
-          if (this["isInfinite"]() || z["isZero"]()) {
-            return Complex3["INFINITY"];
-          }
-          if (this["isZero"]() || z["isInfinite"]()) {
-            return Complex3["ZERO"];
-          }
-          a = this["re"];
-          b = this["im"];
-          var c = z["re"];
-          var d = z["im"];
-          var t, x;
-          if (d === 0) {
-            return new Complex3(a / c, b / c);
-          }
-          if (Math.abs(c) < Math.abs(d)) {
-            x = c / d;
-            t = c * x + d;
-            return new Complex3((a * x + b) / t, (b * x - a) / t);
-          } else {
-            x = d / c;
-            t = d * x + c;
-            return new Complex3((a + b * x) / t, (b - a * x) / t);
-          }
-        },
-        "pow": function(a, b) {
-          var z = new Complex3(a, b);
-          a = this["re"];
-          b = this["im"];
-          if (z["isZero"]()) {
-            return Complex3["ONE"];
-          }
-          if (z["im"] === 0) {
-            if (b === 0 && a > 0) {
-              return new Complex3(Math.pow(a, z["re"]), 0);
-            } else if (a === 0) {
-              switch ((z["re"] % 4 + 4) % 4) {
-                case 0:
-                  return new Complex3(Math.pow(b, z["re"]), 0);
-                case 1:
-                  return new Complex3(0, Math.pow(b, z["re"]));
-                case 2:
-                  return new Complex3(-Math.pow(b, z["re"]), 0);
-                case 3:
-                  return new Complex3(0, -Math.pow(b, z["re"]));
-              }
-            }
-          }
-          if (a === 0 && b === 0 && z["re"] > 0 && z["im"] >= 0) {
-            return Complex3["ZERO"];
-          }
-          var arg2 = Math.atan2(b, a);
-          var loh = logHypot(a, b);
-          a = Math.exp(z["re"] * loh - z["im"] * arg2);
-          b = z["im"] * loh + z["re"] * arg2;
-          return new Complex3(a * Math.cos(b), a * Math.sin(b));
-        },
-        "sqrt": function() {
-          var a = this["re"];
-          var b = this["im"];
-          var r = this["abs"]();
-          var re2, im2;
-          if (a >= 0) {
-            if (b === 0) {
-              return new Complex3(Math.sqrt(a), 0);
-            }
-            re2 = 0.5 * Math.sqrt(2 * (r + a));
-          } else {
-            re2 = Math.abs(b) / Math.sqrt(2 * (r - a));
-          }
-          if (a <= 0) {
-            im2 = 0.5 * Math.sqrt(2 * (r - a));
-          } else {
-            im2 = Math.abs(b) / Math.sqrt(2 * (r + a));
-          }
-          return new Complex3(re2, b < 0 ? -im2 : im2);
-        },
-        "exp": function() {
-          var tmp = Math.exp(this["re"]);
-          if (this["im"] === 0) {
-          }
-          return new Complex3(tmp * Math.cos(this["im"]), tmp * Math.sin(this["im"]));
-        },
-        "expm1": function() {
-          var a = this["re"];
-          var b = this["im"];
-          return new Complex3(Math.expm1(a) * Math.cos(b) + cosm1(b), Math.exp(a) * Math.sin(b));
-        },
-        "log": function() {
-          var a = this["re"];
-          var b = this["im"];
-          if (b === 0 && a > 0) {
-          }
-          return new Complex3(logHypot(a, b), Math.atan2(b, a));
-        },
-        "abs": function() {
-          return hypot3(this["re"], this["im"]);
-        },
-        "arg": function() {
-          return Math.atan2(this["im"], this["re"]);
-        },
-        "sin": function() {
-          var a = this["re"];
-          var b = this["im"];
-          return new Complex3(Math.sin(a) * cosh4(b), Math.cos(a) * sinh4(b));
-        },
-        "cos": function() {
-          var a = this["re"];
-          var b = this["im"];
-          return new Complex3(Math.cos(a) * cosh4(b), -Math.sin(a) * sinh4(b));
-        },
-        "tan": function() {
-          var a = 2 * this["re"];
-          var b = 2 * this["im"];
-          var d = Math.cos(a) + cosh4(b);
-          return new Complex3(Math.sin(a) / d, sinh4(b) / d);
-        },
-        "cot": function() {
-          var a = 2 * this["re"];
-          var b = 2 * this["im"];
-          var d = Math.cos(a) - cosh4(b);
-          return new Complex3(-Math.sin(a) / d, sinh4(b) / d);
-        },
-        "sec": function() {
-          var a = this["re"];
-          var b = this["im"];
-          var d = 0.5 * cosh4(2 * b) + 0.5 * Math.cos(2 * a);
-          return new Complex3(Math.cos(a) * cosh4(b) / d, Math.sin(a) * sinh4(b) / d);
-        },
-        "csc": function() {
-          var a = this["re"];
-          var b = this["im"];
-          var d = 0.5 * cosh4(2 * b) - 0.5 * Math.cos(2 * a);
-          return new Complex3(Math.sin(a) * cosh4(b) / d, -Math.cos(a) * sinh4(b) / d);
-        },
-        "asin": function() {
-          var a = this["re"];
-          var b = this["im"];
-          var t1 = new Complex3(b * b - a * a + 1, -2 * a * b)["sqrt"]();
-          var t2 = new Complex3(t1["re"] - b, t1["im"] + a)["log"]();
-          return new Complex3(t2["im"], -t2["re"]);
-        },
-        "acos": function() {
-          var a = this["re"];
-          var b = this["im"];
-          var t1 = new Complex3(b * b - a * a + 1, -2 * a * b)["sqrt"]();
-          var t2 = new Complex3(t1["re"] - b, t1["im"] + a)["log"]();
-          return new Complex3(Math.PI / 2 - t2["im"], t2["re"]);
-        },
-        "atan": function() {
-          var a = this["re"];
-          var b = this["im"];
-          if (a === 0) {
-            if (b === 1) {
-              return new Complex3(0, Infinity);
-            }
-            if (b === -1) {
-              return new Complex3(0, -Infinity);
-            }
-          }
-          var d = a * a + (1 - b) * (1 - b);
-          var t1 = new Complex3((1 - b * b - a * a) / d, -2 * a / d).log();
-          return new Complex3(-0.5 * t1["im"], 0.5 * t1["re"]);
-        },
-        "acot": function() {
-          var a = this["re"];
-          var b = this["im"];
-          if (b === 0) {
-            return new Complex3(Math.atan2(1, a), 0);
-          }
-          var d = a * a + b * b;
-          return d !== 0 ? new Complex3(a / d, -b / d).atan() : new Complex3(a !== 0 ? a / 0 : 0, b !== 0 ? -b / 0 : 0).atan();
-        },
-        "asec": function() {
-          var a = this["re"];
-          var b = this["im"];
-          if (a === 0 && b === 0) {
-            return new Complex3(0, Infinity);
-          }
-          var d = a * a + b * b;
-          return d !== 0 ? new Complex3(a / d, -b / d).acos() : new Complex3(a !== 0 ? a / 0 : 0, b !== 0 ? -b / 0 : 0).acos();
-        },
-        "acsc": function() {
-          var a = this["re"];
-          var b = this["im"];
-          if (a === 0 && b === 0) {
-            return new Complex3(Math.PI / 2, Infinity);
-          }
-          var d = a * a + b * b;
-          return d !== 0 ? new Complex3(a / d, -b / d).asin() : new Complex3(a !== 0 ? a / 0 : 0, b !== 0 ? -b / 0 : 0).asin();
-        },
-        "sinh": function() {
-          var a = this["re"];
-          var b = this["im"];
-          return new Complex3(sinh4(a) * Math.cos(b), cosh4(a) * Math.sin(b));
-        },
-        "cosh": function() {
-          var a = this["re"];
-          var b = this["im"];
-          return new Complex3(cosh4(a) * Math.cos(b), sinh4(a) * Math.sin(b));
-        },
-        "tanh": function() {
-          var a = 2 * this["re"];
-          var b = 2 * this["im"];
-          var d = cosh4(a) + Math.cos(b);
-          return new Complex3(sinh4(a) / d, Math.sin(b) / d);
-        },
-        "coth": function() {
-          var a = 2 * this["re"];
-          var b = 2 * this["im"];
-          var d = cosh4(a) - Math.cos(b);
-          return new Complex3(sinh4(a) / d, -Math.sin(b) / d);
-        },
-        "csch": function() {
-          var a = this["re"];
-          var b = this["im"];
-          var d = Math.cos(2 * b) - cosh4(2 * a);
-          return new Complex3(-2 * sinh4(a) * Math.cos(b) / d, 2 * cosh4(a) * Math.sin(b) / d);
-        },
-        "sech": function() {
-          var a = this["re"];
-          var b = this["im"];
-          var d = Math.cos(2 * b) + cosh4(2 * a);
-          return new Complex3(2 * cosh4(a) * Math.cos(b) / d, -2 * sinh4(a) * Math.sin(b) / d);
-        },
-        "asinh": function() {
-          var tmp = this["im"];
-          this["im"] = -this["re"];
-          this["re"] = tmp;
-          var res = this["asin"]();
-          this["re"] = -this["im"];
-          this["im"] = tmp;
-          tmp = res["re"];
-          res["re"] = -res["im"];
-          res["im"] = tmp;
-          return res;
-        },
-        "acosh": function() {
-          var res = this["acos"]();
-          if (res["im"] <= 0) {
-            var tmp = res["re"];
-            res["re"] = -res["im"];
-            res["im"] = tmp;
-          } else {
-            var tmp = res["im"];
-            res["im"] = -res["re"];
-            res["re"] = tmp;
-          }
-          return res;
-        },
-        "atanh": function() {
-          var a = this["re"];
-          var b = this["im"];
-          var noIM = a > 1 && b === 0;
-          var oneMinus = 1 - a;
-          var onePlus = 1 + a;
-          var d = oneMinus * oneMinus + b * b;
-          var x = d !== 0 ? new Complex3((onePlus * oneMinus - b * b) / d, (b * oneMinus + onePlus * b) / d) : new Complex3(a !== -1 ? a / 0 : 0, b !== 0 ? b / 0 : 0);
-          var temp = x["re"];
-          x["re"] = logHypot(x["re"], x["im"]) / 2;
-          x["im"] = Math.atan2(x["im"], temp) / 2;
-          if (noIM) {
-            x["im"] = -x["im"];
-          }
-          return x;
-        },
-        "acoth": function() {
-          var a = this["re"];
-          var b = this["im"];
-          if (a === 0 && b === 0) {
-            return new Complex3(0, Math.PI / 2);
-          }
-          var d = a * a + b * b;
-          return d !== 0 ? new Complex3(a / d, -b / d).atanh() : new Complex3(a !== 0 ? a / 0 : 0, b !== 0 ? -b / 0 : 0).atanh();
-        },
-        "acsch": function() {
-          var a = this["re"];
-          var b = this["im"];
-          if (b === 0) {
-            return new Complex3(a !== 0 ? Math.log(a + Math.sqrt(a * a + 1)) : Infinity, 0);
-          }
-          var d = a * a + b * b;
-          return d !== 0 ? new Complex3(a / d, -b / d).asinh() : new Complex3(a !== 0 ? a / 0 : 0, b !== 0 ? -b / 0 : 0).asinh();
-        },
-        "asech": function() {
-          var a = this["re"];
-          var b = this["im"];
-          if (this["isZero"]()) {
-            return Complex3["INFINITY"];
-          }
-          var d = a * a + b * b;
-          return d !== 0 ? new Complex3(a / d, -b / d).acosh() : new Complex3(a !== 0 ? a / 0 : 0, b !== 0 ? -b / 0 : 0).acosh();
-        },
-        "inverse": function() {
-          if (this["isZero"]()) {
-            return Complex3["INFINITY"];
-          }
-          if (this["isInfinite"]()) {
-            return Complex3["ZERO"];
-          }
-          var a = this["re"];
-          var b = this["im"];
-          var d = a * a + b * b;
-          return new Complex3(a / d, -b / d);
-        },
-        "conjugate": function() {
-          return new Complex3(this["re"], -this["im"]);
-        },
-        "neg": function() {
-          return new Complex3(-this["re"], -this["im"]);
-        },
-        "ceil": function(places) {
-          places = Math.pow(10, places || 0);
-          return new Complex3(Math.ceil(this["re"] * places) / places, Math.ceil(this["im"] * places) / places);
-        },
-        "floor": function(places) {
-          places = Math.pow(10, places || 0);
-          return new Complex3(Math.floor(this["re"] * places) / places, Math.floor(this["im"] * places) / places);
-        },
-        "round": function(places) {
-          places = Math.pow(10, places || 0);
-          return new Complex3(Math.round(this["re"] * places) / places, Math.round(this["im"] * places) / places);
-        },
-        "equals": function(a, b) {
-          var z = new Complex3(a, b);
-          return Math.abs(z["re"] - this["re"]) <= Complex3["EPSILON"] && Math.abs(z["im"] - this["im"]) <= Complex3["EPSILON"];
-        },
-        "clone": function() {
-          return new Complex3(this["re"], this["im"]);
-        },
-        "toString": function() {
-          var a = this["re"];
-          var b = this["im"];
-          var ret = "";
-          if (this["isNaN"]()) {
-            return "NaN";
-          }
-          if (this["isInfinite"]()) {
-            return "Infinity";
-          }
-          if (Math.abs(a) < Complex3["EPSILON"]) {
-            a = 0;
-          }
-          if (Math.abs(b) < Complex3["EPSILON"]) {
-            b = 0;
-          }
-          if (b === 0) {
-            return ret + a;
-          }
-          if (a !== 0) {
-            ret += a;
-            ret += " ";
-            if (b < 0) {
-              b = -b;
-              ret += "-";
-            } else {
-              ret += "+";
-            }
-            ret += " ";
-          } else if (b < 0) {
-            b = -b;
-            ret += "-";
-          }
-          if (b !== 1) {
-            ret += b;
-          }
-          return ret + "i";
-        },
-        "toVector": function() {
-          return [this["re"], this["im"]];
-        },
-        "valueOf": function() {
-          if (this["im"] === 0) {
-            return this["re"];
-          }
-          return null;
-        },
-        "isNaN": function() {
-          return isNaN(this["re"]) || isNaN(this["im"]);
-        },
-        "isZero": function() {
-          return this["im"] === 0 && this["re"] === 0;
-        },
-        "isFinite": function() {
-          return isFinite(this["re"]) && isFinite(this["im"]);
-        },
-        "isInfinite": function() {
-          return !(this["isNaN"]() || this["isFinite"]());
-        }
-      };
-      Complex3["ZERO"] = new Complex3(0, 0);
-      Complex3["ONE"] = new Complex3(1, 0);
-      Complex3["I"] = new Complex3(0, 1);
-      Complex3["PI"] = new Complex3(Math.PI, 0);
-      Complex3["E"] = new Complex3(Math.E, 0);
-      Complex3["INFINITY"] = new Complex3(Infinity, Infinity);
-      Complex3["NAN"] = new Complex3(NaN, NaN);
-      Complex3["EPSILON"] = 1e-15;
-      if (typeof define === "function" && define["amd"]) {
-        define([], function() {
-          return Complex3;
-        });
-      } else if (typeof exports === "object") {
-        Object.defineProperty(Complex3, "__esModule", { "value": true });
-        Complex3["default"] = Complex3;
-        Complex3["Complex"] = Complex3;
-        module2["exports"] = Complex3;
-      } else {
-        root["Complex"] = Complex3;
-      }
-    })(exports);
-  }
-});
-
 // node_modules/fraction.js/fraction.js
 var require_fraction = __commonJS({
   "node_modules/fraction.js/fraction.js"(exports, module2) {
     (function(root) {
       "use strict";
       var MAX_CYCLE_LEN = 2e3;
-      var P3 = {
+      var P4 = {
         "s": 1,
         "n": 0,
         "d": 1
@@ -1923,7 +1328,7 @@ var require_fraction = __commonJS({
         }
         return factors;
       }
-      var parse3 = function(p1, p2) {
+      var parse4 = function(p1, p2) {
         var n = 0, d = 1, s = 1;
         var v = 0, w = 0, x = 0, y = 1, z = 1;
         var A = 0, B = 1;
@@ -2054,9 +1459,9 @@ var require_fraction = __commonJS({
         if (d === 0) {
           throw DivisionByZero();
         }
-        P3["s"] = s < 0 ? -1 : 1;
-        P3["n"] = Math.abs(n);
-        P3["d"] = Math.abs(d);
+        P4["s"] = s < 0 ? -1 : 1;
+        P4["n"] = Math.abs(n);
+        P4["d"] = Math.abs(d);
       };
       function modpow(b, e3, m) {
         var r = 1;
@@ -2110,14 +1515,14 @@ var require_fraction = __commonJS({
       }
       ;
       function Fraction3(a, b) {
-        parse3(a, b);
+        parse4(a, b);
         if (this instanceof Fraction3) {
-          a = gcd2(P3["d"], P3["n"]);
-          this["s"] = P3["s"];
-          this["n"] = P3["n"] / a;
-          this["d"] = P3["d"] / a;
+          a = gcd2(P4["d"], P4["n"]);
+          this["s"] = P4["s"];
+          this["n"] = P4["n"] / a;
+          this["d"] = P4["d"] / a;
         } else {
-          return newFraction(P3["s"] * P3["n"], P3["d"]);
+          return newFraction(P4["s"] * P4["n"], P4["d"]);
         }
       }
       var DivisionByZero = function() {
@@ -2140,20 +1545,20 @@ var require_fraction = __commonJS({
           return newFraction(-this["s"] * this["n"], this["d"]);
         },
         "add": function(a, b) {
-          parse3(a, b);
-          return newFraction(this["s"] * this["n"] * P3["d"] + P3["s"] * this["d"] * P3["n"], this["d"] * P3["d"]);
+          parse4(a, b);
+          return newFraction(this["s"] * this["n"] * P4["d"] + P4["s"] * this["d"] * P4["n"], this["d"] * P4["d"]);
         },
         "sub": function(a, b) {
-          parse3(a, b);
-          return newFraction(this["s"] * this["n"] * P3["d"] - P3["s"] * this["d"] * P3["n"], this["d"] * P3["d"]);
+          parse4(a, b);
+          return newFraction(this["s"] * this["n"] * P4["d"] - P4["s"] * this["d"] * P4["n"], this["d"] * P4["d"]);
         },
         "mul": function(a, b) {
-          parse3(a, b);
-          return newFraction(this["s"] * P3["s"] * this["n"] * P3["n"], this["d"] * P3["d"]);
+          parse4(a, b);
+          return newFraction(this["s"] * P4["s"] * this["n"] * P4["n"], this["d"] * P4["d"]);
         },
         "div": function(a, b) {
-          parse3(a, b);
-          return newFraction(this["s"] * P3["s"] * this["n"] * P3["d"], this["d"] * P3["n"]);
+          parse4(a, b);
+          return newFraction(this["s"] * P4["s"] * this["n"] * P4["d"], this["d"] * P4["n"]);
         },
         "clone": function() {
           return newFraction(this["s"] * this["n"], this["d"]);
@@ -2165,22 +1570,22 @@ var require_fraction = __commonJS({
           if (a === void 0) {
             return newFraction(this["s"] * this["n"] % this["d"], 1);
           }
-          parse3(a, b);
-          if (P3["n"] === 0 && this["d"] === 0) {
+          parse4(a, b);
+          if (P4["n"] === 0 && this["d"] === 0) {
             throw DivisionByZero();
           }
-          return newFraction(this["s"] * (P3["d"] * this["n"]) % (P3["n"] * this["d"]), P3["d"] * this["d"]);
+          return newFraction(this["s"] * (P4["d"] * this["n"]) % (P4["n"] * this["d"]), P4["d"] * this["d"]);
         },
         "gcd": function(a, b) {
-          parse3(a, b);
-          return newFraction(gcd2(P3["n"], this["n"]) * gcd2(P3["d"], this["d"]), P3["d"] * this["d"]);
+          parse4(a, b);
+          return newFraction(gcd2(P4["n"], this["n"]) * gcd2(P4["d"], this["d"]), P4["d"] * this["d"]);
         },
         "lcm": function(a, b) {
-          parse3(a, b);
-          if (P3["n"] === 0 && this["n"] === 0) {
+          parse4(a, b);
+          if (P4["n"] === 0 && this["n"] === 0) {
             return newFraction(0, 1);
           }
-          return newFraction(P3["n"] * this["n"], gcd2(P3["n"], this["n"]) * gcd2(P3["d"], this["d"]));
+          return newFraction(P4["n"] * this["n"], gcd2(P4["n"], this["n"]) * gcd2(P4["d"], this["d"]));
         },
         "ceil": function(places) {
           places = Math.pow(10, places || 0);
@@ -2207,12 +1612,12 @@ var require_fraction = __commonJS({
           return newFraction(this["s"] * this["d"], this["n"]);
         },
         "pow": function(a, b) {
-          parse3(a, b);
-          if (P3["d"] === 1) {
-            if (P3["s"] < 0) {
-              return newFraction(Math.pow(this["s"] * this["d"], P3["n"]), Math.pow(this["n"], P3["n"]));
+          parse4(a, b);
+          if (P4["d"] === 1) {
+            if (P4["s"] < 0) {
+              return newFraction(Math.pow(this["s"] * this["d"], P4["n"]), Math.pow(this["n"], P4["n"]));
             } else {
-              return newFraction(Math.pow(this["s"] * this["n"], P3["n"]), Math.pow(this["d"], P3["n"]));
+              return newFraction(Math.pow(this["s"] * this["n"], P4["n"]), Math.pow(this["d"], P4["n"]));
             }
           }
           if (this["s"] < 0)
@@ -2228,9 +1633,9 @@ var require_fraction = __commonJS({
               n = 0;
               break;
             }
-            N[k] *= P3["n"];
-            if (N[k] % P3["d"] === 0) {
-              N[k] /= P3["d"];
+            N[k] *= P4["n"];
+            if (N[k] % P4["d"] === 0) {
+              N[k] /= P4["d"];
             } else
               return null;
             n *= Math.pow(k, N[k]);
@@ -2238,25 +1643,25 @@ var require_fraction = __commonJS({
           for (var k in D) {
             if (k === "1")
               continue;
-            D[k] *= P3["n"];
-            if (D[k] % P3["d"] === 0) {
-              D[k] /= P3["d"];
+            D[k] *= P4["n"];
+            if (D[k] % P4["d"] === 0) {
+              D[k] /= P4["d"];
             } else
               return null;
             d *= Math.pow(k, D[k]);
           }
-          if (P3["s"] < 0) {
+          if (P4["s"] < 0) {
             return newFraction(d, n);
           }
           return newFraction(n, d);
         },
         "equals": function(a, b) {
-          parse3(a, b);
-          return this["s"] * this["n"] * P3["d"] === P3["s"] * P3["n"] * this["d"];
+          parse4(a, b);
+          return this["s"] * this["n"] * P4["d"] === P4["s"] * P4["n"] * this["d"];
         },
         "compare": function(a, b) {
-          parse3(a, b);
-          var t = this["s"] * this["n"] * P3["d"] - P3["s"] * P3["n"] * this["d"];
+          parse4(a, b);
+          var t = this["s"] * this["n"] * P4["d"] - P4["s"] * P4["n"] * this["d"];
           return (0 < t) - (t < 0);
         },
         "simplify": function(eps) {
@@ -2278,8 +1683,8 @@ var require_fraction = __commonJS({
           return this;
         },
         "divisible": function(a, b) {
-          parse3(a, b);
-          return !(!(P3["n"] * this["d"]) || this["n"] * P3["d"] % (P3["n"] * this["d"]));
+          parse4(a, b);
+          return !(!(P4["n"] * this["d"]) || this["n"] * P4["d"] % (P4["n"] * this["d"]));
         },
         "valueOf": function() {
           return this["s"] * this["n"] / this["d"];
@@ -3202,18 +2607,14 @@ var duplicate_default = () => `<svg xmlns="http://www.w3.org/2000/svg" fill="non
 
 // node_modules/@babel/runtime/helpers/esm/extends.js
 function _extends() {
-  _extends = Object.assign ? Object.assign.bind() : function(target) {
-    for (var i2 = 1; i2 < arguments.length; i2++) {
-      var source = arguments[i2];
-      for (var key in source) {
-        if (Object.prototype.hasOwnProperty.call(source, key)) {
-          target[key] = source[key];
-        }
-      }
+  return _extends = Object.assign ? Object.assign.bind() : function(n) {
+    for (var e3 = 1; e3 < arguments.length; e3++) {
+      var t = arguments[e3];
+      for (var r in t)
+        ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]);
     }
-    return target;
-  };
-  return _extends.apply(this, arguments);
+    return n;
+  }, _extends.apply(null, arguments);
 }
 
 // node_modules/mathjs/lib/esm/core/config.js
@@ -3866,701 +3267,6 @@ function _toNumberOrDefault(value, defaultValue) {
   } else {
     return defaultValue;
   }
-}
-
-// node_modules/mathjs/lib/esm/utils/bignumber/formatter.js
-function formatBigNumberToBase(n, base, size2) {
-  var BigNumberCtor = n.constructor;
-  var big2 = new BigNumberCtor(2);
-  var suffix = "";
-  if (size2) {
-    if (size2 < 1) {
-      throw new Error("size must be in greater than 0");
-    }
-    if (!isInteger(size2)) {
-      throw new Error("size must be an integer");
-    }
-    if (n.greaterThan(big2.pow(size2 - 1).sub(1)) || n.lessThan(big2.pow(size2 - 1).mul(-1))) {
-      throw new Error("Value must be in range [-2^".concat(size2 - 1, ", 2^").concat(size2 - 1, "-1]"));
-    }
-    if (!n.isInteger()) {
-      throw new Error("Value must be an integer");
-    }
-    if (n.lessThan(0)) {
-      n = n.add(big2.pow(size2));
-    }
-    suffix = "i".concat(size2);
-  }
-  switch (base) {
-    case 2:
-      return "".concat(n.toBinary()).concat(suffix);
-    case 8:
-      return "".concat(n.toOctal()).concat(suffix);
-    case 16:
-      return "".concat(n.toHexadecimal()).concat(suffix);
-    default:
-      throw new Error("Base ".concat(base, " not supported "));
-  }
-}
-function format2(value, options) {
-  if (typeof options === "function") {
-    return options(value);
-  }
-  if (!value.isFinite()) {
-    return value.isNaN() ? "NaN" : value.gt(0) ? "Infinity" : "-Infinity";
-  }
-  var {
-    notation,
-    precision,
-    wordSize
-  } = normalizeFormatOptions(options);
-  switch (notation) {
-    case "fixed":
-      return toFixed2(value, precision);
-    case "exponential":
-      return toExponential2(value, precision);
-    case "engineering":
-      return toEngineering2(value, precision);
-    case "bin":
-      return formatBigNumberToBase(value, 2, wordSize);
-    case "oct":
-      return formatBigNumberToBase(value, 8, wordSize);
-    case "hex":
-      return formatBigNumberToBase(value, 16, wordSize);
-    case "auto": {
-      var lowerExp = _toNumberOrDefault2(options === null || options === void 0 ? void 0 : options.lowerExp, -3);
-      var upperExp = _toNumberOrDefault2(options === null || options === void 0 ? void 0 : options.upperExp, 5);
-      if (value.isZero())
-        return "0";
-      var str;
-      var rounded = value.toSignificantDigits(precision);
-      var exp3 = rounded.e;
-      if (exp3 >= lowerExp && exp3 < upperExp) {
-        str = rounded.toFixed();
-      } else {
-        str = toExponential2(value, precision);
-      }
-      return str.replace(/((\.\d*?)(0+))($|e)/, function() {
-        var digits2 = arguments[2];
-        var e3 = arguments[4];
-        return digits2 !== "." ? digits2 + e3 : e3;
-      });
-    }
-    default:
-      throw new Error('Unknown notation "' + notation + '". Choose "auto", "exponential", "fixed", "bin", "oct", or "hex.');
-  }
-}
-function toEngineering2(value, precision) {
-  var e3 = value.e;
-  var newExp = e3 % 3 === 0 ? e3 : e3 < 0 ? e3 - 3 - e3 % 3 : e3 - e3 % 3;
-  var valueWithoutExp = value.mul(Math.pow(10, -newExp));
-  var valueStr = valueWithoutExp.toPrecision(precision);
-  if (valueStr.indexOf("e") !== -1) {
-    var BigNumber2 = value.constructor;
-    valueStr = new BigNumber2(valueStr).toFixed();
-  }
-  return valueStr + "e" + (e3 >= 0 ? "+" : "") + newExp.toString();
-}
-function toExponential2(value, precision) {
-  if (precision !== void 0) {
-    return value.toExponential(precision - 1);
-  } else {
-    return value.toExponential();
-  }
-}
-function toFixed2(value, precision) {
-  return value.toFixed(precision);
-}
-function _toNumberOrDefault2(value, defaultValue) {
-  if (isNumber(value)) {
-    return value;
-  } else if (isBigNumber(value)) {
-    return value.toNumber();
-  } else {
-    return defaultValue;
-  }
-}
-
-// node_modules/mathjs/lib/esm/utils/string.js
-function endsWith(text, search) {
-  var start = text.length - search.length;
-  var end = text.length;
-  return text.substring(start, end) === search;
-}
-function format3(value, options) {
-  var result = _format(value, options);
-  if (options && typeof options === "object" && "truncate" in options && result.length > options.truncate) {
-    return result.substring(0, options.truncate - 3) + "...";
-  }
-  return result;
-}
-function _format(value, options) {
-  if (typeof value === "number") {
-    return format(value, options);
-  }
-  if (isBigNumber(value)) {
-    return format2(value, options);
-  }
-  if (looksLikeFraction(value)) {
-    if (!options || options.fraction !== "decimal") {
-      return value.s * value.n + "/" + value.d;
-    } else {
-      return value.toString();
-    }
-  }
-  if (Array.isArray(value)) {
-    return formatArray(value, options);
-  }
-  if (isString(value)) {
-    return stringify(value);
-  }
-  if (typeof value === "function") {
-    return value.syntax ? String(value.syntax) : "function";
-  }
-  if (value && typeof value === "object") {
-    if (typeof value.format === "function") {
-      return value.format(options);
-    } else if (value && value.toString(options) !== {}.toString()) {
-      return value.toString(options);
-    } else {
-      var entries = Object.keys(value).map((key) => {
-        return stringify(key) + ": " + format3(value[key], options);
-      });
-      return "{" + entries.join(", ") + "}";
-    }
-  }
-  return String(value);
-}
-function stringify(value) {
-  var text = String(value);
-  var escaped = "";
-  var i2 = 0;
-  while (i2 < text.length) {
-    var c = text.charAt(i2);
-    escaped += c in controlCharacters ? controlCharacters[c] : c;
-    i2++;
-  }
-  return '"' + escaped + '"';
-}
-var controlCharacters = {
-  '"': '\\"',
-  "\\": "\\\\",
-  "\b": "\\b",
-  "\f": "\\f",
-  "\n": "\\n",
-  "\r": "\\r",
-  "	": "\\t"
-};
-function escape(value) {
-  var text = String(value);
-  text = text.replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/'/g, "&#39;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
-  return text;
-}
-function formatArray(array, options) {
-  if (Array.isArray(array)) {
-    var str = "[";
-    var len = array.length;
-    for (var i2 = 0; i2 < len; i2++) {
-      if (i2 !== 0) {
-        str += ", ";
-      }
-      str += formatArray(array[i2], options);
-    }
-    str += "]";
-    return str;
-  } else {
-    return format3(array, options);
-  }
-}
-function looksLikeFraction(value) {
-  return value && typeof value === "object" && typeof value.s === "number" && typeof value.n === "number" && typeof value.d === "number" || false;
-}
-function compareText(x, y) {
-  if (!isString(x)) {
-    throw new TypeError("Unexpected type of argument in function compareText (expected: string or Array or Matrix, actual: " + typeOf(x) + ", index: 0)");
-  }
-  if (!isString(y)) {
-    throw new TypeError("Unexpected type of argument in function compareText (expected: string or Array or Matrix, actual: " + typeOf(y) + ", index: 1)");
-  }
-  return x === y ? 0 : x > y ? 1 : -1;
-}
-
-// node_modules/mathjs/lib/esm/error/DimensionError.js
-function DimensionError(actual, expected, relation) {
-  if (!(this instanceof DimensionError)) {
-    throw new SyntaxError("Constructor must be called with the new operator");
-  }
-  this.actual = actual;
-  this.expected = expected;
-  this.relation = relation;
-  this.message = "Dimension mismatch (" + (Array.isArray(actual) ? "[" + actual.join(", ") + "]" : actual) + " " + (this.relation || "!=") + " " + (Array.isArray(expected) ? "[" + expected.join(", ") + "]" : expected) + ")";
-  this.stack = new Error().stack;
-}
-DimensionError.prototype = new RangeError();
-DimensionError.prototype.constructor = RangeError;
-DimensionError.prototype.name = "DimensionError";
-DimensionError.prototype.isDimensionError = true;
-
-// node_modules/mathjs/lib/esm/error/IndexError.js
-function IndexError(index3, min3, max3) {
-  if (!(this instanceof IndexError)) {
-    throw new SyntaxError("Constructor must be called with the new operator");
-  }
-  this.index = index3;
-  if (arguments.length < 3) {
-    this.min = 0;
-    this.max = min3;
-  } else {
-    this.min = min3;
-    this.max = max3;
-  }
-  if (this.min !== void 0 && this.index < this.min) {
-    this.message = "Index out of range (" + this.index + " < " + this.min + ")";
-  } else if (this.max !== void 0 && this.index >= this.max) {
-    this.message = "Index out of range (" + this.index + " > " + (this.max - 1) + ")";
-  } else {
-    this.message = "Index out of range (" + this.index + ")";
-  }
-  this.stack = new Error().stack;
-}
-IndexError.prototype = new RangeError();
-IndexError.prototype.constructor = RangeError;
-IndexError.prototype.name = "IndexError";
-IndexError.prototype.isIndexError = true;
-
-// node_modules/mathjs/lib/esm/utils/array.js
-function arraySize(x) {
-  var s = [];
-  while (Array.isArray(x)) {
-    s.push(x.length);
-    x = x[0];
-  }
-  return s;
-}
-function _validate(array, size2, dim) {
-  var i2;
-  var len = array.length;
-  if (len !== size2[dim]) {
-    throw new DimensionError(len, size2[dim]);
-  }
-  if (dim < size2.length - 1) {
-    var dimNext = dim + 1;
-    for (i2 = 0; i2 < len; i2++) {
-      var child = array[i2];
-      if (!Array.isArray(child)) {
-        throw new DimensionError(size2.length - 1, size2.length, "<");
-      }
-      _validate(array[i2], size2, dimNext);
-    }
-  } else {
-    for (i2 = 0; i2 < len; i2++) {
-      if (Array.isArray(array[i2])) {
-        throw new DimensionError(size2.length + 1, size2.length, ">");
-      }
-    }
-  }
-}
-function validate(array, size2) {
-  var isScalar = size2.length === 0;
-  if (isScalar) {
-    if (Array.isArray(array)) {
-      throw new DimensionError(array.length, 0);
-    }
-  } else {
-    _validate(array, size2, 0);
-  }
-}
-function validateIndexSourceSize(value, index3) {
-  var valueSize = value.isMatrix ? value._size : arraySize(value);
-  var sourceSize = index3._sourceSize;
-  sourceSize.forEach((sourceDim, i2) => {
-    if (sourceDim !== null && sourceDim !== valueSize[i2]) {
-      throw new DimensionError(sourceDim, valueSize[i2]);
-    }
-  });
-}
-function validateIndex(index3, length) {
-  if (index3 !== void 0) {
-    if (!isNumber(index3) || !isInteger(index3)) {
-      throw new TypeError("Index must be an integer (value: " + index3 + ")");
-    }
-    if (index3 < 0 || typeof length === "number" && index3 >= length) {
-      throw new IndexError(index3, length);
-    }
-  }
-}
-function isEmptyIndex(index3) {
-  for (var i2 = 0; i2 < index3._dimensions.length; ++i2) {
-    var dimension = index3._dimensions[i2];
-    if (dimension._data && isArray(dimension._data)) {
-      if (dimension._size[0] === 0) {
-        return true;
-      }
-    } else if (dimension.isRange) {
-      if (dimension.start === dimension.end) {
-        return true;
-      }
-    } else if (isString(dimension)) {
-      if (dimension.length === 0) {
-        return true;
-      }
-    }
-  }
-  return false;
-}
-function resize(array, size2, defaultValue) {
-  if (!Array.isArray(size2)) {
-    throw new TypeError("Array expected");
-  }
-  if (size2.length === 0) {
-    throw new Error("Resizing to scalar is not supported");
-  }
-  size2.forEach(function(value) {
-    if (!isNumber(value) || !isInteger(value) || value < 0) {
-      throw new TypeError("Invalid size, must contain positive integers (size: " + format3(size2) + ")");
-    }
-  });
-  if (isNumber(array) || isBigNumber(array)) {
-    array = [array];
-  }
-  var _defaultValue = defaultValue !== void 0 ? defaultValue : 0;
-  _resize(array, size2, 0, _defaultValue);
-  return array;
-}
-function _resize(array, size2, dim, defaultValue) {
-  var i2;
-  var elem;
-  var oldLen = array.length;
-  var newLen = size2[dim];
-  var minLen = Math.min(oldLen, newLen);
-  array.length = newLen;
-  if (dim < size2.length - 1) {
-    var dimNext = dim + 1;
-    for (i2 = 0; i2 < minLen; i2++) {
-      elem = array[i2];
-      if (!Array.isArray(elem)) {
-        elem = [elem];
-        array[i2] = elem;
-      }
-      _resize(elem, size2, dimNext, defaultValue);
-    }
-    for (i2 = minLen; i2 < newLen; i2++) {
-      elem = [];
-      array[i2] = elem;
-      _resize(elem, size2, dimNext, defaultValue);
-    }
-  } else {
-    for (i2 = 0; i2 < minLen; i2++) {
-      while (Array.isArray(array[i2])) {
-        array[i2] = array[i2][0];
-      }
-    }
-    for (i2 = minLen; i2 < newLen; i2++) {
-      array[i2] = defaultValue;
-    }
-  }
-}
-function reshape(array, sizes) {
-  var flatArray = flatten(array);
-  var currentLength = flatArray.length;
-  if (!Array.isArray(array) || !Array.isArray(sizes)) {
-    throw new TypeError("Array expected");
-  }
-  if (sizes.length === 0) {
-    throw new DimensionError(0, currentLength, "!=");
-  }
-  sizes = processSizesWildcard(sizes, currentLength);
-  var newLength = product(sizes);
-  if (currentLength !== newLength) {
-    throw new DimensionError(newLength, currentLength, "!=");
-  }
-  try {
-    return _reshape(flatArray, sizes);
-  } catch (e3) {
-    if (e3 instanceof DimensionError) {
-      throw new DimensionError(newLength, currentLength, "!=");
-    }
-    throw e3;
-  }
-}
-function processSizesWildcard(sizes, currentLength) {
-  var newLength = product(sizes);
-  var processedSizes = sizes.slice();
-  var WILDCARD = -1;
-  var wildCardIndex = sizes.indexOf(WILDCARD);
-  var isMoreThanOneWildcard = sizes.indexOf(WILDCARD, wildCardIndex + 1) >= 0;
-  if (isMoreThanOneWildcard) {
-    throw new Error("More than one wildcard in sizes");
-  }
-  var hasWildcard = wildCardIndex >= 0;
-  var canReplaceWildcard = currentLength % newLength === 0;
-  if (hasWildcard) {
-    if (canReplaceWildcard) {
-      processedSizes[wildCardIndex] = -currentLength / newLength;
-    } else {
-      throw new Error("Could not replace wildcard, since " + currentLength + " is no multiple of " + -newLength);
-    }
-  }
-  return processedSizes;
-}
-function product(array) {
-  return array.reduce((prev, curr) => prev * curr, 1);
-}
-function _reshape(array, sizes) {
-  var tmpArray = array;
-  var tmpArray2;
-  for (var sizeIndex = sizes.length - 1; sizeIndex > 0; sizeIndex--) {
-    var size2 = sizes[sizeIndex];
-    tmpArray2 = [];
-    var length = tmpArray.length / size2;
-    for (var i2 = 0; i2 < length; i2++) {
-      tmpArray2.push(tmpArray.slice(i2 * size2, (i2 + 1) * size2));
-    }
-    tmpArray = tmpArray2;
-  }
-  return tmpArray;
-}
-function squeeze(array, size2) {
-  var s = size2 || arraySize(array);
-  while (Array.isArray(array) && array.length === 1) {
-    array = array[0];
-    s.shift();
-  }
-  var dims = s.length;
-  while (s[dims - 1] === 1) {
-    dims--;
-  }
-  if (dims < s.length) {
-    array = _squeeze(array, dims, 0);
-    s.length = dims;
-  }
-  return array;
-}
-function _squeeze(array, dims, dim) {
-  var i2, ii;
-  if (dim < dims) {
-    var next = dim + 1;
-    for (i2 = 0, ii = array.length; i2 < ii; i2++) {
-      array[i2] = _squeeze(array[i2], dims, next);
-    }
-  } else {
-    while (Array.isArray(array)) {
-      array = array[0];
-    }
-  }
-  return array;
-}
-function unsqueeze(array, dims, outer, size2) {
-  var s = size2 || arraySize(array);
-  if (outer) {
-    for (var i2 = 0; i2 < outer; i2++) {
-      array = [array];
-      s.unshift(1);
-    }
-  }
-  array = _unsqueeze(array, dims, 0);
-  while (s.length < dims) {
-    s.push(1);
-  }
-  return array;
-}
-function _unsqueeze(array, dims, dim) {
-  var i2, ii;
-  if (Array.isArray(array)) {
-    var next = dim + 1;
-    for (i2 = 0, ii = array.length; i2 < ii; i2++) {
-      array[i2] = _unsqueeze(array[i2], dims, next);
-    }
-  } else {
-    for (var d = dim; d < dims; d++) {
-      array = [array];
-    }
-  }
-  return array;
-}
-function flatten(array) {
-  if (!Array.isArray(array)) {
-    return array;
-  }
-  var flat = [];
-  array.forEach(function callback2(value) {
-    if (Array.isArray(value)) {
-      value.forEach(callback2);
-    } else {
-      flat.push(value);
-    }
-  });
-  return flat;
-}
-function map(array, callback2) {
-  return Array.prototype.map.call(array, callback2);
-}
-function forEach(array, callback2) {
-  Array.prototype.forEach.call(array, callback2);
-}
-function filter(array, callback2) {
-  if (arraySize(array).length !== 1) {
-    throw new Error("Only one dimensional matrices supported");
-  }
-  return Array.prototype.filter.call(array, callback2);
-}
-function filterRegExp(array, regexp) {
-  if (arraySize(array).length !== 1) {
-    throw new Error("Only one dimensional matrices supported");
-  }
-  return Array.prototype.filter.call(array, (entry) => regexp.test(entry));
-}
-function join(array, separator) {
-  return Array.prototype.join.call(array, separator);
-}
-function identify(a) {
-  if (!Array.isArray(a)) {
-    throw new TypeError("Array input expected");
-  }
-  if (a.length === 0) {
-    return a;
-  }
-  var b = [];
-  var count2 = 0;
-  b[0] = {
-    value: a[0],
-    identifier: 0
-  };
-  for (var i2 = 1; i2 < a.length; i2++) {
-    if (a[i2] === a[i2 - 1]) {
-      count2++;
-    } else {
-      count2 = 0;
-    }
-    b.push({
-      value: a[i2],
-      identifier: count2
-    });
-  }
-  return b;
-}
-function generalize(a) {
-  if (!Array.isArray(a)) {
-    throw new TypeError("Array input expected");
-  }
-  if (a.length === 0) {
-    return a;
-  }
-  var b = [];
-  for (var i2 = 0; i2 < a.length; i2++) {
-    b.push(a[i2].value);
-  }
-  return b;
-}
-function getArrayDataType(array, typeOf3) {
-  var type;
-  var length = 0;
-  for (var i2 = 0; i2 < array.length; i2++) {
-    var item = array[i2];
-    var _isArray = Array.isArray(item);
-    if (i2 === 0 && _isArray) {
-      length = item.length;
-    }
-    if (_isArray && item.length !== length) {
-      return void 0;
-    }
-    var itemType = _isArray ? getArrayDataType(item, typeOf3) : typeOf3(item);
-    if (type === void 0) {
-      type = itemType;
-    } else if (type !== itemType) {
-      return "mixed";
-    } else {
-    }
-  }
-  return type;
-}
-function concatRecursive(a, b, concatDim, dim) {
-  if (dim < concatDim) {
-    if (a.length !== b.length) {
-      throw new DimensionError(a.length, b.length);
-    }
-    var c = [];
-    for (var i2 = 0; i2 < a.length; i2++) {
-      c[i2] = concatRecursive(a[i2], b[i2], concatDim, dim + 1);
-    }
-    return c;
-  } else {
-    return a.concat(b);
-  }
-}
-function concat() {
-  var arrays = Array.prototype.slice.call(arguments, 0, -1);
-  var concatDim = Array.prototype.slice.call(arguments, -1);
-  if (arrays.length === 1) {
-    return arrays[0];
-  }
-  if (arrays.length > 1) {
-    return arrays.slice(1).reduce(function(A, B) {
-      return concatRecursive(A, B, concatDim, 0);
-    }, arrays[0]);
-  } else {
-    throw new Error("Wrong number of arguments in function concat");
-  }
-}
-function broadcastSizes() {
-  for (var _len = arguments.length, sizes = new Array(_len), _key = 0; _key < _len; _key++) {
-    sizes[_key] = arguments[_key];
-  }
-  var dimensions = sizes.map((s) => s.length);
-  var N = Math.max(...dimensions);
-  var sizeMax = new Array(N).fill(null);
-  for (var i2 = 0; i2 < sizes.length; i2++) {
-    var size2 = sizes[i2];
-    var dim = dimensions[i2];
-    for (var j = 0; j < dim; j++) {
-      var n = N - dim + j;
-      if (size2[j] > sizeMax[n]) {
-        sizeMax[n] = size2[j];
-      }
-    }
-  }
-  for (var _i = 0; _i < sizes.length; _i++) {
-    checkBroadcastingRules(sizes[_i], sizeMax);
-  }
-  return sizeMax;
-}
-function checkBroadcastingRules(size2, toSize) {
-  var N = toSize.length;
-  var dim = size2.length;
-  for (var j = 0; j < dim; j++) {
-    var n = N - dim + j;
-    if (size2[j] < toSize[n] && size2[j] > 1 || size2[j] > toSize[n]) {
-      throw new Error("shape missmatch: missmatch is found in arg with shape (".concat(size2, ") not possible to broadcast dimension ").concat(dim, " with size ").concat(size2[j], " to size ").concat(toSize[n]));
-    }
-  }
-}
-function broadcastTo(array, toSize) {
-  var Asize = arraySize(array);
-  if (deepStrictEqual(Asize, toSize)) {
-    return array;
-  }
-  checkBroadcastingRules(Asize, toSize);
-  var broadcastedSize = broadcastSizes(Asize, toSize);
-  var N = broadcastedSize.length;
-  var paddedSize = [...Array(N - Asize.length).fill(1), ...Asize];
-  var A = clone2(array);
-  if (Asize.length < N) {
-    A = reshape(A, paddedSize);
-    Asize = arraySize(A);
-  }
-  for (var dim = 0; dim < N; dim++) {
-    if (Asize[dim] < broadcastedSize[dim]) {
-      A = stretch(A, broadcastedSize[dim], dim);
-      Asize = arraySize(A);
-    }
-  }
-  return A;
-}
-function stretch(arrayToStretch, sizeToStretch, dimToStretch) {
-  return concat(...Array(sizeToStretch).fill(arrayToStretch), dimToStretch);
-}
-function clone2(array) {
-  return _extends([], array);
 }
 
 // node_modules/mathjs/lib/esm/utils/factory.js
@@ -5428,7 +4134,7 @@ P.hyperbolicTangent = P.tanh = function() {
   return divide(x.sinh(), x.cosh(), Ctor.precision = pr, Ctor.rounding = rm);
 };
 P.inverseCosine = P.acos = function() {
-  var halfPi, x = this, Ctor = x.constructor, k = x.abs().cmp(1), pr = Ctor.precision, rm = Ctor.rounding;
+  var x = this, Ctor = x.constructor, k = x.abs().cmp(1), pr = Ctor.precision, rm = Ctor.rounding;
   if (k !== -1) {
     return k === 0 ? x.isNeg() ? getPi(Ctor, pr, rm) : new Ctor(0) : new Ctor(NaN);
   }
@@ -5436,11 +4142,10 @@ P.inverseCosine = P.acos = function() {
     return getPi(Ctor, pr + 4, rm).times(0.5);
   Ctor.precision = pr + 6;
   Ctor.rounding = 1;
-  x = x.asin();
-  halfPi = getPi(Ctor, pr + 4, rm).times(0.5);
+  x = new Ctor(1).minus(x).div(x.plus(1)).sqrt().atan();
   Ctor.precision = pr;
   Ctor.rounding = rm;
-  return halfPi.minus(x);
+  return x.times(2);
 };
 P.inverseHyperbolicCosine = P.acosh = function() {
   var pr, rm, x = this, Ctor = x.constructor;
@@ -6645,14 +5350,16 @@ function intPow(Ctor, x, n, pr) {
 function isOdd(n) {
   return n.d[n.d.length - 1] & 1;
 }
-function maxOrMin(Ctor, args, ltgt) {
-  var y, x = new Ctor(args[0]), i2 = 0;
+function maxOrMin(Ctor, args, n) {
+  var k, y, x = new Ctor(args[0]), i2 = 0;
   for (; ++i2 < args.length; ) {
     y = new Ctor(args[i2]);
     if (!y.s) {
       x = y;
       break;
-    } else if (x[ltgt](y)) {
+    }
+    k = x.cmp(y);
+    if (k === n || k === 0 && x.s === n) {
       x = y;
     }
   }
@@ -7175,7 +5882,7 @@ function cos(x) {
 function cosh2(x) {
   return new this(x).cosh();
 }
-function clone3(obj) {
+function clone2(obj) {
   var i2, p, ps;
   function Decimal2(v) {
     var e3, i3, t, x = this;
@@ -7234,7 +5941,8 @@ function clone3(obj) {
           x.d = [v];
         }
         return;
-      } else if (v * 0 !== 0) {
+      }
+      if (v * 0 !== 0) {
         if (!v)
           x.s = NaN;
         x.e = NaN;
@@ -7242,18 +5950,28 @@ function clone3(obj) {
         return;
       }
       return parseDecimal(x, v.toString());
-    } else if (t !== "string") {
-      throw Error(invalidArgument + v);
     }
-    if ((i3 = v.charCodeAt(0)) === 45) {
-      v = v.slice(1);
-      x.s = -1;
-    } else {
-      if (i3 === 43)
+    if (t === "string") {
+      if ((i3 = v.charCodeAt(0)) === 45) {
         v = v.slice(1);
-      x.s = 1;
+        x.s = -1;
+      } else {
+        if (i3 === 43)
+          v = v.slice(1);
+        x.s = 1;
+      }
+      return isDecimal.test(v) ? parseDecimal(x, v) : parseOther(x, v);
     }
-    return isDecimal.test(v) ? parseDecimal(x, v) : parseOther(x, v);
+    if (t === "bigint") {
+      if (v < 0) {
+        v = -v;
+        x.s = -1;
+      } else {
+        x.s = 1;
+      }
+      return parseDecimal(x, v.toString());
+    }
+    throw Error(invalidArgument + v);
   }
   Decimal2.prototype = P;
   Decimal2.ROUND_UP = 0;
@@ -7267,7 +5985,7 @@ function clone3(obj) {
   Decimal2.ROUND_HALF_FLOOR = 8;
   Decimal2.EUCLID = 9;
   Decimal2.config = Decimal2.set = config3;
-  Decimal2.clone = clone3;
+  Decimal2.clone = clone2;
   Decimal2.isDecimal = isDecimalInstance;
   Decimal2.abs = abs;
   Decimal2.acos = acos;
@@ -7363,10 +6081,10 @@ function log103(x) {
   return new this(x).log(10);
 }
 function max() {
-  return maxOrMin(this, arguments, "lt");
+  return maxOrMin(this, arguments, -1);
 }
 function min() {
-  return maxOrMin(this, arguments, "gt");
+  return maxOrMin(this, arguments, 1);
 }
 function mod(x, y) {
   return new this(x).mod(y);
@@ -7474,7 +6192,7 @@ function trunc(x) {
 }
 P[Symbol.for("nodejs.util.inspect.custom")] = P.toString;
 P[Symbol.toStringTag] = "Decimal";
-var Decimal = P.constructor = clone3(DEFAULTS);
+var Decimal = P.constructor = clone2(DEFAULTS);
 LN10 = new Decimal(LN10);
 PI = new Decimal(PI);
 var decimal_default = Decimal;
@@ -7517,31 +6235,621 @@ var createBigNumberClass = /* @__PURE__ */ factory(name2, dependencies3, (_ref) 
   isClass: true
 });
 
+// node_modules/complex.js/dist/complex.mjs
+"use strict";
+var cosh3 = Math.cosh || function(x) {
+  return Math.abs(x) < 1e-9 ? 1 - x : (Math.exp(x) + Math.exp(-x)) * 0.5;
+};
+var sinh3 = Math.sinh || function(x) {
+  return Math.abs(x) < 1e-9 ? x : (Math.exp(x) - Math.exp(-x)) * 0.5;
+};
+var cosm1 = function(x) {
+  const b = Math.PI / 4;
+  if (-b > x || x > b) {
+    return Math.cos(x) - 1;
+  }
+  const xx = x * x;
+  return xx * (xx * (xx * (xx * (xx * (xx * (xx * (xx / 20922789888e3 - 1 / 87178291200) + 1 / 479001600) - 1 / 3628800) + 1 / 40320) - 1 / 720) + 1 / 24) - 1 / 2);
+};
+var hypot2 = function(x, y) {
+  x = Math.abs(x);
+  y = Math.abs(y);
+  if (x < y)
+    [x, y] = [y, x];
+  if (x < 1e8)
+    return Math.sqrt(x * x + y * y);
+  y /= x;
+  return x * Math.sqrt(1 + y * y);
+};
+var parser_exit = function() {
+  throw SyntaxError("Invalid Param");
+};
+function logHypot(a, b) {
+  const _a = Math.abs(a);
+  const _b = Math.abs(b);
+  if (a === 0) {
+    return Math.log(_b);
+  }
+  if (b === 0) {
+    return Math.log(_a);
+  }
+  if (_a < 3e3 && _b < 3e3) {
+    return Math.log(a * a + b * b) * 0.5;
+  }
+  a = a * 0.5;
+  b = b * 0.5;
+  return 0.5 * Math.log(a * a + b * b) + Math.LN2;
+}
+var P2 = { "re": 0, "im": 0 };
+var parse = function(a, b) {
+  const z = P2;
+  if (a === void 0 || a === null) {
+    z["re"] = z["im"] = 0;
+  } else if (b !== void 0) {
+    z["re"] = a;
+    z["im"] = b;
+  } else
+    switch (typeof a) {
+      case "object":
+        if ("im" in a && "re" in a) {
+          z["re"] = a["re"];
+          z["im"] = a["im"];
+        } else if ("abs" in a && "arg" in a) {
+          if (!isFinite(a["abs"]) && isFinite(a["arg"])) {
+            return Complex["INFINITY"];
+          }
+          z["re"] = a["abs"] * Math.cos(a["arg"]);
+          z["im"] = a["abs"] * Math.sin(a["arg"]);
+        } else if ("r" in a && "phi" in a) {
+          if (!isFinite(a["r"]) && isFinite(a["phi"])) {
+            return Complex["INFINITY"];
+          }
+          z["re"] = a["r"] * Math.cos(a["phi"]);
+          z["im"] = a["r"] * Math.sin(a["phi"]);
+        } else if (a.length === 2) {
+          z["re"] = a[0];
+          z["im"] = a[1];
+        } else {
+          parser_exit();
+        }
+        break;
+      case "string":
+        z["im"] = z["re"] = 0;
+        const tokens = a.replace(/_/g, "").match(/\d+\.?\d*e[+-]?\d+|\d+\.?\d*|\.\d+|./g);
+        let plus = 1;
+        let minus = 0;
+        if (tokens === null) {
+          parser_exit();
+        }
+        for (let i2 = 0; i2 < tokens.length; i2++) {
+          const c = tokens[i2];
+          if (c === " " || c === "	" || c === "\n") {
+          } else if (c === "+") {
+            plus++;
+          } else if (c === "-") {
+            minus++;
+          } else if (c === "i" || c === "I") {
+            if (plus + minus === 0) {
+              parser_exit();
+            }
+            if (tokens[i2 + 1] !== " " && !isNaN(tokens[i2 + 1])) {
+              z["im"] += parseFloat((minus % 2 ? "-" : "") + tokens[i2 + 1]);
+              i2++;
+            } else {
+              z["im"] += parseFloat((minus % 2 ? "-" : "") + "1");
+            }
+            plus = minus = 0;
+          } else {
+            if (plus + minus === 0 || isNaN(c)) {
+              parser_exit();
+            }
+            if (tokens[i2 + 1] === "i" || tokens[i2 + 1] === "I") {
+              z["im"] += parseFloat((minus % 2 ? "-" : "") + c);
+              i2++;
+            } else {
+              z["re"] += parseFloat((minus % 2 ? "-" : "") + c);
+            }
+            plus = minus = 0;
+          }
+        }
+        if (plus + minus > 0) {
+          parser_exit();
+        }
+        break;
+      case "number":
+        z["im"] = 0;
+        z["re"] = a;
+        break;
+      default:
+        parser_exit();
+    }
+  if (isNaN(z["re"]) || isNaN(z["im"])) {
+  }
+  return z;
+};
+function Complex(a, b) {
+  if (!(this instanceof Complex)) {
+    return new Complex(a, b);
+  }
+  const z = parse(a, b);
+  this["re"] = z["re"];
+  this["im"] = z["im"];
+}
+Complex.prototype = {
+  "re": 0,
+  "im": 0,
+  "sign": function() {
+    const abs3 = hypot2(this["re"], this["im"]);
+    return new Complex(this["re"] / abs3, this["im"] / abs3);
+  },
+  "add": function(a, b) {
+    const z = parse(a, b);
+    const tInfin = this["isInfinite"]();
+    const zInfin = !(isFinite(z["re"]) && isFinite(z["im"]));
+    if (tInfin || zInfin) {
+      if (tInfin && zInfin) {
+        return Complex["NAN"];
+      }
+      return Complex["INFINITY"];
+    }
+    return new Complex(this["re"] + z["re"], this["im"] + z["im"]);
+  },
+  "sub": function(a, b) {
+    const z = parse(a, b);
+    const tInfin = this["isInfinite"]();
+    const zInfin = !(isFinite(z["re"]) && isFinite(z["im"]));
+    if (tInfin || zInfin) {
+      if (tInfin && zInfin) {
+        return Complex["NAN"];
+      }
+      return Complex["INFINITY"];
+    }
+    return new Complex(this["re"] - z["re"], this["im"] - z["im"]);
+  },
+  "mul": function(a, b) {
+    const z = parse(a, b);
+    const tInfin = this["isInfinite"]();
+    const zInfin = !(isFinite(z["re"]) && isFinite(z["im"]));
+    const tIsZero = this["re"] === 0 && this["im"] === 0;
+    const zIsZero = z["re"] === 0 && z["im"] === 0;
+    if (tInfin && zIsZero || zInfin && tIsZero) {
+      return Complex["NAN"];
+    }
+    if (tInfin || zInfin) {
+      return Complex["INFINITY"];
+    }
+    if (z["im"] === 0 && this["im"] === 0) {
+      return new Complex(this["re"] * z["re"], 0);
+    }
+    return new Complex(this["re"] * z["re"] - this["im"] * z["im"], this["re"] * z["im"] + this["im"] * z["re"]);
+  },
+  "div": function(a, b) {
+    const z = parse(a, b);
+    const tInfin = this["isInfinite"]();
+    const zInfin = !(isFinite(z["re"]) && isFinite(z["im"]));
+    const tIsZero = this["re"] === 0 && this["im"] === 0;
+    const zIsZero = z["re"] === 0 && z["im"] === 0;
+    if (tIsZero && zIsZero || tInfin && zInfin) {
+      return Complex["NAN"];
+    }
+    if (zIsZero || tInfin) {
+      return Complex["INFINITY"];
+    }
+    if (tIsZero || zInfin) {
+      return Complex["ZERO"];
+    }
+    if (z["im"] === 0) {
+      return new Complex(this["re"] / z["re"], this["im"] / z["re"]);
+    }
+    if (Math.abs(z["re"]) < Math.abs(z["im"])) {
+      const x = z["re"] / z["im"];
+      const t = z["re"] * x + z["im"];
+      return new Complex((this["re"] * x + this["im"]) / t, (this["im"] * x - this["re"]) / t);
+    } else {
+      const x = z["im"] / z["re"];
+      const t = z["im"] * x + z["re"];
+      return new Complex((this["re"] + this["im"] * x) / t, (this["im"] - this["re"] * x) / t);
+    }
+  },
+  "pow": function(a, b) {
+    const z = parse(a, b);
+    const tIsZero = this["re"] === 0 && this["im"] === 0;
+    const zIsZero = z["re"] === 0 && z["im"] === 0;
+    if (zIsZero) {
+      return Complex["ONE"];
+    }
+    if (z["im"] === 0) {
+      if (this["im"] === 0 && this["re"] > 0) {
+        return new Complex(Math.pow(this["re"], z["re"]), 0);
+      } else if (this["re"] === 0) {
+        switch ((z["re"] % 4 + 4) % 4) {
+          case 0:
+            return new Complex(Math.pow(this["im"], z["re"]), 0);
+          case 1:
+            return new Complex(0, Math.pow(this["im"], z["re"]));
+          case 2:
+            return new Complex(-Math.pow(this["im"], z["re"]), 0);
+          case 3:
+            return new Complex(0, -Math.pow(this["im"], z["re"]));
+        }
+      }
+    }
+    if (tIsZero && z["re"] > 0) {
+      return Complex["ZERO"];
+    }
+    const arg2 = Math.atan2(this["im"], this["re"]);
+    const loh = logHypot(this["re"], this["im"]);
+    let re2 = Math.exp(z["re"] * loh - z["im"] * arg2);
+    let im2 = z["im"] * loh + z["re"] * arg2;
+    return new Complex(re2 * Math.cos(im2), re2 * Math.sin(im2));
+  },
+  "sqrt": function() {
+    const a = this["re"];
+    const b = this["im"];
+    if (b === 0) {
+      if (a >= 0) {
+        return new Complex(Math.sqrt(a), 0);
+      } else {
+        return new Complex(0, Math.sqrt(-a));
+      }
+    }
+    const r = hypot2(a, b);
+    let re2 = Math.sqrt(0.5 * (r + Math.abs(a)));
+    let im2 = Math.abs(b) / (2 * re2);
+    if (a >= 0) {
+      return new Complex(re2, b < 0 ? -im2 : im2);
+    } else {
+      return new Complex(im2, b < 0 ? -re2 : re2);
+    }
+  },
+  "exp": function() {
+    const er = Math.exp(this["re"]);
+    if (this["im"] === 0) {
+      return new Complex(er, 0);
+    }
+    return new Complex(er * Math.cos(this["im"]), er * Math.sin(this["im"]));
+  },
+  "expm1": function() {
+    const a = this["re"];
+    const b = this["im"];
+    return new Complex(Math.expm1(a) * Math.cos(b) + cosm1(b), Math.exp(a) * Math.sin(b));
+  },
+  "log": function() {
+    const a = this["re"];
+    const b = this["im"];
+    if (b === 0 && a > 0) {
+      return new Complex(Math.log(a), 0);
+    }
+    return new Complex(logHypot(a, b), Math.atan2(b, a));
+  },
+  "abs": function() {
+    return hypot2(this["re"], this["im"]);
+  },
+  "arg": function() {
+    return Math.atan2(this["im"], this["re"]);
+  },
+  "sin": function() {
+    const a = this["re"];
+    const b = this["im"];
+    return new Complex(Math.sin(a) * cosh3(b), Math.cos(a) * sinh3(b));
+  },
+  "cos": function() {
+    const a = this["re"];
+    const b = this["im"];
+    return new Complex(Math.cos(a) * cosh3(b), -Math.sin(a) * sinh3(b));
+  },
+  "tan": function() {
+    const a = 2 * this["re"];
+    const b = 2 * this["im"];
+    const d = Math.cos(a) + cosh3(b);
+    return new Complex(Math.sin(a) / d, sinh3(b) / d);
+  },
+  "cot": function() {
+    const a = 2 * this["re"];
+    const b = 2 * this["im"];
+    const d = Math.cos(a) - cosh3(b);
+    return new Complex(-Math.sin(a) / d, sinh3(b) / d);
+  },
+  "sec": function() {
+    const a = this["re"];
+    const b = this["im"];
+    const d = 0.5 * cosh3(2 * b) + 0.5 * Math.cos(2 * a);
+    return new Complex(Math.cos(a) * cosh3(b) / d, Math.sin(a) * sinh3(b) / d);
+  },
+  "csc": function() {
+    const a = this["re"];
+    const b = this["im"];
+    const d = 0.5 * cosh3(2 * b) - 0.5 * Math.cos(2 * a);
+    return new Complex(Math.sin(a) * cosh3(b) / d, -Math.cos(a) * sinh3(b) / d);
+  },
+  "asin": function() {
+    const a = this["re"];
+    const b = this["im"];
+    const t1 = new Complex(b * b - a * a + 1, -2 * a * b)["sqrt"]();
+    const t2 = new Complex(t1["re"] - b, t1["im"] + a)["log"]();
+    return new Complex(t2["im"], -t2["re"]);
+  },
+  "acos": function() {
+    const a = this["re"];
+    const b = this["im"];
+    const t1 = new Complex(b * b - a * a + 1, -2 * a * b)["sqrt"]();
+    const t2 = new Complex(t1["re"] - b, t1["im"] + a)["log"]();
+    return new Complex(Math.PI / 2 - t2["im"], t2["re"]);
+  },
+  "atan": function() {
+    const a = this["re"];
+    const b = this["im"];
+    if (a === 0) {
+      if (b === 1) {
+        return new Complex(0, Infinity);
+      }
+      if (b === -1) {
+        return new Complex(0, -Infinity);
+      }
+    }
+    const d = a * a + (1 - b) * (1 - b);
+    const t1 = new Complex((1 - b * b - a * a) / d, -2 * a / d).log();
+    return new Complex(-0.5 * t1["im"], 0.5 * t1["re"]);
+  },
+  "acot": function() {
+    const a = this["re"];
+    const b = this["im"];
+    if (b === 0) {
+      return new Complex(Math.atan2(1, a), 0);
+    }
+    const d = a * a + b * b;
+    return d !== 0 ? new Complex(a / d, -b / d).atan() : new Complex(a !== 0 ? a / 0 : 0, b !== 0 ? -b / 0 : 0).atan();
+  },
+  "asec": function() {
+    const a = this["re"];
+    const b = this["im"];
+    if (a === 0 && b === 0) {
+      return new Complex(0, Infinity);
+    }
+    const d = a * a + b * b;
+    return d !== 0 ? new Complex(a / d, -b / d).acos() : new Complex(a !== 0 ? a / 0 : 0, b !== 0 ? -b / 0 : 0).acos();
+  },
+  "acsc": function() {
+    const a = this["re"];
+    const b = this["im"];
+    if (a === 0 && b === 0) {
+      return new Complex(Math.PI / 2, Infinity);
+    }
+    const d = a * a + b * b;
+    return d !== 0 ? new Complex(a / d, -b / d).asin() : new Complex(a !== 0 ? a / 0 : 0, b !== 0 ? -b / 0 : 0).asin();
+  },
+  "sinh": function() {
+    const a = this["re"];
+    const b = this["im"];
+    return new Complex(sinh3(a) * Math.cos(b), cosh3(a) * Math.sin(b));
+  },
+  "cosh": function() {
+    const a = this["re"];
+    const b = this["im"];
+    return new Complex(cosh3(a) * Math.cos(b), sinh3(a) * Math.sin(b));
+  },
+  "tanh": function() {
+    const a = 2 * this["re"];
+    const b = 2 * this["im"];
+    const d = cosh3(a) + Math.cos(b);
+    return new Complex(sinh3(a) / d, Math.sin(b) / d);
+  },
+  "coth": function() {
+    const a = 2 * this["re"];
+    const b = 2 * this["im"];
+    const d = cosh3(a) - Math.cos(b);
+    return new Complex(sinh3(a) / d, -Math.sin(b) / d);
+  },
+  "csch": function() {
+    const a = this["re"];
+    const b = this["im"];
+    const d = Math.cos(2 * b) - cosh3(2 * a);
+    return new Complex(-2 * sinh3(a) * Math.cos(b) / d, 2 * cosh3(a) * Math.sin(b) / d);
+  },
+  "sech": function() {
+    const a = this["re"];
+    const b = this["im"];
+    const d = Math.cos(2 * b) + cosh3(2 * a);
+    return new Complex(2 * cosh3(a) * Math.cos(b) / d, -2 * sinh3(a) * Math.sin(b) / d);
+  },
+  "asinh": function() {
+    let tmp = this["im"];
+    this["im"] = -this["re"];
+    this["re"] = tmp;
+    const res = this["asin"]();
+    this["re"] = -this["im"];
+    this["im"] = tmp;
+    tmp = res["re"];
+    res["re"] = -res["im"];
+    res["im"] = tmp;
+    return res;
+  },
+  "acosh": function() {
+    const res = this["acos"]();
+    if (res["im"] <= 0) {
+      const tmp = res["re"];
+      res["re"] = -res["im"];
+      res["im"] = tmp;
+    } else {
+      const tmp = res["im"];
+      res["im"] = -res["re"];
+      res["re"] = tmp;
+    }
+    return res;
+  },
+  "atanh": function() {
+    const a = this["re"];
+    const b = this["im"];
+    const noIM = a > 1 && b === 0;
+    const oneMinus = 1 - a;
+    const onePlus = 1 + a;
+    const d = oneMinus * oneMinus + b * b;
+    const x = d !== 0 ? new Complex((onePlus * oneMinus - b * b) / d, (b * oneMinus + onePlus * b) / d) : new Complex(a !== -1 ? a / 0 : 0, b !== 0 ? b / 0 : 0);
+    const temp = x["re"];
+    x["re"] = logHypot(x["re"], x["im"]) / 2;
+    x["im"] = Math.atan2(x["im"], temp) / 2;
+    if (noIM) {
+      x["im"] = -x["im"];
+    }
+    return x;
+  },
+  "acoth": function() {
+    const a = this["re"];
+    const b = this["im"];
+    if (a === 0 && b === 0) {
+      return new Complex(0, Math.PI / 2);
+    }
+    const d = a * a + b * b;
+    return d !== 0 ? new Complex(a / d, -b / d).atanh() : new Complex(a !== 0 ? a / 0 : 0, b !== 0 ? -b / 0 : 0).atanh();
+  },
+  "acsch": function() {
+    const a = this["re"];
+    const b = this["im"];
+    if (b === 0) {
+      return new Complex(a !== 0 ? Math.log(a + Math.sqrt(a * a + 1)) : Infinity, 0);
+    }
+    const d = a * a + b * b;
+    return d !== 0 ? new Complex(a / d, -b / d).asinh() : new Complex(a !== 0 ? a / 0 : 0, b !== 0 ? -b / 0 : 0).asinh();
+  },
+  "asech": function() {
+    const a = this["re"];
+    const b = this["im"];
+    if (this["isZero"]()) {
+      return Complex["INFINITY"];
+    }
+    const d = a * a + b * b;
+    return d !== 0 ? new Complex(a / d, -b / d).acosh() : new Complex(a !== 0 ? a / 0 : 0, b !== 0 ? -b / 0 : 0).acosh();
+  },
+  "inverse": function() {
+    if (this["isZero"]()) {
+      return Complex["INFINITY"];
+    }
+    if (this["isInfinite"]()) {
+      return Complex["ZERO"];
+    }
+    const a = this["re"];
+    const b = this["im"];
+    const d = a * a + b * b;
+    return new Complex(a / d, -b / d);
+  },
+  "conjugate": function() {
+    return new Complex(this["re"], -this["im"]);
+  },
+  "neg": function() {
+    return new Complex(-this["re"], -this["im"]);
+  },
+  "ceil": function(places) {
+    places = Math.pow(10, places || 0);
+    return new Complex(Math.ceil(this["re"] * places) / places, Math.ceil(this["im"] * places) / places);
+  },
+  "floor": function(places) {
+    places = Math.pow(10, places || 0);
+    return new Complex(Math.floor(this["re"] * places) / places, Math.floor(this["im"] * places) / places);
+  },
+  "round": function(places) {
+    places = Math.pow(10, places || 0);
+    return new Complex(Math.round(this["re"] * places) / places, Math.round(this["im"] * places) / places);
+  },
+  "equals": function(a, b) {
+    const z = parse(a, b);
+    return Math.abs(z["re"] - this["re"]) <= Complex["EPSILON"] && Math.abs(z["im"] - this["im"]) <= Complex["EPSILON"];
+  },
+  "clone": function() {
+    return new Complex(this["re"], this["im"]);
+  },
+  "toString": function() {
+    let a = this["re"];
+    let b = this["im"];
+    let ret = "";
+    if (this["isNaN"]()) {
+      return "NaN";
+    }
+    if (this["isInfinite"]()) {
+      return "Infinity";
+    }
+    if (Math.abs(a) < Complex["EPSILON"]) {
+      a = 0;
+    }
+    if (Math.abs(b) < Complex["EPSILON"]) {
+      b = 0;
+    }
+    if (b === 0) {
+      return ret + a;
+    }
+    if (a !== 0) {
+      ret += a;
+      ret += " ";
+      if (b < 0) {
+        b = -b;
+        ret += "-";
+      } else {
+        ret += "+";
+      }
+      ret += " ";
+    } else if (b < 0) {
+      b = -b;
+      ret += "-";
+    }
+    if (b !== 1) {
+      ret += b;
+    }
+    return ret + "i";
+  },
+  "toVector": function() {
+    return [this["re"], this["im"]];
+  },
+  "valueOf": function() {
+    if (this["im"] === 0) {
+      return this["re"];
+    }
+    return null;
+  },
+  "isNaN": function() {
+    return isNaN(this["re"]) || isNaN(this["im"]);
+  },
+  "isZero": function() {
+    return this["im"] === 0 && this["re"] === 0;
+  },
+  "isFinite": function() {
+    return isFinite(this["re"]) && isFinite(this["im"]);
+  },
+  "isInfinite": function() {
+    return !this["isFinite"]();
+  }
+};
+Complex["ZERO"] = new Complex(0, 0);
+Complex["ONE"] = new Complex(1, 0);
+Complex["I"] = new Complex(0, 1);
+Complex["PI"] = new Complex(Math.PI, 0);
+Complex["E"] = new Complex(Math.E, 0);
+Complex["INFINITY"] = new Complex(Infinity, Infinity);
+Complex["NAN"] = new Complex(NaN, NaN);
+Complex["EPSILON"] = 1e-15;
+
 // node_modules/mathjs/lib/esm/type/complex/Complex.js
-var import_complex = __toModule(require_complex());
 var name3 = "Complex";
 var dependencies4 = [];
 var createComplexClass = /* @__PURE__ */ factory(name3, dependencies4, () => {
-  Object.defineProperty(import_complex.default, "name", {
+  Object.defineProperty(Complex, "name", {
     value: "Complex"
   });
-  import_complex.default.prototype.constructor = import_complex.default;
-  import_complex.default.prototype.type = "Complex";
-  import_complex.default.prototype.isComplex = true;
-  import_complex.default.prototype.toJSON = function() {
+  Complex.prototype.constructor = Complex;
+  Complex.prototype.type = "Complex";
+  Complex.prototype.isComplex = true;
+  Complex.prototype.toJSON = function() {
     return {
       mathjs: "Complex",
       re: this.re,
       im: this.im
     };
   };
-  import_complex.default.prototype.toPolar = function() {
+  Complex.prototype.toPolar = function() {
     return {
       r: this.abs(),
       phi: this.arg()
     };
   };
-  import_complex.default.prototype.format = function(options) {
+  Complex.prototype.format = function(options) {
     var str = "";
     var im2 = this.im;
     var re2 = this.re;
@@ -7584,12 +6892,12 @@ var createComplexClass = /* @__PURE__ */ factory(name3, dependencies4, () => {
     }
     return str;
   };
-  import_complex.default.fromPolar = function(args) {
+  Complex.fromPolar = function(args) {
     switch (arguments.length) {
       case 1: {
         var arg2 = arguments[0];
         if (typeof arg2 === "object") {
-          return (0, import_complex.default)(arg2);
+          return Complex(arg2);
         } else {
           throw new TypeError("Input has to be an object with r and phi keys.");
         }
@@ -7602,7 +6910,7 @@ var createComplexClass = /* @__PURE__ */ factory(name3, dependencies4, () => {
             phi3 = phi3.toNumber("rad");
           }
           if (isNumber(phi3)) {
-            return new import_complex.default({
+            return new Complex({
               r,
               phi: phi3
             });
@@ -7616,11 +6924,11 @@ var createComplexClass = /* @__PURE__ */ factory(name3, dependencies4, () => {
         throw new SyntaxError("Wrong number of arguments in function fromPolar");
     }
   };
-  import_complex.default.prototype.valueOf = import_complex.default.prototype.toString;
-  import_complex.default.fromJSON = function(json) {
-    return new import_complex.default(json);
+  Complex.prototype.valueOf = Complex.prototype.toString;
+  Complex.fromJSON = function(json) {
+    return new Complex(json);
   };
-  import_complex.default.compare = function(a, b) {
+  Complex.compare = function(a, b) {
     if (a.re > b.re) {
       return 1;
     }
@@ -7635,7 +6943,7 @@ var createComplexClass = /* @__PURE__ */ factory(name3, dependencies4, () => {
     }
     return 0;
   };
-  return import_complex.default;
+  return Complex;
 }, {
   isClass: true
 });
@@ -7899,6 +7207,701 @@ var createMatrixClass = /* @__PURE__ */ factory(name6, dependencies7, () => {
 }, {
   isClass: true
 });
+
+// node_modules/mathjs/lib/esm/utils/bignumber/formatter.js
+function formatBigNumberToBase(n, base, size2) {
+  var BigNumberCtor = n.constructor;
+  var big2 = new BigNumberCtor(2);
+  var suffix = "";
+  if (size2) {
+    if (size2 < 1) {
+      throw new Error("size must be in greater than 0");
+    }
+    if (!isInteger(size2)) {
+      throw new Error("size must be an integer");
+    }
+    if (n.greaterThan(big2.pow(size2 - 1).sub(1)) || n.lessThan(big2.pow(size2 - 1).mul(-1))) {
+      throw new Error("Value must be in range [-2^".concat(size2 - 1, ", 2^").concat(size2 - 1, "-1]"));
+    }
+    if (!n.isInteger()) {
+      throw new Error("Value must be an integer");
+    }
+    if (n.lessThan(0)) {
+      n = n.add(big2.pow(size2));
+    }
+    suffix = "i".concat(size2);
+  }
+  switch (base) {
+    case 2:
+      return "".concat(n.toBinary()).concat(suffix);
+    case 8:
+      return "".concat(n.toOctal()).concat(suffix);
+    case 16:
+      return "".concat(n.toHexadecimal()).concat(suffix);
+    default:
+      throw new Error("Base ".concat(base, " not supported "));
+  }
+}
+function format2(value, options) {
+  if (typeof options === "function") {
+    return options(value);
+  }
+  if (!value.isFinite()) {
+    return value.isNaN() ? "NaN" : value.gt(0) ? "Infinity" : "-Infinity";
+  }
+  var {
+    notation,
+    precision,
+    wordSize
+  } = normalizeFormatOptions(options);
+  switch (notation) {
+    case "fixed":
+      return toFixed2(value, precision);
+    case "exponential":
+      return toExponential2(value, precision);
+    case "engineering":
+      return toEngineering2(value, precision);
+    case "bin":
+      return formatBigNumberToBase(value, 2, wordSize);
+    case "oct":
+      return formatBigNumberToBase(value, 8, wordSize);
+    case "hex":
+      return formatBigNumberToBase(value, 16, wordSize);
+    case "auto": {
+      var lowerExp = _toNumberOrDefault2(options === null || options === void 0 ? void 0 : options.lowerExp, -3);
+      var upperExp = _toNumberOrDefault2(options === null || options === void 0 ? void 0 : options.upperExp, 5);
+      if (value.isZero())
+        return "0";
+      var str;
+      var rounded = value.toSignificantDigits(precision);
+      var exp3 = rounded.e;
+      if (exp3 >= lowerExp && exp3 < upperExp) {
+        str = rounded.toFixed();
+      } else {
+        str = toExponential2(value, precision);
+      }
+      return str.replace(/((\.\d*?)(0+))($|e)/, function() {
+        var digits2 = arguments[2];
+        var e3 = arguments[4];
+        return digits2 !== "." ? digits2 + e3 : e3;
+      });
+    }
+    default:
+      throw new Error('Unknown notation "' + notation + '". Choose "auto", "exponential", "fixed", "bin", "oct", or "hex.');
+  }
+}
+function toEngineering2(value, precision) {
+  var e3 = value.e;
+  var newExp = e3 % 3 === 0 ? e3 : e3 < 0 ? e3 - 3 - e3 % 3 : e3 - e3 % 3;
+  var valueWithoutExp = value.mul(Math.pow(10, -newExp));
+  var valueStr = valueWithoutExp.toPrecision(precision);
+  if (valueStr.includes("e")) {
+    var BigNumber2 = value.constructor;
+    valueStr = new BigNumber2(valueStr).toFixed();
+  }
+  return valueStr + "e" + (e3 >= 0 ? "+" : "") + newExp.toString();
+}
+function toExponential2(value, precision) {
+  if (precision !== void 0) {
+    return value.toExponential(precision - 1);
+  } else {
+    return value.toExponential();
+  }
+}
+function toFixed2(value, precision) {
+  return value.toFixed(precision);
+}
+function _toNumberOrDefault2(value, defaultValue) {
+  if (isNumber(value)) {
+    return value;
+  } else if (isBigNumber(value)) {
+    return value.toNumber();
+  } else {
+    return defaultValue;
+  }
+}
+
+// node_modules/mathjs/lib/esm/utils/string.js
+function endsWith(text, search) {
+  var start = text.length - search.length;
+  var end = text.length;
+  return text.substring(start, end) === search;
+}
+function format3(value, options) {
+  var result = _format(value, options);
+  if (options && typeof options === "object" && "truncate" in options && result.length > options.truncate) {
+    return result.substring(0, options.truncate - 3) + "...";
+  }
+  return result;
+}
+function _format(value, options) {
+  if (typeof value === "number") {
+    return format(value, options);
+  }
+  if (isBigNumber(value)) {
+    return format2(value, options);
+  }
+  if (looksLikeFraction(value)) {
+    if (!options || options.fraction !== "decimal") {
+      return value.s * value.n + "/" + value.d;
+    } else {
+      return value.toString();
+    }
+  }
+  if (Array.isArray(value)) {
+    return formatArray(value, options);
+  }
+  if (isString(value)) {
+    return stringify(value);
+  }
+  if (typeof value === "function") {
+    return value.syntax ? String(value.syntax) : "function";
+  }
+  if (value && typeof value === "object") {
+    if (typeof value.format === "function") {
+      return value.format(options);
+    } else if (value && value.toString(options) !== {}.toString()) {
+      return value.toString(options);
+    } else {
+      var entries = Object.keys(value).map((key) => {
+        return stringify(key) + ": " + format3(value[key], options);
+      });
+      return "{" + entries.join(", ") + "}";
+    }
+  }
+  return String(value);
+}
+function stringify(value) {
+  var text = String(value);
+  var escaped = "";
+  var i2 = 0;
+  while (i2 < text.length) {
+    var c = text.charAt(i2);
+    escaped += c in controlCharacters ? controlCharacters[c] : c;
+    i2++;
+  }
+  return '"' + escaped + '"';
+}
+var controlCharacters = {
+  '"': '\\"',
+  "\\": "\\\\",
+  "\b": "\\b",
+  "\f": "\\f",
+  "\n": "\\n",
+  "\r": "\\r",
+  "	": "\\t"
+};
+function escape(value) {
+  var text = String(value);
+  text = text.replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/'/g, "&#39;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+  return text;
+}
+function formatArray(array, options) {
+  if (Array.isArray(array)) {
+    var str = "[";
+    var len = array.length;
+    for (var i2 = 0; i2 < len; i2++) {
+      if (i2 !== 0) {
+        str += ", ";
+      }
+      str += formatArray(array[i2], options);
+    }
+    str += "]";
+    return str;
+  } else {
+    return format3(array, options);
+  }
+}
+function looksLikeFraction(value) {
+  return value && typeof value === "object" && typeof value.s === "number" && typeof value.n === "number" && typeof value.d === "number" || false;
+}
+function compareText(x, y) {
+  if (!isString(x)) {
+    throw new TypeError("Unexpected type of argument in function compareText (expected: string or Array or Matrix, actual: " + typeOf(x) + ", index: 0)");
+  }
+  if (!isString(y)) {
+    throw new TypeError("Unexpected type of argument in function compareText (expected: string or Array or Matrix, actual: " + typeOf(y) + ", index: 1)");
+  }
+  return x === y ? 0 : x > y ? 1 : -1;
+}
+
+// node_modules/mathjs/lib/esm/error/DimensionError.js
+function DimensionError(actual, expected, relation) {
+  if (!(this instanceof DimensionError)) {
+    throw new SyntaxError("Constructor must be called with the new operator");
+  }
+  this.actual = actual;
+  this.expected = expected;
+  this.relation = relation;
+  this.message = "Dimension mismatch (" + (Array.isArray(actual) ? "[" + actual.join(", ") + "]" : actual) + " " + (this.relation || "!=") + " " + (Array.isArray(expected) ? "[" + expected.join(", ") + "]" : expected) + ")";
+  this.stack = new Error().stack;
+}
+DimensionError.prototype = new RangeError();
+DimensionError.prototype.constructor = RangeError;
+DimensionError.prototype.name = "DimensionError";
+DimensionError.prototype.isDimensionError = true;
+
+// node_modules/mathjs/lib/esm/error/IndexError.js
+function IndexError(index3, min3, max3) {
+  if (!(this instanceof IndexError)) {
+    throw new SyntaxError("Constructor must be called with the new operator");
+  }
+  this.index = index3;
+  if (arguments.length < 3) {
+    this.min = 0;
+    this.max = min3;
+  } else {
+    this.min = min3;
+    this.max = max3;
+  }
+  if (this.min !== void 0 && this.index < this.min) {
+    this.message = "Index out of range (" + this.index + " < " + this.min + ")";
+  } else if (this.max !== void 0 && this.index >= this.max) {
+    this.message = "Index out of range (" + this.index + " > " + (this.max - 1) + ")";
+  } else {
+    this.message = "Index out of range (" + this.index + ")";
+  }
+  this.stack = new Error().stack;
+}
+IndexError.prototype = new RangeError();
+IndexError.prototype.constructor = RangeError;
+IndexError.prototype.name = "IndexError";
+IndexError.prototype.isIndexError = true;
+
+// node_modules/mathjs/lib/esm/utils/array.js
+function arraySize(x) {
+  var s = [];
+  while (Array.isArray(x)) {
+    s.push(x.length);
+    x = x[0];
+  }
+  return s;
+}
+function _validate(array, size2, dim) {
+  var i2;
+  var len = array.length;
+  if (len !== size2[dim]) {
+    throw new DimensionError(len, size2[dim]);
+  }
+  if (dim < size2.length - 1) {
+    var dimNext = dim + 1;
+    for (i2 = 0; i2 < len; i2++) {
+      var child = array[i2];
+      if (!Array.isArray(child)) {
+        throw new DimensionError(size2.length - 1, size2.length, "<");
+      }
+      _validate(array[i2], size2, dimNext);
+    }
+  } else {
+    for (i2 = 0; i2 < len; i2++) {
+      if (Array.isArray(array[i2])) {
+        throw new DimensionError(size2.length + 1, size2.length, ">");
+      }
+    }
+  }
+}
+function validate(array, size2) {
+  var isScalar = size2.length === 0;
+  if (isScalar) {
+    if (Array.isArray(array)) {
+      throw new DimensionError(array.length, 0);
+    }
+  } else {
+    _validate(array, size2, 0);
+  }
+}
+function validateIndexSourceSize(value, index3) {
+  var valueSize = value.isMatrix ? value._size : arraySize(value);
+  var sourceSize = index3._sourceSize;
+  sourceSize.forEach((sourceDim, i2) => {
+    if (sourceDim !== null && sourceDim !== valueSize[i2]) {
+      throw new DimensionError(sourceDim, valueSize[i2]);
+    }
+  });
+}
+function validateIndex(index3, length) {
+  if (index3 !== void 0) {
+    if (!isNumber(index3) || !isInteger(index3)) {
+      throw new TypeError("Index must be an integer (value: " + index3 + ")");
+    }
+    if (index3 < 0 || typeof length === "number" && index3 >= length) {
+      throw new IndexError(index3, length);
+    }
+  }
+}
+function isEmptyIndex(index3) {
+  for (var i2 = 0; i2 < index3._dimensions.length; ++i2) {
+    var dimension = index3._dimensions[i2];
+    if (dimension._data && isArray(dimension._data)) {
+      if (dimension._size[0] === 0) {
+        return true;
+      }
+    } else if (dimension.isRange) {
+      if (dimension.start === dimension.end) {
+        return true;
+      }
+    } else if (isString(dimension)) {
+      if (dimension.length === 0) {
+        return true;
+      }
+    }
+  }
+  return false;
+}
+function resize(array, size2, defaultValue) {
+  if (!Array.isArray(size2)) {
+    throw new TypeError("Array expected");
+  }
+  if (size2.length === 0) {
+    throw new Error("Resizing to scalar is not supported");
+  }
+  size2.forEach(function(value) {
+    if (!isNumber(value) || !isInteger(value) || value < 0) {
+      throw new TypeError("Invalid size, must contain positive integers (size: " + format3(size2) + ")");
+    }
+  });
+  if (isNumber(array) || isBigNumber(array)) {
+    array = [array];
+  }
+  var _defaultValue = defaultValue !== void 0 ? defaultValue : 0;
+  _resize(array, size2, 0, _defaultValue);
+  return array;
+}
+function _resize(array, size2, dim, defaultValue) {
+  var i2;
+  var elem;
+  var oldLen = array.length;
+  var newLen = size2[dim];
+  var minLen = Math.min(oldLen, newLen);
+  array.length = newLen;
+  if (dim < size2.length - 1) {
+    var dimNext = dim + 1;
+    for (i2 = 0; i2 < minLen; i2++) {
+      elem = array[i2];
+      if (!Array.isArray(elem)) {
+        elem = [elem];
+        array[i2] = elem;
+      }
+      _resize(elem, size2, dimNext, defaultValue);
+    }
+    for (i2 = minLen; i2 < newLen; i2++) {
+      elem = [];
+      array[i2] = elem;
+      _resize(elem, size2, dimNext, defaultValue);
+    }
+  } else {
+    for (i2 = 0; i2 < minLen; i2++) {
+      while (Array.isArray(array[i2])) {
+        array[i2] = array[i2][0];
+      }
+    }
+    for (i2 = minLen; i2 < newLen; i2++) {
+      array[i2] = defaultValue;
+    }
+  }
+}
+function reshape(array, sizes) {
+  var flatArray = flatten(array);
+  var currentLength = flatArray.length;
+  if (!Array.isArray(array) || !Array.isArray(sizes)) {
+    throw new TypeError("Array expected");
+  }
+  if (sizes.length === 0) {
+    throw new DimensionError(0, currentLength, "!=");
+  }
+  sizes = processSizesWildcard(sizes, currentLength);
+  var newLength = product(sizes);
+  if (currentLength !== newLength) {
+    throw new DimensionError(newLength, currentLength, "!=");
+  }
+  try {
+    return _reshape(flatArray, sizes);
+  } catch (e3) {
+    if (e3 instanceof DimensionError) {
+      throw new DimensionError(newLength, currentLength, "!=");
+    }
+    throw e3;
+  }
+}
+function processSizesWildcard(sizes, currentLength) {
+  var newLength = product(sizes);
+  var processedSizes = sizes.slice();
+  var WILDCARD = -1;
+  var wildCardIndex = sizes.indexOf(WILDCARD);
+  var isMoreThanOneWildcard = sizes.indexOf(WILDCARD, wildCardIndex + 1) >= 0;
+  if (isMoreThanOneWildcard) {
+    throw new Error("More than one wildcard in sizes");
+  }
+  var hasWildcard = wildCardIndex >= 0;
+  var canReplaceWildcard = currentLength % newLength === 0;
+  if (hasWildcard) {
+    if (canReplaceWildcard) {
+      processedSizes[wildCardIndex] = -currentLength / newLength;
+    } else {
+      throw new Error("Could not replace wildcard, since " + currentLength + " is no multiple of " + -newLength);
+    }
+  }
+  return processedSizes;
+}
+function product(array) {
+  return array.reduce((prev, curr) => prev * curr, 1);
+}
+function _reshape(array, sizes) {
+  var tmpArray = array;
+  var tmpArray2;
+  for (var sizeIndex = sizes.length - 1; sizeIndex > 0; sizeIndex--) {
+    var size2 = sizes[sizeIndex];
+    tmpArray2 = [];
+    var length = tmpArray.length / size2;
+    for (var i2 = 0; i2 < length; i2++) {
+      tmpArray2.push(tmpArray.slice(i2 * size2, (i2 + 1) * size2));
+    }
+    tmpArray = tmpArray2;
+  }
+  return tmpArray;
+}
+function squeeze(array, size2) {
+  var s = size2 || arraySize(array);
+  while (Array.isArray(array) && array.length === 1) {
+    array = array[0];
+    s.shift();
+  }
+  var dims = s.length;
+  while (s[dims - 1] === 1) {
+    dims--;
+  }
+  if (dims < s.length) {
+    array = _squeeze(array, dims, 0);
+    s.length = dims;
+  }
+  return array;
+}
+function _squeeze(array, dims, dim) {
+  var i2, ii;
+  if (dim < dims) {
+    var next = dim + 1;
+    for (i2 = 0, ii = array.length; i2 < ii; i2++) {
+      array[i2] = _squeeze(array[i2], dims, next);
+    }
+  } else {
+    while (Array.isArray(array)) {
+      array = array[0];
+    }
+  }
+  return array;
+}
+function unsqueeze(array, dims, outer, size2) {
+  var s = size2 || arraySize(array);
+  if (outer) {
+    for (var i2 = 0; i2 < outer; i2++) {
+      array = [array];
+      s.unshift(1);
+    }
+  }
+  array = _unsqueeze(array, dims, 0);
+  while (s.length < dims) {
+    s.push(1);
+  }
+  return array;
+}
+function _unsqueeze(array, dims, dim) {
+  var i2, ii;
+  if (Array.isArray(array)) {
+    var next = dim + 1;
+    for (i2 = 0, ii = array.length; i2 < ii; i2++) {
+      array[i2] = _unsqueeze(array[i2], dims, next);
+    }
+  } else {
+    for (var d = dim; d < dims; d++) {
+      array = [array];
+    }
+  }
+  return array;
+}
+function flatten(array) {
+  if (!Array.isArray(array)) {
+    return array;
+  }
+  var flat = [];
+  array.forEach(function callback2(value) {
+    if (Array.isArray(value)) {
+      value.forEach(callback2);
+    } else {
+      flat.push(value);
+    }
+  });
+  return flat;
+}
+function map(array, callback2) {
+  return Array.prototype.map.call(array, callback2);
+}
+function forEach(array, callback2) {
+  Array.prototype.forEach.call(array, callback2);
+}
+function filter(array, callback2) {
+  if (arraySize(array).length !== 1) {
+    throw new Error("Only one dimensional matrices supported");
+  }
+  return Array.prototype.filter.call(array, callback2);
+}
+function filterRegExp(array, regexp) {
+  if (arraySize(array).length !== 1) {
+    throw new Error("Only one dimensional matrices supported");
+  }
+  return Array.prototype.filter.call(array, (entry) => regexp.test(entry));
+}
+function join(array, separator) {
+  return Array.prototype.join.call(array, separator);
+}
+function identify(a) {
+  if (!Array.isArray(a)) {
+    throw new TypeError("Array input expected");
+  }
+  if (a.length === 0) {
+    return a;
+  }
+  var b = [];
+  var count2 = 0;
+  b[0] = {
+    value: a[0],
+    identifier: 0
+  };
+  for (var i2 = 1; i2 < a.length; i2++) {
+    if (a[i2] === a[i2 - 1]) {
+      count2++;
+    } else {
+      count2 = 0;
+    }
+    b.push({
+      value: a[i2],
+      identifier: count2
+    });
+  }
+  return b;
+}
+function generalize(a) {
+  if (!Array.isArray(a)) {
+    throw new TypeError("Array input expected");
+  }
+  if (a.length === 0) {
+    return a;
+  }
+  var b = [];
+  for (var i2 = 0; i2 < a.length; i2++) {
+    b.push(a[i2].value);
+  }
+  return b;
+}
+function getArrayDataType(array, typeOf3) {
+  var type;
+  var length = 0;
+  for (var i2 = 0; i2 < array.length; i2++) {
+    var item = array[i2];
+    var _isArray = Array.isArray(item);
+    if (i2 === 0 && _isArray) {
+      length = item.length;
+    }
+    if (_isArray && item.length !== length) {
+      return void 0;
+    }
+    var itemType = _isArray ? getArrayDataType(item, typeOf3) : typeOf3(item);
+    if (type === void 0) {
+      type = itemType;
+    } else if (type !== itemType) {
+      return "mixed";
+    } else {
+    }
+  }
+  return type;
+}
+function concatRecursive(a, b, concatDim, dim) {
+  if (dim < concatDim) {
+    if (a.length !== b.length) {
+      throw new DimensionError(a.length, b.length);
+    }
+    var c = [];
+    for (var i2 = 0; i2 < a.length; i2++) {
+      c[i2] = concatRecursive(a[i2], b[i2], concatDim, dim + 1);
+    }
+    return c;
+  } else {
+    return a.concat(b);
+  }
+}
+function concat() {
+  var arrays = Array.prototype.slice.call(arguments, 0, -1);
+  var concatDim = Array.prototype.slice.call(arguments, -1);
+  if (arrays.length === 1) {
+    return arrays[0];
+  }
+  if (arrays.length > 1) {
+    return arrays.slice(1).reduce(function(A, B) {
+      return concatRecursive(A, B, concatDim, 0);
+    }, arrays[0]);
+  } else {
+    throw new Error("Wrong number of arguments in function concat");
+  }
+}
+function broadcastSizes() {
+  for (var _len = arguments.length, sizes = new Array(_len), _key = 0; _key < _len; _key++) {
+    sizes[_key] = arguments[_key];
+  }
+  var dimensions = sizes.map((s) => s.length);
+  var N = Math.max(...dimensions);
+  var sizeMax = new Array(N).fill(null);
+  for (var i2 = 0; i2 < sizes.length; i2++) {
+    var size2 = sizes[i2];
+    var dim = dimensions[i2];
+    for (var j = 0; j < dim; j++) {
+      var n = N - dim + j;
+      if (size2[j] > sizeMax[n]) {
+        sizeMax[n] = size2[j];
+      }
+    }
+  }
+  for (var _i = 0; _i < sizes.length; _i++) {
+    checkBroadcastingRules(sizes[_i], sizeMax);
+  }
+  return sizeMax;
+}
+function checkBroadcastingRules(size2, toSize) {
+  var N = toSize.length;
+  var dim = size2.length;
+  for (var j = 0; j < dim; j++) {
+    var n = N - dim + j;
+    if (size2[j] < toSize[n] && size2[j] > 1 || size2[j] > toSize[n]) {
+      throw new Error("shape missmatch: missmatch is found in arg with shape (".concat(size2, ") not possible to broadcast dimension ").concat(dim, " with size ").concat(size2[j], " to size ").concat(toSize[n]));
+    }
+  }
+}
+function broadcastTo(array, toSize) {
+  var Asize = arraySize(array);
+  if (deepStrictEqual(Asize, toSize)) {
+    return array;
+  }
+  checkBroadcastingRules(Asize, toSize);
+  var broadcastedSize = broadcastSizes(Asize, toSize);
+  var N = broadcastedSize.length;
+  var paddedSize = [...Array(N - Asize.length).fill(1), ...Asize];
+  var A = clone3(array);
+  if (Asize.length < N) {
+    A = reshape(A, paddedSize);
+    Asize = arraySize(A);
+  }
+  for (var dim = 0; dim < N; dim++) {
+    if (Asize[dim] < broadcastedSize[dim]) {
+      A = stretch(A, broadcastedSize[dim], dim);
+      Asize = arraySize(A);
+    }
+  }
+  return A;
+}
+function stretch(arrayToStretch, sizeToStretch, dimToStretch) {
+  return concat(...Array(sizeToStretch).fill(arrayToStretch), dimToStretch);
+}
+function clone3(array) {
+  return _extends([], array);
+}
 
 // node_modules/mathjs/lib/esm/utils/lruQueue.js
 function lruQueue(limit) {
@@ -9268,9 +9271,7 @@ var createIsNaN = /* @__PURE__ */ factory(name15, dependencies16, (_ref) => {
     Unit: function Unit2(x) {
       return Number.isNaN(x.value);
     },
-    "Array | Matrix": function ArrayMatrix(x) {
-      return deepMap(x, Number.isNaN);
-    }
+    "Array | Matrix": typed3.referToSelf((self2) => (x) => deepMap(x, self2))
   });
 });
 
@@ -15756,23 +15757,17 @@ function toPrimitive(t, r) {
 // node_modules/@babel/runtime/helpers/esm/toPropertyKey.js
 function toPropertyKey(t) {
   var i2 = toPrimitive(t, "string");
-  return _typeof(i2) == "symbol" ? i2 : String(i2);
+  return _typeof(i2) == "symbol" ? i2 : i2 + "";
 }
 
 // node_modules/@babel/runtime/helpers/esm/defineProperty.js
-function _defineProperty(obj, key, value) {
-  key = toPropertyKey(key);
-  if (key in obj) {
-    Object.defineProperty(obj, key, {
-      value,
-      enumerable: true,
-      configurable: true,
-      writable: true
-    });
-  } else {
-    obj[key] = value;
-  }
-  return obj;
+function _defineProperty(e3, r, t) {
+  return (r = toPropertyKey(r)) in e3 ? Object.defineProperty(e3, r, {
+    value: t,
+    enumerable: true,
+    configurable: true,
+    writable: true
+  }) : e3[r] = t, e3;
 }
 
 // node_modules/mathjs/lib/esm/function/numeric/solveODE.js
@@ -16017,38 +16012,38 @@ var createErf = /* @__PURE__ */ factory(name113, dependencies113, (_ref) => {
   });
   function erf1(y) {
     var ysq = y * y;
-    var xnum = P2[0][4] * ysq;
+    var xnum = P3[0][4] * ysq;
     var xden = ysq;
     var i2;
     for (i2 = 0; i2 < 3; i2 += 1) {
-      xnum = (xnum + P2[0][i2]) * ysq;
+      xnum = (xnum + P3[0][i2]) * ysq;
       xden = (xden + Q[0][i2]) * ysq;
     }
-    return y * (xnum + P2[0][3]) / (xden + Q[0][3]);
+    return y * (xnum + P3[0][3]) / (xden + Q[0][3]);
   }
   function erfc2(y) {
-    var xnum = P2[1][8] * y;
+    var xnum = P3[1][8] * y;
     var xden = y;
     var i2;
     for (i2 = 0; i2 < 7; i2 += 1) {
-      xnum = (xnum + P2[1][i2]) * y;
+      xnum = (xnum + P3[1][i2]) * y;
       xden = (xden + Q[1][i2]) * y;
     }
-    var result = (xnum + P2[1][7]) / (xden + Q[1][7]);
+    var result = (xnum + P3[1][7]) / (xden + Q[1][7]);
     var ysq = parseInt(y * 16) / 16;
     var del = (y - ysq) * (y + ysq);
     return Math.exp(-ysq * ysq) * Math.exp(-del) * result;
   }
   function erfc3(y) {
     var ysq = 1 / (y * y);
-    var xnum = P2[2][5] * ysq;
+    var xnum = P3[2][5] * ysq;
     var xden = ysq;
     var i2;
     for (i2 = 0; i2 < 4; i2 += 1) {
-      xnum = (xnum + P2[2][i2]) * ysq;
+      xnum = (xnum + P3[2][i2]) * ysq;
       xden = (xden + Q[2][i2]) * ysq;
     }
-    var result = ysq * (xnum + P2[2][4]) / (xden + Q[2][4]);
+    var result = ysq * (xnum + P3[2][4]) / (xden + Q[2][4]);
     result = (SQRPI - result) / y;
     ysq = parseInt(y * 16) / 16;
     var del = (y - ysq) * (y + ysq);
@@ -16057,7 +16052,7 @@ var createErf = /* @__PURE__ */ factory(name113, dependencies113, (_ref) => {
 });
 var THRESH = 0.46875;
 var SQRPI = 0.5641895835477563;
-var P2 = [[3.1611237438705655, 113.86415415105016, 377.485237685302, 3209.3775891384694, 0.18577770618460315], [0.5641884969886701, 8.883149794388377, 66.11919063714163, 298.6351381974001, 881.952221241769, 1712.0476126340707, 2051.0783778260716, 1230.3393547979972, 21531153547440383e-24], [0.30532663496123236, 0.36034489994980445, 0.12578172611122926, 0.016083785148742275, 6587491615298378e-19, 0.016315387137302097]];
+var P3 = [[3.1611237438705655, 113.86415415105016, 377.485237685302, 3209.3775891384694, 0.18577770618460315], [0.5641884969886701, 8.883149794388377, 66.11919063714163, 298.6351381974001, 881.952221241769, 1712.0476126340707, 2051.0783778260716, 1230.3393547979972, 21531153547440383e-24], [0.30532663496123236, 0.36034489994980445, 0.12578172611122926, 0.016083785148742275, 6587491615298378e-19, 0.016315387137302097]];
 var Q = [[23.601290952344122, 244.02463793444417, 1282.6165260773723, 2844.236833439171], [15.744926110709835, 117.6939508913125, 537.1811018620099, 1621.3895745666903, 3290.7992357334597, 4362.619090143247, 3439.3676741437216, 1230.3393548037495], [2.568520192289822, 1.8729528499234604, 0.5279051029514285, 0.06051834131244132, 0.0023352049762686918]];
 var MAX_NUM = Math.pow(2, 53);
 
@@ -16193,11 +16188,11 @@ var createMode = /* @__PURE__ */ factory(name115, dependencies115, (_ref) => {
 // node_modules/mathjs/lib/esm/function/statistics/utils/improveErrorMessage.js
 function improveErrorMessage(err, fnName, value) {
   var details;
-  if (String(err).indexOf("Unexpected type") !== -1) {
+  if (String(err).includes("Unexpected type")) {
     details = arguments.length > 2 ? " (type: " + typeOf(value) + ", value: " + JSON.stringify(value) + ")" : " (type: " + err.data.actual + ")";
     return new TypeError("Cannot calculate " + fnName + ", unexpected type of argument" + details);
   }
-  if (String(err).indexOf("complex numbers") !== -1) {
+  if (String(err).includes("complex numbers")) {
     details = arguments.length > 2 ? " (type: " + typeOf(value) + ", value: " + JSON.stringify(value) + ")" : "";
     return new TypeError("Cannot calculate " + fnName + ", no ordering relation is defined for complex numbers" + details);
   }
@@ -20028,12 +20023,13 @@ var createUnitClass = /* @__PURE__ */ factory(name161, dependencies161, (_ref) =
     return {
       mathjs: "Unit",
       value: this._denormalize(this.value),
-      unit: this.formatUnits(),
+      unit: this.units.length > 0 ? this.formatUnits() : null,
       fixPrefix: this.fixPrefix
     };
   };
   Unit2.fromJSON = function(json) {
-    var unit3 = new Unit2(json.value, json.unit);
+    var _json$unit;
+    var unit3 = new Unit2(json.value, (_json$unit = json.unit) !== null && _json$unit !== void 0 ? _json$unit : void 0);
     unit3.fixPrefix = json.fixPrefix || false;
     return unit3;
   };
@@ -22729,6 +22725,7 @@ var createUnitClass = /* @__PURE__ */ factory(name161, dependencies161, (_ref) =
   };
   Unit2.deleteUnit = function(name314) {
     delete Unit2.UNITS[name314];
+    delete _findUnit.cache;
   };
   Unit2.PREFIXES = PREFIXES;
   Unit2.BASE_DIMENSIONS = BASE_DIMENSIONS;
@@ -25816,21 +25813,22 @@ var createConstantNode = /* @__PURE__ */ factory(name212, dependencies212, (_ref
     }
     _toTex(options) {
       var value = this._toString(options);
-      switch (typeOf(this.value)) {
+      var type = typeOf(this.value);
+      switch (type) {
         case "string":
           return "\\mathtt{" + escapeLatex(value) + "}";
         case "number":
-        case "BigNumber":
-          {
-            if (!isFinite(this.value)) {
-              return this.value.valueOf() < 0 ? "-\\infty" : "\\infty";
-            }
-            var index3 = value.toLowerCase().indexOf("e");
-            if (index3 !== -1) {
-              return value.substring(0, index3) + "\\cdot10^{" + value.substring(index3 + 1) + "}";
-            }
+        case "BigNumber": {
+          var finite = type === "BigNumber" ? this.value.isFinite() : isFinite(this.value);
+          if (!finite) {
+            return this.value.valueOf() < 0 ? "-\\infty" : "\\infty";
+          }
+          var index3 = value.toLowerCase().indexOf("e");
+          if (index3 !== -1) {
+            return value.substring(0, index3) + "\\cdot10^{" + value.substring(index3 + 1) + "}";
           }
           return value;
+        }
         case "Fraction":
           return this.value.toLatex();
         default:
@@ -27107,7 +27105,7 @@ var createSymbolNode = /* @__PURE__ */ factory(name220, dependencies220, (_ref) 
 var name221 = "FunctionNode";
 var dependencies221 = ["math", "Node", "SymbolNode"];
 var createFunctionNode = /* @__PURE__ */ factory(name221, dependencies221, (_ref) => {
-  var _class;
+  var _FunctionNode;
   var {
     math: math2,
     Node: Node2,
@@ -27388,13 +27386,13 @@ var createFunctionNode = /* @__PURE__ */ factory(name221, dependencies221, (_ref
       return this.type + ":" + this.name;
     }
   }
-  _class = FunctionNode2;
+  _FunctionNode = FunctionNode2;
   _defineProperty(FunctionNode2, "name", name221);
   _defineProperty(FunctionNode2, "onUndefinedFunction", function(name314) {
     throw new Error("Undefined function " + name314);
   });
   _defineProperty(FunctionNode2, "fromJSON", function(json) {
-    return new _class(json.fn, json.args);
+    return new _FunctionNode(json.fn, json.args);
   });
   return FunctionNode2;
 }, {
@@ -27426,7 +27424,7 @@ var createParse = /* @__PURE__ */ factory(name222, dependencies222, (_ref) => {
     RelationalNode: RelationalNode2,
     SymbolNode: SymbolNode2
   } = _ref;
-  var parse3 = typed3(name222, {
+  var parse4 = typed3(name222, {
     string: function string2(expression) {
       return parseStart(expression, {});
     },
@@ -27558,7 +27556,7 @@ var createParse = /* @__PURE__ */ factory(name222, dependencies222, (_ref) => {
           next(state);
         }
       }
-      if (parse3.isWhitespace(currentCharacter(state), state.nestingLevel)) {
+      if (parse4.isWhitespace(currentCharacter(state), state.nestingLevel)) {
         next(state);
       } else {
         break;
@@ -27598,7 +27596,7 @@ var createParse = /* @__PURE__ */ factory(name222, dependencies222, (_ref) => {
       next(state);
       return;
     }
-    if (parse3.isDigitDot(c1)) {
+    if (parse4.isDigitDot(c1)) {
       state.tokenType = TOKENTYPE.NUMBER;
       var _c = currentString(state, 2);
       if (_c === "0b" || _c === "0o" || _c === "0x") {
@@ -27606,21 +27604,21 @@ var createParse = /* @__PURE__ */ factory(name222, dependencies222, (_ref) => {
         next(state);
         state.token += currentCharacter(state);
         next(state);
-        while (parse3.isHexDigit(currentCharacter(state))) {
+        while (parse4.isHexDigit(currentCharacter(state))) {
           state.token += currentCharacter(state);
           next(state);
         }
         if (currentCharacter(state) === ".") {
           state.token += ".";
           next(state);
-          while (parse3.isHexDigit(currentCharacter(state))) {
+          while (parse4.isHexDigit(currentCharacter(state))) {
             state.token += currentCharacter(state);
             next(state);
           }
         } else if (currentCharacter(state) === "i") {
           state.token += "i";
           next(state);
-          while (parse3.isDigit(currentCharacter(state))) {
+          while (parse4.isDigit(currentCharacter(state))) {
             state.token += currentCharacter(state);
             next(state);
           }
@@ -27630,40 +27628,40 @@ var createParse = /* @__PURE__ */ factory(name222, dependencies222, (_ref) => {
       if (currentCharacter(state) === ".") {
         state.token += currentCharacter(state);
         next(state);
-        if (!parse3.isDigit(currentCharacter(state))) {
+        if (!parse4.isDigit(currentCharacter(state))) {
           state.tokenType = TOKENTYPE.DELIMITER;
           return;
         }
       } else {
-        while (parse3.isDigit(currentCharacter(state))) {
+        while (parse4.isDigit(currentCharacter(state))) {
           state.token += currentCharacter(state);
           next(state);
         }
-        if (parse3.isDecimalMark(currentCharacter(state), nextCharacter(state))) {
+        if (parse4.isDecimalMark(currentCharacter(state), nextCharacter(state))) {
           state.token += currentCharacter(state);
           next(state);
         }
       }
-      while (parse3.isDigit(currentCharacter(state))) {
+      while (parse4.isDigit(currentCharacter(state))) {
         state.token += currentCharacter(state);
         next(state);
       }
       if (currentCharacter(state) === "E" || currentCharacter(state) === "e") {
-        if (parse3.isDigit(nextCharacter(state)) || nextCharacter(state) === "-" || nextCharacter(state) === "+") {
+        if (parse4.isDigit(nextCharacter(state)) || nextCharacter(state) === "-" || nextCharacter(state) === "+") {
           state.token += currentCharacter(state);
           next(state);
           if (currentCharacter(state) === "+" || currentCharacter(state) === "-") {
             state.token += currentCharacter(state);
             next(state);
           }
-          if (!parse3.isDigit(currentCharacter(state))) {
+          if (!parse4.isDigit(currentCharacter(state))) {
             throw createSyntaxError(state, 'Digit expected, got "' + currentCharacter(state) + '"');
           }
-          while (parse3.isDigit(currentCharacter(state))) {
+          while (parse4.isDigit(currentCharacter(state))) {
             state.token += currentCharacter(state);
             next(state);
           }
-          if (parse3.isDecimalMark(currentCharacter(state), nextCharacter(state))) {
+          if (parse4.isDecimalMark(currentCharacter(state), nextCharacter(state))) {
             throw createSyntaxError(state, 'Digit expected, got "' + currentCharacter(state) + '"');
           }
         } else if (nextCharacter(state) === ".") {
@@ -27673,8 +27671,8 @@ var createParse = /* @__PURE__ */ factory(name222, dependencies222, (_ref) => {
       }
       return;
     }
-    if (parse3.isAlpha(currentCharacter(state), prevCharacter(state), nextCharacter(state))) {
-      while (parse3.isAlpha(currentCharacter(state), prevCharacter(state), nextCharacter(state)) || parse3.isDigit(currentCharacter(state))) {
+    if (parse4.isAlpha(currentCharacter(state), prevCharacter(state), nextCharacter(state))) {
+      while (parse4.isAlpha(currentCharacter(state), prevCharacter(state), nextCharacter(state)) || parse4.isDigit(currentCharacter(state))) {
         state.token += currentCharacter(state);
         next(state);
       }
@@ -27703,28 +27701,28 @@ var createParse = /* @__PURE__ */ factory(name222, dependencies222, (_ref) => {
   function closeParams(state) {
     state.nestingLevel--;
   }
-  parse3.isAlpha = function isAlpha(c, cPrev, cNext) {
-    return parse3.isValidLatinOrGreek(c) || parse3.isValidMathSymbol(c, cNext) || parse3.isValidMathSymbol(cPrev, c);
+  parse4.isAlpha = function isAlpha(c, cPrev, cNext) {
+    return parse4.isValidLatinOrGreek(c) || parse4.isValidMathSymbol(c, cNext) || parse4.isValidMathSymbol(cPrev, c);
   };
-  parse3.isValidLatinOrGreek = function isValidLatinOrGreek(c) {
+  parse4.isValidLatinOrGreek = function isValidLatinOrGreek(c) {
     return /^[a-zA-Z_$\u00C0-\u02AF\u0370-\u03FF\u2100-\u214F]$/.test(c);
   };
-  parse3.isValidMathSymbol = function isValidMathSymbol(high, low) {
+  parse4.isValidMathSymbol = function isValidMathSymbol(high, low) {
     return /^[\uD835]$/.test(high) && /^[\uDC00-\uDFFF]$/.test(low) && /^[^\uDC55\uDC9D\uDCA0\uDCA1\uDCA3\uDCA4\uDCA7\uDCA8\uDCAD\uDCBA\uDCBC\uDCC4\uDD06\uDD0B\uDD0C\uDD15\uDD1D\uDD3A\uDD3F\uDD45\uDD47-\uDD49\uDD51\uDEA6\uDEA7\uDFCC\uDFCD]$/.test(low);
   };
-  parse3.isWhitespace = function isWhitespace(c, nestingLevel) {
+  parse4.isWhitespace = function isWhitespace(c, nestingLevel) {
     return c === " " || c === "	" || c === "\n" && nestingLevel > 0;
   };
-  parse3.isDecimalMark = function isDecimalMark(c, cNext) {
+  parse4.isDecimalMark = function isDecimalMark(c, cNext) {
     return c === "." && cNext !== "/" && cNext !== "*" && cNext !== "^";
   };
-  parse3.isDigitDot = function isDigitDot(c) {
+  parse4.isDigitDot = function isDigitDot(c) {
     return c >= "0" && c <= "9" || c === ".";
   };
-  parse3.isDigit = function isDigit(c) {
+  parse4.isDigit = function isDigit(c) {
     return c >= "0" && c <= "9";
   };
-  parse3.isHexDigit = function isHexDigit(c) {
+  parse4.isHexDigit = function isHexDigit(c) {
     return c >= "0" && c <= "9" || c >= "a" && c <= "f" || c >= "A" && c <= "F";
   };
   function parseStart(expression, extraNodes) {
@@ -28037,7 +28035,7 @@ var createParse = /* @__PURE__ */ factory(name222, dependencies222, (_ref) => {
     return node;
   }
   function parseRule2(state) {
-    var node = parsePercentage(state);
+    var node = parseModulusPercentage(state);
     var last = node;
     var tokenStates = [];
     while (true) {
@@ -28050,7 +28048,7 @@ var createParse = /* @__PURE__ */ factory(name222, dependencies222, (_ref) => {
           if (state.tokenType === TOKENTYPE.SYMBOL || state.token === "(") {
             _extends(state, tokenStates.pop());
             tokenStates.pop();
-            last = parsePercentage(state);
+            last = parseModulusPercentage(state);
             node = new OperatorNode2("/", "divide", [node, last]);
           } else {
             tokenStates.pop();
@@ -28067,7 +28065,7 @@ var createParse = /* @__PURE__ */ factory(name222, dependencies222, (_ref) => {
     }
     return node;
   }
-  function parsePercentage(state) {
+  function parseModulusPercentage(state) {
     var node, name314, fn, params;
     node = parseUnary(state);
     var operators = {
@@ -28166,7 +28164,7 @@ var createParse = /* @__PURE__ */ factory(name222, dependencies222, (_ref) => {
       getToken(state);
       if (hasOwnProperty(CONSTANTS, name314)) {
         node = new ConstantNode2(CONSTANTS[name314]);
-      } else if (NUMERIC_CONSTANTS.indexOf(name314) !== -1) {
+      } else if (NUMERIC_CONSTANTS.includes(name314)) {
         node = new ConstantNode2(numeric3(name314, "number"));
       } else {
         node = new SymbolNode2(name314);
@@ -28178,7 +28176,7 @@ var createParse = /* @__PURE__ */ factory(name222, dependencies222, (_ref) => {
   }
   function parseAccessors(state, node, types) {
     var params;
-    while ((state.token === "(" || state.token === "[" || state.token === ".") && (!types || types.indexOf(state.token) !== -1)) {
+    while ((state.token === "(" || state.token === "[" || state.token === ".") && (!types || types.includes(state.token))) {
       params = [];
       if (state.token === "(") {
         if (isSymbolNode(node) || isAccessorNode(node)) {
@@ -28416,9 +28414,9 @@ var createParse = /* @__PURE__ */ factory(name222, dependencies222, (_ref) => {
   typed3.addConversion({
     from: "string",
     to: "Node",
-    convert: parse3
+    convert: parse4
   });
-  return parse3;
+  return parse4;
 });
 
 // node_modules/mathjs/lib/esm/expression/function/compile.js
@@ -28427,15 +28425,15 @@ var dependencies223 = ["typed", "parse"];
 var createCompile = /* @__PURE__ */ factory(name223, dependencies223, (_ref) => {
   var {
     typed: typed3,
-    parse: parse3
+    parse: parse4
   } = _ref;
   return typed3(name223, {
     string: function string2(expr) {
-      return parse3(expr).compile();
+      return parse4(expr).compile();
     },
     "Array | Matrix": function ArrayMatrix(expr) {
       return deepMap(expr, function(entry) {
-        return parse3(entry).compile();
+        return parse4(entry).compile();
       });
     }
   });
@@ -28447,25 +28445,25 @@ var dependencies224 = ["typed", "parse"];
 var createEvaluate = /* @__PURE__ */ factory(name224, dependencies224, (_ref) => {
   var {
     typed: typed3,
-    parse: parse3
+    parse: parse4
   } = _ref;
   return typed3(name224, {
     string: function string2(expr) {
       var scope = createEmptyMap();
-      return parse3(expr).compile().evaluate(scope);
+      return parse4(expr).compile().evaluate(scope);
     },
     "string, Map | Object": function stringMapObject(expr, scope) {
-      return parse3(expr).compile().evaluate(scope);
+      return parse4(expr).compile().evaluate(scope);
     },
     "Array | Matrix": function ArrayMatrix(expr) {
       var scope = createEmptyMap();
       return deepMap(expr, function(entry) {
-        return parse3(entry).compile().evaluate(scope);
+        return parse4(entry).compile().evaluate(scope);
       });
     },
     "Array | Matrix, Map | Object": function ArrayMatrixMapObject(expr, scope) {
       return deepMap(expr, function(entry) {
-        return parse3(entry).compile().evaluate(scope);
+        return parse4(entry).compile().evaluate(scope);
       });
     }
   });
@@ -29080,7 +29078,7 @@ var createCsAmd = /* @__PURE__ */ factory(name229, dependencies229, (_ref) => {
     var cindex = cm._index;
     var cptr = cm._ptr;
     var cnz = cptr[n];
-    var P3 = [];
+    var P4 = [];
     var W = [];
     var len = 0;
     var nv = n + 1;
@@ -29090,7 +29088,7 @@ var createCsAmd = /* @__PURE__ */ factory(name229, dependencies229, (_ref) => {
     var degree = 5 * (n + 1);
     var w = 6 * (n + 1);
     var hhead = 7 * (n + 1);
-    var last = P3;
+    var last = P4;
     var mark = _initializeQuotientGraph(n, cptr, W, len, head, last, next, hhead, nv, w, elen, degree);
     var nel = _initializeDegreeLists(n, cptr, W, degree, elen, w, dense, nv, head, last, next);
     var mindeg = 0;
@@ -29308,11 +29306,11 @@ var createCsAmd = /* @__PURE__ */ factory(name229, dependencies229, (_ref) => {
     }
     for (k = 0, i2 = 0; i2 <= n; i2++) {
       if (cptr[i2] === -1) {
-        k = csTdfs(i2, k, W, head, next, P3, w);
+        k = csTdfs(i2, k, W, head, next, P4, w);
       }
     }
-    P3.splice(P3.length - 1, 1);
-    return P3;
+    P4.splice(P4.length - 1, 1);
+    return P4;
   };
   function _createTargetMatrix(order, a, m, n, dense) {
     var at = transpose2(a);
@@ -35486,7 +35484,7 @@ var createMad = /* @__PURE__ */ factory(name257, dependencies257, (_ref) => {
         return abs3(subtract2(value, med));
       }));
     } catch (err) {
-      if (err instanceof TypeError && err.message.indexOf("median") !== -1) {
+      if (err instanceof TypeError && err.message.includes("median")) {
         throw new TypeError(err.message.replace("median", "mad"));
       } else {
         throw improveErrorMessage(err, "mad");
@@ -35702,7 +35700,7 @@ var createStd = /* @__PURE__ */ factory(name260, dependencies260, (_ref) => {
         return sqrt3(v);
       }
     } catch (err) {
-      if (err instanceof TypeError && err.message.indexOf(" variance") !== -1) {
+      if (err instanceof TypeError && err.message.includes(" variance")) {
         throw new TypeError(err.message.replace(" variance", " std"));
       } else {
         throw err;
@@ -36492,7 +36490,7 @@ var name277 = "leafCount";
 var dependencies277 = ["parse", "typed"];
 var createLeafCount = /* @__PURE__ */ factory(name277, dependencies277, (_ref) => {
   var {
-    parse: parse3,
+    parse: parse4,
     typed: typed3
   } = _ref;
   function countLeaves(node) {
@@ -36780,7 +36778,7 @@ var createSimplify = /* @__PURE__ */ factory(name279, dependencies279, (_ref) =>
   var {
     config: config4,
     typed: typed3,
-    parse: parse3,
+    parse: parse4,
     add: add3,
     subtract: subtract2,
     multiply: multiply2,
@@ -37248,15 +37246,15 @@ var createSimplify = /* @__PURE__ */ factory(name279, dependencies279, (_ref) =>
       newRule.l = ruleObject.l;
       newRule.r = ruleObject.r;
     }
-    newRule.l = removeParens(parse3(newRule.l));
-    newRule.r = removeParens(parse3(newRule.r));
+    newRule.l = removeParens(parse4(newRule.l));
+    newRule.r = removeParens(parse4(newRule.r));
     for (var prop of ["imposeContext", "repeat", "assuming"]) {
       if (prop in ruleObject) {
         newRule[prop] = ruleObject[prop];
       }
     }
     if (ruleObject.evaluate) {
-      newRule.evaluate = parse3(ruleObject.evaluate);
+      newRule.evaluate = parse4(ruleObject.evaluate);
     }
     if (isAssociative(newRule.l, context)) {
       var nonCommutative = !isCommutative(newRule.l, context);
@@ -37973,7 +37971,7 @@ var createSimplifyConstant = /* @__PURE__ */ factory(name280, dependencies280, (
         }
         {
           var operatorFunctions = ["add", "multiply"];
-          if (operatorFunctions.indexOf(node.name) === -1) {
+          if (!operatorFunctions.includes(node.name)) {
             var args = node.args.map((arg2) => foldFraction(arg2, options));
             if (!args.some(isNode)) {
               try {
@@ -38074,7 +38072,7 @@ var dependencies281 = ["typed", "parse", "equal", "isZero", "add", "subtract", "
 var createSimplifyCore = /* @__PURE__ */ factory(name281, dependencies281, (_ref) => {
   var {
     typed: typed3,
-    parse: parse3,
+    parse: parse4,
     equal: equal2,
     isZero: isZero2,
     add: add3,
@@ -38241,6 +38239,9 @@ var createSimplifyCore = /* @__PURE__ */ factory(name281, dependencies281, (_ref
           if (_a.value) {
             if (isAlwaysBoolean(a1))
               return a1;
+            if (isConstantNode(a1)) {
+              return a1.value ? nodeT : nodeF;
+            }
           } else {
             return nodeF;
           }
@@ -38307,7 +38308,7 @@ var dependencies282 = ["typed", "parse", "ConstantNode", "FunctionNode", "Operat
 var createResolve = /* @__PURE__ */ factory(name282, dependencies282, (_ref) => {
   var {
     typed: typed3,
-    parse: parse3,
+    parse: parse4,
     ConstantNode: ConstantNode2,
     FunctionNode: FunctionNode2,
     OperatorNode: OperatorNode2,
@@ -38329,7 +38330,7 @@ var createResolve = /* @__PURE__ */ factory(name282, dependencies282, (_ref) => 
         nextWithin.add(node.name);
         return _resolve2(value, scope, nextWithin);
       } else if (typeof value === "number") {
-        return parse3(String(value));
+        return parse4(String(value));
       } else if (value !== void 0) {
         return new ConstantNode2(value);
       } else {
@@ -38367,7 +38368,7 @@ var name283 = "symbolicEqual";
 var dependencies283 = ["parse", "simplify", "typed", "OperatorNode"];
 var createSymbolicEqual = /* @__PURE__ */ factory(name283, dependencies283, (_ref) => {
   var {
-    parse: parse3,
+    parse: parse4,
     simplify: simplify2,
     typed: typed3,
     OperatorNode: OperatorNode2
@@ -38391,7 +38392,7 @@ var createDerivative = /* @__PURE__ */ factory(name284, dependencies284, (_ref) 
   var {
     typed: typed3,
     config: config4,
-    parse: parse3,
+    parse: parse4,
     simplify: simplify2,
     equal: equal2,
     isZero: isZero2,
@@ -38414,7 +38415,7 @@ var createDerivative = /* @__PURE__ */ factory(name284, dependencies284, (_ref) 
   typed3.addConversion({
     from: "identifier",
     to: "SymbolNode",
-    convert: parse3
+    convert: parse4
   });
   var derivative2 = typed3(name284, {
     "Node, SymbolNode": plainDerivative,
@@ -38423,7 +38424,7 @@ var createDerivative = /* @__PURE__ */ factory(name284, dependencies284, (_ref) 
   typed3.removeConversion({
     from: "identifier",
     to: "SymbolNode",
-    convert: parse3
+    convert: parse4
   });
   derivative2._simplify = true;
   derivative2.toTex = function(deriv) {
@@ -38432,14 +38433,14 @@ var createDerivative = /* @__PURE__ */ factory(name284, dependencies284, (_ref) 
   var _derivTex = typed3("_derivTex", {
     "Node, SymbolNode": function NodeSymbolNode(expr, x) {
       if (isConstantNode(expr) && typeOf(expr.value) === "string") {
-        return _derivTex(parse3(expr.value).toString(), x.toString(), 1);
+        return _derivTex(parse4(expr.value).toString(), x.toString(), 1);
       } else {
         return _derivTex(expr.toTex(), x.toString(), 1);
       }
     },
     "Node, ConstantNode": function NodeConstantNode(expr, x) {
       if (typeOf(x.value) === "string") {
-        return _derivTex(expr, parse3(x.value));
+        return _derivTex(expr, parse4(x.value));
       } else {
         throw new Error("The second parameter to 'derivative' is a non-string constant");
       }
@@ -38473,7 +38474,7 @@ var createDerivative = /* @__PURE__ */ factory(name284, dependencies284, (_ref) 
       return constTag(constNodes, node.content, varName);
     },
     "Object, FunctionAssignmentNode, string": function ObjectFunctionAssignmentNodeString(constNodes, node, varName) {
-      if (node.params.indexOf(varName) === -1) {
+      if (!node.params.includes(varName)) {
         constNodes[node] = true;
         return true;
       }
@@ -38767,7 +38768,7 @@ var createRationalize = /* @__PURE__ */ factory(name285, dependencies285, (_ref)
     multiply: multiply2,
     divide: divide3,
     pow: pow3,
-    parse: parse3,
+    parse: parse4,
     simplifyConstant: simplifyConstant2,
     simplifyCore: simplifyCore2,
     simplify: simplify2,
@@ -38879,7 +38880,7 @@ var createRationalize = /* @__PURE__ */ factory(name285, dependencies285, (_ref)
             recPoly(node2.args[0]);
           }
         } else {
-          if (oper.indexOf(node2.op) === -1) {
+          if (!oper.includes(node2.op)) {
             throw new Error("Operator " + node2.op + " invalid in polynomial expression");
           }
           for (var i2 = 0; i2 < node2.args.length; i2++) {
@@ -39230,7 +39231,7 @@ var createRationalize = /* @__PURE__ */ factory(name285, dependencies285, (_ref)
       if (tp === "FunctionNode") {
         throw new Error("There is an unsolved function call");
       } else if (tp === "OperatorNode") {
-        if ("+-*^".indexOf(node2.op) === -1)
+        if (!"+-*^".includes(node2.op))
           throw new Error("Operator " + node2.op + " invalid");
         if (noPai !== null) {
           if ((node2.fn === "unaryMinus" || node2.fn === "pow") && noPai.fn !== "add" && noPai.fn !== "subtract" && noPai.fn !== "multiply") {
@@ -39500,7 +39501,7 @@ var createReplacer = /* @__PURE__ */ factory(name289, dependencies289, () => {
 });
 
 // node_modules/mathjs/lib/esm/version.js
-var version = "12.4.0";
+var version = "12.4.3";
 
 // node_modules/mathjs/lib/esm/constants.js
 var createTrue = /* @__PURE__ */ factory("true", [], () => true);
@@ -40898,7 +40899,7 @@ var bin = /* @__PURE__ */ createBin({
 var combinationsWithRep = /* @__PURE__ */ createCombinationsWithRep({
   typed: typed2
 });
-var cosh3 = /* @__PURE__ */ createCosh({
+var cosh4 = /* @__PURE__ */ createCosh({
   typed: typed2
 });
 var csch = /* @__PURE__ */ createCsch({
@@ -40919,7 +40920,7 @@ var sech = /* @__PURE__ */ createSech({
   BigNumber,
   typed: typed2
 });
-var sinh3 = /* @__PURE__ */ createSinh({
+var sinh4 = /* @__PURE__ */ createSinh({
   typed: typed2
 });
 var sparse = /* @__PURE__ */ createSparse({
@@ -41329,7 +41330,7 @@ var gcd = /* @__PURE__ */ createGcd({
   typed: typed2,
   zeros: zeros2
 });
-var hypot2 = /* @__PURE__ */ createHypot({
+var hypot3 = /* @__PURE__ */ createHypot({
   abs: abs2,
   addScalar,
   divideScalar,
@@ -42430,7 +42431,7 @@ var FunctionNode = createFunctionNode({
   SymbolNode,
   math
 });
-var parse = createParse({
+var parse2 = createParse({
   AccessorNode,
   ArrayNode,
   AssignmentNode,
@@ -42455,7 +42456,7 @@ var resolve = createResolve({
   FunctionNode,
   OperatorNode,
   ParenthesisNode,
-  parse,
+  parse: parse2,
   typed: typed2
 });
 var simplifyConstant = createSimplifyConstant({
@@ -42475,7 +42476,7 @@ var simplifyConstant = createSimplifyConstant({
   typed: typed2
 });
 var compile = createCompile({
-  parse,
+  parse: parse2,
   typed: typed2
 });
 var simplifyCore = createSimplifyCore({
@@ -42493,13 +42494,13 @@ var simplifyCore = createSimplifyCore({
   equal,
   isZero,
   multiply,
-  parse,
+  parse: parse2,
   pow: pow2,
   subtract,
   typed: typed2
 });
 var evaluate = createEvaluate({
-  parse,
+  parse: parse2,
   typed: typed2
 });
 var Help = createHelpClass({
@@ -42528,7 +42529,7 @@ var simplify = createSimplify({
   mathWithTransform,
   matrix,
   multiply,
-  parse,
+  parse: parse2,
   pow: pow2,
   resolve,
   simplifyConstant,
@@ -42538,12 +42539,12 @@ var simplify = createSimplify({
 });
 var symbolicEqual = createSymbolicEqual({
   OperatorNode,
-  parse,
+  parse: parse2,
   simplify,
   typed: typed2
 });
 var leafCount = createLeafCount({
-  parse,
+  parse: parse2,
   typed: typed2
 });
 var parser = createParser({
@@ -42570,7 +42571,7 @@ var rationalize = createRationalize({
   mathWithTransform,
   matrix,
   multiply,
-  parse,
+  parse: parse2,
   pow: pow2,
   simplify,
   simplifyConstant,
@@ -42588,7 +42589,7 @@ var derivative = createDerivative({
   equal,
   isZero,
   numeric: numeric2,
-  parse,
+  parse: parse2,
   simplify,
   typed: typed2
 });
@@ -42688,13 +42689,13 @@ _extends(math, {
   bin,
   chain,
   combinationsWithRep,
-  cosh: cosh3,
+  cosh: cosh4,
   csch,
   isNaN: isNaN2,
   isPrime,
   randomInt,
   sech,
-  sinh: sinh3,
+  sinh: sinh4,
   sparse,
   sqrt: sqrt2,
   tanh: tanh3,
@@ -42759,7 +42760,7 @@ _extends(math, {
   equalText,
   floor: floor2,
   gcd,
-  hypot: hypot2,
+  hypot: hypot3,
   larger,
   log: log3,
   lsolveAll,
@@ -42859,7 +42860,7 @@ _extends(math, {
   magneticFluxQuantum,
   molarMassC12,
   multinomial,
-  parse,
+  parse: parse2,
   permutations,
   planckMass,
   polynomialRoot,
@@ -43097,12 +43098,111 @@ _extends(classes, {
 });
 Chain.createProxy(math);
 
+// src/security.ts
+function safeEvaluate(input) {
+  const cleanInput = input.trim();
+  if (!cleanInput || cleanInput === "") {
+    return 0;
+  }
+  const simpleNumber = parseFloat(cleanInput);
+  if (!isNaN(simpleNumber) && cleanInput === simpleNumber.toString()) {
+    return simpleNumber;
+  }
+  const allowedPattern = /^[\d\+\-\*\/\.\(\)\s]+$/;
+  if (!allowedPattern.test(cleanInput)) {
+    const fallback = parseFloat(cleanInput);
+    return isNaN(fallback) ? 0 : fallback;
+  }
+  const suspiciousPatterns = [
+    /function/i,
+    /eval/i,
+    /import/i,
+    /require/i,
+    /process/i,
+    /global/i,
+    /window/i,
+    /document/i,
+    /__/,
+    /\[/,
+    /\{/
+  ];
+  for (const pattern of suspiciousPatterns) {
+    if (pattern.test(cleanInput)) {
+      const fallback = parseFloat(cleanInput);
+      return isNaN(fallback) ? 0 : fallback;
+    }
+  }
+  try {
+    const result = evaluate(cleanInput);
+    if (typeof result === "number" && isFinite(result)) {
+      return result;
+    }
+    const numResult = Number(result);
+    if (!isNaN(numResult) && isFinite(numResult)) {
+      return numResult;
+    }
+    const fallback = parseFloat(cleanInput);
+    return isNaN(fallback) ? 0 : fallback;
+  } catch (error) {
+    const fallback = parseFloat(cleanInput);
+    return isNaN(fallback) ? 0 : fallback;
+  }
+}
+function sanitizeTextInput(input) {
+  if (!input || typeof input !== "string") {
+    return "";
+  }
+  return input.replace(/<[^>]*>/g, "").replace(/javascript:/gi, "").replace(/on\w+\s*=/gi, "").replace(/data:[^;]*;base64[^"']*/gi, "").replace(/\s+/g, " ").trim();
+}
+function safeCreateIcon(parent, iconSvg) {
+  const iconContainer = parent.createEl("span", {
+    cls: "findoc-icon-container"
+  });
+  iconContainer.innerHTML = iconSvg;
+  return iconContainer;
+}
+function generateSecureId() {
+  if (typeof window !== "undefined" && window.crypto && window.crypto.getRandomValues) {
+    const array = new Uint32Array(1);
+    window.crypto.getRandomValues(array);
+    return `id-${array[0].toString(36)}`;
+  }
+  return `id-${Math.random().toString(36).substr(2, 9)}`;
+}
+
 // src/view.ts
 var VIEW_TYPE_CSV = "csv-view";
 var CSVView = class extends import_obsidian.TextFileView {
   constructor(leaf, plugin) {
     super(leaf);
+    this.backupHistory = [];
+    this.maxBackups = 10;
+    this.isRendering = false;
     this.plugin = plugin;
+  }
+  createBackup() {
+    if (!this.tableData || this.tableData.length === 0)
+      return;
+    const backup = this.tableData.join("\n");
+    this.backupHistory.push(backup);
+    if (this.backupHistory.length > this.maxBackups) {
+      this.backupHistory.shift();
+    }
+  }
+  restoreBackup() {
+    if (this.backupHistory.length === 0) {
+      new import_obsidian.Notice("No backup available");
+      return false;
+    }
+    const backup = this.backupHistory.pop();
+    if (backup) {
+      this.tableData = backup.split("\n");
+      this.requestSave();
+      this.setViewData(backup, true);
+      new import_obsidian.Notice("Backup restored successfully");
+      return true;
+    }
+    return false;
   }
   getViewData() {
     return this.tableData.join("\n");
@@ -43177,6 +43277,16 @@ var CSVView = class extends import_obsidian.TextFileView {
   }
   createTable(data) {
     this.div = this.contentEl.createDiv();
+    this.div.addClass("findoc-table-container");
+    if (data.length > 500) {
+      const loadingDiv = this.div.createEl("div", {
+        cls: "findoc-loading-overlay",
+        text: `Loading ${data.length} rows...`
+      });
+      setTimeout(() => {
+        loadingDiv.remove();
+      }, 100);
+    }
     this.table = this.div.createEl("table");
     this.tableHeader = data[0];
     const headers = this.tableHeader.split(this.plugin.settings.csvSeparator);
@@ -43187,46 +43297,17 @@ var CSVView = class extends import_obsidian.TextFileView {
       trHeaders.appendChild(th);
     });
     this.table.appendChild(trHeaders);
-    data.slice(1).forEach((line) => {
-      const trContent = this.contentEl.createEl("tr");
-      const lineData = line.split(this.plugin.settings.csvSeparator);
-      lineData.push("ACTION");
-      lineData.forEach((el, idx) => {
-        const td = this.contentEl.createEl("td");
-        td.id = `data_${idx}`;
-        td.classList.add("findoc-line-data");
-        if (idx === 0) {
-          td.appendChild(this.dropdown(el));
-        } else if (idx === 1 && this.plugin.settings.useAutocomplete) {
-          td.appendChild(this.autocomplete(el, trContent));
-        } else if (idx === 2) {
-          td.innerText = el;
-          td.contentEditable = "true";
-          td.onblur = (_) => {
-            const input = td.innerText.replaceAll(/<.*?>/g, "").replaceAll('&lt;br class="Apple-interchange-newline"&gt', "");
-            try {
-              td.innerText = evaluate(input);
-            } catch (_2) {
-              td.innerText = input;
-            }
-          };
-        } else if (idx === lineData.length - 1) {
-          td.appendChild(this.createBtnRemoveLine(trContent));
-          td.appendChild(this.createBtnMoveUp(trContent));
-          td.appendChild(this.createBtnMoveDown(trContent));
-          td.appendChild(this.createBtnDuplicate(trContent));
-        } else {
-          td.innerText = el;
-          td.contentEditable = "true";
-        }
-        trContent.appendChild(td);
-      });
-      this.table.appendChild(trContent);
-    });
+    const tableRows = data.slice(1);
+    if (tableRows.length > 50) {
+      this.renderRowsProgressively(tableRows);
+    } else {
+      this.renderAllRowsSync(tableRows);
+    }
     this.div.appendChild(this.table);
-    this.parent.appendChild(this.table);
+    this.parent.appendChild(this.div);
     this.createBtnAddLine();
     this.createBtnSort();
+    this.createBtnRestoreBackup();
     if (this.plugin.settings.useAutocomplete) {
       this.createBtnRefreshAutocomplete();
     }
@@ -43236,7 +43317,7 @@ var CSVView = class extends import_obsidian.TextFileView {
     const btn = this.contentEl.createEl("button");
     btn.classList.add("findoc-btn-margin-top");
     btn.id = "deleteRow";
-    btn.innerHTML = remove_default();
+    safeCreateIcon(btn, remove_default());
     btn.onClickEvent(() => {
       el.remove();
       this.saveData();
@@ -43247,7 +43328,7 @@ var CSVView = class extends import_obsidian.TextFileView {
     const btn = this.contentEl.createEl("button");
     btn.classList.add("findoc-btn-margin-top");
     btn.id = "moveUpRow";
-    btn.innerHTML = up_default();
+    safeCreateIcon(btn, up_default());
     btn.onClickEvent(() => {
       const children = Array.from(this.table.children);
       const idx = children.indexOf(el);
@@ -43263,7 +43344,7 @@ var CSVView = class extends import_obsidian.TextFileView {
     const btn = this.contentEl.createEl("button");
     btn.classList.add("findoc-btn-margin-top");
     btn.id = "moveDownRow";
-    btn.innerHTML = down_default();
+    safeCreateIcon(btn, down_default());
     btn.onClickEvent(() => {
       const children = Array.from(this.table.children);
       const idx = children.indexOf(el);
@@ -43279,7 +43360,7 @@ var CSVView = class extends import_obsidian.TextFileView {
     const btn = this.contentEl.createEl("button");
     btn.classList.add("findoc-btn-margin-top");
     btn.id = "duplicateRow";
-    btn.innerHTML = duplicate_default();
+    safeCreateIcon(btn, duplicate_default());
     btn.onClickEvent(() => {
       this.addLine(this.getLine(el));
       this.saveData();
@@ -43307,47 +43388,101 @@ var CSVView = class extends import_obsidian.TextFileView {
     });
     this.parent.appendChild(btn);
   }
+  createBtnRestoreBackup() {
+    const btn = this.contentEl.createEl("button");
+    btn.classList.add("findoc-btn-margin-top", "findoc-btn-margin-right");
+    btn.id = "restoreBackup";
+    btn.innerText = `Restore Backup (${this.backupHistory.length})`;
+    btn.onClickEvent(() => {
+      this.restoreBackup();
+    });
+    this.parent.appendChild(btn);
+  }
   getTableData() {
-    const rows = this.table.innerHTML.split(new RegExp(/<tr.*?>/));
-    return rows.map((column2) => column2.split(new RegExp(/<td.*?>/)).slice(1).filter((i2) => !new RegExp(/<button.*?>.*<.*?>/).test(i2)).map((i2, idx) => {
-      if (idx === 0) {
-        return i2.split('value="')[1].split('"')[0] || this.plugin.settings.categories[0];
-      } else if (idx === 1 && this.plugin.settings.useAutocomplete) {
-        return i2.split(/<div/)[2].replaceAll(/<.*?>/g, "").replaceAll(/(.*?)>/g, "").replaceAll('&lt;br class="Apple-interchange-newline"&gt', "");
-      } else if (idx === 2) {
-        const input = i2.replaceAll(/<.*?>/g, "").replaceAll('&lt;br class="Apple-interchange-newline"&gt', "");
-        try {
-          return evaluate(input);
-        } catch (_) {
-          return input;
+    const rows = Array.from(this.table.querySelectorAll("tr"));
+    return rows.slice(1).map((row2) => {
+      const cells = Array.from(row2.querySelectorAll("td"));
+      const values = [];
+      cells.forEach((cell, idx) => {
+        if (idx === cells.length - 1)
+          return;
+        if (idx === 0) {
+          const select = cell.querySelector("select");
+          values.push((select == null ? void 0 : select.value) || this.plugin.settings.categories[0]);
+        } else if (idx === 1 && this.plugin.settings.useAutocomplete) {
+          const contentDiv = cell.querySelector('div[contenteditable="true"]');
+          values.push(sanitizeTextInput((contentDiv == null ? void 0 : contentDiv.innerText) || ""));
+        } else {
+          values.push(sanitizeTextInput(cell.innerText || ""));
         }
-      } else {
-        const input = i2.replaceAll(/<.*?>/g, "").replaceAll('&lt;br class="Apple-interchange-newline"&gt', "");
-        return input;
-      }
-    }).join(this.plugin.settings.csvSeparator));
+      });
+      return values.join(this.plugin.settings.csvSeparator);
+    });
   }
   sortByDate(data) {
-    return data.sort((a, b) => new Date(a.split(this.plugin.settings.csvSeparator)[3]).getTime() - new Date(b.split(this.plugin.settings.csvSeparator)[3]).getTime());
+    return data.sort((a, b) => {
+      const leftDateStr = a.split(this.plugin.settings.csvSeparator)[3];
+      const rightDateStr = b.split(this.plugin.settings.csvSeparator)[3];
+      const leftTime = new Date(leftDateStr).getTime();
+      const rightTime = new Date(rightDateStr).getTime();
+      if (isNaN(leftTime) && isNaN(rightTime))
+        return 0;
+      if (isNaN(leftTime))
+        return 1;
+      if (isNaN(rightTime))
+        return -1;
+      return leftTime - rightTime;
+    });
   }
   getMinMaxDate() {
-    const dates = this.tableData.map((data) => new Date(data.split(this.plugin.settings.csvSeparator)[3]).getTime()).filter((input) => !isNaN(input));
-    return {
-      min: new Date(Math.min(...dates)).toISOString().slice(0, 10),
-      max: new Date(Math.max(...dates)).toISOString().slice(0, 10)
-    };
+    try {
+      const dates = this.tableData.filter((line) => line !== "").map((data) => new Date(data.split(this.plugin.settings.csvSeparator)[3]).getTime()).filter((input) => !isNaN(input));
+      return {
+        min: new Date(Math.min(...dates)).toISOString().slice(0, 10),
+        max: new Date(Math.max(...dates)).toISOString().slice(0, 10)
+      };
+    } catch (_) {
+      return {
+        min: new Date().toISOString().slice(0, 10),
+        max: new Date().toISOString().slice(0, 10)
+      };
+    }
   }
   createBtnSort() {
     const btn = this.contentEl.createEl("button");
     btn.classList.add("findoc-btn-margin-top", "findoc-btn-margin-right");
     btn.id = "sortByDate";
     btn.innerText = "Sort by Date";
-    btn.onClickEvent(() => {
-      this.tableData = this.sortByDate(this.getTableData()).filter((r) => r.length !== 0);
-      this.tableData = [this.tableHeader, ...this.tableData];
-      this.setViewData(this.tableData.join("\n"), true);
-      this.saveData();
-    });
+    btn.onClickEvent(() => __async(this, null, function* () {
+      if (this.isRendering) {
+        new import_obsidian.Notice("Please wait for all rows to finish loading before sorting");
+        return;
+      }
+      const originalText = btn.innerText;
+      btn.innerText = "Sorting...";
+      btn.disabled = true;
+      btn.classList.add("findoc-btn-loading");
+      try {
+        this.createBackup();
+        yield new Promise((resolve3) => setTimeout(resolve3, 10));
+        const dataToSort = this.tableData.slice(1);
+        const sortedData = this.sortByDate(dataToSort).filter((r) => r.length !== 0);
+        this.tableData = [this.tableHeader, ...sortedData];
+        this.requestSave();
+        this.setViewData(this.tableData.join("\n"), true);
+        btn.innerText = "Sorted \u2713";
+        setTimeout(() => {
+          btn.innerText = originalText;
+        }, 2e3);
+      } catch (e3) {
+        new import_obsidian.Notice(`Sort failed: ${e3.message}. Restoring backup...`);
+        this.restoreBackup();
+        btn.innerText = originalText;
+      } finally {
+        btn.disabled = false;
+        btn.classList.remove("findoc-btn-loading");
+      }
+    }));
     this.parent.appendChild(btn);
   }
   createSectionInformation() {
@@ -43392,12 +43527,27 @@ var CSVView = class extends import_obsidian.TextFileView {
     tr.children.item(0).firstChild.value = newValue;
   }
   getLine(tr) {
+    if (!tr || !tr.children || tr.children.length < 5) {
+      return ["Portfolio", "", "0", getToday(), "", "ACTION"];
+    }
+    const getElementText = (index3) => {
+      const element = tr.children.item(index3);
+      if (!element)
+        return "";
+      if (index3 === 0) {
+        const select = element.firstChild;
+        return (select == null ? void 0 : select.value) || this.plugin.settings.categories[0] || "Portfolio";
+      } else {
+        const text = element.innerText || element.textContent || "";
+        return sanitizeTextInput(text);
+      }
+    };
     return [
-      tr.children.item(0).firstChild.value,
-      tr.children.item(1).innerText,
-      tr.children.item(2).innerText,
-      tr.children.item(3).innerText,
-      tr.children.item(4).innerText,
+      getElementText(0),
+      getElementText(1),
+      getElementText(2),
+      getElementText(3),
+      getElementText(4),
       "ACTION"
     ];
   }
@@ -43414,12 +43564,10 @@ var CSVView = class extends import_obsidian.TextFileView {
         td.innerText = el;
         td.contentEditable = "true";
         td.onblur = (_) => {
-          const input = td.innerText.replaceAll(/<.*?>/g, "").replaceAll('&lt;br class="Apple-interchange-newline"&gt', "");
-          try {
-            td.innerText = evaluate(input);
-          } catch (_2) {
-            td.innerText = input;
-          }
+          const rawInput = td.innerText;
+          const sanitizedInput = sanitizeTextInput(rawInput);
+          const result = safeEvaluate(sanitizedInput);
+          td.innerText = result.toString();
         };
       } else if (idx === lineData.length - 1) {
         td.appendChild(this.createBtnRemoveLine(trContent));
@@ -43427,7 +43575,7 @@ var CSVView = class extends import_obsidian.TextFileView {
         td.appendChild(this.createBtnMoveDown(trContent));
         td.appendChild(this.createBtnDuplicate(trContent));
       } else {
-        td.innerText = el;
+        td.innerText = sanitizeTextInput(el);
         td.contentEditable = "true";
       }
       trContent.appendChild(td);
@@ -43457,12 +43605,26 @@ var CSVView = class extends import_obsidian.TextFileView {
     }, parseInt(this.plugin.settings.debounce) || 1e3);
   }
   saveData() {
+    const startTime = Date.now();
+    const rowCount = this.tableData.length;
+    if (rowCount > 100) {
+      this.showLoading("Saving data...");
+    }
     this.tableData = this.getTableData().filter((r) => r.length !== 0);
     this.tableData = [this.tableHeader, ...this.tableData];
     this.requestSave();
-    new import_obsidian.Notice("Saving in progress...", 2005);
+    const duration = Date.now() - startTime;
+    if (rowCount > 100) {
+      new import_obsidian.Notice(`Saved ${rowCount} rows (${duration}ms)`, 3e3);
+      this.hideLoading();
+    } else {
+      new import_obsidian.Notice("Saved", 1500);
+    }
     this.refreshAutocomplete();
-    document.getElementById("information").remove();
+    const infoEl = document.getElementById("information");
+    if (infoEl) {
+      infoEl.remove();
+    }
     this.createSectionInformation();
   }
   clear() {
@@ -43475,6 +43637,97 @@ var CSVView = class extends import_obsidian.TextFileView {
   }
   getViewType() {
     return VIEW_TYPE_CSV;
+  }
+  showLoading(message = "Loading...", progress) {
+    let loadingEl = this.contentEl.querySelector(".findoc-loading-indicator");
+    if (!loadingEl) {
+      loadingEl = this.contentEl.createEl("div", {
+        cls: "findoc-loading-indicator"
+      });
+    }
+    let text = message;
+    if (progress !== void 0) {
+      text += ` (${Math.round(progress * 100)}%)`;
+    }
+    loadingEl.innerText = text;
+    loadingEl.addClass("visible");
+    loadingEl.removeClass("hidden");
+  }
+  hideLoading() {
+    const loadingEl = this.contentEl.querySelector(".findoc-loading-indicator");
+    if (loadingEl) {
+      loadingEl.addClass("hidden");
+      loadingEl.removeClass("visible");
+    }
+  }
+  renderAllRowsSync(rows) {
+    rows.forEach((line) => this.createSingleTableRow(line));
+  }
+  renderRowsProgressively(rows) {
+    return __async(this, null, function* () {
+      const batchSize = 100;
+      const totalBatches = Math.ceil(rows.length / batchSize);
+      let currentBatch = 0;
+      this.isRendering = true;
+      this.showLoading(`Loading rows 0/${rows.length}`);
+      const renderBatch = () => __async(this, null, function* () {
+        if (currentBatch >= totalBatches) {
+          this.hideLoading();
+          this.isRendering = false;
+          return;
+        }
+        const startIdx = currentBatch * batchSize;
+        const endIdx = Math.min(startIdx + batchSize, rows.length);
+        const batch = rows.slice(startIdx, endIdx);
+        batch.forEach((line) => this.createSingleTableRow(line));
+        currentBatch++;
+        const progress = currentBatch / totalBatches;
+        this.showLoading(`Loading rows ${endIdx}/${rows.length}`, progress);
+        if (currentBatch < totalBatches) {
+          requestAnimationFrame(() => {
+            setTimeout(renderBatch, 1);
+          });
+        } else {
+          this.hideLoading();
+          this.isRendering = false;
+        }
+      });
+      renderBatch();
+    });
+  }
+  createSingleTableRow(line) {
+    const trContent = this.contentEl.createEl("tr");
+    const lineData = line.split(this.plugin.settings.csvSeparator);
+    lineData.push("ACTION");
+    lineData.forEach((el, idx) => {
+      const td = this.contentEl.createEl("td");
+      td.id = `data_${idx}`;
+      td.classList.add("findoc-line-data");
+      if (idx === 0) {
+        td.appendChild(this.dropdown(el));
+      } else if (idx === 1 && this.plugin.settings.useAutocomplete) {
+        td.appendChild(this.autocomplete(el, trContent));
+      } else if (idx === 2) {
+        td.innerText = sanitizeTextInput(el);
+        td.contentEditable = "true";
+        td.onblur = (_) => {
+          const rawInput = td.innerText;
+          const sanitizedInput = sanitizeTextInput(rawInput);
+          const result = safeEvaluate(sanitizedInput);
+          td.innerText = result.toString();
+        };
+      } else if (idx === lineData.length - 1) {
+        td.appendChild(this.createBtnRemoveLine(trContent));
+        td.appendChild(this.createBtnMoveUp(trContent));
+        td.appendChild(this.createBtnMoveDown(trContent));
+        td.appendChild(this.createBtnDuplicate(trContent));
+      } else {
+        td.innerText = sanitizeTextInput(el);
+        td.contentEditable = "true";
+      }
+      trContent.appendChild(td);
+    });
+    this.table.appendChild(trContent);
   }
 };
 
@@ -43499,6 +43752,8 @@ function chartLine(data, chartLabelType, suffix = "", beginAtZero = true) {
     type: "line",
     data,
     options: {
+      responsive: true,
+      maintainAspectRatio: false,
       interaction: {
         intersect: false
       },
@@ -43562,29 +43817,80 @@ function chartLine(data, chartLabelType, suffix = "", beginAtZero = true) {
 function chartPie(data) {
   return {
     type: "pie",
-    data
+    data,
+    options: {
+      responsive: true,
+      maintainAspectRatio: false
+    }
   };
 }
 function chartRadar(data) {
   return {
     type: "radar",
-    data
+    data,
+    options: {
+      responsive: true,
+      maintainAspectRatio: false
+    }
   };
 }
 
 // src/csv.ts
+function parseCSVLine(line, separator = ",") {
+  const result = [];
+  let current = "";
+  let inQuotes = false;
+  for (let i2 = 0; i2 < line.length; i2++) {
+    const char = line[i2];
+    if (char === '"') {
+      if (inQuotes && line[i2 + 1] === '"') {
+        current += '"';
+        i2++;
+      } else {
+        inQuotes = !inQuotes;
+      }
+    } else if (char === separator && !inQuotes) {
+      result.push(current.trim());
+      current = "";
+    } else {
+      current += char;
+    }
+  }
+  result.push(current.trim());
+  return result;
+}
 function getData(csv, separator = ",") {
-  return csv.split("\n").filter((line, idx) => idx !== 0 && line !== "" && line.split(separator).length === 5).map((line) => {
-    return {
-      category: line.split(separator)[0],
-      subcategory: line.split(separator)[1],
-      value: parseFloat(line.split(separator)[2]) !== 0 ? parseFloat(line.split(separator)[2]) : 0,
-      timestamp: new Date(line.split(separator)[3]),
-      extra: line.split(separator)[4]
-    };
-  }).sort((a, b) => {
-    return new Date(a.timestamp).getTime() - new Date(b.timestamp).getTime();
+  const lines = csv.split("\n");
+  const result = [];
+  for (let i2 = 1; i2 < lines.length; i2++) {
+    const line = lines[i2].trim();
+    if (!line)
+      continue;
+    const parts = line.includes('"') ? parseCSVLine(line, separator) : line.split(separator);
+    if (parts.length !== 5)
+      continue;
+    const value = parseFloat(parts[2]);
+    const timestamp = new Date(parts[3]);
+    result.push({
+      category: parts[0],
+      subcategory: parts[1],
+      value: isNaN(value) ? 0 : value,
+      timestamp,
+      extra: parts[4]
+    });
+  }
+  result.sort((a, b) => {
+    const leftTime = a.timestamp.getTime();
+    const rightTime = b.timestamp.getTime();
+    if (isNaN(leftTime) && isNaN(rightTime))
+      return 0;
+    if (isNaN(leftTime))
+      return 1;
+    if (isNaN(rightTime))
+      return -1;
+    return leftTime - rightTime;
   });
+  return result;
 }
 
 // src/data_conversion.ts
@@ -43668,6 +43974,88 @@ var splitBy = {
           acc[timestamp] = [];
         }
         acc[timestamp].push(current);
+        return acc;
+      }, {});
+    }
+  },
+  splitByQuarter: {
+    help: "Split by quarter (Q1, Q2, Q3, Q4)",
+    exec: (input, key) => {
+      return input.reduce((acc, current) => {
+        const d = new Date(current[key]);
+        const quarter = Math.floor(d.getUTCMonth() / 3) + 1;
+        const timestamp = `${d.getUTCFullYear()}-Q${quarter}`;
+        if (!acc[timestamp]) {
+          acc[timestamp] = [];
+        }
+        acc[timestamp].push(current);
+        return acc;
+      }, {});
+    }
+  },
+  splitByWeek: {
+    help: "Split by week (ISO week number)",
+    exec: (input, key) => {
+      return input.reduce((acc, current) => {
+        const d = new Date(current[key]);
+        const d1 = new Date(d);
+        d1.setHours(0, 0, 0, 0);
+        d1.setDate(d1.getDate() + 3 - (d1.getDay() + 6) % 7);
+        const year = d1.getFullYear();
+        const d2 = new Date(year, 0, 4);
+        const weekNumber = Math.round((d1.getTime() - d2.getTime()) / 864e5 / 7) + 1;
+        const timestamp = `${year}-W${weekNumber.toString().padStart(2, "0")}`;
+        if (!acc[timestamp]) {
+          acc[timestamp] = [];
+        }
+        acc[timestamp].push(current);
+        return acc;
+      }, {});
+    }
+  },
+  splitBySubcategory: {
+    help: "Split by subcategory",
+    exec: (input, key) => {
+      return input.reduce((acc, current) => {
+        const subcategory = current.subcategory || "Unknown";
+        if (!acc[subcategory]) {
+          acc[subcategory] = [];
+        }
+        acc[subcategory].push(current);
+        return acc;
+      }, {});
+    }
+  },
+  splitByValueRange: {
+    help: "Split by value ranges (Small: <100, Medium: 100-1000, Large: >1000)",
+    exec: (input, key) => {
+      return input.reduce((acc, current) => {
+        const value = Math.abs(current.value || 0);
+        let range2;
+        if (value < 100) {
+          range2 = "Small (<100)";
+        } else if (value <= 1e3) {
+          range2 = "Medium (100-1000)";
+        } else {
+          range2 = "Large (>1000)";
+        }
+        if (!acc[range2]) {
+          acc[range2] = [];
+        }
+        acc[range2].push(current);
+        return acc;
+      }, {});
+    }
+  },
+  splitByCategory: {
+    help: "Split by category",
+    exec: (input, key) => {
+      return input.reduce((acc, current) => {
+        const category = current.category || "Unknown";
+        if (!acc[category]) {
+          acc[category] = [];
+        }
+        acc[category].push(current);
         return acc;
       }, {});
     }
@@ -44100,16 +44488,140 @@ var functions = {
         datasets
       };
     }
+  },
+  generateDividendMonthlyBySymbol: {
+    help: "Generate monthly dividend data per symbol (subcategory)",
+    exec: ({
+      categoriesToSelect,
+      input,
+      labels,
+      colors: colors2
+    }) => {
+      const usableColors = [...colors2];
+      const symbols = new Set();
+      Object.values(input).forEach((entries) => {
+        entries.filter((entry) => categoriesToSelect.includes(entry.category)).forEach((entry) => symbols.add(entry.subcategory));
+      });
+      const datasets = Array.from(symbols).map((symbol) => {
+        const color2 = usableColors[0] || "#1ac18f";
+        usableColors.shift();
+        return {
+          label: symbol,
+          borderColor: color2,
+          backgroundColor: color2 + "20",
+          fill: false,
+          tension: 0.2,
+          segment: {
+            borderColor: (ctx) => skipped(ctx, color2),
+            borderDash: (ctx) => skipped(ctx, [3, 3])
+          },
+          data: labels.map((label) => {
+            const entries = input[label] || [];
+            return entries.filter((entry) => categoriesToSelect.includes(entry.category) && entry.subcategory === symbol).reduce((sum3, entry) => sum3 + entry.value, 0);
+          })
+        };
+      });
+      return {
+        labels,
+        datasets
+      };
+    }
+  },
+  generateCumulativeDividendBySymbol: {
+    help: "Generate cumulative dividend data per symbol (subcategory)",
+    exec: ({
+      categoriesToSelect,
+      input,
+      labels,
+      colors: colors2
+    }) => {
+      const usableColors = [...colors2];
+      const symbols = new Set();
+      Object.values(input).forEach((entries) => {
+        entries.filter((entry) => categoriesToSelect.includes(entry.category)).forEach((entry) => symbols.add(entry.subcategory));
+      });
+      const datasets = Array.from(symbols).map((symbol) => {
+        const color2 = usableColors[0] || "#1ac18f";
+        usableColors.shift();
+        const monthlyData = labels.map((label) => {
+          const entries = input[label] || [];
+          return entries.filter((entry) => categoriesToSelect.includes(entry.category) && entry.subcategory === symbol).reduce((sum3, entry) => sum3 + entry.value, 0);
+        });
+        const cumulativeData = monthlyData.map((value, index3) => value + monthlyData.slice(0, index3).reduce((acc, v) => acc + v, 0));
+        return {
+          label: symbol,
+          borderColor: color2,
+          backgroundColor: color2 + "20",
+          fill: false,
+          tension: 0.2,
+          segment: {
+            borderColor: (ctx) => skipped(ctx, color2),
+            borderDash: (ctx) => skipped(ctx, [3, 3])
+          },
+          data: cumulativeData
+        };
+      });
+      return {
+        labels,
+        datasets
+      };
+    }
+  },
+  reportDividendAnalysis: {
+    help: "Report: Comprehensive dividend analysis per symbol",
+    exec: ({
+      categoriesToSelect,
+      input
+    }) => {
+      const dividendEntries = Object.values(input).flat().filter((entry) => categoriesToSelect.includes(entry.category));
+      const symbolData = {};
+      dividendEntries.forEach((entry) => {
+        if (!symbolData[entry.subcategory]) {
+          symbolData[entry.subcategory] = [];
+        }
+        symbolData[entry.subcategory].push(entry);
+      });
+      const results = [];
+      Object.entries(symbolData).forEach(([symbol, entries]) => {
+        const totalDividends = entries.reduce((sum3, entry) => sum3 + entry.value, 0);
+        const avgMonthlyDividend = totalDividends / new Set(entries.map((e3) => e3.timestamp.toString().substring(0, 7))).size;
+        const paymentCount = entries.length;
+        const firstPayment = new Date(Math.min(...entries.map((e3) => new Date(e3.timestamp).getTime())));
+        const lastPayment = new Date(Math.max(...entries.map((e3) => new Date(e3.timestamp).getTime())));
+        results.push({
+          label: symbol,
+          data: [totalDividends, avgMonthlyDividend, paymentCount],
+          labels: ["Total Dividends", "Avg Monthly", "Payment Count"],
+          metadata: {
+            firstPayment: firstPayment.toISOString().split("T")[0],
+            lastPayment: lastPayment.toISOString().split("T")[0],
+            totalValue: totalDividends,
+            formatTypes: ["money", "money", "generic"]
+          }
+        });
+      });
+      return {
+        datasets: results,
+        summary: {
+          totalSymbols: Object.keys(symbolData).length,
+          totalDividends: dividendEntries.reduce((sum3, entry) => sum3 + entry.value, 0),
+          totalPayments: dividendEntries.length
+        }
+      };
+    }
   }
 };
 
 // src/processing.ts
 function getCategories(categoriesToSelect, input) {
-  return Object.values(input).filter((line) => categoriesToSelect.includes(line.category)).reduce((categories, current) => {
-    if (!categories.includes(current.subcategory))
-      categories.push(current.subcategory);
-    return categories;
-  }, []);
+  const categorySet = new Set(categoriesToSelect);
+  const subcategorySet = new Set();
+  for (const item of input) {
+    if (categorySet.has(item.category)) {
+      subcategorySet.add(item.subcategory);
+    }
+  }
+  return Array.from(subcategorySet);
 }
 function processing(csvRawData, modelToGenerate, models, colors2, chartType = "line", separator = ",") {
   const json = getData(csvRawData, separator);
@@ -44126,12 +44638,17 @@ function processing(csvRawData, modelToGenerate, models, colors2, chartType = "l
     colors: colors2,
     values: model.values ? model.values.split(",") : []
   });
+  const isChartData = output && "labels" in output && "datasets" in output && Array.isArray(output.datasets);
+  if (!isChartData) {
+    throw new Error(`Model "${modelToGenerate}" with output "${model.output}" is not compatible with chart views. Use 'view: report' or 'view: table' instead.`);
+  }
+  const chartData = output;
   if (chartType === "line") {
-    return chartLine(output, model.chartLabelType, model.suffix, model.beginAtZero);
+    return chartLine(chartData, model.chartLabelType, model.suffix, model.beginAtZero);
   } else if (chartType === "pie") {
-    return chartPie(convert_to_pie_chart(output));
+    return chartPie(convert_to_pie_chart(chartData));
   } else if (chartType === "radar") {
-    return chartRadar(convert_to_radar_chart(output));
+    return chartRadar(convert_to_radar_chart(chartData));
   }
 }
 var processing_default = processing;
@@ -44167,7 +44684,78 @@ var COLORS = [
   "#2176ff",
   "#33a1fd",
   "#7cd671",
-  "#22def7"
+  "#22def7",
+  "#ff4757",
+  "#2ed573",
+  "#1e90ff",
+  "#ffa502",
+  "#ff6348",
+  "#70a1ff",
+  "#5352ed",
+  "#ff3838",
+  "#2f3542",
+  "#57606f",
+  "#a4b0be",
+  "#ff9ff3",
+  "#54a0ff",
+  "#5f27cd",
+  "#00d2d3",
+  "#ff9f43",
+  "#10ac84",
+  "#ee5a6f",
+  "#c44569",
+  "#f8b500",
+  "#6c5ce7",
+  "#8d6e63",
+  "#795548",
+  "#607d8b",
+  "#546e7a",
+  "#78909c",
+  "#90a4ae",
+  "#6d4c41",
+  "#5d4037",
+  "#455a64",
+  "#37474f",
+  "#263238",
+  "#424242",
+  "#616161",
+  "#757575",
+  "#9e9e9e",
+  "#ffeaa7",
+  "#fab1a0",
+  "#ff7675",
+  "#fd79a8",
+  "#fdcb6e",
+  "#e17055",
+  "#81ecec",
+  "#74b9ff",
+  "#a29bfe",
+  "#6c5ce7",
+  "#00b894",
+  "#00cec9",
+  "#55a3ff",
+  "#fd79a8",
+  "#fdcb6e",
+  "#ff0080",
+  "#00ff00",
+  "#00ffff",
+  "#ff00ff",
+  "#ffff00",
+  "#8000ff",
+  "#ff8000",
+  "#0080ff",
+  "#80ff00",
+  "#ff0040",
+  "#b8860b",
+  "#cd853f",
+  "#daa520",
+  "#b22222",
+  "#dc143c",
+  "#800080",
+  "#4b0082",
+  "#008b8b",
+  "#556b2f",
+  "#8b4513"
 ];
 var DEFAULT_SETTINGS = {
   chartLabelTypes: ["money", "percent", "generic", "custom"],
@@ -44182,6 +44770,10 @@ var DEFAULT_SETTINGS = {
     "Dividend",
     "House Expenses",
     "Expenses",
+    "Debt",
+    "Borrowable Money",
+    "Credit Line",
+    "Loan",
     "Generic"
   ],
   useLastElementAsTemplate: true,
@@ -44284,7 +44876,8 @@ var DEFAULT_SETTINGS = {
         "Cotisation",
         "Expenses",
         "House Expenses",
-        "Dividend"
+        "Dividend",
+        "Debt"
       ],
       output: "getLastValuePerTypeForCurrentMonth",
       beginAtZero: false,
@@ -44413,11 +45006,134 @@ var DEFAULT_SETTINGS = {
       chartLabelType: "money",
       dataSourceKey: "timestamp",
       values: ""
+    },
+    expensesQuarterly: {
+      dataSource: "splitByQuarter",
+      categories: ["House Expenses", "Expenses"],
+      output: "generateSumDataSet",
+      beginAtZero: true,
+      chartLabelType: "money",
+      dataSourceKey: "timestamp",
+      values: ""
+    },
+    incomeWeekly: {
+      dataSource: "splitByWeek",
+      categories: ["Income"],
+      output: "generateSumDataSet",
+      beginAtZero: true,
+      chartLabelType: "money",
+      dataSourceKey: "timestamp",
+      values: ""
+    },
+    portfolioByValueRange: {
+      dataSource: "splitByValueRange",
+      categories: ["Portfolio"],
+      output: "generateSumDataSetPerTypes",
+      beginAtZero: true,
+      chartLabelType: "money",
+      dataSourceKey: "value",
+      values: ""
+    },
+    expensesMonthlyBreakdown: {
+      dataSource: "splitByYearMonth",
+      categories: ["House Expenses", "Expenses"],
+      output: "generateSumDataSetPerTypes",
+      beginAtZero: true,
+      chartLabelType: "money",
+      dataSourceKey: "timestamp",
+      values: ""
+    },
+    allCategoriesBreakdown: {
+      dataSource: "splitByCategory",
+      categories: [
+        "Portfolio",
+        "Income",
+        "House Expenses",
+        "Expenses",
+        "Dividend"
+      ],
+      output: "generateSumDataSetPerTypes",
+      beginAtZero: true,
+      chartLabelType: "money",
+      dataSourceKey: "category",
+      values: ""
+    },
+    portfolioReportTable: {
+      dataSource: "splitByYearMonth",
+      categories: [
+        "Portfolio",
+        "Income",
+        "Cotisation",
+        "Expenses",
+        "House Expenses",
+        "Dividend",
+        "Debt"
+      ],
+      output: "getLastValuePerTypeForCurrentMonth",
+      beginAtZero: false,
+      chartLabelType: "money",
+      dataSourceKey: "timestamp",
+      values: ""
+    },
+    quarterlyIncomeExpenseReport: {
+      dataSource: "splitByQuarter",
+      categories: ["Income", "House Expenses", "Expenses"],
+      output: "reportSum",
+      beginAtZero: true,
+      chartLabelType: "money",
+      dataSourceKey: "timestamp",
+      values: "Income, House Expenses, Expenses"
+    },
+    weeklyExpenseAnalysis: {
+      dataSource: "splitByWeek",
+      categories: ["House Expenses", "Expenses"],
+      output: "reportSum",
+      beginAtZero: true,
+      chartLabelType: "money",
+      dataSourceKey: "timestamp",
+      values: "House Expenses, Expenses"
+    },
+    dividendMonthlyBySymbol: {
+      dataSource: "splitByYearMonth",
+      categories: ["Dividend"],
+      output: "generateDividendMonthlyBySymbol",
+      beginAtZero: true,
+      chartLabelType: "money",
+      dataSourceKey: "timestamp",
+      values: ""
+    },
+    dividendCumulativeBySymbol: {
+      dataSource: "splitByYearMonth",
+      categories: ["Dividend"],
+      output: "generateCumulativeDividendBySymbol",
+      beginAtZero: true,
+      chartLabelType: "money",
+      dataSourceKey: "timestamp",
+      values: ""
+    },
+    dividendAnalysisReport: {
+      dataSource: "splitByYearMonth",
+      categories: ["Dividend"],
+      output: "reportDividendAnalysis",
+      beginAtZero: true,
+      chartLabelType: "money",
+      dataSourceKey: "timestamp",
+      values: ""
+    },
+    dividendQuarterlyBySymbol: {
+      dataSource: "splitByQuarter",
+      categories: ["Dividend"],
+      output: "generateDividendMonthlyBySymbol",
+      beginAtZero: true,
+      chartLabelType: "money",
+      dataSourceKey: "timestamp",
+      values: ""
     }
   },
   colors: COLORS,
   debounce: "1000",
-  csvSeparator: ","
+  csvSeparator: ",",
+  version: "0.8.3"
 };
 
 // src/SettingsTab.ts
@@ -44448,9 +45164,39 @@ var SettingsTab = class extends import_obsidian3.PluginSettingTab {
     this.plugin = plugin;
     loadIcons_default();
   }
+  styleButton(button, extraStyles = "") {
+    button.style.cssText = `
+			margin-bottom: 10px;
+			padding: 6px 12px;
+			border: 1px solid var(--border-color);
+			border-radius: 4px;
+			background: var(--interactive-normal);
+			color: var(--text-normal);
+			cursor: pointer;
+			${extraStyles}
+		`;
+  }
+  getModalStyles() {
+    return `
+			position: fixed;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			background: var(--background-primary);
+			border: 2px solid var(--border-color);
+			border-radius: 8px;
+			padding: 20px;
+			box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+			z-index: 9999;
+			min-width: 300px;
+		`;
+  }
+  getButtonContainerStyles() {
+    return "display: flex; justify-content: flex-end; gap: 10px; margin-top: 15px;";
+  }
   createNewColorBtn() {
     const btn = this.containerEl.createEl("button");
-    btn.classList.add("findoc-btn-margin-bottom");
+    this.styleButton(btn);
     btn.id = "newColor";
     btn.innerText = "Add New Color";
     btn.onClickEvent(() => {
@@ -44461,7 +45207,7 @@ var SettingsTab = class extends import_obsidian3.PluginSettingTab {
   }
   createNewCategoryBtn() {
     const btn = this.containerEl.createEl("button");
-    btn.classList.add("findoc-btn-margin-bottom");
+    this.styleButton(btn);
     btn.id = "newType";
     btn.innerText = "Add New Category";
     btn.onClickEvent(() => {
@@ -44472,7 +45218,7 @@ var SettingsTab = class extends import_obsidian3.PluginSettingTab {
   }
   createReloadModelsBtn() {
     const btn = this.containerEl.createEl("button");
-    btn.classList.add("findoc-btn-margin-bottom");
+    this.styleButton(btn, "background: var(--text-warning); color: white;");
     btn.id = "reloadModels";
     btn.innerText = "Load Default Models (clears custom models)";
     btn.onClickEvent(() => __async(this, null, function* () {
@@ -44573,8 +45319,14 @@ var SettingsTab = class extends import_obsidian3.PluginSettingTab {
         }));
       });
     });
-    new import_obsidian3.Setting(containerEl).setName("Models").setDesc("Models available (It must be a JSON.stringify version)");
-    this.createReloadModelsBtn();
+    new import_obsidian3.Setting(containerEl).setName("Models").setDesc("Models available - Create, edit, or delete models for different data views");
+    const modelControlsDiv = containerEl.createDiv();
+    modelControlsDiv.classList.add("findoc-model-controls");
+    const addModelBtn = modelControlsDiv.createEl("button");
+    addModelBtn.classList.add("findoc-btn-margin-right");
+    addModelBtn.innerText = "Add New Model";
+    addModelBtn.onclick = () => this.createNewModel();
+    modelControlsDiv.appendChild(this.createReloadModelsBtn());
     const div2 = containerEl.createDiv();
     div2.classList.add("findoc-models-container");
     Object.entries(this.plugin.settings.models).forEach(([key, model]) => {
@@ -44583,6 +45335,62 @@ var SettingsTab = class extends import_obsidian3.PluginSettingTab {
       const el = modelSection.createEl("h1");
       el.innerText = "Model: " + name314;
       modelSection.classList.add("findoc-model-section");
+      const modelHeaderDiv = modelSection.createDiv();
+      modelHeaderDiv.classList.add("findoc-model-header");
+      modelHeaderDiv.appendChild(el);
+      const modelActionsDiv = modelHeaderDiv.createDiv();
+      modelActionsDiv.classList.add("findoc-model-actions");
+      const duplicateBtn = modelActionsDiv.createEl("button");
+      duplicateBtn.innerText = "Duplicate";
+      duplicateBtn.classList.add("findoc-btn-small", "findoc-btn-margin-right");
+      duplicateBtn.onclick = () => this.duplicateModel(key, model);
+      const deleteBtn = modelActionsDiv.createEl("button");
+      deleteBtn.innerText = "Delete";
+      deleteBtn.classList.add("findoc-btn-small", "findoc-btn-danger");
+      deleteBtn.onclick = () => this.deleteModel(key);
+      const snippetSection = modelSection.createDiv();
+      snippetSection.classList.add("findoc-snippet-section");
+      const snippetHeader = snippetSection.createEl("h4");
+      snippetHeader.innerText = "Usage Examples";
+      snippetHeader.classList.add("findoc-snippet-header");
+      const snippetContainer = snippetSection.createDiv();
+      snippetContainer.classList.add("findoc-snippet-container");
+      const snippets = this.generateSnippetsForModel(key, model);
+      snippets.forEach((snippet, index3) => {
+        const snippetDiv = snippetContainer.createDiv();
+        snippetDiv.classList.add("findoc-snippet-item");
+        if (!snippet.compatible) {
+          snippetDiv.classList.add("findoc-snippet-warning");
+        }
+        const snippetLabel = snippetDiv.createEl("span");
+        snippetLabel.classList.add("findoc-snippet-label");
+        snippetLabel.innerText = snippet.label;
+        if (snippet.warning) {
+          const warningSpan = snippetDiv.createEl("span");
+          warningSpan.classList.add("findoc-snippet-warning-text");
+          warningSpan.innerText = snippet.warning;
+        }
+        const snippetCode = snippetDiv.createEl("code");
+        snippetCode.classList.add("findoc-snippet-code");
+        if (!snippet.compatible) {
+          snippetCode.classList.add("findoc-snippet-code-disabled");
+        }
+        snippetCode.innerText = snippet.code;
+        const copyBtn = snippetDiv.createEl("button");
+        copyBtn.innerText = snippet.compatible ? "Copy" : "Info";
+        copyBtn.classList.add("findoc-btn-small", "findoc-btn-copy");
+        if (!snippet.compatible) {
+          copyBtn.classList.add("findoc-btn-disabled");
+          copyBtn.title = snippet.warning || "This view type is not compatible with this model";
+        }
+        copyBtn.onclick = () => {
+          if (snippet.compatible) {
+            this.copyToClipboard(snippet.code, `${snippet.label} snippet copied!`);
+          } else {
+            new import_obsidian3.Notice(snippet.warning || "This view type is not compatible with this model", 5e3);
+          }
+        };
+      });
       new import_obsidian3.Setting(modelSection).setName(`Data Source for ${name314}`).setDesc("Method used to prepare the raw data.").addDropdown((dropdown) => {
         Object.keys(splitBy).map((key2, idx) => splitBy[key2].help ? dropdown.addOption(key2, splitBy[key2].help) : null).filter((v) => v != null);
         dropdown.setValue(this.plugin.settings.models[key].dataSource);
@@ -44718,6 +45526,265 @@ Example: "Income, Expenses" will produce: Income - Expenses`).addText((text) => 
           this.display();
         }));
       });
+    });
+  }
+  createNewModel() {
+    return __async(this, null, function* () {
+      const modelName = yield this.promptForModelName();
+      if (!modelName || modelName.trim() === "") {
+        return;
+      }
+      const sanitizedName = modelName.toLowerCase().replace(/[^a-z0-9]/g, "");
+      if (this.plugin.settings.models[sanitizedName]) {
+        new import_obsidian3.Notice(`Model "${sanitizedName}" already exists!`);
+        return;
+      }
+      this.plugin.settings.models[sanitizedName] = {
+        dataSource: "splitByYearMonth",
+        categories: ["Portfolio"],
+        output: "generateSumDataSet",
+        beginAtZero: true,
+        chartLabelType: "money",
+        dataSourceKey: "timestamp",
+        values: ""
+      };
+      yield this.plugin.saveSettings();
+      new import_obsidian3.Notice(`Model "${sanitizedName}" created successfully!`);
+      this.display();
+    });
+  }
+  duplicateModel(originalKey, originalModel) {
+    return __async(this, null, function* () {
+      const newModelName = yield this.promptForModelName(`Copy of ${originalKey}`);
+      if (!newModelName || newModelName.trim() === "") {
+        return;
+      }
+      const sanitizedName = newModelName.toLowerCase().replace(/[^a-z0-9]/g, "");
+      if (this.plugin.settings.models[sanitizedName]) {
+        new import_obsidian3.Notice(`Model "${sanitizedName}" already exists!`);
+        return;
+      }
+      this.plugin.settings.models[sanitizedName] = {
+        dataSource: originalModel.dataSource,
+        categories: [...originalModel.categories],
+        output: originalModel.output,
+        beginAtZero: originalModel.beginAtZero,
+        chartLabelType: originalModel.chartLabelType,
+        dataSourceKey: originalModel.dataSourceKey,
+        values: originalModel.values || ""
+      };
+      yield this.plugin.saveSettings();
+      new import_obsidian3.Notice(`Model "${sanitizedName}" duplicated successfully!`);
+      this.display();
+    });
+  }
+  deleteModel(modelKey) {
+    return __async(this, null, function* () {
+      const confirmed = yield this.confirmDelete(modelKey);
+      if (!confirmed) {
+        return;
+      }
+      delete this.plugin.settings.models[modelKey];
+      yield this.plugin.saveSettings();
+      new import_obsidian3.Notice(`Model "${modelKey}" deleted successfully!`);
+      this.display();
+    });
+  }
+  promptForModelName(defaultName = "") {
+    return __async(this, null, function* () {
+      return new Promise((resolve3) => {
+        const modal = document.createElement("div");
+        modal.style.cssText = this.getModalStyles() + "width: 300px; z-index: 10000;";
+        const title = modal.createEl("h3");
+        title.innerText = "Enter Model Name";
+        const input = modal.createEl("input");
+        input.type = "text";
+        input.value = defaultName;
+        input.style.cssText = `
+				width: 100%;
+				padding: 8px;
+				margin: 10px 0;
+				border: 1px solid var(--border-color);
+				border-radius: 4px;
+				background: var(--background-secondary);
+				color: var(--text-normal);
+				box-sizing: border-box;
+			`;
+        const buttonsDiv = modal.createDiv();
+        buttonsDiv.style.cssText = this.getButtonContainerStyles();
+        const cancelBtn = buttonsDiv.createEl("button");
+        cancelBtn.innerText = "Cancel";
+        this.styleButton(cancelBtn, "margin-bottom: 0;");
+        cancelBtn.onclick = () => {
+          modal.remove();
+          resolve3(null);
+        };
+        const okBtn = buttonsDiv.createEl("button");
+        okBtn.innerText = "OK";
+        this.styleButton(okBtn, "background: var(--interactive-accent); color: var(--text-on-accent); margin-bottom: 0;");
+        okBtn.onclick = () => {
+          modal.remove();
+          resolve3(input.value);
+        };
+        input.addEventListener("keydown", (e3) => {
+          if (e3.key === "Enter") {
+            okBtn.click();
+          } else if (e3.key === "Escape") {
+            cancelBtn.click();
+          }
+        });
+        document.body.appendChild(modal);
+        input.focus();
+        input.select();
+      });
+    });
+  }
+  confirmDelete(modelKey) {
+    return __async(this, null, function* () {
+      return new Promise((resolve3) => {
+        const modal = document.createElement("div");
+        modal.style.cssText = this.getModalStyles() + "width: 350px; z-index: 10000;";
+        const title = modal.createEl("h3");
+        title.innerText = "Confirm Deletion";
+        title.style.color = "var(--text-error)";
+        const message = modal.createEl("p");
+        message.innerText = `Are you sure you want to delete the model "${modelKey}"? This action cannot be undone.`;
+        const buttonsDiv = modal.createDiv();
+        buttonsDiv.style.cssText = this.getButtonContainerStyles();
+        const cancelBtn = buttonsDiv.createEl("button");
+        cancelBtn.innerText = "Cancel";
+        this.styleButton(cancelBtn, "margin-bottom: 0;");
+        cancelBtn.onclick = () => {
+          modal.remove();
+          resolve3(false);
+        };
+        const deleteBtn = buttonsDiv.createEl("button");
+        deleteBtn.innerText = "Delete";
+        this.styleButton(deleteBtn, "background: var(--text-error); color: var(--text-on-accent); margin-bottom: 0;");
+        deleteBtn.onclick = () => {
+          modal.remove();
+          resolve3(true);
+        };
+        document.addEventListener("keydown", function escHandler(e3) {
+          if (e3.key === "Escape") {
+            cancelBtn.click();
+            document.removeEventListener("keydown", escHandler);
+          }
+        });
+        document.body.appendChild(modal);
+        cancelBtn.focus();
+      });
+    });
+  }
+  generateSnippetsForModel(modelKey, model) {
+    const snippets = [];
+    const isReportOnly = this.isReportModel(model);
+    const isChartCompatible = !isReportOnly;
+    if (isChartCompatible) {
+      snippets.push({
+        label: "Chart",
+        compatible: true,
+        code: `\`\`\`findoc
+filename: your-data.csv
+model: ${modelKey}
+view: chart
+title: ${this.toTitleCase(modelKey)}
+\`\`\``
+      });
+    } else {
+      snippets.push({
+        label: "Chart",
+        compatible: false,
+        warning: "\u26A0\uFE0F Not compatible - Use report/table views instead",
+        code: `<!-- Model "${modelKey}" is not compatible with chart views -->
+<!-- Use view: report or view: table instead -->`
+      });
+    }
+    if (this.isSuitableForPieChart(model) && isChartCompatible) {
+      snippets.push({
+        label: "Pie Chart",
+        compatible: true,
+        code: `\`\`\`findoc
+filename: your-data.csv
+model: ${modelKey}
+view: pie
+title: ${this.toTitleCase(modelKey)} Distribution
+\`\`\``
+      });
+    } else if (!isChartCompatible) {
+      snippets.push({
+        label: "Pie Chart",
+        compatible: false,
+        warning: "\u26A0\uFE0F Report model - Not compatible with pie charts",
+        code: `<!-- Model "${modelKey}" is not compatible with pie charts -->
+<!-- Use view: report or view: table instead -->`
+      });
+    }
+    if (this.isSuitableForRadarChart(model) && isChartCompatible) {
+      snippets.push({
+        label: "Radar Chart",
+        compatible: true,
+        code: `\`\`\`findoc
+filename: your-data.csv
+model: ${modelKey}
+view: radar
+title: ${this.toTitleCase(modelKey)} Radar
+\`\`\``
+      });
+    }
+    if (isReportOnly) {
+      snippets.push({
+        label: "Text Report",
+        compatible: true,
+        code: `\`\`\`findoc
+filename: your-data.csv
+model: ${modelKey}
+view: report
+date: 2025-09-01
+\`\`\``
+      });
+      snippets.push({
+        label: "Table Report",
+        compatible: true,
+        code: `\`\`\`findoc
+filename: your-data.csv
+model: ${modelKey}
+view: table
+date: 2025-09-01
+\`\`\``
+      });
+    }
+    return snippets;
+  }
+  isSuitableForPieChart(model) {
+    return model.output.includes("PerTypes") || model.dataSource.includes("Subcategory") || model.dataSource.includes("Category") || model.dataSource.includes("ValueRange");
+  }
+  isSuitableForRadarChart(model) {
+    return model.categories && model.categories.length > 2 && (model.output.includes("generateSumDataSet") || model.output.includes("PerTypes"));
+  }
+  isReportModel(model) {
+    return model.output.includes("report") || model.output.includes("getLastValue");
+  }
+  toTitleCase(str) {
+    return str.replace(/([A-Z])/g, " $1").replace(/^./, (char) => char.toUpperCase()).replace(/\b\w/g, (char) => char.toUpperCase());
+  }
+  copyToClipboard(text, message) {
+    return __async(this, null, function* () {
+      try {
+        yield navigator.clipboard.writeText(text);
+        new import_obsidian3.Notice(message, 3e3);
+      } catch (err) {
+        const textArea = document.createElement("textarea");
+        textArea.value = text;
+        textArea.style.position = "fixed";
+        textArea.style.left = "-999999px";
+        textArea.style.top = "-999999px";
+        document.body.appendChild(textArea);
+        textArea.select();
+        document.execCommand("copy");
+        textArea.remove();
+        new import_obsidian3.Notice(message, 3e3);
+      }
     });
   }
 };
@@ -45282,7 +46349,7 @@ var Color = class {
   }
 };
 
-// node_modules/chart.js/dist/chunks/helpers.segment.js
+// node_modules/chart.js/dist/chunks/helpers.dataset.js
 function noop() {
 }
 var uid = (() => {
@@ -45290,7 +46357,7 @@ var uid = (() => {
   return () => id++;
 })();
 function isNullOrUndef(value) {
-  return value === null || typeof value === "undefined";
+  return value === null || value === void 0;
 }
 function isArray2(value) {
   if (Array.isArray && Array.isArray(value)) {
@@ -45523,8 +46590,11 @@ function _factorize(value) {
   result.sort((a, b) => a - b).pop();
   return result;
 }
+function isNonPrimitive(n) {
+  return typeof n === "symbol" || typeof n === "object" && n !== null && !(Symbol.toPrimitive in n || "toString" in n || "valueOf" in n);
+}
 function isNumber2(n) {
-  return !isNaN(parseFloat(n)) && isFinite(n);
+  return !isNonPrimitive(n) && !isNaN(parseFloat(n)) && isFinite(n);
 }
 function almostWhole(x, epsilon) {
   const rounded = Math.round(x);
@@ -45742,14 +46812,25 @@ function _getStartAndCountOfVisiblePoints(meta, points, animationsDisabled) {
   let start = 0;
   let count2 = pointCount;
   if (meta._sorted) {
-    const { iScale, _parsed } = meta;
+    const { iScale, vScale, _parsed } = meta;
+    const spanGaps = meta.dataset ? meta.dataset.options ? meta.dataset.options.spanGaps : null : null;
     const axis = iScale.axis;
     const { min: min3, max: max3, minDefined, maxDefined } = iScale.getUserBounds();
     if (minDefined) {
-      start = _limitValue(Math.min(_lookupByKey(_parsed, axis, min3).lo, animationsDisabled ? pointCount : _lookupByKey(points, axis, iScale.getPixelForValue(min3)).lo), 0, pointCount - 1);
+      start = Math.min(_lookupByKey(_parsed, axis, min3).lo, animationsDisabled ? pointCount : _lookupByKey(points, axis, iScale.getPixelForValue(min3)).lo);
+      if (spanGaps) {
+        const distanceToDefinedLo = _parsed.slice(0, start + 1).reverse().findIndex((point) => !isNullOrUndef(point[vScale.axis]));
+        start -= Math.max(0, distanceToDefinedLo);
+      }
+      start = _limitValue(start, 0, pointCount - 1);
     }
     if (maxDefined) {
-      count2 = _limitValue(Math.max(_lookupByKey(_parsed, iScale.axis, max3, true).hi + 1, animationsDisabled ? 0 : _lookupByKey(points, axis, iScale.getPixelForValue(max3), true).hi + 1), start, pointCount) - start;
+      let end = Math.max(_lookupByKey(_parsed, iScale.axis, max3, true).hi + 1, animationsDisabled ? 0 : _lookupByKey(points, axis, iScale.getPixelForValue(max3), true).hi + 1);
+      if (spanGaps) {
+        const distanceToDefinedHi = _parsed.slice(end - 1).findIndex((point) => !isNullOrUndef(point[vScale.axis]));
+        end += Math.max(0, distanceToDefinedHi);
+      }
+      count2 = _limitValue(end, start, pointCount) - start;
     } else {
       count2 = pointCount - start;
     }
@@ -46263,6 +47344,9 @@ function _alignPixel(chart, pixel, width) {
   return Math.round((pixel - halfWidth) * devicePixelRatio) / devicePixelRatio + halfWidth;
 }
 function clearCanvas(canvas, ctx) {
+  if (!ctx && !canvas) {
+    return;
+  }
   ctx = ctx || canvas.getContext("2d");
   ctx.save();
   ctx.resetTransform();
@@ -46722,7 +47806,7 @@ function _descriptors(proxy, defaults2 = {
 var readKey = (prefix, name314) => prefix ? prefix + _capitalize(name314) : name314;
 var needsSubResolver = (prop, value) => isObject2(value) && prop !== "adapters" && (Object.getPrototypeOf(value) === null || value.constructor === Object);
 function _cached(target, prop, resolve3) {
-  if (Object.prototype.hasOwnProperty.call(target, prop)) {
+  if (Object.prototype.hasOwnProperty.call(target, prop) || prop === "constructor") {
     return target[prop];
   }
   const value = resolve3();
@@ -47117,7 +48201,7 @@ function getRelativePosition(event, chart) {
 function getContainerSize(canvas, width, height) {
   let maxWidth, maxHeight;
   if (width === void 0 || height === void 0) {
-    const container = _getParentNode(canvas);
+    const container = canvas && _getParentNode(canvas);
     if (!container) {
       width = canvas.clientWidth;
       height = canvas.clientHeight;
@@ -47590,6 +48674,34 @@ function styleChanged(style, prevStyle) {
   };
   return JSON.stringify(style, replacer2) !== JSON.stringify(prevStyle, replacer2);
 }
+function getSizeForArea(scale, chartArea, field) {
+  return scale.options.clip ? scale[field] : chartArea[field];
+}
+function getDatasetArea(meta, chartArea) {
+  const { xScale, yScale } = meta;
+  if (xScale && yScale) {
+    return {
+      left: getSizeForArea(xScale, chartArea, "left"),
+      right: getSizeForArea(xScale, chartArea, "right"),
+      top: getSizeForArea(yScale, chartArea, "top"),
+      bottom: getSizeForArea(yScale, chartArea, "bottom")
+    };
+  }
+  return chartArea;
+}
+function getDatasetClipArea(chart, meta) {
+  const clip = meta._clip;
+  if (clip.disabled) {
+    return false;
+  }
+  const area = getDatasetArea(meta, chart.chartArea);
+  return {
+    left: clip.left === false ? 0 : area.left - (clip.left === true ? 0 : clip.left),
+    right: clip.right === false ? chart.width : area.right + (clip.right === true ? 0 : clip.right),
+    top: clip.top === false ? 0 : area.top - (clip.top === true ? 0 : clip.top),
+    bottom: clip.bottom === false ? chart.height : area.bottom + (clip.bottom === true ? 0 : clip.bottom)
+  };
+}
 
 // node_modules/chart.js/dist/chart.js
 var Animator = class {
@@ -48019,9 +49131,11 @@ function applyStack(stack, value, dsIndex, options = {}) {
   if (value === null) {
     return;
   }
+  let found = false;
   for (i2 = 0, ilen = keys.length; i2 < ilen; ++i2) {
     datasetIndex = +keys[i2];
     if (datasetIndex === dsIndex) {
+      found = true;
       if (options.all) {
         continue;
       }
@@ -48032,17 +49146,23 @@ function applyStack(stack, value, dsIndex, options = {}) {
       value += otherValue;
     }
   }
+  if (!found && !options.all) {
+    return 0;
+  }
   return value;
 }
-function convertObjectDataToArray(data) {
+function convertObjectDataToArray(data, meta) {
+  const { iScale, vScale } = meta;
+  const iAxisKey = iScale.axis === "x" ? "x" : "y";
+  const vAxisKey = vScale.axis === "x" ? "x" : "y";
   const keys = Object.keys(data);
   const adata = new Array(keys.length);
   let i2, ilen, key;
   for (i2 = 0, ilen = keys.length; i2 < ilen; ++i2) {
     key = keys[i2];
     adata[i2] = {
-      x: key,
-      y: data[key]
+      [iAxisKey]: key,
+      [vAxisKey]: data[key]
     };
   }
   return adata;
@@ -48231,7 +49351,8 @@ var DatasetController = class {
     const data = dataset.data || (dataset.data = []);
     const _data = this._data;
     if (isObject2(data)) {
-      this._data = convertObjectDataToArray(data);
+      const meta = this._cachedMeta;
+      this._data = convertObjectDataToArray(data, meta);
     } else if (_data !== data) {
       if (_data) {
         unlistenArrayEvents(_data, this);
@@ -48268,6 +49389,7 @@ var DatasetController = class {
     this._resyncElements(resetNewElements);
     if (stackChanged || oldStacked !== meta._stacked) {
       updateStacks(this, meta._parsed);
+      meta._stacked = isStacked(meta.vScale, meta);
     }
   }
   configure() {
@@ -49031,8 +50153,10 @@ var BarController = class extends DatasetController {
     const metasets = iScale.getMatchingVisibleMetas(this._type).filter((meta) => meta.controller.options.grouped);
     const stacked = iScale.options.stacked;
     const stacks = [];
+    const currentParsed = this._cachedMeta.controller.getParsed(dataIndex);
+    const iScaleValue = currentParsed && currentParsed[iScale.axis];
     const skipNull = (meta) => {
-      const parsed = meta.controller.getParsed(dataIndex);
+      const parsed = meta._parsed.find((item) => item[iScale.axis] === iScaleValue);
       const val = parsed && parsed[meta.vScale.axis];
       if (isNullOrUndef(val) || isNaN(val)) {
         return true;
@@ -49056,6 +50180,22 @@ var BarController = class extends DatasetController {
   }
   _getStackCount(index3) {
     return this._getStacks(void 0, index3).length;
+  }
+  _getAxisCount() {
+    return this._getAxis().length;
+  }
+  getFirstScaleIdForIndexAxis() {
+    const scales2 = this.chart.scales;
+    const indexScaleId = this.chart.options.indexAxis;
+    return Object.keys(scales2).filter((key) => scales2[key].axis === indexScaleId).shift();
+  }
+  _getAxis() {
+    const axis = {};
+    const firstScaleAxisId = this.getFirstScaleIdForIndexAxis();
+    for (const dataset of this.chart.data.datasets) {
+      axis[valueOrDefault(this.chart.options.indexAxis === "x" ? dataset.xAxisID : dataset.yAxisID, firstScaleAxisId)] = true;
+    }
+    return Object.keys(axis);
   }
   _getStackIndex(datasetIndex, name314, dataIndex) {
     const stacks = this._getStacks(datasetIndex, dataIndex);
@@ -49147,10 +50287,13 @@ var BarController = class extends DatasetController {
     const skipNull = options.skipNull;
     const maxBarThickness = valueOrDefault(options.maxBarThickness, Infinity);
     let center, size2;
+    const axisCount = this._getAxisCount();
     if (ruler.grouped) {
       const stackCount = skipNull ? this._getStackCount(index3) : ruler.stackCount;
-      const range2 = options.barThickness === "flex" ? computeFlexCategoryTraits(index3, ruler, options, stackCount) : computeFitCategoryTraits(index3, ruler, options, stackCount);
-      const stackIndex = this._getStackIndex(this.index, this._cachedMeta.stack, skipNull ? index3 : void 0);
+      const range2 = options.barThickness === "flex" ? computeFlexCategoryTraits(index3, ruler, options, stackCount * axisCount) : computeFitCategoryTraits(index3, ruler, options, stackCount * axisCount);
+      const axisID = this.chart.options.indexAxis === "x" ? this.getDataset().xAxisID : this.getDataset().yAxisID;
+      const axisNumber = this._getAxis().indexOf(valueOrDefault(axisID, this.getFirstScaleIdForIndexAxis()));
+      const stackIndex = this._getStackIndex(this.index, this._cachedMeta.stack, skipNull ? index3 : void 0) + axisNumber;
       center = range2.start + range2.chunk * stackIndex + range2.chunk / 2;
       size2 = Math.min(maxBarThickness, range2.chunk * range2.ratio);
     } else {
@@ -49171,7 +50314,7 @@ var BarController = class extends DatasetController {
     const ilen = rects.length;
     let i2 = 0;
     for (; i2 < ilen; ++i2) {
-      if (this.getParsed(i2)[vScale.axis] !== null) {
+      if (this.getParsed(i2)[vScale.axis] !== null && !rects[i2].hidden) {
         rects[i2].draw(this._ctx);
       }
     }
@@ -50175,10 +51318,20 @@ var adapters = {
 function binarySearch(metaset, axis, value, intersect2) {
   const { controller, data, _sorted } = metaset;
   const iScale = controller._cachedMeta.iScale;
+  const spanGaps = metaset.dataset ? metaset.dataset.options ? metaset.dataset.options.spanGaps : null : null;
   if (iScale && axis === iScale.axis && axis !== "r" && _sorted && data.length) {
     const lookupMethod = iScale._reversePixels ? _rlookupByKey : _lookupByKey;
     if (!intersect2) {
-      return lookupMethod(data, axis, value);
+      const result = lookupMethod(data, axis, value);
+      if (spanGaps) {
+        const { vScale } = controller._cachedMeta;
+        const { _parsed } = metaset;
+        const distanceToDefinedLo = _parsed.slice(0, result.lo + 1).reverse().findIndex((point) => !isNullOrUndef(point[vScale.axis]));
+        result.lo -= Math.max(0, distanceToDefinedLo);
+        const distanceToDefinedHi = _parsed.slice(result.hi).findIndex((point) => !isNullOrUndef(point[vScale.axis]));
+        result.hi += Math.max(0, distanceToDefinedHi);
+      }
+      return result;
     } else if (controller._sharedOptions) {
       const el = data[0];
       const range2 = typeof el.getRange === "function" && el.getRange(axis);
@@ -50308,7 +51461,7 @@ function getAxisItems(chart, position, axis, intersect2, useFinalPosition) {
   const rangeMethod = axis === "x" ? "inXRange" : "inYRange";
   let intersectsItem = false;
   evaluateInteractionItems(chart, axis, position, (element, datasetIndex, index3) => {
-    if (element[rangeMethod](position[axis], useFinalPosition)) {
+    if (element[rangeMethod] && element[rangeMethod](position[axis], useFinalPosition)) {
       items.push({
         element,
         datasetIndex,
@@ -50806,10 +51959,14 @@ var eventListenerOptions = supportsEventListenerOptions ? {
   passive: true
 } : false;
 function addListener(node, type, listener) {
-  node.addEventListener(type, listener, eventListenerOptions);
+  if (node) {
+    node.addEventListener(type, listener, eventListenerOptions);
+  }
 }
 function removeListener(chart, type, listener) {
-  chart.canvas.removeEventListener(type, listener, eventListenerOptions);
+  if (chart && chart.canvas) {
+    chart.canvas.removeEventListener(type, listener, eventListenerOptions);
+  }
 }
 function fromNativeEvent(event, chart) {
   const type = EVENT_TYPES[event.type] || event.type;
@@ -51002,7 +52159,7 @@ var DomPlatform = class extends BasePlatform {
     return getMaximumSize(canvas, width, height, aspectRatio);
   }
   isAttached(canvas) {
-    const container = _getParentNode(canvas);
+    const container = canvas && _getParentNode(canvas);
     return !!(container && container.isConnected);
   }
 };
@@ -53056,7 +54213,7 @@ function needContext(proxy, names2) {
   }
   return false;
 }
-var version3 = "4.4.1";
+var version3 = "4.5.0";
 var KNOWN_POSITIONS = [
   "top",
   "bottom",
@@ -53124,21 +54281,6 @@ function determineLastEvent(e3, lastEvent, inChartArea, isClick) {
     return lastEvent;
   }
   return e3;
-}
-function getSizeForArea(scale, chartArea, field) {
-  return scale.options.clip ? scale[field] : chartArea[field];
-}
-function getDatasetArea(meta, chartArea) {
-  const { xScale, yScale } = meta;
-  if (xScale && yScale) {
-    return {
-      left: getSizeForArea(xScale, chartArea, "left"),
-      right: getSizeForArea(xScale, chartArea, "right"),
-      top: getSizeForArea(yScale, chartArea, "top"),
-      bottom: getSizeForArea(yScale, chartArea, "bottom")
-    };
-  }
-  return chartArea;
 }
 var Chart = class {
   static register(...items) {
@@ -53581,8 +54723,8 @@ var Chart = class {
     let i2;
     if (this._resizeBeforeDraw) {
       const { width, height } = this._resizeBeforeDraw;
-      this._resize(width, height);
       this._resizeBeforeDraw = null;
+      this._resize(width, height);
     }
     this.clear();
     if (this.width <= 0 || this.height <= 0) {
@@ -53632,27 +54774,20 @@ var Chart = class {
   }
   _drawDataset(meta) {
     const ctx = this.ctx;
-    const clip = meta._clip;
-    const useClip = !clip.disabled;
-    const area = getDatasetArea(meta, this.chartArea);
     const args = {
       meta,
       index: meta.index,
       cancelable: true
     };
+    const clip = getDatasetClipArea(this, meta);
     if (this.notifyPlugins("beforeDatasetDraw", args) === false) {
       return;
     }
-    if (useClip) {
-      clipArea(ctx, {
-        left: clip.left === false ? 0 : area.left - clip.left,
-        right: clip.right === false ? this.width : area.right + clip.right,
-        top: clip.top === false ? 0 : area.top - clip.top,
-        bottom: clip.bottom === false ? this.height : area.bottom + clip.bottom
-      });
+    if (clip) {
+      clipArea(ctx, clip);
     }
     meta.controller.draw();
-    if (useClip) {
+    if (clip) {
       unclipArea(ctx);
     }
     args.cancelable = false;
@@ -53970,6 +55105,34 @@ __publicField(Chart, "getChart", getChart);
 function invalidatePlugins() {
   return each(Chart.instances, (chart) => chart._plugins.invalidate());
 }
+function clipSelf(ctx, element, endAngle) {
+  const { startAngle, x, y, outerRadius, innerRadius, options } = element;
+  const { borderWidth, borderJoinStyle } = options;
+  const outerAngleClip = Math.min(borderWidth / outerRadius, _normalizeAngle(startAngle - endAngle));
+  ctx.beginPath();
+  ctx.arc(x, y, outerRadius - borderWidth / 2, startAngle + outerAngleClip / 2, endAngle - outerAngleClip / 2);
+  if (innerRadius > 0) {
+    const innerAngleClip = Math.min(borderWidth / innerRadius, _normalizeAngle(startAngle - endAngle));
+    ctx.arc(x, y, innerRadius + borderWidth / 2, endAngle - innerAngleClip / 2, startAngle + innerAngleClip / 2, true);
+  } else {
+    const clipWidth = Math.min(borderWidth / 2, outerRadius * _normalizeAngle(startAngle - endAngle));
+    if (borderJoinStyle === "round") {
+      ctx.arc(x, y, clipWidth, endAngle - PI2 / 2, startAngle + PI2 / 2, true);
+    } else if (borderJoinStyle === "bevel") {
+      const r = 2 * clipWidth * clipWidth;
+      const endX = -r * Math.cos(endAngle + PI2 / 2) + x;
+      const endY = -r * Math.sin(endAngle + PI2 / 2) + y;
+      const startX = r * Math.cos(startAngle + PI2 / 2) + x;
+      const startY = r * Math.sin(startAngle + PI2 / 2) + y;
+      ctx.lineTo(endX, endY);
+      ctx.lineTo(startX, startY);
+    }
+  }
+  ctx.closePath();
+  ctx.moveTo(0, 0);
+  ctx.rect(0, 0, ctx.canvas.width, ctx.canvas.height);
+  ctx.clip("evenodd");
+}
 function clipArc(ctx, element, endAngle) {
   const { startAngle, pixelMargin, x, y, outerRadius, innerRadius } = element;
   let angleMargin = pixelMargin / outerRadius;
@@ -54096,7 +55259,7 @@ function drawArc(ctx, element, offset, spacing, circular) {
 }
 function drawBorder(ctx, element, offset, spacing, circular) {
   const { fullCircles, startAngle, circumference, options } = element;
-  const { borderWidth, borderJoinStyle, borderDash, borderDashOffset } = options;
+  const { borderWidth, borderJoinStyle, borderDash, borderDashOffset, borderRadius } = options;
   const inner = options.borderAlign === "inner";
   if (!borderWidth) {
     return;
@@ -54122,6 +55285,9 @@ function drawBorder(ctx, element, offset, spacing, circular) {
   }
   if (inner) {
     clipArc(ctx, element, endAngle);
+  }
+  if (options.selfJoin && endAngle - startAngle >= PI2 && borderRadius === 0 && borderJoinStyle !== "miter") {
+    clipSelf(ctx, element, endAngle);
   }
   if (!fullCircles) {
     pathArc(ctx, element, offset, spacing, endAngle, circular);
@@ -54168,7 +55334,8 @@ var ArcElement = class extends Element {
     ], useFinalPosition);
     const rAdjust = (this.options.spacing + this.options.borderWidth) / 2;
     const _circumference = valueOrDefault(circumference, endAngle - startAngle);
-    const betweenAngles = _circumference >= TAU || _angleBetween(angle, startAngle, endAngle);
+    const nonZeroBetween = _angleBetween(angle, startAngle, endAngle) && startAngle !== endAngle;
+    const betweenAngles = _circumference >= TAU || nonZeroBetween;
     const withinRadius = _isBetween(distance2, innerRadius + rAdjust, outerRadius + rAdjust);
     return betweenAngles && withinRadius;
   }
@@ -54226,7 +55393,8 @@ __publicField(ArcElement, "defaults", {
   offset: 0,
   spacing: 0,
   angle: void 0,
-  circular: true
+  circular: true,
+  selfJoin: false
 });
 __publicField(ArcElement, "defaultRoutes", {
   backgroundColor: "backgroundColor"
@@ -54844,6 +56012,9 @@ function containsColorsDefinitions(descriptors2) {
 function containsColorsDefinition(descriptor) {
   return descriptor && (descriptor.borderColor || descriptor.backgroundColor);
 }
+function containsDefaultColorsDefenitions() {
+  return defaults.borderColor !== "rgba(0,0,0,0.1)" || defaults.backgroundColor !== "rgba(0,0,0,0.1)";
+}
 var plugin_colors = {
   id: "colors",
   defaults: {
@@ -54856,7 +56027,8 @@ var plugin_colors = {
     }
     const { data: { datasets }, options: chartOptions } = chart.config;
     const { elements: elements2 } = chartOptions;
-    if (!options.forceOverride && (containsColorsDefinitions(datasets) || containsColorsDefinition(chartOptions) || elements2 && containsColorsDefinitions(elements2))) {
+    const containsColorDefenition = containsColorsDefinitions(datasets) || containsColorsDefinition(chartOptions) || elements2 && containsColorsDefinitions(elements2) || containsDefaultColorsDefenitions();
+    if (!options.forceOverride && containsColorDefenition) {
       return;
     }
     const colorizer = getColorizer(chart);
@@ -55445,11 +56617,13 @@ function computeCircularBoundary(source) {
 }
 function _drawfill(ctx, source, area) {
   const target = _getTarget(source);
-  const { line, scale, axis } = source;
+  const { chart, index: index3, line, scale, axis } = source;
   const lineOpts = line.options;
   const fillOption = lineOpts.fill;
   const color2 = lineOpts.backgroundColor;
   const { above = color2, below = color2 } = fillOption || {};
+  const meta = chart.getDatasetMeta(index3);
+  const clip = getDatasetClipArea(chart, meta);
   if (target && line.points.length) {
     clipArea(ctx, area);
     doFill(ctx, {
@@ -55459,34 +56633,54 @@ function _drawfill(ctx, source, area) {
       below,
       area,
       scale,
-      axis
+      axis,
+      clip
     });
     unclipArea(ctx);
   }
 }
 function doFill(ctx, cfg) {
-  const { line, target, above, below, area, scale } = cfg;
+  const { line, target, above, below, area, scale, clip } = cfg;
   const property = line._loop ? "angle" : cfg.axis;
   ctx.save();
-  if (property === "x" && below !== above) {
-    clipVertical(ctx, target, area.top);
-    fill(ctx, {
-      line,
-      target,
-      color: above,
-      scale,
-      property
-    });
-    ctx.restore();
-    ctx.save();
-    clipVertical(ctx, target, area.bottom);
+  let fillColor = below;
+  if (below !== above) {
+    if (property === "x") {
+      clipVertical(ctx, target, area.top);
+      fill(ctx, {
+        line,
+        target,
+        color: above,
+        scale,
+        property,
+        clip
+      });
+      ctx.restore();
+      ctx.save();
+      clipVertical(ctx, target, area.bottom);
+    } else if (property === "y") {
+      clipHorizontal(ctx, target, area.left);
+      fill(ctx, {
+        line,
+        target,
+        color: below,
+        scale,
+        property,
+        clip
+      });
+      ctx.restore();
+      ctx.save();
+      clipHorizontal(ctx, target, area.right);
+      fillColor = above;
+    }
   }
   fill(ctx, {
     line,
     target,
-    color: below,
+    color: fillColor,
     scale,
-    property
+    property,
+    clip
   });
   ctx.restore();
 }
@@ -55519,15 +56713,44 @@ function clipVertical(ctx, target, clipY) {
   ctx.closePath();
   ctx.clip();
 }
+function clipHorizontal(ctx, target, clipX) {
+  const { segments, points } = target;
+  let first = true;
+  let lineLoop = false;
+  ctx.beginPath();
+  for (const segment of segments) {
+    const { start, end } = segment;
+    const firstPoint = points[start];
+    const lastPoint = points[_findSegmentEnd(start, end, points)];
+    if (first) {
+      ctx.moveTo(firstPoint.x, firstPoint.y);
+      first = false;
+    } else {
+      ctx.lineTo(clipX, firstPoint.y);
+      ctx.lineTo(firstPoint.x, firstPoint.y);
+    }
+    lineLoop = !!target.pathSegment(ctx, segment, {
+      move: lineLoop
+    });
+    if (lineLoop) {
+      ctx.closePath();
+    } else {
+      ctx.lineTo(clipX, lastPoint.y);
+    }
+  }
+  ctx.lineTo(clipX, target.first().y);
+  ctx.closePath();
+  ctx.clip();
+}
 function fill(ctx, cfg) {
-  const { line, target, property, color: color2, scale } = cfg;
+  const { line, target, property, color: color2, scale, clip } = cfg;
   const segments = _segments(line, target, property);
   for (const { source: src, target: tgt, start, end } of segments) {
     const { style: { backgroundColor = color2 } = {} } = src;
     const notShape = target !== true;
     ctx.save();
     ctx.fillStyle = backgroundColor;
-    clipBounds(ctx, scale, notShape && _getBounds(property, start, end));
+    clipBounds(ctx, scale, clip, notShape && _getBounds(property, start, end));
     ctx.beginPath();
     const lineLoop = !!line.pathSegment(ctx, src);
     let loop;
@@ -55551,12 +56774,30 @@ function fill(ctx, cfg) {
     ctx.restore();
   }
 }
-function clipBounds(ctx, scale, bounds) {
-  const { top, bottom } = scale.chart.chartArea;
+function clipBounds(ctx, scale, clip, bounds) {
+  const chartArea = scale.chart.chartArea;
   const { property, start, end } = bounds || {};
-  if (property === "x") {
+  if (property === "x" || property === "y") {
+    let left, top, right, bottom;
+    if (property === "x") {
+      left = start;
+      top = chartArea.top;
+      right = end;
+      bottom = chartArea.bottom;
+    } else {
+      left = chartArea.left;
+      top = start;
+      right = chartArea.right;
+      bottom = end;
+    }
     ctx.beginPath();
-    ctx.rect(start, top, end - start, bottom - top);
+    if (clip) {
+      left = Math.max(left, clip.left);
+      right = Math.min(right, clip.right);
+      top = Math.max(top, clip.top);
+      bottom = Math.min(bottom, clip.bottom);
+    }
+    ctx.rect(left, top, right - left, bottom - top);
     ctx.clip();
   }
 }
@@ -56372,20 +57613,26 @@ var positioners = {
       return false;
     }
     let i2, len;
-    let x = 0;
+    let xSet = new Set();
     let y = 0;
     let count2 = 0;
     for (i2 = 0, len = items.length; i2 < len; ++i2) {
       const el = items[i2].element;
       if (el && el.hasValue()) {
         const pos = el.tooltipPosition();
-        x += pos.x;
+        xSet.add(pos.x);
         y += pos.y;
         ++count2;
       }
     }
+    if (count2 === 0 || xSet.size === 0) {
+      return false;
+    }
+    const xAverage = [
+      ...xSet
+    ].reduce((a, b) => a + b) / xSet.size;
     return {
-      x: x / count2,
+      x: xAverage,
       y: y / count2
     };
   },
@@ -58126,7 +59373,7 @@ function drawRadiusLine(scale, gridLineOpts, radius, labelCount, borderOpts) {
   ctx.save();
   ctx.strokeStyle = color2;
   ctx.lineWidth = lineWidth;
-  ctx.setLineDash(borderOpts.dash);
+  ctx.setLineDash(borderOpts.dash || []);
   ctx.lineDashOffset = borderOpts.dashOffset;
   ctx.beginPath();
   pathRadiusLine(scale, radius, circular, labelCount);
@@ -58266,7 +59513,7 @@ var RadialLinearScale = class extends LinearScaleBase {
     }
     if (grid.display) {
       this.ticks.forEach((tick, index3) => {
-        if (index3 !== 0) {
+        if (index3 !== 0 || index3 === 0 && this.min < 0) {
           offset = this.getDistanceFromCenterForValue(tick.value);
           const context = this.getContext(index3);
           const optsAtIndex = grid.setContext(context);
@@ -58287,7 +59534,7 @@ var RadialLinearScale = class extends LinearScaleBase {
         ctx.strokeStyle = color2;
         ctx.setLineDash(optsAtIndex.borderDash);
         ctx.lineDashOffset = optsAtIndex.borderDashOffset;
-        offset = this.getDistanceFromCenterForValue(opts.ticks.reverse ? this.min : this.max);
+        offset = this.getDistanceFromCenterForValue(opts.reverse ? this.min : this.max);
         position = this.getPointPosition(i2, offset);
         ctx.beginPath();
         ctx.moveTo(this.xCenter, this.yCenter);
@@ -58314,7 +59561,7 @@ var RadialLinearScale = class extends LinearScaleBase {
     ctx.textAlign = "center";
     ctx.textBaseline = "middle";
     this.ticks.forEach((tick, index3) => {
-      if (index3 === 0 && !opts.reverse) {
+      if (index3 === 0 && this.min >= 0 && !opts.reverse) {
         return;
       }
       const optsAtIndex = tickOpts.setContext(this.getContext(index3));
@@ -58431,7 +59678,7 @@ var UNITS = /* @__PURE__ */ Object.keys(INTERVALS);
 function sorter(a, b) {
   return a - b;
 }
-function parse2(scale, input) {
+function parse3(scale, input) {
   if (isNullOrUndef(input)) {
     return null;
   }
@@ -58547,7 +59794,7 @@ var TimeScale = class extends Scale {
     if (raw === void 0) {
       return null;
     }
-    return parse2(this, raw);
+    return parse3(this, raw);
   }
   beforeLayout() {
     super.beforeLayout();
@@ -58775,7 +60022,7 @@ var TimeScale = class extends Scale {
     }
     const labels = this.getLabels();
     for (i2 = 0, ilen = labels.length; i2 < ilen; ++i2) {
-      timestamps.push(parse2(this, labels[i2]));
+      timestamps.push(parse3(this, labels[i2]));
     }
     return this._cache.labels = this._normalized ? timestamps : this.normalize(timestamps);
   }
@@ -58932,10 +60179,6 @@ Chart.register(...registerables);
 var auto_default = Chart;
 
 // src/ChartRenderer.ts
-var generateId = () => {
-  const array = new Uint32Array(10);
-  return `id-${window.crypto.getRandomValues(array)[0].toString()}`;
-};
 var ChartRenderer = class extends import_obsidian4.MarkdownRenderChild {
   constructor(modelInfo, data, model, title, filenames, el) {
     super(el);
@@ -58959,9 +60202,12 @@ var ChartRenderer = class extends import_obsidian4.MarkdownRenderChild {
           }
           const canvasDiv = this.containerEl.createEl("div");
           canvasDiv.addClass("chart-container");
+          if (this.data.type === "radar") {
+            canvasDiv.setAttribute("data-chart-type", "radar");
+          }
           canvasDiv.append(this.canvases[this.model]);
           this.containerEl.append(canvasDiv);
-          const id = generateId();
+          const id = generateSecureId();
           const btn = this.containerEl.createEl("button");
           btn.addClasses(["findoc-btn"]);
           btn.setAttribute("data-toggle", "collapse");
@@ -59005,57 +60251,155 @@ var ChartRenderer = class extends import_obsidian4.MarkdownRenderChild {
 // src/ReportRenderer.ts
 var import_obsidian5 = __toModule(require("obsidian"));
 var ReportRenderer = class extends import_obsidian5.MarkdownRenderChild {
-  constructor(modelInfo, data, el) {
+  constructor(modelInfo, data, el, viewType = "text") {
     super(el);
     this.modelInfo = modelInfo;
     this.data = data;
+    this.viewType = viewType;
   }
   onload() {
     return __async(this, null, function* () {
-      var _a, _b;
-      if (Array.isArray(this.data.datasets)) {
-        this.containerEl.createEl("h3", {
-          text: `Report ${(_b = (_a = this.data) == null ? void 0 : _a.datasets[0]) == null ? void 0 : _b.date}`
+      if (this.viewType === "table") {
+        this.renderTableView();
+      } else {
+        this.renderTextView();
+      }
+    });
+  }
+  renderTableView() {
+    if (Array.isArray(this.data.datasets)) {
+      const firstDataset = this.data.datasets[0];
+      const isReportEntries = "labels" in firstDataset && Array.isArray(firstDataset.data);
+      this.containerEl.createEl("h3", {
+        text: `Report ${!isReportEntries && "date" in firstDataset ? firstDataset.date : ""} (Table View)`
+      });
+      this.containerEl.createEl("p", {
+        text: `Data Source: ${idToText(this.modelInfo.dataSource)} | Output: ${idToText(this.modelInfo.output)}`
+      });
+      const table = this.containerEl.createEl("table");
+      table.addClass("findoc-report-table");
+      if (isReportEntries) {
+        const headerRow = table.createEl("tr");
+        headerRow.createEl("th", { text: "Symbol" });
+        headerRow.createEl("th", { text: "Metric" });
+        headerRow.createEl("th", { text: "Value" });
+        this.data.datasets.forEach((entry) => {
+          entry.labels.forEach((label, index3) => {
+            var _a, _b;
+            const row2 = table.createEl("tr");
+            row2.createEl("td", { text: entry.label });
+            row2.createEl("td", { text: label });
+            const formatType = ((_b = (_a = entry.metadata) == null ? void 0 : _a.formatTypes) == null ? void 0 : _b[index3]) || this.modelInfo.chartLabelType;
+            row2.createEl("td", {
+              text: this.formatValue(entry.data[index3], formatType)
+            });
+          });
         });
-        this.containerEl.createEl("p", {
-          text: `Data Source: ${idToText(this.modelInfo.dataSource)}`
+      } else {
+        const headerRow = table.createEl("tr");
+        headerRow.createEl("th", { text: "Category" });
+        headerRow.createEl("th", { text: "Value" });
+        headerRow.createEl("th", { text: "Date" });
+        this.data.datasets.forEach((entry) => {
+          const row2 = table.createEl("tr");
+          row2.createEl("td", { text: entry.label });
+          row2.createEl("td", {
+            text: this.formatValue(entry.data, this.modelInfo.chartLabelType)
+          });
+          row2.createEl("td", { text: entry.date });
         });
-        this.containerEl.createEl("p", {
-          text: `Output: ${idToText(this.modelInfo.output)}`
+      }
+    } else if (!Array.isArray(this.data.datasets)) {
+      const { data, label, labels } = this.data.datasets;
+      this.containerEl.createEl("h3", {
+        text: `Report ${label} (Table View)`
+      });
+      this.containerEl.createEl("p", {
+        text: `Data Source: ${idToText(this.modelInfo.dataSource)} | Output: ${idToText(this.modelInfo.output)}`
+      });
+      const table = this.containerEl.createEl("table");
+      table.addClass("findoc-report-table");
+      const headerRow = table.createEl("tr");
+      headerRow.createEl("th", { text: "Period" });
+      headerRow.createEl("th", { text: "Value" });
+      labels.forEach((dataLabel, idx) => {
+        const row2 = table.createEl("tr");
+        row2.createEl("td", { text: dataLabel });
+        row2.createEl("td", {
+          text: this.formatValue(data[idx], this.modelInfo.chartLabelType)
         });
-        this.containerEl.createEl("hr");
+      });
+    }
+  }
+  renderTextView() {
+    if (Array.isArray(this.data.datasets)) {
+      const firstDataset = this.data.datasets[0];
+      const isReportEntries = "labels" in firstDataset && Array.isArray(firstDataset.data);
+      this.containerEl.createEl("h3", {
+        text: `Report ${!isReportEntries && "date" in firstDataset ? firstDataset.date : ""}`
+      });
+      this.containerEl.createEl("p", {
+        text: `Data Source: ${idToText(this.modelInfo.dataSource)}`
+      });
+      this.containerEl.createEl("p", {
+        text: `Output: ${idToText(this.modelInfo.output)}`
+      });
+      this.containerEl.createEl("hr");
+      if (isReportEntries) {
+        this.data.datasets.forEach((entry) => {
+          const symbolDiv = this.containerEl.createEl("div");
+          symbolDiv.createEl("h4", { text: entry.label });
+          entry.labels.forEach((label, index3) => {
+            var _a, _b;
+            const entryDiv = symbolDiv.createEl("div");
+            const formatType = ((_b = (_a = entry.metadata) == null ? void 0 : _a.formatTypes) == null ? void 0 : _b[index3]) || this.modelInfo.chartLabelType;
+            entryDiv.createEl("span", {
+              text: `${label}: ${this.formatValue(entry.data[index3], formatType)}`
+            });
+          });
+        });
+      } else {
         this.data.datasets.forEach((entry) => {
           const chartLabelType = this.containerEl.createEl("div");
           chartLabelType.createEl("span", {
-            text: `${entry.label}: ${entry.data.toLocaleString("en-US", {
-              style: "currency",
-              currency: "USD"
-            })}`
-          });
-        });
-      } else if (!Array.isArray(this.data.datasets)) {
-        const { data, label, labels } = this.data.datasets;
-        this.containerEl.createEl("h3", {
-          text: `Report ${label}`
-        });
-        this.containerEl.createEl("p", {
-          text: `Data Source: ${idToText(this.modelInfo.dataSource)}`
-        });
-        this.containerEl.createEl("p", {
-          text: `Output: ${idToText(this.modelInfo.output)}`
-        });
-        this.containerEl.createEl("hr");
-        labels.forEach((dataLabel, idx) => {
-          const chartLabelType = this.containerEl.createEl("div");
-          chartLabelType.createEl("span", {
-            text: `${dataLabel}: ${data[idx].toLocaleString("en-US", {
-              style: "currency",
-              currency: "USD"
-            })}`
+            text: `${entry.label}: ${this.formatValue(entry.data, this.modelInfo.chartLabelType)}`
           });
         });
       }
-    });
+    } else if (!Array.isArray(this.data.datasets)) {
+      const { data, label, labels } = this.data.datasets;
+      this.containerEl.createEl("h3", {
+        text: `Report ${label}`
+      });
+      this.containerEl.createEl("p", {
+        text: `Data Source: ${idToText(this.modelInfo.dataSource)}`
+      });
+      this.containerEl.createEl("p", {
+        text: `Output: ${idToText(this.modelInfo.output)}`
+      });
+      this.containerEl.createEl("hr");
+      labels.forEach((dataLabel, idx) => {
+        const chartLabelType = this.containerEl.createEl("div");
+        chartLabelType.createEl("span", {
+          text: `${dataLabel}: ${this.formatValue(data[idx], this.modelInfo.chartLabelType)}`
+        });
+      });
+    }
+  }
+  formatValue(value, chartLabelType) {
+    switch (chartLabelType) {
+      case "money":
+        return value.toLocaleString("en-US", {
+          style: "currency",
+          currency: "USD"
+        });
+      case "percent":
+        return `${(value * 100).toFixed(2)}%`;
+      case "generic":
+      case "custom":
+      default:
+        return value.toLocaleString();
+    }
   }
 };
 
@@ -59065,9 +60409,13 @@ function reporting(csvRawData, modelToGenerate, date, models, separator = ",") {
   const model = models[modelToGenerate];
   if (!model || !splitBy[model.dataSource] || !functions[model.output])
     throw new Error(`The specified model : "${modelToGenerate}" does not exist or the split function "${model.dataSource}" does not exist. Model names are available in the Documentation.`);
+  const labels = Object.keys(splitBy[model.dataSource].exec(json, model.dataSourceKey)).map((label) => label && label !== "" ? label : "_NO_LABEL_");
   const output = functions[model.output].exec({
     categoriesToSelect: model.categories,
     input: splitBy[model.dataSource].exec(json, model.dataSourceKey),
+    labels,
+    categories: model.categories,
+    colors: [],
     date,
     values: model.values ? model.values.split(",") : []
   });
@@ -59078,12 +60426,18 @@ var reporting_default = reporting;
 // src/data.ts
 function loadCSVData(vault, filenames) {
   return __async(this, null, function* () {
-    let data = [];
+    const data = [];
     for (const filename of filenames) {
       const content = yield vault.adapter.read(filename);
-      data = [...data, ...content.split(/\r?\n/).slice(1)];
+      const lines = content.split(/\r?\n/);
+      for (let i2 = 1; i2 < lines.length; i2++) {
+        const line = lines[i2].trim();
+        if (line) {
+          data.push(line);
+        }
+      }
     }
-    return data.filter((line) => line.trim() !== "").join("\n");
+    return data.join("\n");
   });
 }
 
@@ -59102,13 +60456,106 @@ var FinDocPlugin = class extends import_obsidian6.Plugin {
   }
   loadSettings() {
     return __async(this, null, function* () {
-      this.settings = Object.assign({}, DEFAULT_SETTINGS, yield this.loadData());
+      const savedData = yield this.loadData();
+      this.settings = __spreadProps(__spreadValues(__spreadValues({}, DEFAULT_SETTINGS), savedData || {}), {
+        models: __spreadValues(__spreadValues({}, DEFAULT_SETTINGS.models), (savedData == null ? void 0 : savedData.models) || {})
+      });
+      yield this.migrateSettings();
+      if (!savedData || Object.keys(savedData).length === 0) {
+        yield this.saveSettings();
+      }
     });
+  }
+  migrateSettings() {
+    return __async(this, null, function* () {
+      const currentVersion = "0.8.0";
+      const savedVersion = this.settings.version || "0.7.4";
+      const newModelNames = [
+        "expensesQuarterly",
+        "incomeWeekly",
+        "portfolioByValueRange",
+        "expensesMonthlyBreakdown",
+        "allCategoriesBreakdown",
+        "portfolioReportTable",
+        "quarterlyIncomeExpenseReport",
+        "weeklyExpenseAnalysis",
+        "dividendMonthlyBySymbol",
+        "dividendCumulativeBySymbol",
+        "dividendAnalysisReport",
+        "dividendQuarterlyBySymbol"
+      ];
+      const missingModels = newModelNames.filter((name314) => !this.settings.models[name314]);
+      const needsMigration = this.compareVersions(savedVersion, currentVersion) < 0 || missingModels.length > 0;
+      if (needsMigration) {
+        const newModels = {
+          expensesQuarterly: DEFAULT_SETTINGS.models.expensesQuarterly,
+          incomeWeekly: DEFAULT_SETTINGS.models.incomeWeekly,
+          portfolioByValueRange: DEFAULT_SETTINGS.models.portfolioByValueRange,
+          expensesBySubcategory: DEFAULT_SETTINGS.models.expensesBySubcategory,
+          allCategoriesBreakdown: DEFAULT_SETTINGS.models.allCategoriesBreakdown,
+          portfolioReportTable: DEFAULT_SETTINGS.models.portfolioReportTable,
+          quarterlyIncomeExpenseReport: DEFAULT_SETTINGS.models.quarterlyIncomeExpenseReport,
+          weeklyExpenseAnalysis: DEFAULT_SETTINGS.models.weeklyExpenseAnalysis,
+          dividendMonthlyBySymbol: DEFAULT_SETTINGS.models.dividendMonthlyBySymbol,
+          dividendCumulativeBySymbol: DEFAULT_SETTINGS.models.dividendCumulativeBySymbol,
+          dividendAnalysisReport: DEFAULT_SETTINGS.models.dividendAnalysisReport,
+          dividendQuarterlyBySymbol: DEFAULT_SETTINGS.models.dividendQuarterlyBySymbol
+        };
+        let addedCount = 0;
+        for (const [modelName, modelConfig] of Object.entries(newModels)) {
+          if (!this.settings.models[modelName]) {
+            this.settings.models[modelName] = modelConfig;
+            addedCount++;
+          }
+        }
+        this.settings.version = currentVersion;
+        yield this.saveSettings();
+        if (addedCount > 0) {
+          new import_obsidian6.Notice(`Findoc v${currentVersion}: Added ${addedCount} new models!`, 5e3);
+        }
+      }
+    });
+  }
+  compareVersions(a, b) {
+    const aParts = a.split(".").map((n) => parseInt(n));
+    const bParts = b.split(".").map((n) => parseInt(n));
+    for (let i2 = 0; i2 < Math.max(aParts.length, bParts.length); i2++) {
+      const aPart = aParts[i2] || 0;
+      const bPart = bParts[i2] || 0;
+      if (aPart < bPart)
+        return -1;
+      if (aPart > bPart)
+        return 1;
+    }
+    return 0;
   }
   saveSettings() {
     return __async(this, null, function* () {
       yield this.saveData(this.settings);
     });
+  }
+  showInlineError(el, content, errorMessage) {
+    el.empty();
+    const errorDiv = el.createEl("div");
+    errorDiv.addClass("findoc-error-container");
+    const title = errorDiv.createEl("h4");
+    title.addClass("findoc-error-title");
+    title.innerHTML = `\u26A0\uFE0F Invalid Snippet Configuration`;
+    const details = errorDiv.createEl("p");
+    details.addClass("findoc-error-details");
+    details.textContent = errorMessage;
+    const info = errorDiv.createEl("div");
+    info.addClass("findoc-error-snippet-info");
+    const snippetText = `Model: ${content.model}
+View: ${content.view || content.type || "chart"}
+File: ${content.filename}`;
+    info.textContent = snippetText;
+    const help2 = errorDiv.createEl("p");
+    help2.addClass("findoc-error-help");
+    help2.innerHTML = `\u{1F4A1} <strong>Tips:</strong><br>
+		\u2022 Check Settings \u2192 Findoc \u2192 Models for compatible snippets<br>
+		\u2022 File not found? Try <code>filename: tests/test-data.csv</code><br>
+		\u2022 Wrong model name? Check case sensitivity (camelCase required)`;
   }
   onload() {
     return __async(this, null, function* () {
@@ -59132,26 +60579,27 @@ var FinDocPlugin = class extends import_obsidian6.Plugin {
             const filenames = content.filename.split(",").map((filename) => (0, import_obsidian6.normalizePath)(`${activeFile.parent.path}/${filename.trim()}`));
             if (filenames && filenames.length > 0) {
               const data = yield loadCSVData(vault, filenames);
-              if (content.view === "view" || content.view === "line" || content.type === "chart" || content.type === "line" || !content.type && !content.view) {
+              if (content.view === "view" || content.view === "line" || content.view === "chart" || content.type === "chart" || content.type === "line" || !content.type && !content.view) {
                 try {
                   const chartData = processing_default(data, content.model, this.settings.models, this.settings.colors, "line", this.settings.csvSeparator);
                   if (chartData)
                     ctx.addChild(new ChartRenderer(this.settings.models[content.model], chartData, content.model, content.title, filenames, el));
                 } catch (e3) {
-                  new import_obsidian6.Notice(`An error occured while processing ${content.model}, ${content.title}`, 3e4);
-                  throw e3;
+                  this.showInlineError(el, content, e3.message);
+                  return;
                 }
-              } else if (content.type === "report" || content.view === "report") {
+              } else if (content.type === "report" || content.view === "report" || content.view === "table") {
                 const reportData = reporting_default(data, content.model, content.date || void 0, this.settings.models, this.settings.csvSeparator);
-                ctx.addChild(new ReportRenderer(this.settings.models[content.model], reportData, el));
+                const viewType = content.view === "table" ? "table" : "text";
+                ctx.addChild(new ReportRenderer(this.settings.models[content.model], reportData, el, viewType));
               } else if (content.view === "pie" || content.type === "pie") {
                 try {
                   const chartData = processing_default(data, content.model, this.settings.models, this.settings.colors, "pie", this.settings.csvSeparator);
                   if (chartData)
                     ctx.addChild(new ChartRenderer(this.settings.models[content.model], chartData, content.model, content.title, filenames, el));
                 } catch (e3) {
-                  new import_obsidian6.Notice(`An error occured while processing ${content.model}, ${content.title}`, 3e4);
-                  throw e3;
+                  this.showInlineError(el, content, e3.message);
+                  return;
                 }
               } else if (content.view === "radar" || content.type === "radar") {
                 try {
@@ -59159,16 +60607,21 @@ var FinDocPlugin = class extends import_obsidian6.Plugin {
                   if (chartData)
                     ctx.addChild(new ChartRenderer(this.settings.models[content.model], chartData, content.model, content.title, filenames, el));
                 } catch (e3) {
-                  new import_obsidian6.Notice(`An error occured while processing ${content.model}, ${content.title}`, 3e4);
-                  throw e3;
+                  this.showInlineError(el, content, e3.message);
+                  return;
                 }
               } else {
-                new import_obsidian6.Notice("Unable to generate chart", 1e4);
+                this.showInlineError(el, content, "Unsupported view type. Supported types: chart, pie, radar, report, table");
+                return;
               }
             }
           } catch (e3) {
-            new import_obsidian6.Notice(e3.message, 1e4);
-            throw e3;
+            new import_obsidian6.Notice(`Findoc error: ${e3.message}`, 1e4);
+            const generalError = el.createEl("div", {
+              text: `\u26A0\uFE0F Findoc Error: ${e3.message}`
+            });
+            generalError.addClass("findoc-general-error");
+            return;
           }
         }));
         this.addRibbonIcon("table", "Create CSV File", (e3) => __async(this, null, function* () {
@@ -59190,30 +60643,24 @@ var FinDocPlugin = class extends import_obsidian6.Plugin {
   }
 };
 /*!
- *  decimal.js v10.4.3
+ *  decimal.js v10.6.0
  *  An arbitrary-precision Decimal type for JavaScript.
  *  https://github.com/MikeMcl/decimal.js
- *  Copyright (c) 2022 Michael Mclaughlin <M8ch88l@gmail.com>
+ *  Copyright (c) 2025 Michael Mclaughlin <M8ch88l@gmail.com>
  *  MIT Licence
  */
 /*!
- * @kurkle/color v0.3.2
+ * @kurkle/color v0.3.4
  * https://github.com/kurkle/color#readme
- * (c) 2023 Jukka Kurkela
+ * (c) 2024 Jukka Kurkela
  * Released under the MIT License
  */
 /*!
- * Chart.js v4.4.1
+ * Chart.js v4.5.0
  * https://www.chartjs.org
- * (c) 2023 Chart.js Contributors
+ * (c) 2025 Chart.js Contributors
  * Released under the MIT License
  */
-/**
- * @license Complex.js v2.1.1 12/05/2020
- *
- * Copyright (c) 2020, Robert Eisele (robert@xarg.org)
- * Dual licensed under the MIT or GPL Version 2 licenses.
- **/
 /**
  * @license Fraction.js v4.3.0 20/08/2023
  * https://www.xarg.org/2014/03/rational-numbers-in-javascript/
@@ -59221,3 +60668,5 @@ var FinDocPlugin = class extends import_obsidian6.Plugin {
  * Copyright (c) 2023, Robert Eisele (robert@raw.org)
  * Dual licensed under the MIT or GPL Version 2 licenses.
  **/
+
+/* nosourcemap */
