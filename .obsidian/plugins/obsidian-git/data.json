@@ -21,7 +21,7 @@
   "autoBackupAfterFileChange": true,
   "treeStructure": false,
   "refreshSourceControl": true,
-  "basePath": "https://github.com/MaxKudras/PandorasBox.git",
+  "basePath": "https://github.com/MaxKudras/Yggdrasil.git",
   "differentIntervalCommitAndPush": true,
   "changedFilesInStatusBar": false,
   "showedMobileNotice": true,

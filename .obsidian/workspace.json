@@ -273,7 +273,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "10.⚙️Systemschmiede/Systemplan/Server/Namensgebung für Systeme.md",
+                "file": "00.📖Lebensplan/Gesamter Lebensplan.md",
                 "mode": "source",
                 "source": true,
                 "backlinks": true,
@@ -288,11 +288,124 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "Namensgebung für Systeme"
+              "title": "Gesamter Lebensplan"
+            }
+          },
+          {
+            "id": "f327493c73a716bc",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Essen.md",
+                "mode": "source",
+                "source": true,
+                "backlinks": true,
+                "backlinkOpts": {
+                  "collapseAll": false,
+                  "extraContext": false,
+                  "sortOrder": "alphabetical",
+                  "showSearch": false,
+                  "searchQuery": "",
+                  "backlinkCollapsed": false,
+                  "unlinkedCollapsed": true
+                }
+              },
+              "icon": "lucide-file",
+              "title": "Essen"
+            }
+          },
+          {
+            "id": "76af539905f04fb4",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "bücher.md",
+                "mode": "source",
+                "source": true,
+                "backlinks": true,
+                "backlinkOpts": {
+                  "collapseAll": false,
+                  "extraContext": false,
+                  "sortOrder": "alphabetical",
+                  "showSearch": false,
+                  "searchQuery": "",
+                  "backlinkCollapsed": false,
+                  "unlinkedCollapsed": true
+                }
+              },
+              "icon": "lucide-file",
+              "title": "bücher"
+            }
+          },
+          {
+            "id": "72c6d976b3a406a3",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Geburtstags Geschenke für Valle.md",
+                "mode": "source",
+                "source": true,
+                "backlinks": true,
+                "backlinkOpts": {
+                  "collapseAll": false,
+                  "extraContext": false,
+                  "sortOrder": "alphabetical",
+                  "showSearch": false,
+                  "searchQuery": "",
+                  "backlinkCollapsed": false,
+                  "unlinkedCollapsed": true
+                }
+              },
+              "icon": "lucide-file",
+              "title": "Geburtstags Geschenke für Valle"
+            }
+          },
+          {
+            "id": "d6ff2a3f9ac49587",
+            "type": "leaf",
+            "state": {
+              "type": "canvas",
+              "state": {
+                "file": "wohnung Planen.canvas",
+                "viewState": {
+                  "x": 952.1122461248885,
+                  "y": 413.13401459181426,
+                  "zoom": -1.4221857269833995
+                }
+              },
+              "icon": "lucide-layout-dashboard",
+              "title": "wohnung Planen"
+            }
+          },
+          {
+            "id": "a9fa594a898b99bc",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Unbenannt.md",
+                "mode": "source",
+                "source": true,
+                "backlinks": true,
+                "backlinkOpts": {
+                  "collapseAll": false,
+                  "extraContext": false,
+                  "sortOrder": "alphabetical",
+                  "showSearch": false,
+                  "searchQuery": "",
+                  "backlinkCollapsed": false,
+                  "unlinkedCollapsed": true
+                }
+              },
+              "icon": "lucide-file",
+              "title": "Unbenannt"
             }
           }
         ],
-        "currentTab": 12
+        "currentTab": 17
       }
     ],
     "direction": "vertical"
@@ -316,7 +429,7 @@
                 "autoReveal": false
               },
               "icon": "lucide-folder-closed",
-              "title": "Files"
+              "title": "Dateiexplorer"
             }
           },
           {
@@ -389,12 +502,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "10.⚙️Systemschmiede/Systemplan/Server/Namensgebung für Systeme.md",
+                "file": "Unbenannt.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": false
               },
               "icon": "links-going-out",
-              "title": "Outgoing links from Namensgebung für Systeme"
+              "title": "Ausgehende Links von Unbenannt öffnen"
             }
           }
         ],
@@ -402,7 +515,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200
+    "width": 379.5
   },
   "right": {
     "id": "b064cccbba5473b0",
@@ -471,15 +584,15 @@
   },
   "left-ribbon": {
     "hiddenItems": {
-      "switcher:Open quick switcher": false,
-      "graph:Open graph view": false,
-      "canvas:Create new canvas": false,
-      "daily-notes:Open today's daily note": false,
-      "templates:Insert template": false,
-      "command-palette:Open command palette": false,
-      "markdown-importer:Open format converter": false,
-      "random-note:Open random note": false,
-      "workspaces:Manage workspace layouts": false,
+      "switcher:Schnellauswahl öffnen": false,
+      "graph:Graph-Ansicht öffnen": false,
+      "canvas:Neuen Canvas erstellen": false,
+      "daily-notes:Heutige Notiz öffnen": false,
+      "templates:Vorlage einfügen": false,
+      "command-palette:Befehlspalette öffnen": false,
+      "markdown-importer:Markdown Importprogramm öffnen": false,
+      "random-note:Zufällige Notiz öffnen": false,
+      "workspaces:Workspace-Layouts verwalten": false,
       "bases:Create new base": false,
       "obsidian-full-calendar:Open Full Calendar": false,
       "templater-obsidian:Templater": false,
@@ -488,53 +601,53 @@
       "table-editor-obsidian:Advanced Tables Toolbar": false,
       "most-used:Show most used words graph": false,
       "obsidian-git:Open Git source control": false,
-      "obsidian-kanban:Create new board": false,
+      "obsidian-kanban:Erstelle ein neues Board": false,
       "smart-connections:Open: Smart Chat": false,
       "smart-connections:Smart Connections: Open connections view": false,
       "smart-connections:Smart Connections: Open random connection": true,
       "smart-second-brain:Open S2B Chat": false
     }
   },
-  "active": "592722153162dfd6",
+  "active": "a9fa594a898b99bc",
   "lastOpenFiles": [
+    "wohnung Planen.canvas",
+    "Unbenannt.md",
+    "10.⚙️Systemschmiede/Systemplan/PC/Mein Laptop/rEFInd Boot Manager.md",
+    "03.Alltagsmanagemnt/01.Wohnen/01.Wohnen.md",
+    "Zimmer Planen.base",
+    "03.Alltagsmanagemnt/03.Alltagsmanagemnt.md",
+    "Plugin für Obsidian Programmieren Idee.md",
+    "10.⚙️Systemschmiede/Systemplan/PC/Mein Laptop/Mein Laptop.md",
+    "10.⚙️Systemschmiede/Systemplan/PC/Mein Laptop/Ideale Laptop Setup.md",
+    "10.⚙️Systemschmiede/Systemplan/PC/Mein Laptop",
+    "10.⚙️Systemschmiede/Systemplan/PC/Mein Laptop/Unbenannt.md",
+    "10.⚙️Systemschmiede/Systemplan/PC/Windows 11 PC/Windows 11 PC.md",
+    "10.⚙️Systemschmiede/Systemplan/PC/PC.md",
+    "10.⚙️Systemschmiede/Systemplan/Systemplan.md",
+    "10.⚙️Systemschmiede/10.⚙️Systemschmiede.md",
+    "Ubuntu System Update.md",
+    "bücher.md",
+    "Geburtstags Geschenke für Valle.md",
+    "Essen.md",
+    "00.📖Lebensplan/Gesamter Lebensplan.md",
+    "10.⚙️Systemschmiede/Systemplan/Server/ContaboVPS/n8n/Workflows/Unbenannt.md",
+    "10.⚙️Systemschmiede/Systemplan/Server/ContaboVPS/Contabo VPS Setup.md",
+    "10.⚙️Systemschmiede/Systemplan/Server/ContaboVPS/n8n/Workflows",
+    "10.⚙️Systemschmiede/Systemplan/Namensgebung für Systeme.md",
     "00.📖Lebensplan/Gesamter Lebensplan nein.md",
     "10.⚙️Systemschmiede/Systemplan/Server/Unbenannt..canvas",
-    "10.⚙️Systemschmiede/Systemplan/Server/Namensgebung für Systeme.md",
     "README.md",
     "00.📖Lebensplan/Gesamter Lebenspülan nein.md",
     "00.📖Lebensplan/Gesamter Lebensplan vielleicht.md",
     "00.📖Lebensplan/00.📖Lebensplan.md",
-    "Sammlung/Unbenannt.md",
-    "10.⚙️Systemschmiede/Systemplan/Server/ContaboVPS/Contabo VPS Setup.md",
-    "Sammlung/Untitled 2.md",
     "10.⚙️Systemschmiede/Systemplan/Server/ContaboVPS/Unbenannt",
     "10.⚙️Systemschmiede/Systemplan/Server/ContaboVPS/Lebensplan",
     "10.⚙️Systemschmiede/Systemplan/Server/ContaboVPS/n8n",
     "10.⚙️Systemschmiede/Systemplan/Server/ContaboVPS",
     "10.⚙️Systemschmiede/Systemplan/Server",
     "Sammlung/Untitled.canvas",
-    "Sammlung/Untitled.md",
-    "Sammlung/Untitled 1.md",
-    "10.⚙️Systemschmiede/Systemplan/PC/Ubuntu/UbuntuSetup/Conky.md",
-    "backup.md",
-    "🎛-Obsidian-/🎛Templates/GenerellesYAMLTemplate.md",
     "Sammlung/Untitled.base",
-    "Sammlung/Untitled 3.md",
-    "To-Do/Was ich machen kann.md",
-    "To-Do/To-Do.md",
-    "10.⚙️Systemschmiede/Systemplan/PC/Ubuntu/UbuntuSetup/Github Desktop.md",
-    "10.⚙️Systemschmiede/Systemplan/PC/Ubuntu/UbuntuSetup/Bitwarden.md",
-    "10.⚙️Systemschmiede/Systemplan/PC/Ubuntu/UbuntuSetup/ChatGPT Desktop.md",
-    "10.⚙️Systemschmiede/Systemplan/PC/Ubuntu/UbuntuSetup/Obsidian.md.md",
-    "10.⚙️Systemschmiede/Systemplan/PC/Ubuntu/UbuntuSetup/Spotify.md",
-    "10.⚙️Systemschmiede/Systemplan/PC/Ubuntu/UbuntuSetup/git.md",
-    "10.⚙️Systemschmiede/Systemplan/PC/Windows 11 PC/Windows 11 PC.md",
-    "10.⚙️Systemschmiede/Systemplan/Systemplan.md",
-    "10.⚙️Systemschmiede/Systemplan/PC/PC.md",
     "Sammlung",
-    "00.📖Lebensplan/Plan Definitionen/Untitled",
-    "10.⚙️Systemschmiede/Systemplan/PC/Ubuntu/UbuntuSetup",
-    "10.⚙️Systemschmiede/Systemplan/PC/Ubuntu",
     "10.⚙️Systemschmiede/Systemplan/Gesamter Systemplan.canvas",
     "10.⚙️Systemschmiede/Systemplan/PC/Autogen/Lebensplan/AutoGen Lebensplan aufarbeitung.canvas",
     "10.⚙️Systemschmiede/Systemplan/PC/Autogen/Lebensplan/AutoGen Ausbildingsplan.canvas",
@@ -542,7 +655,6 @@
     "AusbildungsVault/Plan/Abarbeiten/Abarbeiten.canvas",
     "AusbildungsVault/Plan/Fachinformatiker Lernplan.canvas",
     "Grichische Mythology Stammbaum.canvas",
-    "Aussortieren/-Ticketsystem/DSB/Haupt-DSB.canvas",
     "Aussortieren/_attachments/Farbspektrum.png"
   ]
 }

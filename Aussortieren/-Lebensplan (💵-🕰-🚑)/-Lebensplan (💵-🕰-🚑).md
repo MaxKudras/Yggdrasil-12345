@@ -145,7 +145,7 @@ type: folder_brief_live
 			- **[[DnD Kampane]]**
 			- **[[Worldbuilding]]**
 	- **[[Literatur]]**
-		- **[[Bücher]]**
+		- **[[Aussortieren/-Lebensplan (💵-🕰-🚑)/Freizeit ()/Literatur/Bücher/Bücher]]**
 		- **[[Comics]]**
 			- **[[Amerikanische Comics]]**
 			- **[[Manga]]**
