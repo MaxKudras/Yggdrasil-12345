@@ -264,3 +264,42 @@
 - Nachhaltigkeit / Ökologischer Fußabdruck → hier oder `04.🧘‍♂️VitalOase`?
 
 ---
+
+# 08. 📚 Wissenskompendium
+*Bildung, Wissen und Lernen. Alles was ich lernen will oder gelernt habe — strukturiertes Wissen.*
+
+## Inhaltsverzeichnis
+- **Bildungsstrategie & Lernplan**
+	- Lernziele & Bildungs-Tracker
+	- Lernpläne (adaptiv, nach Fortschritt anpassbar)
+	- Geplante Lerninhalte
+	- Wissensdatenbank-Optimierung
+- **Skills / Lernmethoden**
+	- Speed Reading
+	- Schnelle Lernmethoden / Mnemotechniken
+	- Fallen lernen, Schlösser knacken *(praktische Skills)*
+- **Technologisches & Technisches Wissen**
+	- Netzwerke, Server, Betriebssysteme
+	- IT-Infrastruktur, Cloud & Virtualisierung
+	- IT-Sicherheit (Cyber Security, physische Sicherheit)
+	- Technologie-Trends, KI, Automatisierung
+	- Dark Web, Hacking, Smarte Geräte
+- **Finanzwissen** *(Theorie — Praxis in 03.VermögensDomäne)*
+	- Aktien-, ETF-, Immobilien-, Kryptowissen
+- **Wissenschaften**
+	- Chemie, Biologie, Physik (inkl. Astronomie)
+	- Mathematik
+	- Geographie
+- **Sprachen**
+	- Deutsch, Englisch, Russisch, Spanisch
+- **Sonstiges Wissen**
+	- Mythologien (Nordisch, Griechisch, Ägyptisch, Keltisch, Babylonisch)
+	- DnD-Kreaturen *(Worldbuilding-Wissen)*
+	- Programmiersprachen *(→ `Progammiersprachen.md` vom Root hierher)*
+
+## ❓ Unsicher / Prüfen
+- `bücher.md` (liegt im Root) → hierher oder `09.🗺️Freizeitatlas`? (Empfehlung: Bücher die ich lese/gelernt habe hier, Bücher als Hobby dort)
+- IT-Sicherheitswissen → hier (Theorie) UND `10.⚙️Systemschmiede` (Praxis/Umsetzung)
+- Informatik-Unterordner aus AkashaIndex (`Informatik/Netzwerk`) bereits angelegt?
+
+---
