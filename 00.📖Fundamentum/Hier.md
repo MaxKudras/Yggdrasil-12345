@@ -18,6 +18,8 @@
 - **Bereichsdefinitionen** *(Unterordner: Plan Definitionen/)*
 	- Definition für jeden der 10 Lebensbereiche (je eine Notiz)
 	- Übersichtsnotiz aller Definitionen
+- **Ordner-Guide**
+	- `Hier.md` — dieser Guide (was gehört wo rein)
 
 ## ❓ Unsicher / Prüfen
 - `Alleszusdammen/` — Sammelmappe alter Entwürfe → aussortieren oder löschen
@@ -25,8 +27,10 @@
 
 ---
 
-# 01. Lebenskompass
+# 01. 🧭 Lebenskompass
 *Richtung des Lebens — Werte, Vision, Ziele, Identität. Das große Bild, wer ich bin und wohin ich will.*
+
+> ⚠️ **Ordner hat kein Emoji** (`01.Lebenskompass`) — ggf. umbenennen zu `01.🧭Lebenskompass` für Konsistenz.
 
 ## Inhaltsverzeichnis
 - **Große Vision** *(01.GroßeVision/)*
@@ -81,8 +85,8 @@
 	- Lebensrückblick
 
 ## ❓ Unsicher / Prüfen
-- Lebensframework-Review (wöchentlich/monatlich) → hier unter Planung&Review oder `10.⚙️Systemschmiede`?
-- Ticketreview → `🗂️Ticketsystem` oder hier unter Wöchentliche Planung?
+- Lebensframework-Review → gehört hier unter **Planung & Review** (laut YggdrasilArchitektur unter Produktivität/Zeitnavigator)
+- Ticketreview → hier unter Wöchentliche Planung als Schritt erwähnen, die eigentlichen Tickets liegen in `🗂️Ticketsystem/`
 
 ---
 
@@ -169,6 +173,8 @@
 
 # 05. 🌌 InneresUniversum
 *Persönliche Entwicklung, Psyche, Denkweisen, Selbstverbesserung. Wer ich innerlich bin und werden will.*
+
+> ⚠️ **Ordner hat kein Emoji** (`05.InneresUniversum`) — ggf. umbenennen zu `05.🌌InneresUniversum` für Konsistenz.
 
 ## Inhaltsverzeichnis
 - **Selbstreflexion**
@@ -398,7 +404,8 @@
 - `dataviewjs Slider with %.md` (Root) → nach `🎛-Obsidian-/🎛Funktionen/`
 - `plan für templates.md` (Root) → nach `🎛-Obsidian-/🎛Templates/`
 - `Plugin für Obsidian Programmieren Idee.md` (Root) → nach `🎛-Obsidian-/`
-- `Sammlung/` (Root) → Inhalt prüfen und verteilen
+- `Sammlung/` (Root) → Inhalt prüfen und verteilen (alle Dateien darin sind "Untitled" → leere Entwürfe, löschen oder befüllen)
+- `🎛-Obsidian-/` liegt aktuell im Root → logisch Teil von `10.⚙️Systemschmiede`, kann aber als eigener Root-Ordner bleiben wenn Obsidian-Symlink-Gründe
 
 ---
 
@@ -424,4 +431,5 @@
 | `To-Do/`, `To-Dos.md` | `10.⚙️Systemschmiede` → Ticketsystem |
 | `Sammlung/` | Inhalt prüfen → verteilen |
 | `Unbenannt.md`, `testets.md` | Löschen oder einsortieren |
+| `README.md` | Bleibt im Root (Git-Projektbeschreibung) |
 
