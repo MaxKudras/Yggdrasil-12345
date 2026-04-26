@@ -342,3 +342,86 @@
 - Outdoor-Aktivitäten → eigener Unterordner oder unter Reise & Abenteuer?
 
 ---
+
+# 10. ⚙️ Systemschmiede
+*Das Betriebssystem des Lebensplans — Tools, Automatisierungen, Templates, Dashboards, Hardware.*
+
+## Inhaltsverzeichnis
+- **Lebensframework pflegen**
+	- Strukturänderungen & System-Changelog
+	- Neue Features im System
+	- Systemreflexionen & Systemlogbuch
+	- Backup-Strategien
+	- Lebensframework-Vor- und Nachteile
+- **Lebensframework-Systeme**
+	- Legenden (Tag-, Farb-, Emoji-, Template-, Skript-, Programmlegende)
+	- Ticketsystem (Tickets, Kategorien, Prioritäten, Eisenhowermatrix) → `🗂️Ticketsystem/`
+	- Bulletjournal → `📓Bulletjournal/`
+	- To-Do-Listen → `To-Do/`
+	- Wissensdatenbank
+	- Lebensframework-Dashboard
+	- Kalender-System & Erinnerungen
+	- Webmedienspeicher (YouTube, Instagram, Pinterest, Spotify, Websites)
+	- Finanz-Dashboard
+- **Dokumentieren / Erlebnisprotokoll**
+	- Orte, Erlebnisse, Restaurants, Gerichte
+	- Serien/Filme, Musik, Date-Ideen
+- **Templates** → `🎛-Obsidian-/🎛Templates/`
+	- YAML-Template, Ticket-Template, MoC-Template
+- **Obsidian-Konfiguration** → `🎛-Obsidian-/`
+	- Legenden (Emoji, Farbe, Tags, Ordner-Namensgebung)
+	- Plugin-Funktionen & Dokumentation
+	- Unicode-Listen, Snippets
+- **Skripte** *(Unterordner: Skripte/)*
+	- Film & Serien-Notiz erstellen
+	- Musik-Notiz erstellen
+	- Weitere Automatisierungsskripte
+- **Systemplan / Hardware** *(Unterordner: Systemplan/)*
+	- PC (Laptop, Ubuntu-Setup, Windows 11, Autogen)
+	- Server (Contabo VPS, n8n-Workflows)
+	- Namensgebung für Systeme
+- **Automatisierungen & digitale Tools**
+	- Notfallfonds-Automatisierung
+	- Investitions-Automatisierung
+	- Finanzielle Automatisierung
+- **Claude Code / KI-Infrastruktur** *(laut AkashaIndex unter Infrastruktur/)*
+	- Globale Agenten (Experten-Agenten: Docker, n8n, Python)
+	- Globale MCP & Skills
+	- Universale Claude.md-Abschnitte
+
+## ❓ Unsicher / Prüfen
+- `📓Bulletjournal/`, `🗂️Ticketsystem/`, `🎛-Obsidian-/` liegen aktuell im Root → alle nach `10.⚙️Systemschmiede/` verschieben
+- `To-Do/` + `To-Dos.md` im Root → in Ticketsystem integrieren oder nach `10.Systemschmiede/`
+- `backup.md` (Root) → nach `Systemplan/` oder Backup-Strategien
+- `Ubuntu System Update.md` (Root) → nach `Systemplan/PC/Ubuntu/`
+- `wie ist git eingestellt.md` (Root) → nach `Systemplan/PC/` oder `Systemplan/Server/`
+- `dataviewjs Slider with %.md` (Root) → nach `🎛-Obsidian-/🎛Funktionen/`
+- `plan für templates.md` (Root) → nach `🎛-Obsidian-/🎛Templates/`
+- `Plugin für Obsidian Programmieren Idee.md` (Root) → nach `🎛-Obsidian-/`
+- `Sammlung/` (Root) → Inhalt prüfen und verteilen
+
+---
+
+# 📦 Dateien im Root — Wo sie hingehören
+
+*Diese Dateien liegen aktuell lose im Hauptordner und müssen noch einsortiert werden:*
+
+| Datei | Gehört nach |
+|---|---|
+| `Essen.md` | `04.🧘‍♂️Vitaloase` → Ernährung/Rezepte |
+| `Sontag Pflege Routine.md` | `04.🧘‍♂️Vitaloase` → Wellness/Pflege |
+| `Geburtstags Geschenke für Valle.md` | `06.🫂SozialSphäre` → Familie/Geschenkideen |
+| `Geschenk idden für freundin.md` | `06.🫂SozialSphäre` → Partner/Geschenkideen |
+| `Ineventar die ich brauche.md` | `07.🏠Alltagsmanagement` → Wohnen/Inventur |
+| `Progammiersprachen.md` | `08.📚Wissenskompendium` → Technisches Wissen |
+| `bücher.md` | `08.📚Wissenskompendium` oder `09.🗺️Freizeitatlas` → prüfen |
+| `Ubuntu System Update.md` | `10.⚙️Systemschmiede` → Systemplan/PC/Ubuntu |
+| `wie ist git eingestellt.md` | `10.⚙️Systemschmiede` → Systemplan/PC |
+| `backup.md` | `10.⚙️Systemschmiede` → Backup-Strategien |
+| `dataviewjs Slider with %.md` | `🎛-Obsidian-` → Funktionen |
+| `plan für templates.md` | `🎛-Obsidian-` → Templates |
+| `Plugin für Obsidian Programmieren Idee.md` | `🎛-Obsidian-` |
+| `To-Do/`, `To-Dos.md` | `10.⚙️Systemschmiede` → Ticketsystem |
+| `Sammlung/` | Inhalt prüfen → verteilen |
+| `Unbenannt.md`, `testets.md` | Löschen oder einsortieren |
+
