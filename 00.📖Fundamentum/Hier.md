@@ -205,3 +205,34 @@
 - `Progammiersprachen.md` (liegt im Root) → `08.📚Wissenskompendium` nicht hierher
 
 ---
+
+# 06. 🫂 SozialSphäre
+*Beziehungen zu Familie, Freunden und Partner. Soziales Leben gestalten und pflegen.*
+
+## Inhaltsverzeichnis
+- **Familie**
+	- Familienmanagement
+	- Traditionen (bestehende & neue)
+	- Familien-Spieleabend organisieren
+	- Geschenkideen für Familie
+- **Freunde**
+	- Freundschaftsmanagement & Freundesliste (Priorität)
+	- Besserer Freund werden
+	- Freunde Spieleabend organisieren
+	- Geschenkideen für Freunde
+- **Partner**
+	- Besserer Partner werden
+	- Kommunikation & Konfliktlösung in der Beziehung
+	- Romantische Date-Ideen & Aktivitäten
+	- Überraschungen & Geschenkideen für Partner
+- **Allgemein**
+	- Freundschaften aktiv pflegen
+	- Persönliche Gesten
+	- Soziale Aktivitäten planen *(→ detailliert auch in `09.🗺️Freizeitatlas`)*
+
+## ❓ Unsicher / Prüfen
+- `Geburtstags Geschenke für Valle.md` (liegt im Root) → hierher verschieben
+- `Geschenk idden für freundin.md` (liegt im Root) → hierher verschieben
+- Gemeinsame Ausflüge / Events → hier planen oder nur in `09.🗺️Freizeitatlas`? (Empfehlung: soziale Events hier, Reisen & Abenteuer dort)
+
+---
