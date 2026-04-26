@@ -257,3 +257,119 @@
 - **Wöchentlicher System-Check** — System aufräumen, Inbox leeren, Tags pflegen
 - **API & Integrationen** — Kalender, Spotify, n8n anbinden
 - **Obsidian Vault Statistiken** — Wie befüllt ist das System?
+
+---
+
+# 🗺️ Geplante AkashaIndex-Ergänzungen — Wo genau hinzufügen
+
+*Konkrete Platzierungsvorschläge für die Erweiterungsideen oben.*
+
+## 01. Lebenskompass → unter `04.Identität`
+```
+- 03.xxx {IkigaiUndRollen}
+    - Ikigai
+    - MeineRollenImLeben
+    - PersönlicheMarke
+- AntiZiele  ← unter 02.Ziele ergänzen
+```
+
+## 02. Zeitnavigator → unter `02.Zeitmanagement`
+```
+- EnergieManagement
+    - Chronotyp
+    - TagesEnergieKurve
+- TimeBlocking
+- NeinStrategie
+- Wochenintention  ← unter 04.PlanungUndReview/Planung/01.Wochenplanung
+- Tagesjournal  ← unter 04.PlanungUndReview/Planung als 00.Tagesplanung
+```
+
+## 03. VermögensDomäne → neue Unterknoten
+```
+- Finanzen
+    - FIREStrategie  ← unter Finanzplanung ergänzen
+    - Kreditwürdigkeit  ← unter Finanzplanung ergänzen
+    - SchuldenAbbaustrategie  ← unter Geldverlauf ergänzen
+- Vermögensaufbau
+    - 7Einkommensströme  ← neben Nebeneinkommen
+- xxx {RechtlicheAbsicherung}  ← neue Gruppe neben SteuernUndVersicherungen
+    - Testament
+    - Erbschaft
+    - Lebensversicherung
+- Karriere
+    - GehaltsverhandlungsPlaybook  ← unter Karriereplanung
+```
+
+## 04. VitalOase → neue Unterknoten
+```
+- 01.AllgemeineGesundheit
+    - GesundheitsVorsorge
+        - Laborwerte  ← neu
+        - ZahnUndMundGesundheit  ← neu
+        - AugenUndHörGesundheit  ← neu
+- 03.KörperlicheGesundheit
+    - Ergonomie  ← neu neben KörperMechanik
+- 02.Ernährung
+    - GenussmittelTracking  ← neu unter ErnährungsTracking
+```
+
+## 05. InneresUniversum → neue Unterknoten
+```
+- Selbstreflexion
+    - DankbarkeitsPraxis  ← neu
+    - Emotionstagebuch  ← neu
+- Selbstverbesserung
+    - ShadowWork  ← neu
+    - Spiritualität  ← neu
+- xxx {VorbilderUndMentoren}  ← neue Gruppe
+    - Rollenvorbilder
+    - MentorenSuche
+```
+
+## 06. SozialSphäre → gesamte Struktur fehlt noch (siehe oben)
+```
+Generosität  ← unter 04.Netzwerk ergänzen
+BeziehungsCheckUps  ← eigene Notiz auf Bereichsebene
+```
+
+## 07. Alltagsmanagement → gesamte Struktur fehlt noch (siehe oben)
+```
+- 01.Wohnen
+    - 05.Digitalminimalismus  ← neu
+    - Kleidungskapseln  ← unter 02.Inventur/Kleidung
+- 04.RechtDokumenteSicherheit
+    - 02.Dokumente
+        - Papierlosigkeit  ← neu als Strategie-Notiz
+```
+
+## 08. Wissenskompendium → neue Kategorien
+```
+- Bücher  ← neu (Buch-Zusammenfassungen, Lektüreliste)
+- MentaleModelle  ← neu
+- Zitate  ← neu
+- Lernmaterial  ← neue Gruppe
+    - KursNotizen
+    - PodcastHighlights
+```
+
+## 09. Freizeitatlas → gesamte Struktur fehlt noch (siehe oben)
+```
+- 01.ReiseUndAbenteuer
+    - ErlebnisEimer  ← unter Reiseziele
+- 05.SozialeAktivitäten
+    - JahreszeitenAktivitäten  ← neu
+    - LokaleGeheimtipps  ← neu
+    - RestaurantWunschliste  ← neu
+    - EventsUndKonzerte  ← neu
+```
+
+## 10. Systemschmiede → neue Unterknoten
+```
+- Yggdrasil
+    - PKM  ← neu (Zettelkasten, Second Brain Methode)
+    - MobileWorkflow  ← neu
+    - WöchentlicherSystemCheck  ← neu
+    - APIIntegrationen  ← neu
+    - VaultStatistiken  ← neu
+```
+
