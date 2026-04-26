@@ -85,3 +85,44 @@
 - Ticketreview → `🗂️Ticketsystem` oder hier unter Wöchentliche Planung?
 
 ---
+
+# 03. 💰 VermögensDomäne
+*Finanzen, Karriere, Vermögensaufbau. Alles rund ums Geld verdienen, verwalten und mehren.*
+
+> ⚠️ **Achtung:** Aktuell liegt dieser Ordner falsch unter `09.🗺️Freizeitatlas/07.💰VermögensDomäne/` — er sollte ein eigener Top-Level-Ordner sein.
+
+## Inhaltsverzeichnis
+- **Finanzen**
+	- Haushaltsplan (Einnahmen, Ausgaben, Ersparnisse)
+	- Budgetplanung (monatlich, jährlich, Reise, Projekt)
+	- Finanzplanung (Fixkosten, Notfallreserve, Anti-Inflation)
+	- Geldverlauf / Kontoverlauf (Haspa, PayPal)
+	- Schulden & Abos
+- **Vermögensaufbau**
+	- Investitionsstrategien
+	- Aktien / ETFs
+	- Immobilien / REIT
+	- Sparstrategien & Sparziele
+	- Altersvorsorge & Rücklagen
+	- Nebeneinkommen (passiv, Nebenjobs, Online-Business)
+- **Steuern & Versicherungen**
+	- Steuererklärung & Steueroptimierung
+	- Versicherungskosten & -übersicht
+- **Karriere**
+	- Berufliche Entwicklung (Ausbildungsplan, Weiterbildung, Kurse)
+	- Qualifikation & unersetzliche Fähigkeiten
+	- Karriereplanung (LinkedIn, Bewerbung, Gehaltsvorstellung)
+	- Aufstiegsmöglichkeiten & Homeoffice
+	- Selbstständigkeit
+	- Persönliche Performance Reviews
+- **Finanz-Dashboard** *(in 10.Systemschmiede verlinkt)*
+	- Einnahmen & Ausgaben-Übersicht
+	- Investitions-Übersicht
+	- Notfallreserven-Status
+
+## ❓ Unsicher / Prüfen
+- `Geldverdiene Projekte` / `Online Business Ideen` → hier oder `09.Freizeitatlas/Projekte`?
+- Workflows & effizientes Arbeiten unter Karriere → eher `10.⚙️Systemschmiede`
+- Finanzwissen (ETF, Aktien, Krypto) → gehört ins `08.📚Wissenskompendium`, nicht hierher
+
+---
