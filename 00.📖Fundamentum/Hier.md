@@ -126,3 +126,43 @@
 - Finanzwissen (ETF, Aktien, Krypto) → gehört ins `08.📚Wissenskompendium`, nicht hierher
 
 ---
+
+# 04. 🧘‍♂️ VitalOase
+*Körper, Geist und Gesundheit. Alles was das körperliche und mentale Wohlbefinden betrifft.*
+
+## Inhaltsverzeichnis
+- **Allgemeine Gesundheit** *(01.AllgemeineGesundheit/)*
+	- Wohlbefinden & Check-Ups
+	- Impfungen
+	- Biohacking (biologisches Altern, Gesundheit & Leistung steigern)
+	- Naturheilkunde
+- **Ernährung**
+	- Ernährungspläne (allgemein, Biohacking-Diät, Mealprep)
+	- Rezepte (Lieblingsrezepte, gesunde, vegane, internationale)
+	- Supplements (Creatin, Omega 3, Tracker)
+	- Superfoods & Must-have Lebensmittel
+	- Wasser-Tracker & Ernährungs-Tracker
+- **Körper & Fitness**
+	- Trainingsplan (Kraft, Flexibilität)
+	- Fitnessroutine
+	- Kampfsport, Calisthenics, Ausdauer, Mobilität
+	- Haltung & Atmung
+	- Hygiene & Pflege (Haut-, Haar-, Körperpflege)
+- **Mentale Gesundheit**
+	- Meditation & Meditationsatmung
+	- Mentaltraining (Gedächtnis, Konzentration, kognitive Fähigkeiten)
+	- Stressbewältigung
+	- Emotionen & Mentale Energie
+	- Schlaf (Hygiene, Routine, Tracking)
+	- Burnout-Prävention
+- **Wellness**
+	- Pflegeprodukte (natürliche Produkte)
+	- Wellness-Tipps
+
+## ❓ Unsicher / Prüfen
+- Pflegeroutinen-Tracker → hier oder `02.⏳Zeitnavigator/Routinen`? (Empfehlung: Routine in Zeitnavigator, Produkte & Wissen hier)
+- `Sontag Pflege Routine.md` (liegt im Root) → hierher verschieben
+- `Essen.md` (liegt im Root) → hierher unter Ernährung/Rezepte verschieben
+- Kraftsport / Parkour als Hobby → auch in `09.🗺️Freizeitatlas/Hobbies` verlinken
+
+---
