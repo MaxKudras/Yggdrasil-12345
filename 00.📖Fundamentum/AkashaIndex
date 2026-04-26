@@ -267,7 +267,7 @@ xxx ->(braucht einen namen der alles beschreibt was drinne ist)
 		- Astronomie
 # 09.Freizeitatlas
 # 10.Systemschmiede
-- Infrastruktur
+- Yggdrasil (Infrastruktur)
 	- ClaudeCode
 		- GlobalesVerzeichniss
 			- GlobaleAgenten
@@ -278,3 +278,6 @@ xxx ->(braucht einen namen der alles beschreibt was drinne ist)
 			- GlobaleMCP
 			- GlobaleSkills
 		- UniversaleClaude.mdAbschnitte
+	- GitHub
+	- VPS
+		- Docker
