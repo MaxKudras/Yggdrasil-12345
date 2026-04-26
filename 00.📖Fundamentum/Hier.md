@@ -303,3 +303,42 @@
 - Informatik-Unterordner aus AkashaIndex (`Informatik/Netzwerk`) bereits angelegt?
 
 ---
+
+# 09. 🗺️ Freizeitatlas
+*Freizeit, Reisen, Hobbys, Projekte. Alles was Spaß macht und die Seele nährt.*
+
+> ⚠️ **`07.💰VermögensDomäne` liegt aktuell fälschlicherweise hier drin** → als eigenen Top-Level-Ordner auslagern.
+
+## Inhaltsverzeichnis
+- **Reise & Abenteuer**
+	- Reiseziele (Wunschorte, Länder, Hidden Gems, Sprachreisen)
+	- Geplante Reisen (Packliste, Reiseplanung, Budget)
+	- Kurzreisen (Waldwanderung, Stadtausflüge, Roadtrips)
+	- Langfristige Reisen & Weltreise
+	- Reise dokumentieren (Tagebuch, Fotoalbum)
+	- Günstige Luxuserlebnisse
+- **Hobbys**
+	- Kreative Hobbys: Musik machen, Kunst, Tabletop (D&D), Malen, Schreiben
+	- Sportliche Hobbys: Kampfkunst (Boxen, Kung Fu), Parkour, Calisthenics
+	- Mentale Hobbys: Gaming, Astronomie, Programmieren
+	- Audio & Video: Musik hören, Filme & Serien
+	- Literatur: Bücher, Manga, Comics, Webtoon
+	- Hobby-Zukunftsplan
+- **Projekte**
+	- IT-Projekte
+	- DIY-Projekte & Heimwerken (Upcycling, Möbelbau)
+	- 3D-Druck-Projekte
+	- Kunst-Projekte
+	- Wissenschaftliche Experimente
+- **Soziale Aktivitäten** *(→ auch in `06.🫂SozialSphäre` verlinkt)*
+	- Dinnerpartys, Spieleabende, Events
+	- Familienaktivitäten, Aktivitäten mit Freunden
+- **Sammlungen**
+	- Eigene Sammlungen dokumentieren
+
+## ❓ Unsicher / Prüfen
+- Programmieren als Hobby → hier oder `08.📚Wissenskompendium`? (Empfehlung: Lernaspekt im Wissenskompendium, Projekte & Spaß hier)
+- Astronomie → hier als Hobby UND in `08.Wissenskompendium/Physik` als Wissen
+- Outdoor-Aktivitäten → eigener Unterordner oder unter Reise & Abenteuer?
+
+---
