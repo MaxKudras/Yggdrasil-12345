@@ -166,3 +166,42 @@
 - Kraftsport / Parkour als Hobby → auch in `09.🗺️Freizeitatlas/Hobbies` verlinken
 
 ---
+
+# 05. 🌌 InneresUniversum
+*Persönliche Entwicklung, Psyche, Denkweisen, Selbstverbesserung. Wer ich innerlich bin und werden will.*
+
+## Inhaltsverzeichnis
+- **Selbstreflexion**
+	- Erfolge dokumentieren
+	- Vergangenheitsanalyse & Rückblicke
+	- Lebensbalance
+	- Bias-Analyse
+	- Stärken & Schwächen
+- **Selbstverbesserung**
+	- Charakterentwicklung & Charisma
+	- Umgang mit Kritik
+	- Innere Konflikte verstehen & lösen
+	- Logik & kritisches Denken
+	- Umgang mit Lebenskrisen
+- **Kommunikation**
+	- Rhetorik & Zuhören
+	- Gespräche steuern
+	- Konfliktmanagement
+	- Körpersprache erkennen & einsetzen
+	- Interessanter wirken
+- **Denkweisen / Mindset**
+	- No-Excuse-Mindset
+	- First Principles Thinking
+	- Second-Order Thinking
+	- Negative Gedankenmuster umwandeln
+	- Denken in Wahrscheinlichkeiten
+	- Reverse Engineering von Erfolg
+- **Suchtverhalten**
+	- Rauchsucht, Kiffsucht (Strategien zur Überwindung)
+
+## ❓ Unsicher / Prüfen
+- `Neue Fähigkeiten / Lernfortschritte` → hier oder `08.📚Wissenskompendium`? (Empfehlung: Lernmethoden & Wissen dort, Persönlichkeitswachstum hier)
+- Meditation → hier (Mentaltraining) oder `04.🧘‍♂️VitalOase`? (Empfehlung: Praxis in VitalOase, Philosophie dahinter hier)
+- `Progammiersprachen.md` (liegt im Root) → `08.📚Wissenskompendium` nicht hierher
+
+---
