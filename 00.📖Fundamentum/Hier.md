@@ -52,3 +52,36 @@
 - Zielsetzungsstrategie / Methoden → eher `10.⚙️Systemschmiede` oder hier als Unternotiz von Ziele?
 
 ---
+
+# 02. ⏳ Zeitnavigator
+*Alles rund um Zeit — Kalender, Planung, Routinen, Reviews. Wie der Tag, die Woche, das Jahr strukturiert wird.*
+
+## Inhaltsverzeichnis
+- **Kalender** *(01.Kalender/)*
+	- Sozialkalender (Geburtstage, Feiern, Jubiläen)
+	- Geplante Aktivitäten (Familie, Freunde, Partner)
+	- Erinnerungen (Steuern, Ämter, Dokumentenfristen)
+- **Zeitmanagement** *(02.Zeitmanagment/)*
+	- Zeitmanagement-Strategien
+	- Fokus & Priorisierung / Deep Work
+	- Fokustage, Pflegetage, Einkaufstage, Ordnungstage
+	- Produktivitätsstrategien
+- **Routinen & Gewohnheiten** *(03.Routinen&Gewohnheiten/)*
+	- Morgenroutine / Abendroutine
+	- Sportroutine, Essensroutine, Lernroutine
+	- Routinen-Tracker (Haare, Haut, Schlaf, Meditation)
+	- Gewohnheiten aufbauen / schlechte abbauen
+	- 30-Tage-Experimente
+- **Planung & Review** *(04.Planung&Review/)*
+	- Tagesjournal & Tagesreflexion
+	- Wöchentliche Planung & Wochenrückblick
+	- Monatliche Planung & Monatsrückblick
+	- Quartal- & Jahresplanung
+	- Jahresrückblick (Erfolge, Rückschläge, Lessons Learned)
+	- Lebensrückblick
+
+## ❓ Unsicher / Prüfen
+- Lebensframework-Review (wöchentlich/monatlich) → hier unter Planung&Review oder `10.⚙️Systemschmiede`?
+- Ticketreview → `🗂️Ticketsystem` oder hier unter Wöchentliche Planung?
+
+---
