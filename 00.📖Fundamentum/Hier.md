@@ -236,3 +236,31 @@
 - Gemeinsame Ausflüge / Events → hier planen oder nur in `09.🗺️Freizeitatlas`? (Empfehlung: soziale Events hier, Reisen & Abenteuer dort)
 
 ---
+
+# 07. 🏠 Alltagsmanagement
+*Das tägliche Leben organisieren — Wohnen, Besitz, Mobilität, Dokumente, Sicherheit.*
+
+> ⚠️ **Aktuell als `03.Alltagsmanagemnt` gespeichert** — Nummer sollte auf 07 korrigiert werden (laut AkashaIndex).
+
+## Inhaltsverzeichnis
+- **Wohnen** *(01.Wohnen/)*
+	- Haushalt: Haushaltsmanagement, Putzpläne, Ordnungsplan, Lebensmittelvorrat *(01.Haushalt/)*
+	- Inventur: Möbel, Kleidung, Smart Home, Besitzverwaltung *(02.Inventur/)*
+	- Innenarchitektur: Einrichtungsideen, Raumaufteilung, Renovierung, Deko *(03.Innenarchitektur/)*
+	- Wohnträume & Zukunftspläne *(04.Wohnträume&Zukunftspläne/)*
+- **Haustiere & Pflanzen** *(02.Haustiere&Pflanzen/)*
+	- Haustiere: Futterpläne, Gesundheit, Erziehung
+	- Pflanzen: Gießpläne, Kräutergarten, Pflanzenpflege *(02.Pflanzen/)*
+- **Mobilität** *(03.Mobilität/)*
+	- Öffentliche Verkehrsmittel, E-Bike, Auto, Fahrrad
+- **Recht, Dokumente & Sicherheit** *(04.Recht,Dokumente&Sicherheit/)*
+	- Recht: Arbeitsgesetze, Mietrecht, Behördenchecklisten *(01.Recht/)*
+	- Dokumente: Verträge, Versicherungen, Zeugnisse, Rechnungen, Backups *(02.Dokumente/)*
+	- Sicherheit: Notfallplan, Cybersicherheit, Erste Hilfe, Vorsorgemaßnahmen *(03.Sicherheit/)*
+
+## ❓ Unsicher / Prüfen
+- `Ineventar die ich brauche.md` (liegt im Root) → hierher verschieben (Inventur)
+- Smart Home Wissen (Geräte, Automatisierung) → hier unter Inventur oder `10.⚙️Systemschmiede`?
+- Nachhaltigkeit / Ökologischer Fußabdruck → hier oder `04.🧘‍♂️VitalOase`?
+
+---
