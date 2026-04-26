@@ -1,4 +1,4 @@
-xxx {YggdrasilLebensplan}
+xxx {Lebensplan}
 # 00.Fundamentum
 - AkashaOrdnerGuide
 	- 00.FundamentumGuide
@@ -29,7 +29,7 @@ xxx {YggdrasilLebensplan}
 	- 01.PersönlicheIdentität
 		- Selbstbild
 		- Persönlichkeitsanalyse
-	- 02.xxx {LebenssinnUndPhilosophie}
+	- 02.xxx {Weltbild}
 		- Lebensphilosophie
 		- SinndesLebens
 # 02.Zeitnavigator
@@ -48,21 +48,21 @@ xxx {YggdrasilLebensplan}
 		- Dokumentenfristen
 - 02.Zeitmanagement
 	- ZeitmanagementStrategie
-	- xxx {FokusUndPriorisierung}
+	- xxx {Priorisierung}
 		- Fokus
 		- Priorisierung
-	- xxx {TagestypenSystem}
+	- xxx {Tagestypen}
 		- Fokustage
 		- Pflegetage
 		- Einkaufstage
 		- Ordnungstage
 	- Produktivitätsstrategien
-- 03.xxx {RoutinenUndGewohnheiten}
+- 03.xxx {Lebensrhythmus}
 	- Routinen (Bewusst)
-		- xxx {TäglicheKernroutinen}
+		- xxx {Tagesrituale}
 			- Morgenroutine
 			- Abendroutine
-		- xxx {LebensstilRoutinen}
+		- xxx {Lebensstilroutinen}
 			- Fitnessroutine
 			- Essensroutine
 			- Lernroutine
@@ -70,10 +70,10 @@ xxx {YggdrasilLebensplan}
 		- RoutineTracker
 		- 30TageRoutineExperiment
 	- Gewohnheiten (Automatisch)
-		- xxx {GewohnheitenManagement}
+		- xxx {Gewohnheitsdesign}
 			- GuteGewohnheitenAufbauen
 			- SchlechteGewohnheitenAbbauen
-- 04.xxx {PlanungUndReview}
+- 04.xxx {Lebenssteuerung}
 	- Planung
 		- 01.Wochenplanung
 		- 02.Monatsplanung
@@ -113,17 +113,17 @@ xxx {YggdrasilLebensplan}
 	- xxx {Immobilien}
 		- Immobilien
 		- REIT
-	- xxx {Sparpläne}
+	- xxx {Sparplan}
 		- Sparstrategien
 		- Sparziele
-	- xxx {LangfristigeAbsicherung}
+	- xxx {Altersvorsorge}
 		- Altersvorsorge
 		- Rücklagen
 	- Nebeneinkommen
 		- PassiveEinkommen
 		- Nebenjob
 		- OnlineBusiness
-- xxx {SteuernUndVersicherungen}
+- xxx {Verpflichtungen}
 	- Steuern
 		- Steuererklärung
 		- Steueroptimierung
@@ -135,20 +135,20 @@ xxx {YggdrasilLebensplan}
 	- BeruflicheEntwicklung
 		- Ausbildungsplan
 		- Weiterbildungen
-	- xxx {KompetenzEntwicklung}
+	- xxx {Kompetenzaufbau}
 		- Qualifikation
 		- UnersetzlicheFähigkeiten
 	- Karriereplanung
 		- LinkedIn
 		- Gehaltsvorstellung
-	- xxx {ArbeitsplatzUndAufstieg}
+	- xxx {Arbeitsgestaltung}
 		- Aufstiegsmöglichkeiten
 		- Homeoffice
 	- Selbstständigkeit
 	- PerformanceReviews
 # 04.VitalOase
 - 01.AllgemeineGesundheit
-	- xxx {GesundheitsVorsorge}
+	- xxx {Gesundheitsvorsorge}
 		- Wohlbefinden
 		- Checkups
 	- Impfungen
@@ -166,9 +166,9 @@ xxx {YggdrasilLebensplan}
 	- Supplements
 		- Creatin
 		- Omega3
-	- xxx {BesondereLebensmittel}
+	- xxx {Superfoods}
 		- Superfoods
-		- xxx {MustHaveLebensmittel}
+		- xxx {Grundnahrungsmittel}
 	- ErnährungsTracking
 		- WasserTracker
 		- EssensTracker
@@ -178,10 +178,10 @@ xxx {YggdrasilLebensplan}
 		- Flexibilitätplan
 		- Ausdauerplan
 		- Calistenicsplan
-	- xxx {KörperMechanik}
+	- xxx {Körpermechanik}
 		- Haltung
 		- Atmung
-	- xxx {HygieneUndPflege}
+	- xxx {Körperpflege}
 		- Hygiene
 		- Pflege
 - 04.MentaleGesundheit
@@ -192,7 +192,7 @@ xxx {YggdrasilLebensplan}
 		- Konzentration
 		- KognitiveFähigkeiten
 	- Stressbewältigung
-	- xxx {EnergieManagement}
+	- xxx {Energiehaushalt}
 		- EmotionaleEnergie
 		- MentaleEnergie
 	- Schlaf
@@ -206,17 +206,17 @@ xxx {YggdrasilLebensplan}
 	- Vergangenheitsanalyse
 	- Lebensbalance
 	- Bias-Analyse
-	- xxx {StärkenSchwächenProfil}
+	- xxx {Selbstprofil}
 		- Stärken
 		- Schwächen
 - Selbstverbesserung
-	- xxx {CharakterentwicklungUndCharisma}
+	- xxx {Charakterentwicklung}
 	- UmgangMitKritik
 	- InnereKonflikteLösen
-	- xxx {LogikUndKritischesDenken}
+	- xxx {Analytik}
 	- UmgangMitLebenskrisen
 - Kommunikation
-	- xxx {ÜberzeugendeKommunikation}
+	- xxx {Gesprächskunst}
 		- Rhetorik
 		- Zuhören
 	- GesprächeSteuern
