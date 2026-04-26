@@ -1,18 +1,249 @@
+xxx ->(braucht einen namen der alles beschreibt was drinne ist)
 # 00.Fundamentum
 - AkashaOrdnerGuide
 	- 00.FundamentumGuide
 - [[AkashaIndex]]
 # 01.Lebenskompass
+- 01.GroßeVision
+	- LebensbereichVisionen
+		- KarriereVision
+		- ReiseVision
+	- Zukunftsvision
+- 02.Ziele
+	- JahresZiele
+		- 5-JahreZiel
+		- 10-JahreZiel
+		- 20-JahreZiel
+	- Bucketliste
+	- Wunschziele
+	- Meilensteine
+	- IdealesLeben
+	- LebensbereichZiele
+		- KarriereZiele
+		- ReiseZiele
+- 03.Lebensmanifest
+	- 01.Kernwerte
+	- 02.Lebensprinzipien
+	- 03.Lebensmission
+- 04.Identität
+	- 01.PersönlicheIdentität
+		- Selbstbild
+		- Persönlichkeitsanalyse
+	- 02.xxx 
+		- Lebensphilosophie
+		- SinndesLebens
 # 02.Zeitnavigator
+- 01.Kalender
+	- Sozialkalender
+		- Geburtstage
+		- Feieren
+		- Jubiläen
+	- GeplanteAktivitäten
+		- Familie
+		- Freunde
+		- Partner
+	- Erinnerungen
+		- Steueren
+		- Ämter
+		- Dokumentenfristen
+- 02.Zeitmanagement
+	- ZeitmanagementStrategie
+	- xxx
+		- Fokus
+		- Priorisierung
+	- xxx
+		- Fokustage
+		- Pflegetage
+		- Einkaufstage
+		- Ordnungstage
+	- Produktivitätsstrategien
+- 03.xxx
+	- Routinen (Bewusst)
+		- xxx
+			- Morgenroutine
+			- Abendroutine
+		- xxx
+			- Fitnessroutine
+			- Essensroutine
+			- Lernroutine
+			- Meditationsroutine
+		- RoutineTracker
+		- 30TageRoutineExperiment
+	- Gewohnheiten (Automatisch)
+		- xxx
+			- GuteGewohnheitenAufbauen
+			- SchlechteGewohnheitenAbbauen
+- 04.xxx
+	- Planung
+		- 01.Wochenplanung
+		- 02.Monatsplanng
+		- 03.Quartalplanung
+		- 04.Jahresplanung
+	- Review
+		- 01.Monatsrückblick
+		- 02.Jahresrückblick
+			- JahresErfolge
+			- LessonsLearned
+		- Lebensrückblick
 # 03.VermögensDomäne
+- Finanzen
+	- Haushaltsplan
+		- Einnahmen
+		- Ausgaben
+		- Ersparnissen
+	- Budgetplanung
+		- MonatsBudget
+		- JahresBudget
+		- ReiseBudget
+		- ProjektBudget
+	- Finanzplanung
+		- Fixkosten
+			- Abos
+		- Notfallreserve
+		- AntiInflation
+	- Geldverlauf
+		- HaspaGirokarte
+		- HaspaKreditkarte
+		- Paypal
+- Vermögensaufbau
+	- Investitionsstrategien
+	- xxx
+		- Aktien
+		- ETFs
+	- xxx
+		- Immobilien
+		- REIT
+	- xxx
+		- Sparstrategien
+		- Sparziele
+	- xxx
+		- Altersvorsorge
+		- Rücklagen
+	- Nebeneinkommen
+		- PassiveEinkommen
+		- Nebenjob
+		- OnlineBusiness
+- xxx
+	- Steuern
+		- Steuererklärung
+		- Steueroptimierung
+	- Versicherung
+		- Haftpflichtversicherung
+		- Arbeitsunfähigkeitsversicherung
+		- Zahnzusatzversicherung
+- Karriere
+	- BeruflicheEntwickung
+		- Ausbildungsplan
+		- Weiterbildungen
+	- xxx
+		- Qualifikation (Theorie Wissen)
+		- unersetzliche Fähigkeiten (Praktische Fähigkeiten)
+	- Karriereplanung
+		- LinkedIn
+		- Gehaltsvorstellung
+	- xxx
+		- Aufstiegsmöglichkeiten
+		- Homeoffice
+	- Selbstständigkeit
+	- PerformanceReviews
 # 04.VitalOase
+- 01.AllgemeineGesundheit
+	- ???
+		- Wohlbefinden
+		- Checkups
+	- Impfungen
+	- Biohacking
+		- BiologischesAlterSenken
+		- GesundheitSteigern
+		- LeistungSteigern
+	- Naturheilkunde
+- 02.Ernährung
+	- Ernährungspläne
+		- AllgemeinerErnährungsplan
+		- BiohackingErnährungsplan
+		- Mealprep
+	- RezepteDB
+	- Supplements
+		- Creatin
+		- Omega3
+	- xxx
+		- Superfoods
+		- xxx (Must have Lebensmittel)
+	- ErnährungsTracking
+		- WasserTracker
+		- EssensTracker
+- 03.KörperlicheGesundheit
+	- Trainingsplan
+		- Kraftplan
+		- Flexibilitätplan
+		- Ausdauerplan
+		- Calistenicsplan
+	- xxx
+		- Haltung
+		- Atmung
+	- xxx
+		- Hygiene
+		- Pflege
+- 04.MentaleGesundheit
+	- Meditation
+		- Meditatinsatmung
+	- Mentaltraning
+		- Gedächtnis
+		- Konzentration
+		- kognitiveFähigkeiten
+	- Stressbewältigung
+	- xxx
+		- EmotionaleEnergie
+		- MentaleEnergie
+	- Schlaf
+	- BurnoutPrävention
+- 05.Wellness
+	- NatürlichePflegeprodukte
+	- WellnessTipps
 # 05.InneresUniversum
+- Selbstreflexion
+	- LebensErfolge
+	- Vergangenheitsanalyse
+	- Lebensbalance
+	- Bias-Analyse
+	- xxx
+		- Stärken 
+		- Schwächen
+- Selbstverbesserung
+	- xxx (Charakterentwicklung & Charisma)
+	- UmgangmitKritik
+	- InnereKonflikteLösen
+	- xxx (Logik & kritisches Denken)
+	- UmgangmitLebenskrisen
+- Kommunikation
+	- xxx
+		- Rhetorik 
+		- Zuhören
+	- GesprächeSteuern
+	- Konfliktmanagement
+	- Körpersprache
+	- InteressanterWirken
+- Denkweisen / Mindset
+	- NoExcuseMindset
+	- First PrinciplesThinking
+	- SecondOrderThinking
+	- NegativeGedankenmusterUmwandeln
+	- DenkeninWahrscheinlichkeiten
+	- ReverseEngineeringvonErfolg
+- Suchtverhalten
+	- Rauchsucht
+	- Kiffsucht
 # 06.SozialSphäre
 # 07.Alltagsmanagement
 # 08.Wissenskompendium
+- Archeologie
+- Comics&Manga
 - DnDKreaturen
+- Edelsteine&Edelmetalle
+- File&Serien
 - Finanzwesen
 - Geographie
+- Geschichte
 - Informatik
 	- Netzwerk
 - Mathe
@@ -22,11 +253,13 @@
 	- GrischischeMythologie
 	- KeltischeMythologie
 	- NordischeMythologie
+- Pflanzen&Pilze
 - Sprachen
 	- Deutsch
 	- Englisch
 	- Russisch
 	- Spanisch
+- Tiere
 - Wissenschaften
 	- Biologie
 	- Chemie
