@@ -433,3 +433,92 @@
 | `Unbenannt.md`, `testets.md` | Löschen oder einsortieren |
 | `README.md` | Bleibt im Root (Git-Projektbeschreibung) |
 
+---
+
+# 💡 Erweiterungsideen — Was noch fehlen könnte
+
+*Punkte die den Lebensplan vertiefen und verfeinern. Pro Bereich: konkrete Ideen die noch nicht drin sind.*
+
+---
+
+## 00. 📖 Fundamentum
+- **Systemregeln** — Klare Regeln wie das System gepflegt wird (wann wird was aktualisiert?)
+- **Lebensplan-Versionslog** — Was hat sich am Plan wann geändert und warum?
+
+## 01. 🧭 Lebenskompass
+- **Ikigai** — Schnittmenge aus: was ich liebe / worin ich gut bin / was die Welt braucht / wofür ich bezahlt werde
+- **Meine Rollen im Leben** — (Sohn, Freund, Partner, Kollege, Lernender...) + was ich in jeder Rolle sein will
+- **Nekrolog-Übung** — Was sollen Menschen über mich sagen wenn ich nicht mehr da bin? (Kraftvolle Vision)
+- **Persönliche Marke** — Wie will ich nach außen wahrgenommen werden?
+- **Anti-Ziele** — Was will ich auf keinen Fall in meinem Leben (genauso wichtig wie Ziele)
+
+## 02. ⏳ Zeitnavigator
+- **Energie-Management** — Wann bin ich am produktivsten? (Chronotyp, Energiekurve über den Tag)
+- **Time Blocking** — Feste Zeitblöcke für Tiefarbeit, Routine, Freizeit
+- **"Nein sagen"-Strategie** — Kriterien wann ich Anfragen ablehne
+- **Wochenintention** — Ein Leitwort/Fokusthema pro Woche setzen
+- **Totale Regenerationszeit** — Bewusst eingeplante Zeit ohne Produktivitätsdruck
+
+## 03. 💰 VermögensDomäne
+- **FIRE-Strategie** — Financial Independence / Retire Early — ab wann bin ich finanziell frei?
+- **7 Einkommensströme** — Plan für mehrere parallele Einnahmequellen
+- **Kreditwürdigkeit / Schufa** — Überwachung & Verbesserung
+- **Testament & Erbschaft** — Was passiert mit meinem Vermögen?
+- **Gehaltsverhandlungs-Playbook** — Argumente, Zahlen, Strategie für nächste Verhandlung
+- **Lebensversicherung & Absicherung** — Überblick über alle Absicherungen
+
+## 04. 🧘‍♂️ VitalOase
+- **Blutbild & Laborwerte tracken** — Regelmäßige Werte dokumentieren (Vitamin D, Testosteron, etc.)
+- **Zahn- & Mundgesundheit** — Routine, Check-Ups, Ziele
+- **Augen- & Hörgesundheit** — Prävention und Check-Ups
+- **Ergonomie** — Arbeitsplatz, Schlafen, Körperhaltung optimieren
+- **Genussmittel-Tracking** — Alkohol, Koffein, Zucker bewusst managen
+- **Sexuelle Gesundheit** — Prävention, Aufklärung, Wohlbefinden
+
+## 05. 🌌 InneresUniversum
+- **Dankbarkeits-Praxis** — Tägliche/wöchentliche Dankbarkeitsnotizen (eigener Abschnitt, nicht nur Routine)
+- **Shadow Work** — Unbewusste Muster & dunkle Seiten kennenlernen und integrieren
+- **Rollenvorbilder & Mentoren** — Wen bewundere ich und warum? Was kann ich davon übernehmen?
+- **Vergebung** — Sich selbst und anderen vergeben (aktive Reflexion)
+- **Spiritualität / Weltbild** — Meine Sicht auf Sinn, Tod, Universum
+- **Emotionstagebuch** — Emotionen systematisch tracken um Muster zu erkennen
+
+## 06. 🫂 SozialSphäre
+- **Netzwerk-Map** — Wer sind die wichtigsten Menschen in meinem Leben & Netzwerk?
+- **Mentoren aktiv suchen** — Wer könnte mich in welchem Bereich fördern?
+- **Umgang mit schwierigen Menschen** — Strategien für toxische Dynamiken
+- **Community / Vereine** — Bewusste Teilnahme an Gruppen (Kampfsport, IT, Kreativität...)
+- **Generosität-Plan** — Was gebe ich aktiv zurück? (Zeit, Geld, Wissen)
+- **Beziehungs-Check-Ups** — Regelmäßige Reflexion: welche Beziehungen brauchen Pflege?
+
+## 07. 🏠 Alltagsmanagement
+- **Papierlosigkeit** — Strategie zur Digitalisierung aller physischen Dokumente
+- **Einkaufsroutine** — Fester Wochentag, Einkaufsstrategie, Preisvergleich
+- **Digitalminimalismus** — Welche Apps/Tools nutze ich wirklich? Was löschen?
+- **Kleidungs-Kapseln** — Bewusste, kleine Garderobe statt Überfluss
+- **Energie-Tracking** — Stromverbrauch, Nebenkosten aktiv beobachten
+- **Umzugsplan** — Falls Umzug geplant ist: Checkliste, Recherche, Zeitplan
+
+## 08. 📚 Wissenskompendium
+- **Buch-Zusammenfassungen** — Eigene Notizen zu gelesenen Büchern
+- **Mentale Modelle** — Sammlung von Denkrahmen (Pareto, Inversion, Dunning-Kruger...)
+- **Zitate-Sammlung** — Inspirierende Zitate die mich prägen
+- **Kurs-Notizen** — Zusammenfassungen von Online-Kursen, Vorlesungen
+- **Podcast-Highlights** — Wichtige Erkenntnisse aus Podcasts
+- **Lernpartner** — Mit wem lerne ich gemeinsam?
+
+## 09. 🗺️ Freizeitatlas
+- **Restaurant & Café Wunschliste** — Orte die ich besuchen will (lokal & auf Reisen)
+- **Konzerte & Events-Tracker** — Vergangene Erlebnisse + Wunschliste
+- **Jahreszeiten-Aktivitäten** — Was mache ich bewusst in Frühling / Sommer / Herbst / Winter?
+- **Lokale Geheimtipps** — Versteckte Orte in meiner Stadt die ich kenne / entdecken will
+- **Vision Board** — Bildliche Darstellung meines Traumlebens
+- **Erlebnis-Eimer (Mini-Bucketlist)** — Kleinere Dinge die ich bald erleben will (nicht nur große Reisen)
+
+## 10. ⚙️ Systemschmiede
+- **Second Brain / Zettelkasten** — Methode für permanente Notizen & Wissensvernetzung
+- **PKM-Methode (Personal Knowledge Management)** — Wie fließen Infos rein, werden verarbeitet & gespeichert?
+- **Obsidian Vault Statistiken** — Wie groß ist das System? Wieviel ist befüllt?
+- **Mobile Workflow** — Wie nutze ich den Lebensplan unterwegs (Handy)?
+- **Wöchentlicher System-Check** — Feste Routine: System aufräumen, Inbox leeren, Tags pflegen
+- **API & Integrationen** — Welche externen Dienste sind/sollen angebunden werden? (Kalender, Spotify, etc.)
