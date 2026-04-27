@@ -1,524 +1,375 @@
 # Yggdrasil — Ordner-Guide: Was gehört wo rein?
 
-> Inhaltsverzeichnis für alle 10 Lebensbereiche + Fundamentum.
-> Zeigt was in jeden Bereich gehört. Unsichere Punkte stehen am Ende jedes Abschnitts.
-
----
-
-# 00. 📖 Fundamentum
-*Meta-Dokumente des gesamten Systems — Struktur, Definitionen, Architektur.*
-
-## Inhaltsverzeichnis
-- **Systemdokumente**
-	- Masterplan / Einstiegspunkt des Lebensplans
-	- Grundstruktur des Lebensplans
-	- Aufbau- & Abarbeitungsplan (Schritt-für-Schritt Systemaufbau)
-	- AkashaIndex (Zentraler Index aller 10 Bereiche)
-	- YggdrasilArchitektur (Referenz-Entwurf)
-- **Bereichsdefinitionen** *(Unterordner: Plan Definitionen/)*
-	- Definition für jeden der 10 Lebensbereiche (je eine Notiz)
-	- Übersichtsnotiz aller Definitionen
-- **Ordner-Guide**
-	- `Hier.md` — dieser Guide (was gehört wo rein)
-
-## ❓ Unsicher / Prüfen
-- `Alleszusdammen/` — Sammelmappe alter Entwürfe → aussortieren oder löschen
-- `YggdrasilArchitekturAblehnung.md` + `YggdrasilArchitekturVielleicht.md` → archivieren oder löschen sobald System fertig ist
-
----
-
-# 01. 🧭 Lebenskompass
-*Richtung des Lebens — Werte, Vision, Ziele, Identität. Das große Bild, wer ich bin und wohin ich will.*
-
-> ⚠️ **Ordner hat kein Emoji** (`01.Lebenskompass`) — ggf. umbenennen zu `01.🧭Lebenskompass` für Konsistenz.
-
-## Inhaltsverzeichnis
-- **Große Vision** *(01.GroßeVision/)*
-	- Zukunftsvision in 10 / 20 / 35 / 50 Jahren
-	- Vision für jeden Lebensbereich
-- **Ziele** *(02.Ziele/)*
-	- 5-Jahres-, 10-Jahres-, 20-Jahres-Ziele
-	- Bucketliste
-	- Wunschziele
-	- Meilensteine
-	- Ideales Leben / Idealbild des Alltags
-	- Ziele der einzelnen Lebensbereiche
-- **Lebensmanifest** *(03.Lebensmanifest/)*
-	- Kernwerte *(01.Kernwert/)*
-	- Lebensprinzipien *(02.Lebensprinzipen/)*
-	- Lebensmission *(03.Lebensmission/)*
-- **Identität** *(04.Identität/)*
-	- Persönliche Identität: Selbstbild, Persönlichkeitsanalyse *(01.Persönliche Identität/)*
-	- Lebensphilosophie & Sinn des Lebens *(02.Lebensphilosophie&Sinn/)*
-
-## ❓ Unsicher / Prüfen
-- Karriereziele: gehören auch in `07.💰VermögensDomäne` → hier nur die Vision, dort die konkreten Pläne
-- Zielsetzungsstrategie / Methoden → eher `10.⚙️Systemschmiede` oder hier als Unternotiz von Ziele?
-
----
-
-# 02. ⏳ Zeitnavigator
-*Alles rund um Zeit — Kalender, Planung, Routinen, Reviews. Wie der Tag, die Woche, das Jahr strukturiert wird.*
-
-## Inhaltsverzeichnis
-- **Kalender** *(01.Kalender/)*
-	- Sozialkalender (Geburtstage, Feiern, Jubiläen)
-	- Geplante Aktivitäten (Familie, Freunde, Partner)
-	- Erinnerungen (Steuern, Ämter, Dokumentenfristen)
-- **Zeitmanagement** *(02.Zeitmanagment/)*
-	- Zeitmanagement-Strategien
-	- Fokus & Priorisierung / Deep Work
-	- Fokustage, Pflegetage, Einkaufstage, Ordnungstage
-	- Produktivitätsstrategien
-- **Routinen & Gewohnheiten** *(03.Routinen&Gewohnheiten/)*
-	- Morgenroutine / Abendroutine
-	- Sportroutine, Essensroutine, Lernroutine
-	- Routinen-Tracker (Haare, Haut, Schlaf, Meditation)
-	- Gewohnheiten aufbauen / schlechte abbauen
-	- 30-Tage-Experimente
-- **Planung & Review** *(04.Planung&Review/)*
-	- Tagesjournal & Tagesreflexion
-	- Wöchentliche Planung & Wochenrückblick
-	- Monatliche Planung & Monatsrückblick
-	- Quartal- & Jahresplanung
-	- Jahresrückblick (Erfolge, Rückschläge, Lessons Learned)
-	- Lebensrückblick
-
-## ❓ Unsicher / Prüfen
-- Lebensframework-Review → gehört hier unter **Planung & Review** (laut YggdrasilArchitektur unter Produktivität/Zeitnavigator)
-- Ticketreview → hier unter Wöchentliche Planung als Schritt erwähnen, die eigentlichen Tickets liegen in `🗂️Ticketsystem/`
-
----
-
-# 03. 💰 VermögensDomäne
-*Finanzen, Karriere, Vermögensaufbau. Alles rund ums Geld verdienen, verwalten und mehren.*
-
-> ⚠️ **Achtung:** Aktuell liegt dieser Ordner falsch unter `09.🗺️Freizeitatlas/07.💰VermögensDomäne/` — er sollte ein eigener Top-Level-Ordner sein.
-
-## Inhaltsverzeichnis
-- **Finanzen**
-	- Haushaltsplan (Einnahmen, Ausgaben, Ersparnisse)
-	- Budgetplanung (monatlich, jährlich, Reise, Projekt)
-	- Finanzplanung (Fixkosten, Notfallreserve, Anti-Inflation)
-	- Geldverlauf / Kontoverlauf (Haspa, PayPal)
-	- Schulden & Abos
-- **Vermögensaufbau**
-	- Investitionsstrategien
-	- Aktien / ETFs
-	- Immobilien / REIT
-	- Sparstrategien & Sparziele
-	- Altersvorsorge & Rücklagen
-	- Nebeneinkommen (passiv, Nebenjobs, Online-Business)
-- **Steuern & Versicherungen**
-	- Steuererklärung & Steueroptimierung
-	- Versicherungskosten & -übersicht
-- **Karriere**
-	- Berufliche Entwicklung (Ausbildungsplan, Weiterbildung, Kurse)
-	- Qualifikation & unersetzliche Fähigkeiten
-	- Karriereplanung (LinkedIn, Bewerbung, Gehaltsvorstellung)
-	- Aufstiegsmöglichkeiten & Homeoffice
-	- Selbstständigkeit
-	- Persönliche Performance Reviews
-- **Finanz-Dashboard** *(in 10.Systemschmiede verlinkt)*
-	- Einnahmen & Ausgaben-Übersicht
-	- Investitions-Übersicht
-	- Notfallreserven-Status
-
-## ❓ Unsicher / Prüfen
-- `Geldverdiene Projekte` / `Online Business Ideen` → hier oder `09.Freizeitatlas/Projekte`?
-- Workflows & effizientes Arbeiten unter Karriere → eher `10.⚙️Systemschmiede`
-- Finanzwissen (ETF, Aktien, Krypto) → gehört ins `08.📚Wissenskompendium`, nicht hierher
-
----
-
-# 04. 🧘‍♂️ VitalOase
-*Körper, Geist und Gesundheit. Alles was das körperliche und mentale Wohlbefinden betrifft.*
-
-## Inhaltsverzeichnis
-- **Allgemeine Gesundheit** *(01.AllgemeineGesundheit/)*
-	- Wohlbefinden & Check-Ups
-	- Impfungen
-	- Biohacking (biologisches Altern, Gesundheit & Leistung steigern)
-	- Naturheilkunde
-- **Ernährung**
-	- Ernährungspläne (allgemein, Biohacking-Diät, Mealprep)
-	- Rezepte (Lieblingsrezepte, gesunde, vegane, internationale)
-	- Supplements (Creatin, Omega 3, Tracker)
-	- Superfoods & Must-have Lebensmittel
-	- Wasser-Tracker & Ernährungs-Tracker
-- **Körper & Fitness**
-	- Trainingsplan (Kraft, Flexibilität)
-	- Fitnessroutine
-	- Kampfsport, Calisthenics, Ausdauer, Mobilität
-	- Haltung & Atmung
-	- Hygiene & Pflege (Haut-, Haar-, Körperpflege)
-- **Mentale Gesundheit**
-	- Meditation & Meditationsatmung
-	- Mentaltraining (Gedächtnis, Konzentration, kognitive Fähigkeiten)
-	- Stressbewältigung
-	- Emotionen & Mentale Energie
-	- Schlaf (Hygiene, Routine, Tracking)
-	- Burnout-Prävention
-- **Wellness**
-	- Pflegeprodukte (natürliche Produkte)
-	- Wellness-Tipps
-
-## ❓ Unsicher / Prüfen
-- Pflegeroutinen-Tracker → hier oder `02.⏳Zeitnavigator/Routinen`? (Empfehlung: Routine in Zeitnavigator, Produkte & Wissen hier)
-- `Sontag Pflege Routine.md` (liegt im Root) → hierher verschieben
-- `Essen.md` (liegt im Root) → hierher unter Ernährung/Rezepte verschieben
-- Kraftsport / Parkour als Hobby → auch in `09.🗺️Freizeitatlas/Hobbies` verlinken
-
----
-
-# 05. 🌌 InneresUniversum
-*Persönliche Entwicklung, Psyche, Denkweisen, Selbstverbesserung. Wer ich innerlich bin und werden will.*
-
-> ⚠️ **Ordner hat kein Emoji** (`05.InneresUniversum`) — ggf. umbenennen zu `05.🌌InneresUniversum` für Konsistenz.
-
-## Inhaltsverzeichnis
-- **Selbstreflexion**
-	- Erfolge dokumentieren
-	- Vergangenheitsanalyse & Rückblicke
-	- Lebensbalance
-	- Bias-Analyse
-	- Stärken & Schwächen
-- **Selbstverbesserung**
-	- Charakterentwicklung & Charisma
-	- Umgang mit Kritik
-	- Innere Konflikte verstehen & lösen
-	- Logik & kritisches Denken
-	- Umgang mit Lebenskrisen
-- **Kommunikation**
-	- Rhetorik & Zuhören
-	- Gespräche steuern
-	- Konfliktmanagement
-	- Körpersprache erkennen & einsetzen
-	- Interessanter wirken
-- **Denkweisen / Mindset**
-	- No-Excuse-Mindset
-	- First Principles Thinking
-	- Second-Order Thinking
-	- Negative Gedankenmuster umwandeln
-	- Denken in Wahrscheinlichkeiten
-	- Reverse Engineering von Erfolg
-- **Suchtverhalten**
-	- Rauchsucht, Kiffsucht (Strategien zur Überwindung)
-
-## ❓ Unsicher / Prüfen
-- `Neue Fähigkeiten / Lernfortschritte` → hier oder `08.📚Wissenskompendium`? (Empfehlung: Lernmethoden & Wissen dort, Persönlichkeitswachstum hier)
-- Meditation → hier (Mentaltraining) oder `04.🧘‍♂️VitalOase`? (Empfehlung: Praxis in VitalOase, Philosophie dahinter hier)
-- `Progammiersprachen.md` (liegt im Root) → `08.📚Wissenskompendium` nicht hierher
+> Ergänzung zum AkashaIndex. Zeigt nur was dort noch NICHT steht:
+> Struktur für leere Bereiche, offene Fragen, Root-Dateien, Erweiterungsideen.
 
 ---
 
 # 06. 🫂 SozialSphäre
 *Beziehungen zu Familie, Freunden und Partner. Soziales Leben gestalten und pflegen.*
 
-## Inhaltsverzeichnis
-- **Familie**
-	- Familienmanagement
-	- Traditionen (bestehende & neue)
-	- Familien-Spieleabend organisieren
-	- Geschenkideen für Familie
-- **Freunde**
-	- Freundschaftsmanagement & Freundesliste (Priorität)
-	- Besserer Freund werden
-	- Freunde Spieleabend organisieren
-	- Geschenkideen für Freunde
-- **Partner**
-	- Besserer Partner werden
-	- Kommunikation & Konfliktlösung in der Beziehung
-	- Romantische Date-Ideen & Aktivitäten
-	- Überraschungen & Geschenkideen für Partner
-- **Allgemein**
-	- Freundschaften aktiv pflegen
-	- Persönliche Gesten
-	- Soziale Aktivitäten planen *(→ detailliert auch in `09.🗺️Freizeitatlas`)*
+## Geplante AkashaIndex-Struktur
+- 01.Familie
+	- FamilienManagement
+	- Traditionen
+		- BestehendeTraditionen
+		- NeueTraditionen
+	- GeschenkideenFamilie
+- 02.Freunde
+	- FreundschaftsManagement
+	- FreundschaftsPriorität
+	- GeschenkideenFreunde
+- 03.Partner
+	- BessererPartnerWerden
+	- BeziehungsKommunikation
+	- KonfliktlösungBeziehung
+	- DateIdeen
+	- ÜberraschungenPartner
+	- GeschenkideenPartner
+- 04.Netzwerk
+	- NetzwerkMap
+	- MentorenSuche
+	- Community
+		- Vereine
+		- OnlineGruppen
+	- UmgangSchwierigeMenschen
 
-## ❓ Unsicher / Prüfen
-- `Geburtstags Geschenke für Valle.md` (liegt im Root) → hierher verschieben
-- `Geschenk idden für freundin.md` (liegt im Root) → hierher verschieben
-- Gemeinsame Ausflüge / Events → hier planen oder nur in `09.🗺️Freizeitatlas`? (Empfehlung: soziale Events hier, Reisen & Abenteuer dort)
+## ❓ Offene Fragen
+- Gemeinsame Ausflüge / Events → hier oder `09.Freizeitatlas`? → soziale Planung hier, Reisen & Abenteuer dort
+- `Geburtstags Geschenke für Valle.md` (Root) → hierher: 01.Familie/GeschenkideenFamilie
+- `Geschenk idden für freundin.md` (Root) → hierher: 03.Partner/GeschenkideenPartner
 
 ---
 
 # 07. 🏠 Alltagsmanagement
 *Das tägliche Leben organisieren — Wohnen, Besitz, Mobilität, Dokumente, Sicherheit.*
 
-> ⚠️ **Aktuell als `03.Alltagsmanagemnt` gespeichert** — Nummer sollte auf 07 korrigiert werden (laut AkashaIndex).
+> ⚠️ Aktuell als `03.Alltagsmanagemnt` im Root — Umbenennung auf `07.Alltagsmanagement` nötig.
 
-## Inhaltsverzeichnis
-- **Wohnen** *(01.Wohnen/)*
-	- Haushalt: Haushaltsmanagement, Putzpläne, Ordnungsplan, Lebensmittelvorrat *(01.Haushalt/)*
-	- Inventur: Möbel, Kleidung, Smart Home, Besitzverwaltung *(02.Inventur/)*
-	- Innenarchitektur: Einrichtungsideen, Raumaufteilung, Renovierung, Deko *(03.Innenarchitektur/)*
-	- Wohnträume & Zukunftspläne *(04.Wohnträume&Zukunftspläne/)*
-- **Haustiere & Pflanzen** *(02.Haustiere&Pflanzen/)*
-	- Haustiere: Futterpläne, Gesundheit, Erziehung
-	- Pflanzen: Gießpläne, Kräutergarten, Pflanzenpflege *(02.Pflanzen/)*
-- **Mobilität** *(03.Mobilität/)*
-	- Öffentliche Verkehrsmittel, E-Bike, Auto, Fahrrad
-- **Recht, Dokumente & Sicherheit** *(04.Recht,Dokumente&Sicherheit/)*
-	- Recht: Arbeitsgesetze, Mietrecht, Behördenchecklisten *(01.Recht/)*
-	- Dokumente: Verträge, Versicherungen, Zeugnisse, Rechnungen, Backups *(02.Dokumente/)*
-	- Sicherheit: Notfallplan, Cybersicherheit, Erste Hilfe, Vorsorgemaßnahmen *(03.Sicherheit/)*
+## Geplante AkashaIndex-Struktur
+- 01.Wohnen
+	- 01.Haushalt
+		- HaushaltsManagement
+		- Putzpläne
+		- OrdnungsPlan
+		- LebensmittelVorrat
+		- Nachhaltigkeit
+	- 02.Inventur
+		- Möbel
+		- Kleidung
+		- SmartHome
+		- BesitzVerwaltung
+	- 03.Innenarchitektur
+		- EinrichtungsIdeen
+		- Raumaufteilung
+		- Renovierung
+		- Deko
+	- 04.Wohnträume
+- 02.HaustierePflanzen
+	- Haustiere
+		- Futterpläne
+		- TierGesundheit
+		- Erziehung
+	- Pflanzen
+		- Gießpläne
+		- Kräutergarten
+		- PflanzenPflege
+- 03.Mobilität
+	- ÖffentlicheVerkehrsmittel
+	- EBike
+	- Auto
+	- Fahrrad
+- 04.RechtDokumenteSicherheit
+	- 01.Recht
+		- Arbeitsgesetze
+		- Mietrecht
+		- BehördenChecklisten
+	- 02.Dokumente
+		- Verträge
+		- Zeugnisse
+		- Rechnungen
+		- DigitaleBackups
+	- 03.Sicherheit
+		- Notfallplan
+		- Cybersicherheit
+		- ErsteHilfe
+		- VorsorgeMaßnahmen
 
-## ❓ Unsicher / Prüfen
-- `Ineventar die ich brauche.md` (liegt im Root) → hierher verschieben (Inventur)
-- Smart Home Wissen (Geräte, Automatisierung) → hier unter Inventur oder `10.⚙️Systemschmiede`?
-- Nachhaltigkeit / Ökologischer Fußabdruck → hier oder `04.🧘‍♂️VitalOase`?
-
----
-
-# 08. 📚 Wissenskompendium
-*Bildung, Wissen und Lernen. Alles was ich lernen will oder gelernt habe — strukturiertes Wissen.*
-
-## Inhaltsverzeichnis
-- **Bildungsstrategie & Lernplan**
-	- Lernziele & Bildungs-Tracker
-	- Lernpläne (adaptiv, nach Fortschritt anpassbar)
-	- Geplante Lerninhalte
-	- Wissensdatenbank-Optimierung
-- **Skills / Lernmethoden**
-	- Speed Reading
-	- Schnelle Lernmethoden / Mnemotechniken
-	- Fallen lernen, Schlösser knacken *(praktische Skills)*
-- **Technologisches & Technisches Wissen**
-	- Netzwerke, Server, Betriebssysteme
-	- IT-Infrastruktur, Cloud & Virtualisierung
-	- IT-Sicherheit (Cyber Security, physische Sicherheit)
-	- Technologie-Trends, KI, Automatisierung
-	- Dark Web, Hacking, Smarte Geräte
-- **Finanzwissen** *(Theorie — Praxis in 03.VermögensDomäne)*
-	- Aktien-, ETF-, Immobilien-, Kryptowissen
-- **Wissenschaften**
-	- Chemie, Biologie, Physik (inkl. Astronomie)
-	- Mathematik
-	- Geographie
-- **Sprachen**
-	- Deutsch, Englisch, Russisch, Spanisch
-- **Sonstiges Wissen**
-	- Mythologien (Nordisch, Griechisch, Ägyptisch, Keltisch, Babylonisch)
-	- DnD-Kreaturen *(Worldbuilding-Wissen)*
-	- Programmiersprachen *(→ `Progammiersprachen.md` vom Root hierher)*
-
-## ❓ Unsicher / Prüfen
-- `bücher.md` (liegt im Root) → hierher oder `09.🗺️Freizeitatlas`? (Empfehlung: Bücher die ich lese/gelernt habe hier, Bücher als Hobby dort)
-- IT-Sicherheitswissen → hier (Theorie) UND `10.⚙️Systemschmiede` (Praxis/Umsetzung)
-- Informatik-Unterordner aus AkashaIndex (`Informatik/Netzwerk`) bereits angelegt?
+## ❓ Offene Fragen
+- `Ineventar die ich brauche.md` (Root) → hierher: 01.Wohnen/02.Inventur
+- Smart Home Wissen → hier unter Inventur (Geräteliste), Automatisierung in `10.Systemschmiede`
 
 ---
 
 # 09. 🗺️ Freizeitatlas
-*Freizeit, Reisen, Hobbys, Projekte. Alles was Spaß macht und die Seele nährt.*
+*Freizeit, Reisen, Hobbys, Projekte. Alles was Spaß macht.*
 
-> ⚠️ **`07.💰VermögensDomäne` liegt aktuell fälschlicherweise hier drin** → als eigenen Top-Level-Ordner auslagern.
+> ⚠️ `07.💰VermögensDomäne` liegt aktuell fälschlicherweise hier drin → auslagern.
 
-## Inhaltsverzeichnis
-- **Reise & Abenteuer**
-	- Reiseziele (Wunschorte, Länder, Hidden Gems, Sprachreisen)
-	- Geplante Reisen (Packliste, Reiseplanung, Budget)
-	- Kurzreisen (Waldwanderung, Stadtausflüge, Roadtrips)
-	- Langfristige Reisen & Weltreise
-	- Reise dokumentieren (Tagebuch, Fotoalbum)
-	- Günstige Luxuserlebnisse
-- **Hobbys**
-	- Kreative Hobbys: Musik machen, Kunst, Tabletop (D&D), Malen, Schreiben
-	- Sportliche Hobbys: Kampfkunst (Boxen, Kung Fu), Parkour, Calisthenics
-	- Mentale Hobbys: Gaming, Astronomie, Programmieren
-	- Audio & Video: Musik hören, Filme & Serien
-	- Literatur: Bücher, Manga, Comics, Webtoon
-	- Hobby-Zukunftsplan
-- **Projekte**
+## Geplante AkashaIndex-Struktur
+- 01.ReiseUndAbenteuer
+	- Reiseziele
+		- Wunschorte
+		- LänderReiseziele
+		- HiddenGems
+		- Sprachreisen
+	- GeplanteReisen
+		- Packliste
+		- Reiseplanung
+		- ReiseBudget
+	- KurzReisen
+		- Waldwanderung
+		- Stadtausflüge
+		- Roadtrips
+	- ReiseDokumentation
+		- Reisetagebuch
+		- Fotoalbum
+- 02.Hobbys
+	- KreativeHobbys
+		- MusikMachen
+		- Kunst
+		- Malen
+		- Schreiben
+		- TabletopSpiele
+	- SportlicheHobbys
+		- Kampfkunst
+		- Parkour
+		- Calisthenics
+	- MentaleHobbys
+		- Gaming
+		- Astronomie
+		- Programmieren
+	- HobbyZukunftsplan
+- 03.Projekte
 	- IT-Projekte
-	- DIY-Projekte & Heimwerken (Upcycling, Möbelbau)
-	- 3D-Druck-Projekte
-	- Kunst-Projekte
-	- Wissenschaftliche Experimente
-- **Soziale Aktivitäten** *(→ auch in `06.🫂SozialSphäre` verlinkt)*
-	- Dinnerpartys, Spieleabende, Events
-	- Familienaktivitäten, Aktivitäten mit Freunden
-- **Sammlungen**
-	- Eigene Sammlungen dokumentieren
+	- DIY-Projekte
+	- 3D-DruckProjekte
+	- KunstProjekte
+	- WissenschaftlicheExperimente
+- 04.Sammlungen
+- 05.SozialeAktivitäten
+	- DinnerPartys
+	- Spieleabende
+	- FamilienAktivitäten
+	- AktivitätenMitFreunden
 
-## ❓ Unsicher / Prüfen
-- Programmieren als Hobby → hier oder `08.📚Wissenskompendium`? (Empfehlung: Lernaspekt im Wissenskompendium, Projekte & Spaß hier)
-- Astronomie → hier als Hobby UND in `08.Wissenskompendium/Physik` als Wissen
-- Outdoor-Aktivitäten → eigener Unterordner oder unter Reise & Abenteuer?
-
----
-
-# 10. ⚙️ Systemschmiede
-*Das Betriebssystem des Lebensplans — Tools, Automatisierungen, Templates, Dashboards, Hardware.*
-
-## Inhaltsverzeichnis
-- **Lebensframework pflegen**
-	- Strukturänderungen & System-Changelog
-	- Neue Features im System
-	- Systemreflexionen & Systemlogbuch
-	- Backup-Strategien
-	- Lebensframework-Vor- und Nachteile
-- **Lebensframework-Systeme**
-	- Legenden (Tag-, Farb-, Emoji-, Template-, Skript-, Programmlegende)
-	- Ticketsystem (Tickets, Kategorien, Prioritäten, Eisenhowermatrix) → `🗂️Ticketsystem/`
-	- Bulletjournal → `📓Bulletjournal/`
-	- To-Do-Listen → `To-Do/`
-	- Wissensdatenbank
-	- Lebensframework-Dashboard
-	- Kalender-System & Erinnerungen
-	- Webmedienspeicher (YouTube, Instagram, Pinterest, Spotify, Websites)
-	- Finanz-Dashboard
-- **Dokumentieren / Erlebnisprotokoll**
-	- Orte, Erlebnisse, Restaurants, Gerichte
-	- Serien/Filme, Musik, Date-Ideen
-- **Templates** → `🎛-Obsidian-/🎛Templates/`
-	- YAML-Template, Ticket-Template, MoC-Template
-- **Obsidian-Konfiguration** → `🎛-Obsidian-/`
-	- Legenden (Emoji, Farbe, Tags, Ordner-Namensgebung)
-	- Plugin-Funktionen & Dokumentation
-	- Unicode-Listen, Snippets
-- **Skripte** *(Unterordner: Skripte/)*
-	- Film & Serien-Notiz erstellen
-	- Musik-Notiz erstellen
-	- Weitere Automatisierungsskripte
-- **Systemplan / Hardware** *(Unterordner: Systemplan/)*
-	- PC (Laptop, Ubuntu-Setup, Windows 11, Autogen)
-	- Server (Contabo VPS, n8n-Workflows)
-	- Namensgebung für Systeme
-- **Automatisierungen & digitale Tools**
-	- Notfallfonds-Automatisierung
-	- Investitions-Automatisierung
-	- Finanzielle Automatisierung
-- **Claude Code / KI-Infrastruktur** *(laut AkashaIndex unter Infrastruktur/)*
-	- Globale Agenten (Experten-Agenten: Docker, n8n, Python)
-	- Globale MCP & Skills
-	- Universale Claude.md-Abschnitte
-
-## ❓ Unsicher / Prüfen
-- `📓Bulletjournal/`, `🗂️Ticketsystem/`, `🎛-Obsidian-/` liegen aktuell im Root → alle nach `10.⚙️Systemschmiede/` verschieben
-- `To-Do/` + `To-Dos.md` im Root → in Ticketsystem integrieren oder nach `10.Systemschmiede/`
-- `backup.md` (Root) → nach `Systemplan/` oder Backup-Strategien
-- `Ubuntu System Update.md` (Root) → nach `Systemplan/PC/Ubuntu/`
-- `wie ist git eingestellt.md` (Root) → nach `Systemplan/PC/` oder `Systemplan/Server/`
-- `dataviewjs Slider with %.md` (Root) → nach `🎛-Obsidian-/🎛Funktionen/`
-- `plan für templates.md` (Root) → nach `🎛-Obsidian-/🎛Templates/`
-- `Plugin für Obsidian Programmieren Idee.md` (Root) → nach `🎛-Obsidian-/`
-- `Sammlung/` (Root) → Inhalt prüfen und verteilen (alle Dateien darin sind "Untitled" → leere Entwürfe, löschen oder befüllen)
-- `🎛-Obsidian-/` liegt aktuell im Root → logisch Teil von `10.⚙️Systemschmiede`, kann aber als eigener Root-Ordner bleiben wenn Obsidian-Symlink-Gründe
+## ❓ Offene Fragen
+- Programmieren als Hobby → hier (Projekte/Spaß), Lernaspekt in `08.Wissenskompendium`
+- Astronomie → hier als Hobby UND `08.Wissenskompendium/Wissenschaften/Physik` als Wissen
 
 ---
 
-# 📦 Dateien im Root — Wo sie hingehören
+# 📦 Root-Dateien — Wo sie hingehören
 
-*Diese Dateien liegen aktuell lose im Hauptordner und müssen noch einsortiert werden:*
-
-| Datei | Gehört nach |
+| Datei | Zielordner |
 |---|---|
-| `Essen.md` | `04.🧘‍♂️Vitaloase` → Ernährung/Rezepte |
-| `Sontag Pflege Routine.md` | `04.🧘‍♂️Vitaloase` → Wellness/Pflege |
-| `Geburtstags Geschenke für Valle.md` | `06.🫂SozialSphäre` → Familie/Geschenkideen |
-| `Geschenk idden für freundin.md` | `06.🫂SozialSphäre` → Partner/Geschenkideen |
-| `Ineventar die ich brauche.md` | `07.🏠Alltagsmanagement` → Wohnen/Inventur |
-| `Progammiersprachen.md` | `08.📚Wissenskompendium` → Technisches Wissen |
-| `bücher.md` | `08.📚Wissenskompendium` oder `09.🗺️Freizeitatlas` → prüfen |
-| `Ubuntu System Update.md` | `10.⚙️Systemschmiede` → Systemplan/PC/Ubuntu |
-| `wie ist git eingestellt.md` | `10.⚙️Systemschmiede` → Systemplan/PC |
-| `backup.md` | `10.⚙️Systemschmiede` → Backup-Strategien |
+| `Essen.md` | `04.VitalOase` → 02.Ernährung |
+| `Sontag Pflege Routine.md` | `04.VitalOase` → 05.Wellness |
+| `Geburtstags Geschenke für Valle.md` | `06.SozialSphäre` → 01.Familie |
+| `Geschenk idden für freundin.md` | `06.SozialSphäre` → 03.Partner |
+| `Ineventar die ich brauche.md` | `07.Alltagsmanagement` → 01.Wohnen/02.Inventur |
+| `Progammiersprachen.md` | `08.Wissenskompendium` → Informatik |
+| `bücher.md` | `08.Wissenskompendium` → eigene Kategorie Bücher anlegen |
+| `Ubuntu System Update.md` | `10.Systemschmiede` → Yggdrasil/VPS oder PC |
+| `wie ist git eingestellt.md` | `10.Systemschmiede` → GitHub |
+| `backup.md` | `10.Systemschmiede` → Yggdrasil/Infrastruktur |
 | `dataviewjs Slider with %.md` | `🎛-Obsidian-` → Funktionen |
 | `plan für templates.md` | `🎛-Obsidian-` → Templates |
 | `Plugin für Obsidian Programmieren Idee.md` | `🎛-Obsidian-` |
-| `To-Do/`, `To-Dos.md` | `10.⚙️Systemschmiede` → Ticketsystem |
-| `Sammlung/` | Inhalt prüfen → verteilen |
-| `Unbenannt.md`, `testets.md` | Löschen oder einsortieren |
-| `README.md` | Bleibt im Root (Git-Projektbeschreibung) |
+| `To-Do/`, `To-Dos.md` | `10.Systemschmiede` → Ticketsystem |
+| `Sammlung/` | Alle Dateien darin sind leer → löschen |
+| `Unbenannt.md`, `testets.md` | Löschen |
+| `README.md` | Bleibt im Root (Git) |
 
 ---
 
 # 💡 Erweiterungsideen — Was noch fehlen könnte
 
-*Punkte die den Lebensplan vertiefen und verfeinern. Pro Bereich: konkrete Ideen die noch nicht drin sind.*
+*Punkte die noch nicht im AkashaIndex stehen, aber den Lebensplan vertiefen.*
+
+## 00. Fundamentum
+- **Systemregeln** — Wann wird was gepflegt? Feste Wartungsroutine für den Plan
+- **Lebensplan-Versionslog** — Was hat sich am Plan wann geändert und warum?
+
+## 01. Lebenskompass
+- **Ikigai** — Schnittmenge: was ich liebe / worin ich gut bin / was die Welt braucht / wofür ich bezahlt werde
+- **Meine Rollen im Leben** — Sohn, Freund, Partner, Kollege... + was ich in jeder Rolle sein will
+- **Nekrolog-Übung** — Was sollen Menschen über mich sagen wenn ich nicht mehr da bin?
+- **Anti-Ziele** — Was will ich auf keinen Fall in meinem Leben (genauso wichtig wie Ziele)
+- **Persönliche Marke** — Wie will ich nach außen wahrgenommen werden?
+
+## 02. Zeitnavigator
+- **Energie-Management** — Chronotyp, Energiekurve über den Tag, wann bin ich am produktivsten?
+- **Time Blocking** — Feste Zeitblöcke für Tiefarbeit, Routine, Freizeit
+- **Nein-Strategie** — Klare Kriterien wann ich Anfragen ablehne
+- **Wochenintention** — Ein Leitwort/Fokusthema pro Woche
+- **Tagesjournal** — Tägliche Reflexion (fehlt noch in AkashaIndex unter Planung)
+
+## 03. VermögensDomäne
+- **FIRE-Strategie** — Ab wann bin ich finanziell frei? Konkretes Zieldatum
+- **7 Einkommensströme** — Plan für mehrere parallele Einnahmequellen
+- **Kreditwürdigkeit / Schufa** — Überwachung & aktive Verbesserung
+- **Testament & Erbschaft** — Was passiert mit meinem Vermögen?
+- **Gehaltsverhandlungs-Playbook** — Argumente, Zahlen, Strategie
+- **Schulden-Abbaustrategie** — Priorisierung welche Schulden zuerst weg
+
+## 04. VitalOase
+- **Laborwerte tracken** — Blutbild, Vitamin D, Testosteron etc. regelmäßig dokumentieren
+- **Zahn- & Mundgesundheit** — Routine, Check-Ups
+- **Augen- & Hörgesundheit** — Prävention und Check-Ups
+- **Ergonomie** — Arbeitsplatz, Schlafen, Körperhaltung
+- **Genussmittel-Tracking** — Alkohol, Koffein, Zucker bewusst managen
+
+## 05. InneresUniversum
+- **Dankbarkeits-Praxis** — Tägliche/wöchentliche Dankbarkeitsnotizen
+- **Shadow Work** — Unbewusste Muster & blinde Flecken kennenlernen
+- **Rollenvorbilder & Mentoren** — Wen bewundere ich? Was übernehme ich?
+- **Spiritualität / Weltbild** — Meine Sicht auf Sinn, Tod, Universum
+- **Emotionstagebuch** — Emotionen tracken um Muster zu erkennen
+
+## 06. SozialSphäre
+- **Generosität-Plan** — Was gebe ich aktiv zurück? (Zeit, Geld, Wissen)
+- **Beziehungs-Check-Ups** — Welche Beziehungen brauchen gerade Pflege?
+
+## 07. Alltagsmanagement
+- **Papierlosigkeit** — Alle physischen Dokumente digitalisieren
+- **Digitalminimalismus** — Welche Apps nutze ich wirklich? Was löschen?
+- **Kleidungs-Kapseln** — Bewusste kleine Garderobe statt Überfluss
+- **Umzugsplan** — Checkliste für geplanten Umzug
+
+## 08. Wissenskompendium
+- **Buch-Zusammenfassungen** — Eigene Notizen zu gelesenen Büchern (→ neue Kategorie `Bücher`)
+- **Mentale Modelle** — Sammlung von Denkrahmen (Pareto, Inversion, Dunning-Kruger...)
+- **Zitate-Sammlung** — Inspirierende Zitate die mich prägen
+- **Kurs-Notizen** — Zusammenfassungen von Online-Kursen
+- **Podcast-Highlights** — Wichtige Erkenntnisse aus Podcasts
+
+## 09. Freizeitatlas
+- **Restaurant & Café Wunschliste** — Orte die ich besuchen will
+- **Konzerte & Events-Tracker** — Vergangene Erlebnisse + Wunschliste
+- **Jahreszeiten-Aktivitäten** — Was mache ich bewusst in Frühling/Sommer/Herbst/Winter?
+- **Lokale Geheimtipps** — Versteckte Orte in meiner Stadt
+- **Erlebnis-Eimer** — Kleinere Dinge die ich bald erleben will (Mini-Bucketlist)
+
+## 10. Systemschmiede
+- **PKM-Methode** — Wie fließen Infos rein, werden verarbeitet & vernetzt? (Zettelkasten)
+- **Mobile Workflow** — Wie nutze ich den Lebensplan unterwegs (Handy)?
+- **Wöchentlicher System-Check** — System aufräumen, Inbox leeren, Tags pflegen
+- **API & Integrationen** — Kalender, Spotify, n8n anbinden
+- **Obsidian Vault Statistiken** — Wie befüllt ist das System?
 
 ---
 
-## 00. 📖 Fundamentum
-- **Systemregeln** — Klare Regeln wie das System gepflegt wird (wann wird was aktualisiert?)
-- **Lebensplan-Versionslog** — Was hat sich am Plan wann geändert und warum?
+# 🗺️ Geplante AkashaIndex-Ergänzungen — Wo genau hinzufügen
 
-## 01. 🧭 Lebenskompass
-- **Ikigai** — Schnittmenge aus: was ich liebe / worin ich gut bin / was die Welt braucht / wofür ich bezahlt werde
-- **Meine Rollen im Leben** — (Sohn, Freund, Partner, Kollege, Lernender...) + was ich in jeder Rolle sein will
-- **Nekrolog-Übung** — Was sollen Menschen über mich sagen wenn ich nicht mehr da bin? (Kraftvolle Vision)
-- **Persönliche Marke** — Wie will ich nach außen wahrgenommen werden?
-- **Anti-Ziele** — Was will ich auf keinen Fall in meinem Leben (genauso wichtig wie Ziele)
+*Konkrete Platzierungsvorschläge für die Erweiterungsideen oben.*
 
-## 02. ⏳ Zeitnavigator
-- **Energie-Management** — Wann bin ich am produktivsten? (Chronotyp, Energiekurve über den Tag)
-- **Time Blocking** — Feste Zeitblöcke für Tiefarbeit, Routine, Freizeit
-- **"Nein sagen"-Strategie** — Kriterien wann ich Anfragen ablehne
-- **Wochenintention** — Ein Leitwort/Fokusthema pro Woche setzen
-- **Totale Regenerationszeit** — Bewusst eingeplante Zeit ohne Produktivitätsdruck
+## 01. Lebenskompass → unter `04.Identität`
+```
+- 03.xxx {IkigaiUndRollen}
+    - Ikigai
+    - MeineRollenImLeben
+    - PersönlicheMarke
+- AntiZiele  ← unter 02.Ziele ergänzen
+```
 
-## 03. 💰 VermögensDomäne
-- **FIRE-Strategie** — Financial Independence / Retire Early — ab wann bin ich finanziell frei?
-- **7 Einkommensströme** — Plan für mehrere parallele Einnahmequellen
-- **Kreditwürdigkeit / Schufa** — Überwachung & Verbesserung
-- **Testament & Erbschaft** — Was passiert mit meinem Vermögen?
-- **Gehaltsverhandlungs-Playbook** — Argumente, Zahlen, Strategie für nächste Verhandlung
-- **Lebensversicherung & Absicherung** — Überblick über alle Absicherungen
+## 02. Zeitnavigator → unter `02.Zeitmanagement`
+```
+- EnergieManagement
+    - Chronotyp
+    - TagesEnergieKurve
+- TimeBlocking
+- NeinStrategie
+- Wochenintention  ← unter 04.PlanungUndReview/Planung/01.Wochenplanung
+- Tagesjournal  ← unter 04.PlanungUndReview/Planung als 00.Tagesplanung
+```
 
-## 04. 🧘‍♂️ VitalOase
-- **Blutbild & Laborwerte tracken** — Regelmäßige Werte dokumentieren (Vitamin D, Testosteron, etc.)
-- **Zahn- & Mundgesundheit** — Routine, Check-Ups, Ziele
-- **Augen- & Hörgesundheit** — Prävention und Check-Ups
-- **Ergonomie** — Arbeitsplatz, Schlafen, Körperhaltung optimieren
-- **Genussmittel-Tracking** — Alkohol, Koffein, Zucker bewusst managen
-- **Sexuelle Gesundheit** — Prävention, Aufklärung, Wohlbefinden
+## 03. VermögensDomäne → neue Unterknoten
+```
+- Finanzen
+    - FIREStrategie  ← unter Finanzplanung ergänzen
+    - Kreditwürdigkeit  ← unter Finanzplanung ergänzen
+    - SchuldenAbbaustrategie  ← unter Geldverlauf ergänzen
+- Vermögensaufbau
+    - 7Einkommensströme  ← neben Nebeneinkommen
+- xxx {RechtlicheAbsicherung}  ← neue Gruppe neben SteuernUndVersicherungen
+    - Testament
+    - Erbschaft
+    - Lebensversicherung
+- Karriere
+    - GehaltsverhandlungsPlaybook  ← unter Karriereplanung
+```
 
-## 05. 🌌 InneresUniversum
-- **Dankbarkeits-Praxis** — Tägliche/wöchentliche Dankbarkeitsnotizen (eigener Abschnitt, nicht nur Routine)
-- **Shadow Work** — Unbewusste Muster & dunkle Seiten kennenlernen und integrieren
-- **Rollenvorbilder & Mentoren** — Wen bewundere ich und warum? Was kann ich davon übernehmen?
-- **Vergebung** — Sich selbst und anderen vergeben (aktive Reflexion)
-- **Spiritualität / Weltbild** — Meine Sicht auf Sinn, Tod, Universum
-- **Emotionstagebuch** — Emotionen systematisch tracken um Muster zu erkennen
+## 04. VitalOase → neue Unterknoten
+```
+- 01.AllgemeineGesundheit
+    - GesundheitsVorsorge
+        - Laborwerte  ← neu
+        - ZahnUndMundGesundheit  ← neu
+        - AugenUndHörGesundheit  ← neu
+- 03.KörperlicheGesundheit
+    - Ergonomie  ← neu neben KörperMechanik
+- 02.Ernährung
+    - GenussmittelTracking  ← neu unter ErnährungsTracking
+```
 
-## 06. 🫂 SozialSphäre
-- **Netzwerk-Map** — Wer sind die wichtigsten Menschen in meinem Leben & Netzwerk?
-- **Mentoren aktiv suchen** — Wer könnte mich in welchem Bereich fördern?
-- **Umgang mit schwierigen Menschen** — Strategien für toxische Dynamiken
-- **Community / Vereine** — Bewusste Teilnahme an Gruppen (Kampfsport, IT, Kreativität...)
-- **Generosität-Plan** — Was gebe ich aktiv zurück? (Zeit, Geld, Wissen)
-- **Beziehungs-Check-Ups** — Regelmäßige Reflexion: welche Beziehungen brauchen Pflege?
+## 05. InneresUniversum → neue Unterknoten
+```
+- Selbstreflexion
+    - DankbarkeitsPraxis  ← neu
+    - Emotionstagebuch  ← neu
+- Selbstverbesserung
+    - ShadowWork  ← neu
+    - Spiritualität  ← neu
+- xxx {VorbilderUndMentoren}  ← neue Gruppe
+    - Rollenvorbilder
+    - MentorenSuche
+```
 
-## 07. 🏠 Alltagsmanagement
-- **Papierlosigkeit** — Strategie zur Digitalisierung aller physischen Dokumente
-- **Einkaufsroutine** — Fester Wochentag, Einkaufsstrategie, Preisvergleich
-- **Digitalminimalismus** — Welche Apps/Tools nutze ich wirklich? Was löschen?
-- **Kleidungs-Kapseln** — Bewusste, kleine Garderobe statt Überfluss
-- **Energie-Tracking** — Stromverbrauch, Nebenkosten aktiv beobachten
-- **Umzugsplan** — Falls Umzug geplant ist: Checkliste, Recherche, Zeitplan
+## 06. SozialSphäre → gesamte Struktur fehlt noch (siehe oben)
+```
+Generosität  ← unter 04.Netzwerk ergänzen
+BeziehungsCheckUps  ← eigene Notiz auf Bereichsebene
+```
 
-## 08. 📚 Wissenskompendium
-- **Buch-Zusammenfassungen** — Eigene Notizen zu gelesenen Büchern
-- **Mentale Modelle** — Sammlung von Denkrahmen (Pareto, Inversion, Dunning-Kruger...)
-- **Zitate-Sammlung** — Inspirierende Zitate die mich prägen
-- **Kurs-Notizen** — Zusammenfassungen von Online-Kursen, Vorlesungen
-- **Podcast-Highlights** — Wichtige Erkenntnisse aus Podcasts
-- **Lernpartner** — Mit wem lerne ich gemeinsam?
+## 07. Alltagsmanagement → gesamte Struktur fehlt noch (siehe oben)
+```
+- 01.Wohnen
+    - 05.Digitalminimalismus  ← neu
+    - Kleidungskapseln  ← unter 02.Inventur/Kleidung
+- 04.RechtDokumenteSicherheit
+    - 02.Dokumente
+        - Papierlosigkeit  ← neu als Strategie-Notiz
+```
 
-## 09. 🗺️ Freizeitatlas
-- **Restaurant & Café Wunschliste** — Orte die ich besuchen will (lokal & auf Reisen)
-- **Konzerte & Events-Tracker** — Vergangene Erlebnisse + Wunschliste
-- **Jahreszeiten-Aktivitäten** — Was mache ich bewusst in Frühling / Sommer / Herbst / Winter?
-- **Lokale Geheimtipps** — Versteckte Orte in meiner Stadt die ich kenne / entdecken will
-- **Vision Board** — Bildliche Darstellung meines Traumlebens
-- **Erlebnis-Eimer (Mini-Bucketlist)** — Kleinere Dinge die ich bald erleben will (nicht nur große Reisen)
+## 08. Wissenskompendium → neue Kategorien
+```
+- Bücher  ← neu (Buch-Zusammenfassungen, Lektüreliste)
+- MentaleModelle  ← neu
+- Zitate  ← neu
+- Lernmaterial  ← neue Gruppe
+    - KursNotizen
+    - PodcastHighlights
+```
 
-## 10. ⚙️ Systemschmiede
-- **Second Brain / Zettelkasten** — Methode für permanente Notizen & Wissensvernetzung
-- **PKM-Methode (Personal Knowledge Management)** — Wie fließen Infos rein, werden verarbeitet & gespeichert?
-- **Obsidian Vault Statistiken** — Wie groß ist das System? Wieviel ist befüllt?
-- **Mobile Workflow** — Wie nutze ich den Lebensplan unterwegs (Handy)?
-- **Wöchentlicher System-Check** — Feste Routine: System aufräumen, Inbox leeren, Tags pflegen
-- **API & Integrationen** — Welche externen Dienste sind/sollen angebunden werden? (Kalender, Spotify, etc.)
+## 09. Freizeitatlas → gesamte Struktur fehlt noch (siehe oben)
+```
+- 01.ReiseUndAbenteuer
+    - ErlebnisEimer  ← unter Reiseziele
+- 05.SozialeAktivitäten
+    - JahreszeitenAktivitäten  ← neu
+    - LokaleGeheimtipps  ← neu
+    - RestaurantWunschliste  ← neu
+    - EventsUndKonzerte  ← neu
+```
+
+## 10. Systemschmiede → neue Unterknoten
+```
+- Yggdrasil
+    - PKM  ← neu (Zettelkasten, Second Brain Methode)
+    - MobileWorkflow  ← neu
+    - WöchentlicherSystemCheck  ← neu
+    - APIIntegrationen  ← neu
+    - VaultStatistiken  ← neu
+```
+

@@ -29,7 +29,7 @@ xxx ->(braucht einen namen der alles beschreibt was drinne ist)
 	- 01.PersönlicheIdentität
 		- Selbstbild
 		- Persönlichkeitsanalyse
-	- 02.xxx 
+	- 02.Weltbild
 		- Lebensphilosophie
 		- SinndesLebens
 # 02.Zeitnavigator
@@ -51,7 +51,7 @@ xxx ->(braucht einen namen der alles beschreibt was drinne ist)
 	- xxx
 		- Fokus
 		- Priorisierung
-	- xxx
+	- Tagestypen
 		- Fokustage
 		- Pflegetage
 		- Einkaufstage
@@ -59,10 +59,10 @@ xxx ->(braucht einen namen der alles beschreibt was drinne ist)
 	- Produktivitätsstrategien
 - 03.xxx
 	- Routinen (Bewusst)
-		- xxx
+		- Tagesrituale
 			- Morgenroutine
 			- Abendroutine
-		- xxx
+		- Lebensstilroutinen
 			- Fitnessroutine
 			- Essensroutine
 			- Lernroutine
@@ -70,13 +70,13 @@ xxx ->(braucht einen namen der alles beschreibt was drinne ist)
 		- RoutineTracker
 		- 30TageRoutineExperiment
 	- Gewohnheiten (Automatisch)
-		- xxx
+		- GewohnheitenManagement
 			- GuteGewohnheitenAufbauen
 			- SchlechteGewohnheitenAbbauen
 - 04.xxx
 	- Planung
 		- 01.Wochenplanung
-		- 02.Monatsplanng
+		- 02.Monatsplanung
 		- 03.Quartalplanung
 		- 04.Jahresplanung
 	- Review
@@ -107,23 +107,23 @@ xxx ->(braucht einen namen der alles beschreibt was drinne ist)
 		- Paypal
 - Vermögensaufbau
 	- Investitionsstrategien
-	- xxx
+	- Wertpapiere
 		- Aktien
 		- ETFs
 	- xxx
 		- Immobilien
 		- REIT
-	- xxx
+	- Sparplan
 		- Sparstrategien
 		- Sparziele
-	- xxx
-		- Altersvorsorge
+	- xxx 
+    - Altersvorsorge
 		- Rücklagen
 	- Nebeneinkommen
 		- PassiveEinkommen
 		- Nebenjob
 		- OnlineBusiness
-- xxx
+- Verpflichtungen
 	- Steuern
 		- Steuererklärung
 		- Steueroptimierung
@@ -132,23 +132,23 @@ xxx ->(braucht einen namen der alles beschreibt was drinne ist)
 		- Arbeitsunfähigkeitsversicherung
 		- Zahnzusatzversicherung
 - Karriere
-	- BeruflicheEntwickung
+	- BeruflicheEntwicklung
 		- Ausbildungsplan
 		- Weiterbildungen
-	- xxx
-		- Qualifikation (Theorie Wissen)
-		- unersetzliche Fähigkeiten (Praktische Fähigkeiten)
+	- Kompetenzaufbau
+		- Qualifikation
+		- UnersetzlicheFähigkeiten
 	- Karriereplanung
 		- LinkedIn
 		- Gehaltsvorstellung
-	- xxx
+	- Arbeitsgestaltung
 		- Aufstiegsmöglichkeiten
 		- Homeoffice
 	- Selbstständigkeit
 	- PerformanceReviews
 # 04.VitalOase
 - 01.AllgemeineGesundheit
-	- ???
+	- Gesundheitsvorsorge
 		- Wohlbefinden
 		- Checkups
 	- Impfungen
@@ -181,18 +181,18 @@ xxx ->(braucht einen namen der alles beschreibt was drinne ist)
 	- xxx
 		- Haltung
 		- Atmung
-	- xxx
+	- Körperpflege
 		- Hygiene
 		- Pflege
 - 04.MentaleGesundheit
 	- Meditation
-		- Meditatinsatmung
-	- Mentaltraning
+		- Meditationsatmung
+	- Mentaltraining
 		- Gedächtnis
 		- Konzentration
-		- kognitiveFähigkeiten
+		- KognitiveFähigkeiten
 	- Stressbewältigung
-	- xxx
+	- Energiehaushalt
 		- EmotionaleEnergie
 		- MentaleEnergie
 	- Schlaf
@@ -206,30 +206,30 @@ xxx ->(braucht einen namen der alles beschreibt was drinne ist)
 	- Vergangenheitsanalyse
 	- Lebensbalance
 	- Bias-Analyse
-	- xxx
+	- Selbstprofil
 		- Stärken 
 		- Schwächen
 - Selbstverbesserung
 	- xxx (Charakterentwicklung & Charisma)
 	- UmgangmitKritik
 	- InnereKonflikteLösen
-	- xxx (Logik & kritisches Denken)
+	- Analytik (Logik & kritisches Denken)
 	- UmgangmitLebenskrisen
 - Kommunikation
-	- xxx
+	- Gesprächskunst
 		- Rhetorik 
 		- Zuhören
 	- GesprächeSteuern
 	- Konfliktmanagement
 	- Körpersprache
 	- InteressanterWirken
-- Denkweisen / Mindset
+- Denkweisen
 	- NoExcuseMindset
-	- First PrinciplesThinking
+	- FirstPrinciplesThinking
 	- SecondOrderThinking
 	- NegativeGedankenmusterUmwandeln
-	- DenkeninWahrscheinlichkeiten
-	- ReverseEngineeringvonErfolg
+	- DenkenInWahrscheinlichkeiten
+	- ReverseEngineeringVonErfolg
 - Suchtverhalten
 	- Rauchsucht
 	- Kiffsucht
@@ -240,7 +240,7 @@ xxx ->(braucht einen namen der alles beschreibt was drinne ist)
 - Comics&Manga
 - DnDKreaturen
 - Edelsteine&Edelmetalle
-- File&Serien
+- Film&Serien
 - Finanzwesen
 - Geographie
 - Geschichte
@@ -250,7 +250,7 @@ xxx ->(braucht einen namen der alles beschreibt was drinne ist)
 - Mythologien
 	- ÄgyptischeMythologie
 	- BabylonischeMythologie
-	- GrischischeMythologie
+	- GriechischeMythologie
 	- KeltischeMythologie
 	- NordischeMythologie
 - Pflanzen&Pilze
@@ -269,7 +269,7 @@ xxx ->(braucht einen namen der alles beschreibt was drinne ist)
 # 10.Systemschmiede
 - Yggdrasil (Infrastruktur)
 	- ClaudeCode
-		- GlobalesVerzeichniss
+		- GlobalesVerzeichnis
 			- GlobaleAgenten
 				- ExpertenAgenten
 					- DockerAgent
