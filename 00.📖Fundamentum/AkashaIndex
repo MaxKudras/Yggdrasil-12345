@@ -1,4 +1,4 @@
-xxx {Lebensplan}
+xxx ->(braucht einen namen der alles beschreibt was drinne ist)
 # 00.Fundamentum
 - AkashaOrdnerGuide
 	- 00.FundamentumGuide
@@ -29,7 +29,7 @@ xxx {Lebensplan}
 	- 01.PersönlicheIdentität
 		- Selbstbild
 		- Persönlichkeitsanalyse
-	- 02.xxx {Weltbild}
+	- 02.Weltbild
 		- Lebensphilosophie
 		- SinndesLebens
 # 02.Zeitnavigator
@@ -48,21 +48,21 @@ xxx {Lebensplan}
 		- Dokumentenfristen
 - 02.Zeitmanagement
 	- ZeitmanagementStrategie
-	- xxx {Priorisierung}
+	- xxx
 		- Fokus
 		- Priorisierung
-	- xxx {Tagestypen}
+	- Tagestypen
 		- Fokustage
 		- Pflegetage
 		- Einkaufstage
 		- Ordnungstage
 	- Produktivitätsstrategien
-- 03.xxx {Lebensrhythmus}
+- 03.xxx
 	- Routinen (Bewusst)
-		- xxx {Tagesrituale}
+		- Tagesrituale
 			- Morgenroutine
 			- Abendroutine
-		- xxx {Lebensstilroutinen}
+		- Lebensstilroutinen
 			- Fitnessroutine
 			- Essensroutine
 			- Lernroutine
@@ -70,10 +70,10 @@ xxx {Lebensplan}
 		- RoutineTracker
 		- 30TageRoutineExperiment
 	- Gewohnheiten (Automatisch)
-		- xxx {Gewohnheitsdesign}
+		- GewohnheitenManagement
 			- GuteGewohnheitenAufbauen
 			- SchlechteGewohnheitenAbbauen
-- 04.xxx {Lebenssteuerung}
+- 04.xxx
 	- Planung
 		- 01.Wochenplanung
 		- 02.Monatsplanung
@@ -107,23 +107,23 @@ xxx {Lebensplan}
 		- Paypal
 - Vermögensaufbau
 	- Investitionsstrategien
-	- xxx {Wertpapiere}
+	- Wertpapiere
 		- Aktien
 		- ETFs
-	- xxx {Immobilien}
+	- xxx
 		- Immobilien
 		- REIT
-	- xxx {Sparplan}
+	- Sparplan
 		- Sparstrategien
 		- Sparziele
-	- xxx {Altersvorsorge}
-		- Altersvorsorge
+	- xxx 
+    - Altersvorsorge
 		- Rücklagen
 	- Nebeneinkommen
 		- PassiveEinkommen
 		- Nebenjob
 		- OnlineBusiness
-- xxx {Verpflichtungen}
+- Verpflichtungen
 	- Steuern
 		- Steuererklärung
 		- Steueroptimierung
@@ -135,20 +135,20 @@ xxx {Lebensplan}
 	- BeruflicheEntwicklung
 		- Ausbildungsplan
 		- Weiterbildungen
-	- xxx {Kompetenzaufbau}
+	- Kompetenzaufbau
 		- Qualifikation
 		- UnersetzlicheFähigkeiten
 	- Karriereplanung
 		- LinkedIn
 		- Gehaltsvorstellung
-	- xxx {Arbeitsgestaltung}
+	- Arbeitsgestaltung
 		- Aufstiegsmöglichkeiten
 		- Homeoffice
 	- Selbstständigkeit
 	- PerformanceReviews
 # 04.VitalOase
 - 01.AllgemeineGesundheit
-	- xxx {Gesundheitsvorsorge}
+	- Gesundheitsvorsorge
 		- Wohlbefinden
 		- Checkups
 	- Impfungen
@@ -166,9 +166,9 @@ xxx {Lebensplan}
 	- Supplements
 		- Creatin
 		- Omega3
-	- xxx {Superfoods}
+	- xxx
 		- Superfoods
-		- xxx {Grundnahrungsmittel}
+		- xxx (Must have Lebensmittel)
 	- ErnährungsTracking
 		- WasserTracker
 		- EssensTracker
@@ -178,10 +178,10 @@ xxx {Lebensplan}
 		- Flexibilitätplan
 		- Ausdauerplan
 		- Calistenicsplan
-	- xxx {Körpermechanik}
+	- xxx
 		- Haltung
 		- Atmung
-	- xxx {Körperpflege}
+	- Körperpflege
 		- Hygiene
 		- Pflege
 - 04.MentaleGesundheit
@@ -192,7 +192,7 @@ xxx {Lebensplan}
 		- Konzentration
 		- KognitiveFähigkeiten
 	- Stressbewältigung
-	- xxx {Energiehaushalt}
+	- Energiehaushalt
 		- EmotionaleEnergie
 		- MentaleEnergie
 	- Schlaf
@@ -206,18 +206,18 @@ xxx {Lebensplan}
 	- Vergangenheitsanalyse
 	- Lebensbalance
 	- Bias-Analyse
-	- xxx {Selbstprofil}
-		- Stärken
+	- Selbstprofil
+		- Stärken 
 		- Schwächen
 - Selbstverbesserung
-	- xxx {Charakterentwicklung}
-	- UmgangMitKritik
+	- xxx (Charakterentwicklung & Charisma)
+	- UmgangmitKritik
 	- InnereKonflikteLösen
-	- xxx {Analytik}
-	- UmgangMitLebenskrisen
+	- Analytik (Logik & kritisches Denken)
+	- UmgangmitLebenskrisen
 - Kommunikation
-	- xxx {Gesprächskunst}
-		- Rhetorik
+	- Gesprächskunst
+		- Rhetorik 
 		- Zuhören
 	- GesprächeSteuern
 	- Konfliktmanagement
@@ -267,7 +267,7 @@ xxx {Lebensplan}
 		- Astronomie
 # 09.Freizeitatlas
 # 10.Systemschmiede
-- Yggdrasil
+- Yggdrasil (Infrastruktur)
 	- ClaudeCode
 		- GlobalesVerzeichnis
 			- GlobaleAgenten
@@ -278,7 +278,7 @@ xxx {Lebensplan}
 			- GlobaleMCP
 			- GlobaleSkills
 		- UniversaleClaude.mdAbschnitte
-		- ClaudeCodeProjekte
+		- ClaudeCodeProjkete
 	- GitHub
 	- VPS
 		- Docker
