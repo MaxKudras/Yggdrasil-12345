@@ -9,30 +9,7 @@
 *Beziehungen zu Familie, Freunden und Partner. Soziales Leben gestalten und pflegen.*
 
 ## Geplante AkashaIndex-Struktur
-- 01.Familie
-	- FamilienManagement
-	- Traditionen
-		- BestehendeTraditionen
-		- NeueTraditionen
-	- GeschenkideenFamilie
-- 02.Freunde
-	- FreundschaftsManagement
-	- FreundschaftsPriorität
-	- GeschenkideenFreunde
-- 03.Partner
-	- BessererPartnerWerden
-	- BeziehungsKommunikation
-	- KonfliktlösungBeziehung
-	- DateIdeen
-	- ÜberraschungenPartner
-	- GeschenkideenPartner
-- 04.Netzwerk
-	- NetzwerkMap
-	- MentorenSuche
-	- Community
-		- Vereine
-		- OnlineGruppen
-	- UmgangSchwierigeMenschen
+
 
 ## ❓ Offene Fragen
 - Gemeinsame Ausflüge / Events → hier oder `09.Freizeitatlas`? → soziale Planung hier, Reisen & Abenteuer dort
