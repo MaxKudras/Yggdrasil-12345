@@ -24,38 +24,6 @@
 > ⚠️ Aktuell als `03.Alltagsmanagemnt` im Root — Umbenennung auf `07.Alltagsmanagement` nötig.
 
 ## Geplante AkashaIndex-Struktur
-- 01.Wohnen
-	- 01.Haushalt
-		- HaushaltsManagement
-		- Putzpläne
-		- OrdnungsPlan
-		- LebensmittelVorrat
-		- Nachhaltigkeit
-	- 02.Inventur
-		- Möbel
-		- Kleidung
-		- SmartHome
-		- BesitzVerwaltung
-	- 03.Innenarchitektur
-		- EinrichtungsIdeen
-		- Raumaufteilung
-		- Renovierung
-		- Deko
-	- 04.Wohnträume
-- 02.HaustierePflanzen
-	- Haustiere
-		- Futterpläne
-		- TierGesundheit
-		- Erziehung
-	- Pflanzen
-		- Gießpläne
-		- Kräutergarten
-		- PflanzenPflege
-- 03.Mobilität
-	- ÖffentlicheVerkehrsmittel
-	- EBike
-	- Auto
-	- Fahrrad
 - 04.RechtDokumenteSicherheit
 	- 01.Recht
 		- Arbeitsgesetze
@@ -84,51 +52,6 @@
 > ⚠️ `07.💰VermögensDomäne` liegt aktuell fälschlicherweise hier drin → auslagern.
 
 ## Geplante AkashaIndex-Struktur
-- 01.ReiseUndAbenteuer
-	- Reiseziele
-		- Wunschorte
-		- LänderReiseziele
-		- HiddenGems
-		- Sprachreisen
-	- GeplanteReisen
-		- Packliste
-		- Reiseplanung
-		- ReiseBudget
-	- KurzReisen
-		- Waldwanderung
-		- Stadtausflüge
-		- Roadtrips
-	- ReiseDokumentation
-		- Reisetagebuch
-		- Fotoalbum
-- 02.Hobbys
-	- KreativeHobbys
-		- MusikMachen
-		- Kunst
-		- Malen
-		- Schreiben
-		- TabletopSpiele
-	- SportlicheHobbys
-		- Kampfkunst
-		- Parkour
-		- Calisthenics
-	- MentaleHobbys
-		- Gaming
-		- Astronomie
-		- Programmieren
-	- HobbyZukunftsplan
-- 03.Projekte
-	- IT-Projekte
-	- DIY-Projekte
-	- 3D-DruckProjekte
-	- KunstProjekte
-	- WissenschaftlicheExperimente
-- 04.Sammlungen
-- 05.SozialeAktivitäten
-	- DinnerPartys
-	- Spieleabende
-	- FamilienAktivitäten
-	- AktivitätenMitFreunden
 
 ## ❓ Offene Fragen
 - Programmieren als Hobby → hier (Projekte/Spaß), Lernaspekt in `08.Wissenskompendium`
