@@ -91,13 +91,6 @@
 - **Systemregeln** — Wann wird was gepflegt? Feste Wartungsroutine für den Plan
 - **Lebensplan-Versionslog** — Was hat sich am Plan wann geändert und warum?
 
-## 01. Lebenskompass
-- **Ikigai** — Schnittmenge: was ich liebe / worin ich gut bin / was die Welt braucht / wofür ich bezahlt werde
-- **Meine Rollen im Leben** — Sohn, Freund, Partner, Kollege... + was ich in jeder Rolle sein will
-- **Nekrolog-Übung** — Was sollen Menschen über mich sagen wenn ich nicht mehr da bin?
-- **Anti-Ziele** — Was will ich auf keinen Fall in meinem Leben (genauso wichtig wie Ziele)
-- **Persönliche Marke** — Wie will ich nach außen wahrgenommen werden?
-
 ## 02. Zeitnavigator
 - **Energie-Management** — Chronotyp, Energiekurve über den Tag, wann bin ich am produktivsten?
 - **Time Blocking** — Feste Zeitblöcke für Tiefarbeit, Routine, Freizeit
@@ -111,7 +104,6 @@
 - **Kreditwürdigkeit / Schufa** — Überwachung & aktive Verbesserung
 - **Testament & Erbschaft** — Was passiert mit meinem Vermögen?
 - **Gehaltsverhandlungs-Playbook** — Argumente, Zahlen, Strategie
-- **Schulden-Abbaustrategie** — Priorisierung welche Schulden zuerst weg
 
 ## 04. VitalOase
 - **Laborwerte tracken** — Blutbild, Vitamin D, Testosteron etc. regelmäßig dokumentieren
@@ -132,17 +124,13 @@
 - **Beziehungs-Check-Ups** — Welche Beziehungen brauchen gerade Pflege?
 
 ## 07. Alltagsmanagement
-- **Papierlosigkeit** — Alle physischen Dokumente digitalisieren
 - **Digitalminimalismus** — Welche Apps nutze ich wirklich? Was löschen?
 - **Kleidungs-Kapseln** — Bewusste kleine Garderobe statt Überfluss
 - **Umzugsplan** — Checkliste für geplanten Umzug
 
 ## 08. Wissenskompendium
-- **Buch-Zusammenfassungen** — Eigene Notizen zu gelesenen Büchern (→ neue Kategorie `Bücher`)
 - **Mentale Modelle** — Sammlung von Denkrahmen (Pareto, Inversion, Dunning-Kruger...)
-- **Zitate-Sammlung** — Inspirierende Zitate die mich prägen
 - **Kurs-Notizen** — Zusammenfassungen von Online-Kursen
-- **Podcast-Highlights** — Wichtige Erkenntnisse aus Podcasts
 
 ## 09. Freizeitatlas
 - **Restaurant & Café Wunschliste** — Orte die ich besuchen will
@@ -163,15 +151,6 @@
 # 🗺️ Geplante AkashaIndex-Ergänzungen — Wo genau hinzufügen
 
 *Konkrete Platzierungsvorschläge für die Erweiterungsideen oben.*
-
-## 01. Lebenskompass → unter `04.Identität`
-```
-- 03.xxx {IkigaiUndRollen}
-    - Ikigai
-    - MeineRollenImLeben
-    - PersönlicheMarke
-- AntiZiele  ← unter 02.Ziele ergänzen
-```
 
 ## 02. Zeitnavigator → unter `02.Zeitmanagement`
 ```
@@ -237,19 +216,13 @@ BeziehungsCheckUps  ← eigene Notiz auf Bereichsebene
 - 01.Wohnen
     - 05.Digitalminimalismus  ← neu
     - Kleidungskapseln  ← unter 02.Inventur/Kleidung
-- 04.RechtDokumenteSicherheit
-    - 02.Dokumente
-        - Papierlosigkeit  ← neu als Strategie-Notiz
 ```
 
 ## 08. Wissenskompendium → neue Kategorien
 ```
-- Bücher  ← neu (Buch-Zusammenfassungen, Lektüreliste)
 - MentaleModelle  ← neu
-- Zitate  ← neu
 - Lernmaterial  ← neue Gruppe
     - KursNotizen
-    - PodcastHighlights
 ```
 
 ## 09. Freizeitatlas → gesamte Struktur fehlt noch (siehe oben)
