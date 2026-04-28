@@ -14,10 +14,16 @@ xxx ->(braucht einen namen der alles beschreibt was drinne ist)
 		- 5-JahreZiel
 		- 10-JahreZiel
 		- 20-JahreZiel
+	- xxx
+		- 01.Wochenziele
+		- 02.Monatsziele
+		- 03.Jahresziele
 	- Bucketliste
 	- Wunschziele
 	- Meilensteine
 	- IdealesLeben
+		- MeinIdealesLeben
+		- xxx (Idealbild deines Tages- und Lebensstils)
 	- LebensbereichZiele
 		- KarriereZiele
 		- ReiseZiele
@@ -29,15 +35,15 @@ xxx ->(braucht einen namen der alles beschreibt was drinne ist)
 	- 01.PersönlicheIdentität
 		- Selbstbild
 		- Persönlichkeitsanalyse
-	- 02.Weltbild
+	- 02.Weltbild 
 		- Lebensphilosophie
-		- SinndesLebens
+		- Ikigai
 # 02.Zeitnavigator
 - 01.Kalender
 	- Sozialkalender
 		- Geburtstage
 		- Feieren
-		- Jubiläen
+			- Jubiläen
 	- GeplanteAktivitäten
 		- Familie
 		- Freunde
@@ -53,35 +59,57 @@ xxx ->(braucht einen namen der alles beschreibt was drinne ist)
 		- Priorisierung
 	- Tagestypen
 		- Fokustage
-		- Pflegetage
+		- Pflegetage (selbst Pflege)
 		- Einkaufstage
 		- Ordnungstage
+		- Haushaltstage
+		- Organisationstage
+		- Projekttage
 	- Produktivitätsstrategien
 - 03.xxx
 	- Routinen (Bewusst)
 		- Tagesrituale
 			- Morgenroutine
 			- Abendroutine
+			- Schlafroutine
 		- Lebensstilroutinen
 			- Fitnessroutine
 			- Essensroutine
 			- Lernroutine
 			- Meditationsroutine
+		- Wochenroutinen
+			- Montagroutine
+			- Mittwochroutine
+			- Freitagroutine
 		- RoutineTracker
 		- 30TageRoutineExperiment
+		- NeueRoutinen
 	- Gewohnheiten (Automatisch)
 		- GewohnheitenManagement
 			- GuteGewohnheitenAufbauen
 			- SchlechteGewohnheitenAbbauen
+		- NachhaltigeGewohnheiten
+			- PlastikMinimierung
+			- MüllTrennung
+			- ÖkoFußabdruckMinimieren
 - 04.xxx
 	- Planung
 		- 01.Wochenplanung
-		- 02.Monatsplanung
+			- Top5Priorität
+			- Wochenfokus
+			- Wochenendsplanung
+		- 02.Monatsplanng
 		- 03.Quartalplanung
 		- 04.Jahresplanung
 	- Review
-		- 01.Monatsrückblick
-		- 02.Jahresrückblick
+		- 01.Wochenrückblick
+			- Ticketreview
+			- Erfolge
+			- Herausforderungen
+			- Gewohnheitsanpassung
+		- 02.Monatsrückblick
+			- Monatszieleanpassen
+		- 03.Jahresrückblick
 			- JahresErfolge
 			- LessonsLearned
 		- Lebensrückblick
@@ -95,10 +123,12 @@ xxx ->(braucht einen namen der alles beschreibt was drinne ist)
 		- MonatsBudget
 		- JahresBudget
 		- ReiseBudget
+			- Kurzreise Budget
+			- Weltreise Budget
+			- Langzeitreise Budget
 		- ProjektBudget
 	- Finanzplanung
 		- Fixkosten
-			- Abos
 		- Notfallreserve
 		- AntiInflation
 	- Geldverlauf
@@ -116,28 +146,29 @@ xxx ->(braucht einen namen der alles beschreibt was drinne ist)
 	- Sparplan
 		- Sparstrategien
 		- Sparziele
-	- xxx 
-    	- Altersvorsorge
+	- Sparplan
+		- Altersvorsorge
 		- Rücklagen
 	- Nebeneinkommen
 		- PassiveEinkommen
 		- Nebenjob
 		- OnlineBusiness
+		- GehaltProjekte
 - xxx
 	- Steuern
 		- Steuererklärung
 		- Steueroptimierung
-	- Versicherung
+	- Versicherung (geht richung kosten und soll im namen presentiert werden)
 		- Haftpflichtversicherung
 		- Arbeitsunfähigkeitsversicherung
 		- Zahnzusatzversicherung
 - Karriere
-	- BeruflicheEntwicklung
+	- BeruflicheEntwickung
 		- Ausbildungsplan
 		- Weiterbildungen
 	- Kompetenzaufbau
-		- Qualifikation
-		- UnersetzlicheFähigkeiten
+		- Qualifikation (Theorie Wissen)
+		- unersetzliche Fähigkeiten (Praktische Fähigkeiten)
 	- Karriereplanung
 		- LinkedIn
 		- Gehaltsvorstellung
@@ -148,10 +179,10 @@ xxx ->(braucht einen namen der alles beschreibt was drinne ist)
 	- PerformanceReviews
 # 04.VitalOase
 - 01.AllgemeineGesundheit
-	- Gesundheitsvorsorge
+	- Selbstfürsorge
 		- Wohlbefinden
 		- Checkups
-	- Impfungen
+		- Impfungen
 	- Biohacking
 		- BiologischesAlterSenken
 		- GesundheitSteigern
@@ -172,6 +203,7 @@ xxx ->(braucht einen namen der alles beschreibt was drinne ist)
 	- ErnährungsTracking
 		- WasserTracker
 		- EssensTracker
+	- Mahlzeitplan
 - 03.KörperlicheGesundheit
 	- Trainingsplan
 		- Kraftplan
@@ -186,11 +218,11 @@ xxx ->(braucht einen namen der alles beschreibt was drinne ist)
 		- Pflege
 - 04.MentaleGesundheit
 	- Meditation
-		- Meditationsatmung
-	- Mentaltraining
+		- Meditatinsatmung
+	- Mentaltraning
 		- Gedächtnis
 		- Konzentration
-		- KognitiveFähigkeiten
+		- kognitiveFähigkeiten
 	- Stressbewältigung
 	- Energiehaushalt
 		- EmotionaleEnergie
@@ -223,34 +255,124 @@ xxx ->(braucht einen namen der alles beschreibt was drinne ist)
 	- Konfliktmanagement
 	- Körpersprache
 	- InteressanterWirken
-- Denkweisen
+- Denkweisen / Mindset
 	- NoExcuseMindset
-	- FirstPrinciplesThinking
+	- First PrinciplesThinking
 	- SecondOrderThinking
 	- NegativeGedankenmusterUmwandeln
-	- DenkenInWahrscheinlichkeiten
-	- ReverseEngineeringVonErfolg
+	- DenkeninWahrscheinlichkeiten
+	- ReverseEngineeringvonErfolg
 - Suchtverhalten
 	- Rauchsucht
 	- Kiffsucht
 # 06.SozialSphäre
+- 01.Familie
+	- FamilienManagement
+	- Traditionen
+	    - BestehendeTraditionen
+	    - NeueTraditionen
+	- GeschenkideenFamilie
+- 02.Partner
+	- BessererPartnerWerden
+	- BeziehungsKommunikation
+	- KonfliktlösungBeziehung
+	- DateIdeen
+	- ÜberraschungenPartner
+	- GeschenkideenPartner
+- 03.Freunde
+	- FreundschaftsManagement
+	- FreundschaftsPriorität
+	- GeschenkideenFreunde
 # 07.Alltagsmanagement
+- 01.Wohnen
+	- 01.Haushalt
+		- HaushaltsManagement
+		- Putzpläne
+		- Ordnungsplan
+		- LebensmittelVorrat
+		- Nachhaltigkeit
+	- 02.Inventur
+		- Möbel
+		- Kleidung
+		- SmartHome
+		- BesitzVerwaltung
+		- Werkzeug
+	- 03.Innenarchitektur
+		- EinrichtungsIdeen
+		- Raumaufteilung
+		- Renovierung
+		- Deko
+	- 04.Wohnträume
+- 02.xxx
+	- Haustiere
+		- Futterpläne
+		- TierGesundheit
+		- TierErziehung
+		- TierAktivitäten
+	- Pflanzen
+		- Gießpläne
+		- Gärtnern
+			- Kräutergarten
+				- Minze
+				- Basilikum
+		- PflanzenPflege
+		- WohnungsPflanzen
+- 03.Mobilität
+	- ÖPNV
+	- EScooter
+	- Auto
+	- Fahrrad
+		- NormalesFahrrad
+		- EBike
+- 04.xxx
+	- Rechte
+		- Arbeitsgesetze
+		- Mietrecht
+	- Dokumente
+		- Verträge
+			- Arbeitsvertrag
+			- Versicherung
+		- RechtlicheDokumente
+			- Willenserklärung
+			- Steuerunterlagen
+		- AllgemeineDokumente
+			- AbiZeugniss
+			- Ausbildungsnachweis
+			- Zertifikate
+				- CCNA
+		- Rechnungen
+	- Sicherheit
+		- ErsteHilfe
+		- Notfallplan
+			- Notfallkontakte
+				- Anwalt
+				- Notare
+				- Arzt
+				- Behörde
+				- Versicherung
+				- Bank
+			- Notlagen
+				- Jobverlust
+				- Trennung
+				- Krankheit
+				- Katastrophen
+				- Stromausfall
+				- Feueralarm
 # 08.Wissenskompendium
 - Archeologie
 - Comics&Manga
-- DnDKreaturen
+- D&DKreaturen
 - Edelsteine&Edelmetalle
-- Film&Serien
+- File&Serien
 - Finanzwesen
-- Geographie
-- Geschichte
-- Informatik
-	- Netzwerk
-- Mathe
+	- Aktienwissen
+	- ETFwissen
+	- Imboilienwissen
+	- Kryptowährungwissen
 - Mythologien
 	- ÄgyptischeMythologie
 	- BabylonischeMythologie
-	- GriechischeMythologie
+	- GrischischeMythologie
 	- KeltischeMythologie
 	- NordischeMythologie
 - Pflanzen&Pilze
@@ -260,16 +382,104 @@ xxx ->(braucht einen namen der alles beschreibt was drinne ist)
 	- Russisch
 	- Spanisch
 - Tiere
-- Wissenschaften
+- Formalwissenschaften
+	- Informatik
+		- Netzwerk
+	- Mathe
+- Kulturwissenschaften
+	- Geschichte
+	- Philosophie
+	- Religion
+- Naturwissenschaften
 	- Biologie
 	- Chemie
+	- Geographie
+	- Medizin
 	- Physik
 		- Astronomie
 # 09.Freizeitatlas
+- 01.xxx
+	- Reiseziele
+		- Wunschorte
+			- Dschungel
+			- GizaPyramiden
+			- MachuPicchu
+			- Polarlichter
+			- Safari
+			- SchlossNeuschwanstein
+			- Wüste
+		- LänderReiseziele
+			- Australien
+			- Brasilien
+			- USA
+			- Japan
+			- China
+			- Indien
+			- Spanien
+			- Madeira
+			- Azoren
+			- Hawaii
+			- Neuseeland
+			- Südafrika
+			- Egypten
+			- Grichenland
+			- Türkei
+			- Italien
+			- Kroatien
+			- Mexico
+			- Thailand
+			- Vietnam
+			- Chile
+		- HiddenGems
+		- Sprachreisen
+	- GeplanteReisen
+		- Packliste
+		- Reiseplanung
+		- ReiseBudget
+	- KurzReisen (spontane ausflüge)
+		- Waldwanderung
+		- Seeausflug
+		- Stadtausflüge
+		- Roadtrips
+	- ReiseDokumentation
+		- ReiseFotoAlbum
+- 02.Hobbies
+	- KreativeHobbies
+		- MusikSpielen 
+		- TabletopSpiele
+			- D&DSpiel
+		- Kunst
+			- Graffiti
+			- Töpfern
+	- SportlicheHobbies
+		- Kampfkunst
+			- StraßenkampfTechniken
+			- Boxen
+			- KungFu
+	- MentaleHobbies
+		- xxx (Astronomie/Stargazing) (soll einzigarttig erkennbar sein das es ein hiobbie ist und kein part der Wiki astronomie)
+		- Gaming
+		- MusikHören
+	- HobbyZukunftsplan
+- 03.Projekte
+	- ITProjekte
+	- 3DDruckProjekte
+	- KunstProjekte
+	- WissenschaftlicheProjekte
+	- Heimwerken
+		- Upcycling
+		- Möbelbau
+- 04.Sammlungen
+- 05.SozialeAktivitäten
+	- DinnerPartys
+	- Spieleabende
+	- FamilienAktivitäten
+	- PartnerAktivitäten
+	- FreundeAktivitäten
 # 10.Systemschmiede
 - Yggdrasil (Infrastruktur)
 	- ClaudeCode
-		- GlobalesVerzeichnis
+		- GlobalesVerzeichniss
 			- GlobaleAgenten
 				- ExpertenAgenten
 					- DockerAgent
@@ -282,3 +492,31 @@ xxx ->(braucht einen namen der alles beschreibt was drinne ist)
 	- GitHub
 	- VPS
 		- Docker
+		- N8N
+			- N8NWorkflows
+- SystemNamensgebung
+
+
+
+
+
+# Prüfen wo hin 
+Veranstaltungen/Events mit freunde/Familie/Partner
+Abos:
+- Amazon
+- Hostinger VPS
+- Domain
+- Claude
+
+
+
+- Checklisten für behördliche Angelegenheiten (erstmal generell)
+- Checklisten für behördliche Angelegenheiten (amter und meine rechte)
+- Soll versicherung bei Alltagsmanagement/xxx/Dokumente/Vertärge/Versicherung oder unter vermögensdomäne/xxx/verscigherungen
+- Kranksenversicherung
+- Willenserklärung
+- Steuerunterlagen
+- soll zertifikate zu vermögensdomäne oder zu dokumente unter alltagsmanagement
+- MeineRollenImLeben (Sohn, Freund, Partner, Kollege... + was ich in jeder Rolle sein will)
+- Abenteuer reise
+- wo gehören verischerungen rein und wie mache ich es mit den kosten
