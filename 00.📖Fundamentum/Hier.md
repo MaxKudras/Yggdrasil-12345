@@ -113,11 +113,8 @@
 - **Genussmittel-Tracking** — Alkohol, Koffein, Zucker bewusst managen
 
 ## 05. InneresUniversum
-- **Dankbarkeits-Praxis** — Tägliche/wöchentliche Dankbarkeitsnotizen
 - **Shadow Work** — Unbewusste Muster & blinde Flecken kennenlernen
-- **Rollenvorbilder & Mentoren** — Wen bewundere ich? Was übernehme ich?
 - **Spiritualität / Weltbild** — Meine Sicht auf Sinn, Tod, Universum
-- **Emotionstagebuch** — Emotionen tracken um Muster zu erkennen
 
 ## 06. SozialSphäre
 - **Generosität-Plan** — Was gebe ich aktiv zurück? (Zeit, Geld, Wissen)
@@ -144,7 +141,6 @@
 - **Mobile Workflow** — Wie nutze ich den Lebensplan unterwegs (Handy)?
 - **Wöchentlicher System-Check** — System aufräumen, Inbox leeren, Tags pflegen
 - **API & Integrationen** — Kalender, Spotify, n8n anbinden
-- **Obsidian Vault Statistiken** — Wie befüllt ist das System?
 
 ---
 
@@ -194,15 +190,10 @@
 
 ## 05. InneresUniversum → neue Unterknoten
 ```
-- Selbstreflexion
-    - DankbarkeitsPraxis  ← neu
-    - Emotionstagebuch  ← neu
+
 - Selbstverbesserung
     - ShadowWork  ← neu
     - Spiritualität  ← neu
-- xxx {VorbilderUndMentoren}  ← neue Gruppe
-    - Rollenvorbilder
-    - MentorenSuche
 ```
 
 ## 06. SozialSphäre → gesamte Struktur fehlt noch (siehe oben)
@@ -243,6 +234,5 @@ BeziehungsCheckUps  ← eigene Notiz auf Bereichsebene
     - MobileWorkflow  ← neu
     - WöchentlicherSystemCheck  ← neu
     - APIIntegrationen  ← neu
-    - VaultStatistiken  ← neu
 ```
 
