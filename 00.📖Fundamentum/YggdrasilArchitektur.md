@@ -215,96 +215,30 @@ Mache deine Lernpläne dynamisch, sodass du sie je nach Fortschritt regelmäßig
 ### Dark Web
 ### Hacken
 ### Smarte Geräte Wissen
-## Finanzswissen
-### Aktien wissen
-### ETF wissen
-### Immobilien wissen
-### Kryptowährung wissen
-## Geographie
-## Mathe
-## Sprache lernen
-### Deutsch
-### Englisch
-### Russisch
-### Spanisch
-## Wissenschaft
-### Chemie
-### Bio
-### Physik
-#### Astronomie
 # Freizeitatlas
 ## Reise & Abenteuer
 ### Reiseziele
-#### Sprachreisen
 #### Langfristige Reiseziele
 ##### Kontinent Rundreisen
 #### Außergewöhnliche Erlebnisse
-##### Hidden Gems
 #### Wunschorte
-##### Wüsten
 ##### Arktis
-##### Dschungel
-##### Pyramiden von Giza
-##### Polarlichter
-##### Schloss Neuschwanstein
-##### Safari
-##### Machu Picchu
-#### Länder Reiseziele
-##### Australien
-##### USA
-##### Japan
-##### Brasilien
 ### Reisen
 #### Langfristige Reisen
-#### Geplante Reisen
-##### Packliste 
-##### Reiseplanung
-##### Budgetplanung
-#### Reise dokumentieren
-##### Reisetagebuch (mit Fotoalbum)
 #### Günstige Luxuserlebnisse
-#### Kurz Reisen
-##### Waldwanderung
-##### Seeausflug
-##### Stadtausflüge
-##### Roadtrips
-##### Spontane Ausflüge
 ### Abenteuer
 #### Extremsport
 ## Projekte
-### IT Projekte
 ### DIY Projekte
-### Wissenschaftliche Experimente
-### 3D Druck Projekte
-### Kunst Projekte
-### Heimwerken
-#### DIY Projekte
-##### Upcycling
-#### Möbelbau
 ## Hobbies
-### Hobby Zukunftsplan
 ### Kreative Hobbies
-#### Musik machen
-#### Tabletop Spiele
-##### D&D
 #### Kunst
 ##### Alternative Kunstformen
-### Sportliche Hobbies
-#### Kampfkunst
-##### Straßenkampf-Techniken
-##### Boxen
-##### Kung Fu
 ### Mentale Hobbies
-#### Gaming
-#### Astronomie
 #### Filme&Serien gucken
-#### Musik hören
 #### Programmieren
 ## Outdoor Aktivitäten
 ## Soziale Aktivitäten
-### Familienaktivitäten
-### Aktivitäten mit Freunden
-### Aktivitäten mit Familie
 ### Generelle Aktivitäten
 #### Dinnerpartys
 ##### Menüplanung
@@ -312,12 +246,9 @@ Mache deine Lernpläne dynamisch, sodass du sie je nach Fortschritt regelmäßig
 #### Ausflüge
 #### Gemeinsamer Urlaub
 #### Film-&Serienabend
-#### Spieletreffen
-##### Brettspiele
 #### Events organisieren
 ##### Partys
 ##### Gastfreundschaft
-## Sammlungen
 
 #########
 # Systemschmiede 
