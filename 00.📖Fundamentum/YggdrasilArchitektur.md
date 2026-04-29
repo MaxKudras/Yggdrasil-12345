@@ -1,137 +1,34 @@
 # Lebenskompass
-## Große Vision
-### Vision der Lebensbereiche
-### Zukunftsvision
-Skizziere deine Wunschwelt in 10/20/35/50 Jahren
 ## Ziele
 ### Zielsetzungsstrategie
 #### Ziele in kleiner Meilensteine unterteilen
-### Ziele der Lebensbereiche
-#### Karriere Ziele
-### Zeitliche Ziele
-#### 5 Jahres Ziele
-#### 10 Jahres Ziele
-#### 20 Jahres Ziele
-### Bucketliste
-### Wunschziele
-### Mielensteine
-### Ideales Leben
-#### Idealbild deines Tages- und Lebensstils
-#### Mein ideales Leben
-## Lebensmanifest
-### Kernwert
-### Lenbensprinzipen
-### Lebensmission
 ## Identität
 ### Persönliche Identität 
-#### Selbstbild: Wer bin ich?
-#### Persönlichkeitsanalyse
 #### Identitätsfindung (langfristige Entwicklung)
 ### Lebensphilosophie & Sinn
-#### Meine Lebensphilosophie
 #### Mein Sinn des Lebens
 # Zeitnavigator
 ## Zeitmanagement 
-### Zeitmanagements Strategien t
+### Zeitmanagements Strategien
 #### Arbeitsabläufen Optimieren
-#### Fokustage
-#### Pflegetage
-#### Einkaufstage
-#### Ordnungstage
-#### Haushaltstage
-#### Organisationstage
 ### Fokus & Priorisierung
 #### Deepwork
 ### Produktivität
 #### Lebensframework Review
 Lege einen festen Zeitpunkt (wöchentlich/monatlich) fest, an dem du dein gesamtes Lebensframework reflektierst und anpasst.
-### Kalendermanagment
-#### Sozial Kalender
-##### Geburtstage
-##### Feiern
-###### Jubiläen
-##### Geplante Soziale Aktivitäten
-###### Gemeinsame Planung von Aktivitäten
-###### Geplante Familienaktivitäten 
-###### Geplante Aktivitäten mit Freunden
-###### Geplante Aktivitäten mit Partner
-### Erinnerungen
-#### Steuererklärungserinnerung
-#### Amtserinnerung
-#### Dokumenten Fristen
-
 ## Planung & Review
 ### Tagesjournal
 #### Tagesreflexion
 #### Tagesroutinen
-##### Morgenroutine
-für einen guten Start in den Tag
-##### Abendroutine
-um morgens ausgeruht aufzuwachen
 #### Tages Prioritäten
 ##### Top 3 Prioritäten
-### Wöchentliche Planung
-#### Wochenfokus definieren
-#### Wochenrückblick (Erfolge, Herausforderungen)
-#### Wochenendsplanung
-#### Anpassung von Gewohnheiten
-#### Ticketreview
 ### Monatliche Planung
-#### Monatsziele
-##### Monatsziele definieren
-##### Monatsziele anpassen
-#### Monatsrückblick 
-##### Fortschrittrückblicke
-##### Learningsrückblicke
-##### Routinenrückblicke
-##### Sportrückblicke
 #### Monatsprojekte
 ##### Monatsprojekte anpassen
-### Quartal Planung
 ### Jährliche Planung
-#### Jahresziele
-##### Jahresziele definieren
-##### Jahressziele anpassen
-#### Jahresrückblick 
-##### Erfolgsrückblicke
-##### Rückschläge
-##### Ziel Fortschritt
-##### Lessons Learned
 #### Jahresvision anpassen
-### Lebensrückblick
 ### Reflexionen
 #### Routinen Reflexion
-## Routinen & Gewohnheiten
-### Neue Routinen
-#### Routinen 30 Tage Experimente
-### Lebensroutinen Tracker
-#### Pflegeroutinen Tracker
-##### Haarroutine Tracker
-##### Hautpflegeroutine Tracker
-#### Kernroutinen
-##### Abendroutine Tracker
-##### Morgenroutine Tracker
-#### Gesundheitsroutinen
-##### Sportroutine Tracker
-##### Essensroutine Tracker
-##### Meditationsroutine Tracker
-##### Schlaf Tracker
-#### Produktivitätsroutinen
-##### Lernroutine Tracker
-##### Renigungsroutinen Tracker
-#### Kreativitätsroutinen
-### Gewohnheiten
-#### Nachhaltige Gewohnheiten
-##### Müllvermeidung
-###### Mülltrennung
-###### Plastikverbrauch minimieren
-##### Ökologischen Fußabdruck verringern
-#### Trigger
-##### Schlechte Gewohnheitstrigger
-#### Micro Gewohnheiten
-#### Schlechte Gewohnheiten vermeinden
-#### Gute Gewohnheiten aufbauen
-## Kalender
 # Alltagsmanagement
 ## Wohnen
 ### Haushalt
