@@ -1,5 +1,0 @@
-### Nachbarländer
-[[Nicaragua]]
-[[Panama]]
-
-### Hauptstadt

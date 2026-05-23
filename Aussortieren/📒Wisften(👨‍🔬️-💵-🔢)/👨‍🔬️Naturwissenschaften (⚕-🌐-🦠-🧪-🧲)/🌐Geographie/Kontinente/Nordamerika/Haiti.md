@@ -1,4 +1,0 @@
-### Nachbarländer
-[[Dominikanische Republik]]
-
-### Hauptstadt

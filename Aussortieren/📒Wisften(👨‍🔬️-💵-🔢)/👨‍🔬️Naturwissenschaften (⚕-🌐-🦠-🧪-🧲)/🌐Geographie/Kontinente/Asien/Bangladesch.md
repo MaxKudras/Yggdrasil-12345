@@ -1,5 +1,0 @@
-### Nachbarländer
-[[Myanmar]]
-[[Indien]]
-
-### Hauptstadt

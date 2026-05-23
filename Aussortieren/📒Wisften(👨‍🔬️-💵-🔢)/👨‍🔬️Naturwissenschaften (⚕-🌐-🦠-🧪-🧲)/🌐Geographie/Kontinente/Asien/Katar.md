@@ -1,4 +1,0 @@
-### Nachbarländer
-[[Saudi-Arabien]]
-
-### Hauptstadt

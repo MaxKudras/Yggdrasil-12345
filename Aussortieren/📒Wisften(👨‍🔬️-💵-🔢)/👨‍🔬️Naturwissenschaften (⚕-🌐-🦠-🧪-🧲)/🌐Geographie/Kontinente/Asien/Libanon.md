@@ -1,5 +1,0 @@
-### Nachbarländer
-[[Israel]]
-[[Syrien]]
-
-### Hauptstadt

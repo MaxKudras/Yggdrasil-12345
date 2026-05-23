@@ -1,5 +1,0 @@
-### Nachbarländer
-[[Südafrika]]
-
-### Hauptstadt
-[[Maseru]]

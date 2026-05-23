@@ -1,5 +1,0 @@
-### Nachbarländer
-[[China]]
-[[Russland]]
-
-### Hauptstadt

@@ -1,7 +1,0 @@
-### Nachbarländer
-
-
-### Hauptstadt
-
-
-[[Guantanamo Bay]]

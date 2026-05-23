@@ -1,5 +1,0 @@
-### Nachbarländer
-[[Brasilien]]
-[[Suriname]]
-
-### Hauptstadt

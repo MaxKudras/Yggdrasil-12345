@@ -1,5 +1,0 @@
-### Nachbarländer
-[[Ägypten]]
-[[Israel]]
-
-### Hauptstadt

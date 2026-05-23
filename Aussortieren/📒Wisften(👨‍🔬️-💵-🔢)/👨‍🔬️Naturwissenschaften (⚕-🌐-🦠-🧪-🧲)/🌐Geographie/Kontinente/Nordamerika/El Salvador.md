@@ -1,5 +1,0 @@
-### Nachbarländer
-[[Guatemala]]
-[[Honduras]]
-
-### Hauptstadt

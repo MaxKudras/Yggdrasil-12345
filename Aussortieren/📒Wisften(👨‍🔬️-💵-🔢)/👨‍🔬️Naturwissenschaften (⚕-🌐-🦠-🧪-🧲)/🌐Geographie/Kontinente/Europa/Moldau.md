@@ -1,5 +1,0 @@
-### Nachbarländer
-[[Rumänien]]
-[[Ukraine]]
-
-### Hauptstadt

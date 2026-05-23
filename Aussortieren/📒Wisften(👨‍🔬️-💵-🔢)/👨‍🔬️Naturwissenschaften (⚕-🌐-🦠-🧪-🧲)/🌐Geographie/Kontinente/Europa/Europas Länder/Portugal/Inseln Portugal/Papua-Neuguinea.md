@@ -1,5 +1,0 @@
-### Nachbarländer
-[[Indonesien]]
-
-### Hauptstadt
-

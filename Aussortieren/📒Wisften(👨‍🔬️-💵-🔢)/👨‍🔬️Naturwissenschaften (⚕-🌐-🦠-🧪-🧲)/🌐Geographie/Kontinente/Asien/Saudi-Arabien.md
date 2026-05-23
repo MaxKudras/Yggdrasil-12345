@@ -1,7 +1,0 @@
-[[Irak]]
-[[Jemen]]
-[[Jordanien]]
-[[Katar]]
-[[Kuwait]]
-[[Oman]]
-[[Vereinigte Arabische Emirate]]

@@ -1,4 +1,0 @@
-[[Somalia]]
-
-[[Dschibuti]]
-[[Äthiopien]]

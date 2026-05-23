@@ -1,3 +1,0 @@
-### Grenzen
-[[Frankreich]]
-[[Spanien]]

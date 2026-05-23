@@ -1,5 +1,0 @@
-### Nachbarländer
-[[Kolumbien]]
-[[Peru]]
-
-### Hauptstadt

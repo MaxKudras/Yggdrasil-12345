@@ -1,5 +1,0 @@
-### Nachbarländer
-[[Akrotiri]]
-[[Dekelia]]
-
-### Hauptstadt

@@ -1,5 +1,0 @@
-### Nachbarländer
-[[Israel]]
-[[Jordanien]]
-
-### Hauptstadt

@@ -1,5 +1,0 @@
-### Nachbarländer
-[[China]]
-[[Indien]]
-
-### Hauptstadt
