@@ -1,1 +1,0 @@
-skript soll alle templates in der notiz analysieren und die reihen folge vorm einfügen aus einer forgefertigten liste einfügen
