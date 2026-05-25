@@ -1,4 +1,0 @@
-### Nachbarländer
-[[Spanien]]
-
-### Hauptstadt

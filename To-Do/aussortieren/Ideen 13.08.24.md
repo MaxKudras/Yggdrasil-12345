@@ -1,2 +1,0 @@
--Geld planner alles in prozente einteilen
--Lifo versuchen zu machen bei geld, welches eh weg kommt.

@@ -1,4 +1,0 @@
-Chatgpt
-Amazon
-google
-Paypal

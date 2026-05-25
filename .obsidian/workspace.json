@@ -254,158 +254,14 @@
             "id": "048a295170033a2f",
             "type": "leaf",
             "state": {
-              "type": "canvas",
-              "state": {
-                "file": "10.⚙️Systemschmiede/Systemplan/Server/Unbenannt..canvas",
-                "viewState": {
-                  "x": -1529.146306594452,
-                  "y": 1408.0186183774965,
-                  "zoom": -3.2
-                }
-              },
-              "icon": "lucide-layout-dashboard",
-              "title": "Unbenannt."
-            }
-          },
-          {
-            "id": "592722153162dfd6",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "00.📖Lebensplan/Gesamter Lebensplan.md",
-                "mode": "source",
-                "source": true,
-                "backlinks": true,
-                "backlinkOpts": {
-                  "collapseAll": false,
-                  "extraContext": false,
-                  "sortOrder": "alphabetical",
-                  "showSearch": false,
-                  "searchQuery": "",
-                  "backlinkCollapsed": false,
-                  "unlinkedCollapsed": true
-                }
-              },
-              "icon": "lucide-file",
-              "title": "Gesamter Lebensplan"
-            }
-          },
-          {
-            "id": "f327493c73a716bc",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Essen.md",
-                "mode": "source",
-                "source": true,
-                "backlinks": true,
-                "backlinkOpts": {
-                  "collapseAll": false,
-                  "extraContext": false,
-                  "sortOrder": "alphabetical",
-                  "showSearch": false,
-                  "searchQuery": "",
-                  "backlinkCollapsed": false,
-                  "unlinkedCollapsed": true
-                }
-              },
-              "icon": "lucide-file",
-              "title": "Essen"
-            }
-          },
-          {
-            "id": "76af539905f04fb4",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "bücher.md",
-                "mode": "source",
-                "source": true,
-                "backlinks": true,
-                "backlinkOpts": {
-                  "collapseAll": false,
-                  "extraContext": false,
-                  "sortOrder": "alphabetical",
-                  "showSearch": false,
-                  "searchQuery": "",
-                  "backlinkCollapsed": false,
-                  "unlinkedCollapsed": true
-                }
-              },
-              "icon": "lucide-file",
-              "title": "bücher"
-            }
-          },
-          {
-            "id": "72c6d976b3a406a3",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Geburtstags Geschenke für Valle.md",
-                "mode": "source",
-                "source": true,
-                "backlinks": true,
-                "backlinkOpts": {
-                  "collapseAll": false,
-                  "extraContext": false,
-                  "sortOrder": "alphabetical",
-                  "showSearch": false,
-                  "searchQuery": "",
-                  "backlinkCollapsed": false,
-                  "unlinkedCollapsed": true
-                }
-              },
-              "icon": "lucide-file",
-              "title": "Geburtstags Geschenke für Valle"
-            }
-          },
-          {
-            "id": "d6ff2a3f9ac49587",
-            "type": "leaf",
-            "state": {
-              "type": "canvas",
-              "state": {
-                "file": "wohnung Planen.canvas",
-                "viewState": {
-                  "x": 952.1122461248885,
-                  "y": 413.13401459181426,
-                  "zoom": -1.4221857269833995
-                }
-              },
-              "icon": "lucide-layout-dashboard",
-              "title": "wohnung Planen"
-            }
-          },
-          {
-            "id": "a9fa594a898b99bc",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Unbenannt.md",
-                "mode": "source",
-                "source": true,
-                "backlinks": true,
-                "backlinkOpts": {
-                  "collapseAll": false,
-                  "extraContext": false,
-                  "sortOrder": "alphabetical",
-                  "showSearch": false,
-                  "searchQuery": "",
-                  "backlinkCollapsed": false,
-                  "unlinkedCollapsed": true
-                }
-              },
-              "icon": "lucide-file",
-              "title": "Unbenannt"
+              "type": "graph",
+              "state": {},
+              "icon": "lucide-git-fork",
+              "title": "Graph-Ansicht"
             }
           }
         ],
-        "currentTab": 17
+        "currentTab": 11
       }
     ],
     "direction": "vertical"
@@ -448,7 +304,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "Ubuntu",
+                "query": "moc",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": true,
@@ -456,7 +312,7 @@
                 "sortOrder": "alphabetical"
               },
               "icon": "lucide-search",
-              "title": "Search"
+              "title": "Suchen"
             }
           },
           {
@@ -502,12 +358,11 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Unbenannt.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": false
               },
               "icon": "links-going-out",
-              "title": "Ausgehende Links von Unbenannt öffnen"
+              "title": "Ausgehende Links"
             }
           }
         ],
@@ -584,6 +439,7 @@
   },
   "left-ribbon": {
     "hiddenItems": {
+      "bases:Neue Base erstellen": false,
       "switcher:Schnellauswahl öffnen": false,
       "graph:Graph-Ansicht öffnen": false,
       "canvas:Neuen Canvas erstellen": false,
@@ -593,7 +449,6 @@
       "markdown-importer:Markdown Importprogramm öffnen": false,
       "random-note:Zufällige Notiz öffnen": false,
       "workspaces:Workspace-Layouts verwalten": false,
-      "bases:Create new base": false,
       "obsidian-full-calendar:Open Full Calendar": false,
       "templater-obsidian:Templater": false,
       "pexels-banner:🚩 Pixel Banner Menu": false,
@@ -608,44 +463,45 @@
       "smart-second-brain:Open S2B Chat": false
     }
   },
-  "active": "a9fa594a898b99bc",
+  "active": "048a295170033a2f",
   "lastOpenFiles": [
-    "wohnung Planen.canvas",
-    "Unbenannt.md",
-    "10.⚙️Systemschmiede/Systemplan/PC/Mein Laptop/rEFInd Boot Manager.md",
-    "03.Alltagsmanagemnt/01.Wohnen/01.Wohnen.md",
-    "Zimmer Planen.base",
-    "03.Alltagsmanagemnt/03.Alltagsmanagemnt.md",
-    "Plugin für Obsidian Programmieren Idee.md",
-    "10.⚙️Systemschmiede/Systemplan/PC/Mein Laptop/Mein Laptop.md",
-    "10.⚙️Systemschmiede/Systemplan/PC/Mein Laptop/Ideale Laptop Setup.md",
-    "10.⚙️Systemschmiede/Systemplan/PC/Mein Laptop",
-    "10.⚙️Systemschmiede/Systemplan/PC/Mein Laptop/Unbenannt.md",
-    "10.⚙️Systemschmiede/Systemplan/PC/Windows 11 PC/Windows 11 PC.md",
-    "10.⚙️Systemschmiede/Systemplan/PC/PC.md",
-    "10.⚙️Systemschmiede/Systemplan/Systemplan.md",
-    "10.⚙️Systemschmiede/10.⚙️Systemschmiede.md",
-    "Ubuntu System Update.md",
-    "bücher.md",
-    "Geburtstags Geschenke für Valle.md",
-    "Essen.md",
-    "00.📖Lebensplan/Gesamter Lebensplan.md",
-    "10.⚙️Systemschmiede/Systemplan/Server/ContaboVPS/n8n/Workflows/Unbenannt.md",
-    "10.⚙️Systemschmiede/Systemplan/Server/ContaboVPS/Contabo VPS Setup.md",
-    "10.⚙️Systemschmiede/Systemplan/Server/ContaboVPS/n8n/Workflows",
-    "10.⚙️Systemschmiede/Systemplan/Namensgebung für Systeme.md",
-    "00.📖Lebensplan/Gesamter Lebensplan nein.md",
+    "Aussortieren/-Lebensplan (💵-🕰-🚑)/🕰Zeitmanagment (⌛-🌀-💼-📅-📆-🗓)/🌀Routinen/🌀Monatsroutine/🌀Monatsroutine.md",
+    "Aussortieren/-Lebensplan (💵-🕰-🚑)/🕰Zeitmanagment (⌛-🌀-💼-📅-📆-🗓)/Haushaltsaufgabenlisten.md",
+    "Aussortieren/-Lebensplan (💵-🕰-🚑)/🕰Zeitmanagment (⌛-🌀-💼-📅-📆-🗓)/🌀Routinen/🌀Routinen.md",
+    "Aussortieren/-Lebensplan (💵-🕰-🚑)/🕰Zeitmanagment (⌛-🌀-💼-📅-📆-🗓)/⌛Zukunftsplan/Karriereplanung/Karriereplanung.md",
+    "Aussortieren/-Lebensplan (💵-🕰-🚑)/🕰Zeitmanagment (⌛-🌀-💼-📅-📆-🗓)/⌛Zukunftsplan/⌛Zukunftsplan.md",
+    "Aussortieren/-Lebensplan (💵-🕰-🚑)/🕰Zeitmanagment (⌛-🌀-💼-📅-📆-🗓)/ToDos/ToDos.md",
     "10.⚙️Systemschmiede/Systemplan/Server/Unbenannt..canvas",
-    "README.md",
-    "00.📖Lebensplan/Gesamter Lebenspülan nein.md",
-    "00.📖Lebensplan/Gesamter Lebensplan vielleicht.md",
-    "00.📖Lebensplan/00.📖Lebensplan.md",
+    "Aussortieren/📒Wisften(👨‍🔬️-💵-🔢)/👨‍🔬️Naturwissenschaften (⚕-🌐-🦠-🧪-🧲)/🧪Chemie/AC/Atomaufbau/Allgemeine Gesetze/_MoC Allgemeine Gesetze.md",
+    "Aussortieren/📒Wisften(👨‍🔬️-💵-🔢)/👨‍🔬️Naturwissenschaften (⚕-🌐-🦠-🧪-🧲)/🧪Chemie/AC/_MoC Allgemeine Chemie.md",
+    "Aussortieren/-Lebensplan (💵-🕰-🚑)/💵Geldmanagment (💼-〽️-📊)/Notfallfonds/Notfallfonds.md",
+    "Aussortieren/-Lebensplan (💵-🕰-🚑)/💵Geldmanagment (💼-〽️-📊)/Notfallfonds/Verwendung/Verwendung.md",
+    "Aussortieren/-Lebensplan (💵-🕰-🚑)/💵Geldmanagment (💼-〽️-📊)/Finanzielle Ziele/Finanzielle Ziele.md",
+    "Aussortieren/-Lebensplan (💵-🕰-🚑)/💵Geldmanagment (💼-〽️-📊)/_MoC Geldmanagment.md",
+    "Essen.md",
+    "Aussortieren/-Lebensplan (💵-🕰-🚑)/💵Geldmanagment (💼-〽️-📊)/📊Geldverlauf/Sparplan/Sparplan.md",
+    "Aussortieren/-Lebensplan (💵-🕰-🚑)/💵Geldmanagment (💼-〽️-📊)/📊Geldverlauf/Sparplan/Sparziele/Langfristige Ziele/Langfristige Ziele.md",
+    "Aussortieren/-Lebensplan (💵-🕰-🚑)/💵Geldmanagment (💼-〽️-📊)/📊Geldverlauf/Sparplan/Sparstrategien/Sparstrategien.md",
+    "Aussortieren/-Lebensplan (💵-🕰-🚑)/💵Geldmanagment (💼-〽️-📊)/📊Geldverlauf/Sparplan/Sparziele/Sparziele.md",
+    "Aussortieren/-Lebensplan (💵-🕰-🚑)/💵Geldmanagment (💼-〽️-📊)/📊Geldverlauf/Kontoverlauf/Paypal/Paypal.md",
+    "Aussortieren/-Lebensplan (💵-🕰-🚑)/💵Geldmanagment (💼-〽️-📊)/📊Geldverlauf/Schulden/Schulden.md",
+    "Aussortieren/-Lebensplan (💵-🕰-🚑)/💵Geldmanagment (💼-〽️-📊)/📊Geldverlauf/Kontoverlauf/Haspa/Haspa.md",
+    "Aussortieren/-Lebensplan (💵-🕰-🚑)/💵Geldmanagment (💼-〽️-📊)/📊Geldverlauf/Kontoverlauf/Kontoverlauf.md",
+    "Aussortieren/-Lebensplan (💵-🕰-🚑)/💵Geldmanagment (💼-〽️-📊)/📊Geldverlauf/📊Geldverlauf.md",
+    "bücher.md",
+    "Aussortieren/-Lebensplan (💵-🕰-🚑)/💵Geldmanagment (💼-〽️-📊)/📊Geldverlauf/Geldgrundplan/Notfallfonds.md",
+    "Aussortieren/-Lebensplan (💵-🕰-🚑)/💵Geldmanagment (💼-〽️-📊)/📊Geldverlauf/Geldgrundplan/Geldgrundplan.md",
+    "Aussortieren/-Lebensplan (💵-🕰-🚑)/💵Geldmanagment (💼-〽️-📊)/📊Geldverlauf/Geldgrundplan/Finanzielle Ziele.md",
+    "wohnung Planen.canvas",
+    "Sammlung/Untitled.canvas",
+    "Zimmer Planen.base",
+    "10.⚙️Systemschmiede/Systemplan/PC/Mein Laptop",
+    "10.⚙️Systemschmiede/Systemplan/Server/ContaboVPS/n8n/Workflows",
     "10.⚙️Systemschmiede/Systemplan/Server/ContaboVPS/Unbenannt",
     "10.⚙️Systemschmiede/Systemplan/Server/ContaboVPS/Lebensplan",
     "10.⚙️Systemschmiede/Systemplan/Server/ContaboVPS/n8n",
     "10.⚙️Systemschmiede/Systemplan/Server/ContaboVPS",
     "10.⚙️Systemschmiede/Systemplan/Server",
-    "Sammlung/Untitled.canvas",
     "Sammlung/Untitled.base",
     "Sammlung",
     "10.⚙️Systemschmiede/Systemplan/Gesamter Systemplan.canvas",

@@ -1,2 +1,0 @@
-### Pauli-Prinzip
-### Hundsche Regel

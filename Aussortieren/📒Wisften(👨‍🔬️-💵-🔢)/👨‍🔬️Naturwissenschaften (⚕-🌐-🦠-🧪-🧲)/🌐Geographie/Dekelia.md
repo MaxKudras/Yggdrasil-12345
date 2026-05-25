@@ -1,4 +1,0 @@
-### Nachbarländer
-[[Zypern]]
-
-### Hauptstadt
