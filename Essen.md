@@ -1,2 +1,0 @@
-Stir Fry
-Ramen
