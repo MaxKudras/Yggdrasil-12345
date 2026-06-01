@@ -1,6 +1,6 @@
 # Plugin-Inventar
 
-## 576 installierte Plugins – Stand: 2026-06-01
+## 572 installierte Plugins – Stand: 2026-06-01
 
 > Automatisch generiertes Inventar aller installierten Obsidian-Plugins.
 
@@ -158,7 +158,6 @@
 | Contribution Graph | Visualisierung & UI | Graph-Ansicht | [Link](https://github.com/vran-dev/obsidian-contribution-graph) | Generate a interactive heatmap graph to visualize and track your productivity |
 | Copilot | KI & Automatisierung | KI-Assistenten | [Link](https://github.com/logancyang/obsidian-copilot) | Your AI Copilot: Chat with Your Second Brain, Learn Faster, Work Smarter. |
 | Copy Block Link | Suche & Navigation | Backlinks & Links | [Link](https://github.com/mgmeyers/obsidian-copy-block-link) | Get links to blocks and headings from Obsidian's right click menu |
-| Copy button for code blocks | Editor & Schreiben | Codeblöcke | - | Copy button for code blocks |
 | Core Search Assistant | Suche & Navigation | Suche | [Link](https://github.com/qawatake/obsidian-core-search-assistant-plugin) | Enhance built-in search: keyboard interface, card preview, bigger preview |
 | Crafty | Suche & Navigation | Navigation | [Link](https://github.com/liolle/Crafty) | Add tooltip to any canvas node and Quickly navigate between canvas nodes |
 | Creases | Editor & Schreiben | Textbearbeitung | [Link](https://github.com/liamcain/obsidian-creases) | Tools for efficiently folding markdown sections in Obsidian |
@@ -198,7 +197,6 @@
 | Dragger | Editor & Schreiben | Textbearbeitung | [Link](https://github.com/ariestar/obsidian-dragger) | Drag and drop any block (paragraphs, headings, lists, etc.) to rearrange content like Notion. |
 | Dynamic Background | Themes & Styling | Erscheinungsbild | [Link](https://github.com/samuelsong70/obsidian-dynamic-background) | Adding dynamic effects and/or static wallpapers for Obsidian background |
 | Dynamic Timetable | Aufgaben & Produktivität | Aufgabenverwaltung | [Link](https://github.com/l7cy/obsidian-dynamic-timetable) | Calculate the estimated time of completion from the estimated time of the task and dynamically create a timetable. |
-| Easy toggle sidebars | Visualisierung & UI | UI-Verbesserungen | - | toggle sidebars double-clicking middle mouse button or each sidebar clicking middle mouse button and moving mouse towards the corresponding sidebar. |
 | Easy Tracker | Aufgaben & Produktivität | Habit Tracking | [Link](https://github.com/hunter-ji/obsidian-easy-tracker) | Instantly track goals and habits. Simple, beautiful, and configuration-free. |
 | Edit in Neovim | Entwicklung & Debug | Entwicklerwerkzeuge | [Link](https://github.com/theseusgrey/edit-in-neovim) | Open a Neovim buffer for the currently open file |
 | Editing Toolbar | Editor & Schreiben | Formatierung | [Link](https://github.com/pkm-er/obsidian-editing-toolbar) | The Obsidian Editing Toolbar is modified from cmenu, which provides more powerful customization settings and has many built-in editing commands to ... |
@@ -275,7 +273,6 @@
 | HangarX | KI & Automatisierung | KI-Agenten | [Link](https://github.com/3-elements-design/hangarx-obsidian) | Shared AI memory for your vault. Claude, Cursor, and any MCP agent can query and update your notes through a knowledge graph. |
 | Harmony | Aufgaben & Produktivität | Kalender & Planung | [Link](https://github.com/yodavatar/Harmony) | One task, multiple perspectives. The ultimate modular workspace. Instantly sync your data across Todo lists, Calendars, and Kanban views. |
 | Heatmap Calendar | Aufgaben & Produktivität | Habit Tracking | [Link](https://github.com/richardsl/heatmap-calendar-obsidian) | Activity Year Overview for DataviewJS, Github style – Track Goals, Progress, Habits, Tasks, Exercise, Finances, "Dont Break the Chain" etc. |
-| Hide Folders | Medien & Dateien | Bilder & Anhänge | - | Hides & Toggles configured folders (e.g. attachments folders). |
 | Hider | Themes & Styling | CSS & Styling | [Link](https://github.com/kepano/obsidian-hider) | Hide UI elements such as tooltips, status, titlebar and more |
 | Highlightr | Editor & Schreiben | Formatierung | [Link](https://github.com/chetachiezikeuzor/Highlightr-Plugin) | A minimal and aesthetically pleasing highlighting menu that makes color-coded highlighting much easier with a configurable assortment of highlight ... |
 | Hill Charts | Visualisierung & UI | Diagramme & Charts | [Link](https://github.com/stufro/obsidian-hill-charts) | Add Hill Charts to your notes. |
@@ -469,7 +466,6 @@
 | Remotely Save | Daten & Integration | Sync | [Link](https://github.com/remotely-save/remotely-save) | Yet another unofficial plugin allowing users to synchronize notes between local device and the cloud service. |
 | Review | Notizen & Organisation | Tagesnotizen | [Link](https://github.com/ryanjamurphy/review-obsidian) | Add a link to the current note to a daily note on a future date (or a past date, you time traveller). |
 | Rewarder | Aufgaben & Produktivität | Aufgabenverwaltung | [Link](https://github.com/gnopps/obsidian-rewarder) | Gives you rewards for completing tasks/todos, highly configurable. |
-| Rho Reader | Daten & Integration | API-Integration | - | Read and manage RSS feeds. |
 | Routine Streaks | Aufgaben & Produktivität | Habit Tracking | [Link](https://github.com/holyhooly/routine-streaks) | Track routine streaks from tagged Daily Note tasks. |
 | RPG Stat Tracker | Aufgaben & Produktivität | Habit Tracking | [Link](https://github.com/name/obsidian-rpg) | RPG-like stat tracker. |
 | RSS Dashboard | Medien & Dateien | Audio & Video | [Link](https://github.com/amatya-aditya/obsidian-rss-dashboard) | A dashboard for organizing and consuming RSS feeds, YouTube channels, and podcasts with smart tagging, media playback, and seamless content flow. |
