@@ -1,0 +1,10 @@
+{
+    "id": "note-type",
+    "name": "Note Type",
+    "version": "0.2.0",
+    "minAppVersion": "1.12.7",
+    "description": "Assign type to your notes and quickly switch between them.",
+    "author": "ste",
+    "authorUrl": "https://github.com/Koishiiko",
+    "isDesktopOnly": false
+}

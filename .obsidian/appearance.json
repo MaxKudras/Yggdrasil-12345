@@ -1,0 +1,15 @@
+{
+  "cssTheme": "Fancy-a-Story",
+  "translucency": false,
+  "interfaceFontFamily": "",
+  "baseFontSize": 10,
+  "textFontFamily": "",
+  "accentColor": "",
+  "enabledCssSnippets": [
+    "Dashboard",
+    "sss"
+  ],
+  "showViewHeader": true,
+  "baseFontSizeAction": true,
+  "nativeMenus": false
+}

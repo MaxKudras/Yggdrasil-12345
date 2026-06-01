@@ -1,0 +1,9 @@
+{
+	"id": "list-splitter",
+	"name": "List Splitter",
+	"version": "1.0.0",
+	"minAppVersion": "1.1.0",
+	"description": "Split a list in a Canvas card into separate cards",
+	"author": "",
+	"isDesktopOnly": true
+}

@@ -1,0 +1,10 @@
+{
+	"id": "runalone-project-manager",
+	"name": "Runalone Project Manager",
+	"version": "1.0.1",
+	"minAppVersion": "1.7.2",
+	"description": "A minimalist project management tool designed for solo builders.",
+	"author": "nestedshell",
+	"authorUrl": "https://github.com/nestedshell",
+	"isDesktopOnly": false
+}

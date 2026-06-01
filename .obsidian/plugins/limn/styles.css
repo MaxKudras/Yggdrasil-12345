@@ -1,0 +1,93 @@
+/* Limn mind map view styling, scoped to .limn-view */
+
+.limn-view {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+  /* Use --text-normal directly for color, not --text-color, because Obsidian
+     defines its own --text-color variable that can shadow ours on buttons. */
+  color: var(--text-normal);
+
+  /* Map Limn CSS variables to Obsidian's theme variables */
+  --canvas-bg: var(--background-primary);
+  --text-color: var(--text-normal);
+  --text-muted: var(--text-muted);
+  --selection-bg: hsla(var(--interactive-accent-hsl), 0.15);
+  --selection-border: var(--interactive-accent);
+  --editor-bg: var(--background-primary);
+  --editor-shadow: var(--interactive-accent);
+  --collapse-bg: var(--background-modifier-border);
+  --collapse-border: var(--background-modifier-border);
+  --collapse-text: var(--text-muted);
+  --edge-default: var(--background-modifier-border);
+  --reparent-bg: rgba(245, 158, 11, 0.15);
+  --reparent-border: #f59e0b;
+}
+
+/* React root container fills the view */
+.limn-view .limn-react-root {
+  width: 100%;
+  height: 100%;
+}
+
+/* Off-screen text measurement element. Static styles live in CSS so the
+   no-static-styles-assignment lint rule isn't tripped by JS-side literal
+   assignments. Dynamic per-call values (font-size, font-weight, etc.) are
+   still set inline via template literals in DomTextMeasurer.ts. */
+.limn-view .limn-measure {
+  position: absolute;
+  visibility: hidden;
+  pointer-events: none;
+  box-sizing: border-box;
+  white-space: pre;
+  width: auto;
+  font-family: system-ui, -apple-system, sans-serif;
+}
+
+.limn-view .limn-measure.limn-measure-wrap {
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+/* Prevent Obsidian theme CSS from altering textarea font rendering.
+   `.limn-view.limn-view` is a specificity-boost trick (repeating the class
+   raises specificity without changing the selector's meaning) so these
+   rules beat theme defaults without needing !important — the Obsidian
+   community-plugin scanner flags !important as a warning. */
+.limn-view.limn-view textarea[data-limn-edit] {
+  -webkit-font-smoothing: auto;
+  -moz-osx-font-smoothing: auto;
+  letter-spacing: normal;
+  word-spacing: normal;
+  text-transform: none;
+}
+
+/* Reset Obsidian button styles for toolbar and menu controls.
+   Obsidian defines its own --text-color CSS variable that shadows ours on
+   buttons and SVGs, so we use `inherit` to bypass the variable collision
+   and cascade from the .limn-view container's color instead. The
+   specificity boost (`.limn-view.limn-view`) replaces !important. */
+.limn-view.limn-view button {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: normal;
+  color: inherit;
+  margin: 0;
+  padding: 0;
+  box-shadow: none;
+}
+
+.limn-view.limn-view svg {
+  color: inherit;
+}
+
+.limn-view.limn-view button:hover {
+  background: var(--selection-bg);
+  color: inherit;
+}
+
+.limn-view.limn-view button[role="menuitem"]:hover {
+  background: var(--selection-bg);
+}
+

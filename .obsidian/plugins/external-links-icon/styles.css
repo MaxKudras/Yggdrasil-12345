@@ -1,0 +1,622 @@
+/***
+通用样式（正文链接图标）
+***/
+
+:root {
+	--external-link-icon-size: 0.8em;
+	--external-link-icon-margin: 3px;
+}
+
+/*
+	所有真正应用了图标的链接，都会被扫描器加上
+	  .external-links-icon-enabled
+	并在元素行内样式上注入：
+	  --external-link-icon-image: url("data:image/svg+xml;utf8,...");
+
+	静态 CSS 只负责：
+	- 去掉主题自带的默认箭头样式
+	- 用 ::after 根据变量显示 SVG 图标
+	*/
+
+.external-link.external-links-icon-enabled,
+.internal-link.external-links-icon-enabled {
+	background: none !important;
+	background-image: none !important;
+	padding-right: 0 !important;
+}
+
+.external-link.external-links-icon-enabled::after,
+.internal-link.external-links-icon-enabled::after {
+	content: " ";
+	display: inline-block;
+	width: var(--external-link-icon-size);
+	height: var(--external-link-icon-size);
+	margin-left: var(--external-link-icon-margin);
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center;
+	vertical-align: middle;
+	background-image: var(--external-link-icon-image, none);
+}
+
+/***
+Live Preview 图标样式
+***/
+
+.cm-line .external-links-icon-inline {
+	pointer-events: none;
+	user-select: none;
+	display: inline-block;
+	width: var(--external-link-icon-size, 0.8em);
+	height: var(--external-link-icon-size, 0.8em);
+	margin-left: var(--external-link-icon-margin, 3px);
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center;
+	vertical-align: middle;
+	background-image: var(--external-link-icon-image, none);
+}
+
+.cm-line .external-links-icon-enabled {
+	background: none !important;
+	background-image: none !important;
+	padding-right: 0 !important;
+}
+
+.cm-formatting.cm-formatting-link-string.cm-string.cm-url.external-link {
+	display: none;
+}
+
+/***
+模态窗口样式
+***/
+
+.external-links-icon-modal-input {
+	width: 100%;
+	padding: 8px 12px;
+	border: 1px solid var(--interactive-accent);
+	border-radius: 4px;
+	background-color: var(--background-modifier-form-field);
+	color: var(--text-normal);
+	font-size: 14px;
+	transition: border-color 0.2s ease;
+	box-sizing: border-box;
+	margin-top: 8px;
+	margin-bottom: 16px;
+}
+
+.external-links-icon-modal-input:focus {
+	outline: none;
+	border-color: var(--interactive-accent-hover);
+	box-shadow: 0 0 0 2px var(--background-modifier-active);
+}
+
+.external-links-icon-modal-input::placeholder {
+	color: var(--text-muted);
+}
+
+.external-links-icon-preview-div {
+	width: 48px;
+	height: 24px;
+	overflow: hidden;
+	flex-shrink: 0;
+	border-radius: 2px;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	vertical-align: middle;
+}
+
+.external-links-icon-preview-div img {
+	width: 100%;
+	height: 100%;
+	object-fit: contain;
+	display: block;
+	box-shadow: none;
+	margin: 0;
+}
+
+.svg-preview-container .external-links-icon-preview-div {
+	width: 16px;
+	height: 16px;
+	flex-shrink: 0;
+}
+
+.svg-preview-container .external-links-icon-preview-div img[data-icon-variant="dark"] {
+	display: none;
+}
+
+body.theme-dark .svg-preview-container .external-links-icon-preview-div img[data-icon-variant="light"] {
+	display: none;
+}
+
+body.theme-dark .svg-preview-container .external-links-icon-preview-div img[data-icon-variant="dark"] {
+	display: block;
+}
+
+.website-item .item-icon img[data-icon-variant="dark"],
+.scheme-item .item-icon img[data-icon-variant="dark"] {
+	display: none;
+}
+
+body.theme-dark .website-item .item-icon img[data-icon-variant="light"],
+body.theme-dark .scheme-item .item-icon img[data-icon-variant="light"] {
+	display: none;
+}
+
+body.theme-dark .website-item .item-icon img[data-icon-variant="dark"],
+body.theme-dark .scheme-item .item-icon img[data-icon-variant="dark"] {
+	display: inline-block;
+}
+
+.external-links-icon-preview-div.small {
+	width: 20px;
+	height: 20px;
+}
+
+.external-links-icon-section-body {
+	display: flex;
+	gap: 14px;
+	align-items: center;
+	margin-top: 8px;
+}
+
+.external-links-icon-badge {
+	width: 72px;
+	height: 72px;
+	border-radius: 8px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-shrink: 0;
+	position: relative;
+	overflow: hidden;
+}
+
+.external-links-icon-badge-light {
+	background: #f6f6f6;
+}
+
+body:not(.theme-dark) .external-links-icon-badge-light {
+	background: var(--background-secondary);
+}
+
+.external-links-icon-badge-dark {
+	background: #262626;
+}
+
+body.theme-dark .external-links-icon-badge-dark {
+	background: var(--background-modifier-hover);
+}
+
+.external-links-icon-badge-icon {
+	width: 32px;
+	height: 32px;
+}
+
+.external-links-icon-badge-icon img {
+	width: 100%;
+	height: 100%;
+	object-fit: contain;
+	display: block;
+	box-shadow: none;
+	margin: 0;
+}
+
+.external-links-icon-badge-empty {
+	opacity: 0.35;
+}
+
+.external-links-icon-badge-empty .external-links-icon-badge-icon::after {
+	content: "—";
+	font-size: 22px;
+	line-height: 32px;
+	text-align: center;
+	display: block;
+	width: 32px;
+	height: 32px;
+	color: var(--text-muted);
+}
+
+.external-links-icon-badge-dl {
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	width: 36px;
+	height: 36px;
+	cursor: pointer;
+	opacity: 0;
+	transition: opacity 0.15s ease;
+}
+
+.external-links-icon-badge:hover .external-links-icon-badge-dl {
+	opacity: 1;
+}
+
+.external-links-icon-badge-dl::before {
+	content: "";
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	width: 0;
+	height: 0;
+	border-style: solid;
+	border-width: 0 0 36px 36px;
+}
+
+.external-links-icon-badge-light .external-links-icon-badge-dl::before {
+	border-color: transparent transparent rgba(0,0,0,0.12) transparent;
+}
+
+.external-links-icon-badge-dark .external-links-icon-badge-dl::before {
+	border-color: transparent transparent rgba(255,255,255,0.12) transparent;
+}
+
+.external-links-icon-badge-dl-icon {
+	position: absolute;
+	bottom: 3px;
+	right: 3px;
+	z-index: 1;
+	pointer-events: none;
+}
+
+.external-links-icon-badge-dl-icon svg {
+	width: 14px;
+	height: 14px;
+}
+
+.external-links-icon-badge-light .external-links-icon-badge-dl-icon svg {
+	color: rgba(0,0,0,0.5);
+}
+
+.external-links-icon-badge-dark .external-links-icon-badge-dl-icon svg {
+	color: rgba(255,255,255,0.5);
+}
+
+.external-links-icon-controls-col {
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	gap: 6px;
+	justify-content: center;
+	min-width: 0;
+}
+
+.external-links-icon-control-row {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+}
+
+.external-links-icon-btn {
+	background: var(--interactive-accent);
+	color: var(--text-on-accent);
+	border: none;
+	padding: 4px 10px;
+	border-radius: 4px;
+	cursor: pointer;
+	font-size: 12px;
+	display: inline-flex;
+	align-items: center;
+	gap: 4px;
+	flex-shrink: 0;
+	white-space: nowrap;
+}
+
+.external-links-icon-btn:hover {
+	background: var(--interactive-accent-hover);
+}
+
+.external-links-icon-btn svg {
+	width: 13px;
+	height: 13px;
+}
+
+.external-links-icon-btn-copy {
+	margin-left: auto;
+}
+
+.external-links-icon-btn-danger {
+	background: transparent;
+	color: var(--text-muted);
+	border: 1px solid var(--interactive-muted);
+	margin-left: auto;
+}
+
+.external-links-icon-btn-danger:hover {
+	color: var(--text-error);
+	border-color: var(--text-error);
+}
+
+.external-links-icon-btn-danger.is-active {
+	background: var(--text-error);
+	color: var(--text-on-accent);
+	border-color: var(--text-error);
+}
+
+.external-links-icon-hidden-input { display: none; }
+
+.external-links-icon-desc { margin-bottom: 10px; }
+
+.external-links-icon-upload-section {
+	margin-bottom: 16px;
+}
+
+.external-links-icon-upload-label {
+	font-weight: 600;
+	margin-bottom: 8px;
+	color: var(--text-normal);
+}
+
+.external-links-icon-upload-hint {
+	color: var(--text-muted);
+	font-size: 12px;
+	margin-top: 4px;
+	font-style: italic;
+}
+
+.external-links-icon-remove-indicator {
+	color: var(--text-error);
+	font-size: 12px;
+}
+
+.external-links-icon-modal-actions {
+	display: flex;
+	justify-content: flex-end;
+	gap: 12px;
+	padding: 16px 20px 20px;
+	border-top: 1px solid var(--divider-color);
+}
+
+.external-links-icon-modal-actions button {
+	padding: 8px 16px;
+	border-radius: 4px;
+	font-size: 14px;
+	font-weight: 500;
+	cursor: pointer;
+	transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+	border: 1px solid transparent;
+}
+
+.external-links-icon-cancel-btn {
+	background-color: var(--background-secondary);
+	color: var(--text-normal);
+	border-color: var(--divider-color);
+}
+
+.external-links-icon-cancel-btn:hover {
+	background-color: var(--background-modifier-hover);
+}
+
+.external-links-icon-add-btn {
+	background-color: var(--interactive-accent);
+	color: var(--text-on-accent);
+}
+
+.external-links-icon-add-btn:hover {
+	background-color: var(--interactive-accent-hover);
+}
+
+.external-links-icon-modal-actions button:active {
+	transform: translateY(1px);
+}
+
+/***
+设置页面按钮样式
+***/
+
+.add-buttons {
+	display: flex;
+	gap: 8px;
+	margin: 12px 0;
+}
+
+.add-buttons button {
+	background: var(--interactive-accent);
+	color: var(--text-on-accent);
+	border: none;
+	padding: 6px 8px;
+	border-radius: 4px;
+	cursor: pointer;
+	font-size: 14px;
+	font-weight: 500;
+	transition: background-color 0.2s ease;
+}
+
+.add-buttons button:hover {
+	background: var(--interactive-accent-hover);
+}
+
+/* @settings
+
+name: External Links Icon
+id: external-links-icon
+settings:
+    - 
+        id: fancy-url-scheme
+        title: Fancy url scheme
+        description: Enable icons for url schemes.
+        type: class-toggle
+        default: true
+    -
+        id: fancy-web-link
+        title: Fancy web link
+        description: Enable icons for web page links.
+        type: class-toggle
+        default: true
+    -
+        id: fancy-obsidian-web-link
+        title: Fancy obsidian web link
+        description: Enable icons for Obsidian website links. Turn this off if you find the icons confusing with Fancy obsidian note link described below.
+    	type: class-toggle
+    	default: true
+    -
+        id: fancy-obsidian-note-link
+        title: Fancy obsidian note link
+        description: Enable internal links or external vault links icon. Choose the behavior that best fits your workflow.
+        type: class-select
+        allowEmpty: yes
+        default: none
+        options:
+        	-
+        	    label: internal
+        		value: fancy-internal-obsidian-link
+        	-
+        		label: external
+        		value: fancy-external-obsidian-link
+        	-
+        		label: both
+        		value: fancy-both-obsidian-link
+    -
+        id: fancy-advanced-uri-link
+        title: Fancy advanced uri link
+        description: Enable icons for advanced uri links.
+    	type: class-toggle
+    	default: true
+*/
+
+.svg-preview-container {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+}
+
+.svg-preview-container svg {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+/* Controls area: make buttons fixed width so right-side length stays consistent */
+.icon-setting-item .setting-item-control .mod-cta,
+.icon-setting-item .setting-item-control button {
+	min-width: 36px;
+}
+
+.icon-setting-item .setting-item-control button[disabled],
+.icon-setting-item .setting-item-control .mod-cta[disabled] {
+	opacity: 0.45;
+	cursor: default;
+}
+
+/* Disable animations/transitions/transforms on buttons in plugin settings
+   to avoid misleading animated effects that look like bugs. Use high
+   specificity and !important to override Obsidian defaults where needed. */
+.icon-setting-item .setting-item-control button,
+.icon-setting-item .setting-item-control .mod-cta,
+.add-buttons button,
+.external-links-icon-upload-btn,
+.svg-preview-container button,
+.website-item button,
+.scheme-item button {
+	transition: none !important;
+	animation: none !important;
+	transform: none !important;
+	box-shadow: none !important;
+	filter: none !important;
+	-webkit-tap-highlight-color: transparent !important;
+}
+
+.icon-setting-item .setting-item-control button:focus-visible,
+.icon-setting-item .setting-item-control .mod-cta:focus-visible,
+.add-buttons button:focus-visible,
+.external-links-icon-upload-btn:focus-visible,
+.svg-preview-container button:focus-visible,
+.website-item button:focus-visible,
+.scheme-item button:focus-visible {
+	outline: 2px solid var(--interactive-accent) !important;
+	outline-offset: 1px !important;
+}
+
+.icon-setting-item .setting-item-control button:focus:not(:focus-visible),
+.icon-setting-item .setting-item-control .mod-cta:focus:not(:focus-visible),
+.add-buttons button:focus:not(:focus-visible),
+.external-links-icon-upload-btn:focus:not(:focus-visible),
+.svg-preview-container button:focus:not(:focus-visible),
+.website-item button:focus:not(:focus-visible),
+.scheme-item button:focus:not(:focus-visible) {
+	outline: none !important;
+}
+
+/* Also ensure hover/focus/active states don't apply transforms or transitions */
+.icon-setting-item .setting-item-control button:hover,
+.icon-setting-item .setting-item-control button:active,
+.add-buttons button:hover,
+.add-buttons button:active,
+.external-links-icon-upload-btn:hover,
+.external-links-icon-upload-btn:active,
+.website-item button:hover,
+.website-item button:active,
+.scheme-item button:hover,
+.scheme-item button:active {
+	transition: none !important;
+	animation: none !important;
+	transform: none !important;
+	box-shadow: none !important;
+	filter: none !important;
+}
+
+/* Remove pseudo-element effects that could draw shapes on click */
+.icon-setting-item .setting-item-control button::before,
+.icon-setting-item .setting-item-control button::after,
+.add-buttons button::before,
+.add-buttons button::after,
+.external-links-icon-upload-btn::before,
+.external-links-icon-upload-btn::after,
+.website-item button::before,
+.website-item button::after,
+.scheme-item button::before,
+.scheme-item button::after {
+	content: none !important;
+	display: none !important;
+}
+
+/* details styling for built-in lists */
+details.builtin-list {
+	margin-top: 8px;
+	margin-bottom: 8px;
+}
+details.builtin-list summary {
+	font-weight: 600;
+	cursor: pointer;
+}
+
+/* Built-in icons container */
+.builtin-list > div {
+	display: flex;
+	gap: 8px;
+	padding: 6px 0;
+}
+
+.builtin-row {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 8px;
+	padding: 6px 0;
+}
+
+.website-item, .scheme-item {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	padding: 6px;
+	border: 1px solid var(--interactive-muted);
+	border-radius: 6px;
+}
+
+.website-item .item-icon,
+.scheme-item .item-icon {
+	width: 20px;
+	height: 20px;
+	flex-shrink: 0;
+	display: inline-block;
+}
+
+.website-item .item-icon img,
+.scheme-item .item-icon img {
+	width: 100%;
+	height: 100%;
+	object-fit: contain;
+	display: block;
+	box-shadow: none;
+	margin: 0;
+}

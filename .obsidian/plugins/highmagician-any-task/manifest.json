@@ -1,0 +1,9 @@
+{
+  "id": "highmagician-any-task",
+  "name": "Any Task",
+  "version": "0.1.0",
+  "minAppVersion": "1.0.0",
+  "description": "Renders task markers using any character as a visual checkbox.",
+  "author": "HMage",
+  "isDesktopOnly": false
+}

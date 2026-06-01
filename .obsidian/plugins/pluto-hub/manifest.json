@@ -1,0 +1,11 @@
+{
+	"id": "pluto-hub",
+	"name": "Pluto Hub",
+	"version": "2.0.1",
+	"minAppVersion": "1.7.2",
+	"description": "A powerful plugin that allows users to manage, edit, and run local code modules, providing rich extensibility.",
+	"author": "xiajianduan",
+	"authorUrl": "https://github.com/xiajianduan",
+	"fundingUrl": "https://buymeacoffee.com/1553599299u",
+	"isDesktopOnly": false
+}

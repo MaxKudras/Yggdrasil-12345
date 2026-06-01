@@ -1,0 +1,646 @@
+/* Tablite - Obsidian CSV Editor */
+
+.tablite-root {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  min-height: 0;
+}
+
+.tablite-container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  outline: none;
+  min-height: 0;
+}
+
+/* ─── Toolbar ─── */
+.tablite-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 4px 8px;
+  gap: 6px;
+  border-bottom: 1px solid var(--background-modifier-border);
+  background: var(--background-primary);
+  flex-shrink: 0;
+  z-index: 10;
+  overflow: visible;
+}
+
+.tablite-toolbar-left,
+.tablite-toolbar-right {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex-shrink: 0;
+}
+
+.tablite-toolbar-right {
+  flex-shrink: 1;
+  min-width: 0;
+}
+
+/* 统一工具栏所有控件高度 */
+.tablite-toolbar button,
+.tablite-toolbar select,
+.tablite-toolbar input:not([type="checkbox"]),
+.tablite-toolbar label {
+  height: 24px !important;
+  box-sizing: border-box !important;
+}
+
+.tablite-icon-btn {
+  padding: 0 6px !important;
+  border: none !important;
+  border-radius: 3px;
+  background: transparent;
+  color: var(--text-muted);
+  cursor: pointer;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: none !important;
+}
+
+.tablite-icon-btn:hover {
+  background: var(--background-modifier-hover);
+  color: var(--text-normal);
+}
+
+.tablite-icon-btn svg {
+  display: block;
+}
+
+.tablite-select {
+  padding: 0 4px !important;
+  border: none !important;
+  border-radius: 3px;
+  background: transparent;
+  color: var(--text-muted);
+  font-size: 11px;
+  cursor: pointer;
+  box-shadow: none !important;
+}
+
+.tablite-select:hover {
+  background: var(--background-modifier-hover);
+  color: var(--text-normal);
+}
+
+.tablite-select:focus {
+  outline: none;
+}
+
+.tablite-separator {
+  width: 1px;
+  height: 14px;
+  background: var(--background-modifier-border);
+  margin: 0 2px;
+  flex-shrink: 0;
+}
+
+.tablite-info {
+  font-size: 11px;
+  color: var(--text-faint);
+  padding: 0 4px;
+  white-space: nowrap;
+  line-height: 24px;
+}
+
+.tablite-search {
+  padding: 0 6px !important;
+  border: none !important;
+  border-radius: 3px;
+  background: var(--background-secondary) !important;
+  color: var(--text-normal);
+  font-size: 11px;
+  width: 120px;
+  box-shadow: none !important;
+}
+
+.tablite-search:focus {
+  outline: none !important;
+  background: var(--background-primary-alt) !important;
+  box-shadow: 0 0 0 1px var(--interactive-accent) !important;
+}
+
+.tablite-search::placeholder {
+  color: var(--text-faint);
+}
+
+.tablite-search-group {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  min-width: 0;
+}
+
+.tablite-search-count {
+  min-width: 34px;
+  font-size: 10px;
+  color: var(--text-faint);
+  text-align: center;
+}
+
+.tablite-toggle-label {
+  display: inline-flex !important;
+  align-items: center;
+  gap: 4px;
+  font-size: 11px;
+  color: var(--text-muted);
+  cursor: pointer;
+  user-select: none;
+  padding: 0 4px;
+  border-radius: 3px;
+}
+
+.tablite-toggle-label:hover {
+  color: var(--text-normal);
+}
+
+.tablite-toggle-input {
+  position: absolute;
+  opacity: 0;
+  width: 0 !important;
+  height: 0 !important;
+  pointer-events: none;
+}
+
+.tablite-toggle-track {
+  position: relative;
+  width: 24px;
+  height: 14px;
+  background: var(--background-modifier-border);
+  border-radius: 7px;
+  transition: background 0.15s ease;
+  flex-shrink: 0;
+}
+
+.tablite-toggle-track::after {
+  content: "";
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 10px;
+  height: 10px;
+  background: var(--background-primary);
+  border-radius: 50%;
+  transition: transform 0.15s ease;
+}
+
+.tablite-toggle-input:checked + .tablite-toggle-track {
+  background: var(--interactive-accent);
+}
+
+.tablite-toggle-input:checked + .tablite-toggle-track::after {
+  transform: translateX(10px);
+}
+
+.tablite-toggle-text {
+  display: inline-flex;
+  align-items: center;
+  line-height: 1;
+}
+
+.tablite-columns-panel {
+  position: relative;
+}
+
+.tablite-columns-panel > summary {
+  list-style: none;
+  user-select: none;
+}
+
+.tablite-columns-panel > summary::-webkit-details-marker {
+  display: none;
+}
+
+.tablite-columns-menu {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  min-width: 180px;
+  max-height: 260px;
+  overflow: auto;
+  padding: 6px;
+  border: 1px solid var(--background-modifier-border);
+  border-radius: 6px;
+  background: var(--background-primary);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.18);
+  z-index: 20;
+}
+
+.tablite-column-option {
+  display: flex !important;
+  align-items: center;
+  gap: 6px;
+  height: auto !important;
+  padding: 4px 2px;
+  font-size: 11px;
+  color: var(--text-normal);
+}
+
+.tablite-column-option input {
+  margin: 0;
+}
+
+.tablite-menu-button {
+  width: 100%;
+  margin-bottom: 4px;
+  padding: 4px 6px !important;
+  border: none !important;
+  border-radius: 4px;
+  background: var(--background-secondary) !important;
+  color: var(--text-normal);
+  font-size: 11px;
+  text-align: left;
+}
+
+.tablite-menu-button:hover {
+  background: var(--background-modifier-hover) !important;
+}
+
+.tablite-freeze-control {
+  display: inline-flex !important;
+  align-items: center;
+  gap: 4px;
+  color: var(--text-muted);
+  font-size: 11px;
+}
+
+.tablite-freeze-label {
+  line-height: 1;
+}
+
+/* ─── Table ─── */
+.tablite-table-container {
+  flex: 1;
+  overflow: scroll !important;
+  position: relative;
+  min-height: 0;
+}
+
+.tablite-table-container::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+  display: block;
+}
+
+.tablite-table-container::-webkit-scrollbar-track {
+  background: var(--background-secondary);
+  border-radius: 5px;
+}
+
+.tablite-table-container::-webkit-scrollbar-thumb {
+  background: var(--background-modifier-border-hover);
+  border-radius: 5px;
+  border: 2px solid var(--background-secondary);
+}
+
+.tablite-table-container::-webkit-scrollbar-thumb:hover {
+  background: var(--text-muted);
+}
+
+.tablite-table-container::-webkit-scrollbar-corner {
+  background: var(--background-secondary);
+}
+
+.tablite-table {
+  border-collapse: collapse;
+  width: max-content;
+  min-width: 100%;
+}
+
+.tablite-th {
+  background: var(--background-secondary);
+  border-bottom: 2px solid var(--background-modifier-border);
+  border-right: 1px solid var(--background-modifier-border);
+  padding: 0;
+  font-weight: 600;
+  font-size: 13px;
+  user-select: none;
+}
+
+.tablite-td {
+  border-bottom: 1px solid var(--background-modifier-border);
+  border-right: 1px solid var(--background-modifier-border);
+  padding: 0;
+  font-size: 13px;
+  background: var(--background-primary);
+}
+
+.tablite-frozen-cell {
+  box-shadow: 1px 0 0 var(--background-modifier-border);
+}
+
+/* ─── Selection & Cross Highlight ─── */
+.tablite-td-active {
+  outline: 2px solid var(--interactive-accent);
+  outline-offset: -2px;
+  background: var(--background-modifier-hover) !important;
+}
+
+.tablite-td-selected {
+  background: color-mix(in srgb, var(--interactive-accent) 15%, transparent) !important;
+}
+
+.tablite-td-cross {
+  background: color-mix(in srgb, var(--interactive-accent) 6%, transparent) !important;
+}
+
+.tablite-th.tablite-col-highlight {
+  background: color-mix(in srgb, var(--interactive-accent) 10%, var(--background-secondary)) !important;
+}
+
+/* ─── Row Numbers ─── */
+.tablite-row-num {
+  padding: 0;
+  margin: 0;
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 12px;
+  background: var(--background-secondary);
+  width: 100%;
+  height: 100%;
+  min-height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+.tablite-td:first-child {
+  padding: 0;
+  overflow: hidden;
+}
+
+/* ─── Cell ─── */
+.tablite-cell {
+  padding: 2px 6px;
+  min-height: 28px;
+  display: flex;
+  align-items: center;
+  cursor: cell;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+}
+
+.tablite-cell:hover {
+  background: var(--background-modifier-hover);
+}
+
+.tablite-cell-input {
+  width: 100%;
+  height: 100%;
+  min-height: 28px;
+  padding: 2px 6px;
+  border: 2px solid var(--interactive-accent) !important;
+  border-radius: 0 !important;
+  background: var(--background-primary) !important;
+  color: var(--text-normal);
+  font-size: inherit;
+  font-family: inherit;
+  outline: none !important;
+  box-sizing: border-box;
+  box-shadow: none !important;
+}
+
+/* ─── Header ─── */
+.tablite-header-cell {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  padding: 0;
+}
+
+.tablite-header-top {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 6px;
+  width: 100%;
+  padding: 6px 10px 6px 6px;
+  position: relative;
+}
+
+.tablite-header-name {
+  flex: 1;
+  cursor: pointer;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  text-align: left;
+}
+
+.tablite-header-type {
+  flex-shrink: 0;
+  font-size: 9px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--text-faint);
+}
+
+.tablite-header-input {
+  width: 100%;
+  padding: 2px 4px;
+  border: 1px solid var(--interactive-accent) !important;
+  background: var(--background-primary) !important;
+  color: var(--text-normal);
+  font-size: inherit;
+  font-weight: 600;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.tablite-resize-handle {
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 100%;
+  width: 4px;
+  cursor: col-resize;
+  user-select: none;
+}
+
+.tablite-resize-handle:hover {
+  background: var(--interactive-accent);
+}
+
+/* ─── Column Filter ─── */
+.tablite-column-filter {
+  width: 100%;
+  padding: 0 4px !important;
+  border: none !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  color: var(--text-faint);
+  font-size: 10px;
+  height: 16px !important;
+  line-height: 16px;
+  outline: none !important;
+  box-sizing: border-box;
+  box-shadow: none !important;
+  text-align: center;
+}
+
+.tablite-column-filter-select {
+  cursor: pointer;
+  appearance: none;
+}
+
+/* ─── Range Filter ─── */
+.tablite-range-filter {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  width: 100%;
+  padding: 0 2px 2px;
+  box-sizing: border-box;
+}
+
+.tablite-range-input {
+  min-width: 0;
+  text-align: left;
+  flex: 1;
+}
+
+/* ─── Date Picker ─── */
+.tablite-date-pick {
+  position: relative;
+  flex: 1;
+  min-width: 0;
+}
+
+.tablite-date-display {
+  cursor: pointer;
+  font-size: 9px !important;
+}
+
+.tablite-date-picker {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  opacity: 0;
+  overflow: hidden;
+  pointer-events: none;
+  padding: 0 !important;
+  border: none !important;
+}
+
+/* ─── Multi-select Filter ─── */
+.tablite-multiselect {
+  position: relative;
+  width: 100%;
+  padding: 0 2px 2px;
+  box-sizing: border-box;
+}
+
+.tablite-multiselect-trigger {
+  cursor: pointer;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.tablite-multiselect-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 100;
+  min-width: 100%;
+  max-height: 200px;
+  overflow-y: auto;
+  background: var(--background-primary);
+  border: 1px solid var(--background-modifier-border);
+  border-radius: 4px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  padding: 2px 0;
+}
+
+.tablite-multiselect-item {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 8px;
+  font-size: 11px;
+  cursor: pointer;
+  white-space: nowrap;
+  color: var(--text-normal);
+}
+
+.tablite-multiselect-item:hover {
+  background: var(--background-modifier-hover);
+}
+
+.tablite-multiselect-item input[type="checkbox"] {
+  margin: 0;
+  flex-shrink: 0;
+}
+
+.tablite-multiselect-clear {
+  color: var(--text-faint);
+  border-bottom: 1px solid var(--background-modifier-border);
+  font-size: 10px !important;
+}
+
+.tablite-range-sep {
+  flex-shrink: 0;
+  font-size: 10px;
+  color: var(--text-faint);
+}
+
+.tablite-column-filter:focus {
+  background: var(--background-primary-alt) !important;
+  color: var(--text-normal);
+}
+
+.tablite-column-filter::placeholder {
+  color: var(--text-faint);
+  font-size: 10px;
+}
+
+/* ─── Context Menu ─── */
+.tablite-context-menu {
+  position: fixed;
+  left: var(--tablite-menu-left, 0);
+  top: var(--tablite-menu-top, 0);
+  z-index: 1000;
+  background: var(--background-primary);
+  border: 1px solid var(--background-modifier-border);
+  border-radius: 6px;
+  padding: 4px 0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  min-width: 180px;
+}
+
+.tablite-context-menu hr {
+  margin: 4px 0;
+  border: none;
+  border-top: 1px solid var(--background-modifier-border);
+}
+
+.tablite-menu-item {
+  padding: 6px 12px;
+  cursor: pointer;
+  font-size: 13px;
+  color: var(--text-normal);
+}
+
+.tablite-menu-item:hover {
+  background: var(--background-modifier-hover);
+}
+
+/* ─── Search Highlight ─── */
+.tablite-cell-match {
+  background: var(--text-highlight-bg) !important;
+}

@@ -1,0 +1,355 @@
+{
+  "appData": {},
+  "state": {
+    "-Obsidian-/Legenden/Gruppen-Farb-Legende.md": {
+      "0": {
+        "data": {
+          "headers": [
+            {
+              "id": "54d4a7a4-0f0d-43a1-9974-43256fd1daa8",
+              "initialIndex": 0,
+              "content": "a",
+              "sortName": "default",
+              "width": "100px",
+              "type": "text"
+            },
+            {
+              "id": "cc1b10ac-b934-463b-9053-e010880854ee",
+              "initialIndex": 1,
+              "content": "b",
+              "sortName": "default",
+              "width": "100px",
+              "type": "text"
+            },
+            {
+              "id": "444140bf-904f-49ef-ae11-b57949c8bd55",
+              "initialIndex": 2,
+              "content": "c",
+              "sortName": "default",
+              "width": "100px",
+              "type": "text"
+            }
+          ],
+          "rows": [
+            {
+              "id": "d8fa8113-d37b-43cc-a50e-9b52fc0affcb",
+              "initialIndex": 0,
+              "creationTime": 1657476033037
+            },
+            {
+              "id": "5f1dbe23-7e00-49ad-a89d-07dd0462b8d5",
+              "initialIndex": 1,
+              "creationTime": 1657475941637
+            },
+            {
+              "id": "7f92386b-fad4-490d-851e-b941e4e44acb",
+              "initialIndex": 2,
+              "creationTime": 1657476036157
+            },
+            {
+              "id": "4e0e5acd-1d79-4c8f-af92-7ce038199617",
+              "initialIndex": 3,
+              "creationTime": 1657476036707
+            },
+            {
+              "id": "7694d655-3efd-4e6e-b475-5436104f5573",
+              "initialIndex": 4,
+              "creationTime": 1657476317572
+            },
+            {
+              "id": "578e7ea2-1096-4669-b0df-114284b5ea6c",
+              "initialIndex": 5,
+              "creationTime": 1657476491939
+            }
+          ],
+          "cells": [
+            {
+              "id": "3c808060-7caa-4f3b-9aa0-eccbb581c927",
+              "rowId": "d8fa8113-d37b-43cc-a50e-9b52fc0affcb",
+              "headerId": "54d4a7a4-0f0d-43a1-9974-43256fd1daa8",
+              "type": "text",
+              "text": "1a--153, 0, 0"
+            },
+            {
+              "id": "92afc19c-0b96-4cb1-bae5-047199de39a3",
+              "rowId": "d8fa8113-d37b-43cc-a50e-9b52fc0affcb",
+              "headerId": "cc1b10ac-b934-463b-9053-e010880854ee",
+              "type": "text",
+              "text": "1b--255, 0, 0"
+            },
+            {
+              "id": "a321a5ce-31d8-4c9f-90c1-5fef5531e55f",
+              "rowId": "d8fa8113-d37b-43cc-a50e-9b52fc0affcb",
+              "headerId": "444140bf-904f-49ef-ae11-b57949c8bd55",
+              "type": "text",
+              "text": ""
+            },
+            {
+              "id": "e8984389-70af-4880-a144-b94ff19a9c30",
+              "rowId": "5f1dbe23-7e00-49ad-a89d-07dd0462b8d5",
+              "headerId": "54d4a7a4-0f0d-43a1-9974-43256fd1daa8",
+              "type": "text",
+              "text": ""
+            },
+            {
+              "id": "70c02c79-c88b-451f-b94c-760bcf89a372",
+              "rowId": "5f1dbe23-7e00-49ad-a89d-07dd0462b8d5",
+              "headerId": "cc1b10ac-b934-463b-9053-e010880854ee",
+              "type": "text",
+              "text": ""
+            },
+            {
+              "id": "8419dcdb-b96d-4784-b464-d245cfaf5ae2",
+              "rowId": "5f1dbe23-7e00-49ad-a89d-07dd0462b8d5",
+              "headerId": "444140bf-904f-49ef-ae11-b57949c8bd55",
+              "type": "text",
+              "text": "dd"
+            },
+            {
+              "id": "2acf7336-908f-4e3a-bf90-3585271f29dc",
+              "rowId": "7f92386b-fad4-490d-851e-b941e4e44acb",
+              "headerId": "54d4a7a4-0f0d-43a1-9974-43256fd1daa8",
+              "type": "text",
+              "text": "1b--255, 0, 0"
+            },
+            {
+              "id": "6739de35-62f0-462f-9188-3d577d26dbe9",
+              "rowId": "7f92386b-fad4-490d-851e-b941e4e44acb",
+              "headerId": "cc1b10ac-b934-463b-9053-e010880854ee",
+              "type": "text",
+              "text": ""
+            },
+            {
+              "id": "bab1ba1f-bfc8-431b-ac11-fca4b6bac1af",
+              "rowId": "7f92386b-fad4-490d-851e-b941e4e44acb",
+              "headerId": "444140bf-904f-49ef-ae11-b57949c8bd55",
+              "type": "text",
+              "text": ""
+            },
+            {
+              "id": "0e2a2733-db22-48c2-9384-e1dc73980270",
+              "rowId": "4e0e5acd-1d79-4c8f-af92-7ce038199617",
+              "headerId": "54d4a7a4-0f0d-43a1-9974-43256fd1daa8",
+              "type": "text",
+              "text": ""
+            },
+            {
+              "id": "cde9b2c0-97d0-4430-917b-1900cf91bb2a",
+              "rowId": "4e0e5acd-1d79-4c8f-af92-7ce038199617",
+              "headerId": "cc1b10ac-b934-463b-9053-e010880854ee",
+              "type": "text",
+              "text": "1b--255, 0, 0"
+            },
+            {
+              "id": "e6c84368-4a54-46f5-8af0-679eea62c91f",
+              "rowId": "4e0e5acd-1d79-4c8f-af92-7ce038199617",
+              "headerId": "444140bf-904f-49ef-ae11-b57949c8bd55",
+              "type": "text",
+              "text": ""
+            },
+            {
+              "id": "fc57cfca-935e-4527-a26c-5243916f4bf5",
+              "rowId": "7694d655-3efd-4e6e-b475-5436104f5573",
+              "headerId": "54d4a7a4-0f0d-43a1-9974-43256fd1daa8",
+              "type": "text",
+              "text": ""
+            },
+            {
+              "id": "cadb3dcf-365e-4c31-9ad1-d86b507a78d8",
+              "rowId": "7694d655-3efd-4e6e-b475-5436104f5573",
+              "headerId": "cc1b10ac-b934-463b-9053-e010880854ee",
+              "type": "text",
+              "text": ""
+            },
+            {
+              "id": "2655cd61-c886-4066-8f69-1ae2deff4c96",
+              "rowId": "7694d655-3efd-4e6e-b475-5436104f5573",
+              "headerId": "444140bf-904f-49ef-ae11-b57949c8bd55",
+              "type": "text",
+              "text": ""
+            },
+            {
+              "id": "c2590775-ffe1-42b3-8176-c55a6f176abd",
+              "rowId": "578e7ea2-1096-4669-b0df-114284b5ea6c",
+              "headerId": "54d4a7a4-0f0d-43a1-9974-43256fd1daa8",
+              "type": "text",
+              "text": ""
+            },
+            {
+              "id": "e5a98ace-2d9b-44da-b664-1c458901ba28",
+              "rowId": "578e7ea2-1096-4669-b0df-114284b5ea6c",
+              "headerId": "cc1b10ac-b934-463b-9053-e010880854ee",
+              "type": "text",
+              "text": ""
+            },
+            {
+              "id": "367b1114-f0f5-4b91-bde7-1f6447781db7",
+              "rowId": "578e7ea2-1096-4669-b0df-114284b5ea6c",
+              "headerId": "444140bf-904f-49ef-ae11-b57949c8bd55",
+              "type": "text",
+              "text": ""
+            }
+          ],
+          "tags": []
+        },
+        "viewType": "live-preview",
+        "shouldUpdate": true
+      }
+    },
+    "-Obsidian-/Funktionen/Plugin Funktionen/Admonition.md": {
+      "0": {
+        "data": {
+          "headers": [
+            {
+              "id": "6a8bc32c-5b98-4a29-8b25-124b061ca0c2",
+              "initialIndex": 0,
+              "content": "Type",
+              "sortName": "default",
+              "width": "100px",
+              "type": "text"
+            },
+            {
+              "id": "175a1336-f17b-4bb1-8f1f-05545b0b45d7",
+              "initialIndex": 1,
+              "content": "Aliases",
+              "sortName": "default",
+              "width": "100px",
+              "type": "text"
+            }
+          ],
+          "rows": [
+            {
+              "id": "279d4eaa-2db6-4502-8889-14aa9dcfbc2d",
+              "initialIndex": 0,
+              "creationTime": 1658161501729
+            }
+          ],
+          "cells": [
+            {
+              "id": "27c9718e-3db5-412a-a782-59c7395829c7",
+              "rowId": "279d4eaa-2db6-4502-8889-14aa9dcfbc2d",
+              "headerId": "6a8bc32c-5b98-4a29-8b25-124b061ca0c2",
+              "type": "text",
+              "text": ""
+            },
+            {
+              "id": "5018fcb2-2754-4997-9cb9-7b01df40a8ab",
+              "rowId": "279d4eaa-2db6-4502-8889-14aa9dcfbc2d",
+              "headerId": "175a1336-f17b-4bb1-8f1f-05545b0b45d7",
+              "type": "text",
+              "text": ""
+            }
+          ],
+          "tags": []
+        },
+        "shouldUpdate": false,
+        "viewType": "live-preview"
+      }
+    },
+    "-Obsidian-/Unicode Liste -----.md": {
+      "0": {
+        "data": {
+          "headers": [
+            {
+              "id": "7ea33003-d5a0-431e-b125-19a996458f3a",
+              "initialIndex": 0,
+              "content": "",
+              "sortName": "default",
+              "width": "100px",
+              "type": "text"
+            },
+            {
+              "id": "03698e2b-9f86-4416-9786-21e1de171d5a",
+              "initialIndex": 1,
+              "content": "",
+              "sortName": "default",
+              "width": "100px",
+              "type": "text"
+            }
+          ],
+          "rows": [
+            {
+              "id": "d4bce46b-43b9-400f-93b2-64206533bf7c",
+              "initialIndex": 0,
+              "creationTime": 1664493359835
+            }
+          ],
+          "cells": [
+            {
+              "id": "a585c781-903e-4dbc-8027-025bceb9c015",
+              "rowId": "d4bce46b-43b9-400f-93b2-64206533bf7c",
+              "headerId": "7ea33003-d5a0-431e-b125-19a996458f3a",
+              "type": "text",
+              "text": ""
+            },
+            {
+              "id": "7cc71b15-9384-4104-9f49-99ae92864ad5",
+              "rowId": "d4bce46b-43b9-400f-93b2-64206533bf7c",
+              "headerId": "03698e2b-9f86-4416-9786-21e1de171d5a",
+              "type": "text",
+              "text": ""
+            }
+          ],
+          "tags": []
+        },
+        "shouldUpdate": false,
+        "viewType": "live-preview"
+      }
+    },
+    "-Obsidian-/Funktionen/OpenSourceLibraries/MathJax.md": {
+      "0": {
+        "data": {
+          "headers": [
+            {
+              "id": "66c0593f-b193-4fd0-a2bf-b86d8dfd55f5",
+              "initialIndex": 0,
+              "content": "Thema",
+              "sortName": "default",
+              "width": "100px",
+              "type": "text"
+            },
+            {
+              "id": "2ef5687f-bc50-451d-b008-449541060aeb",
+              "initialIndex": 1,
+              "content": "Formel",
+              "sortName": "default",
+              "width": "100px",
+              "type": "text"
+            }
+          ],
+          "rows": [
+            {
+              "id": "3a7631ab-b07f-42a6-bb4b-1455bb78e458",
+              "initialIndex": 0,
+              "creationTime": 1665069679185
+            }
+          ],
+          "cells": [
+            {
+              "id": "83bcffd9-2652-4554-8c85-e1295e783550",
+              "rowId": "3a7631ab-b07f-42a6-bb4b-1455bb78e458",
+              "headerId": "66c0593f-b193-4fd0-a2bf-b86d8dfd55f5",
+              "type": "text",
+              "text": "Variablen"
+            },
+            {
+              "id": "65499ea5-b764-46f0-9c28-a8eb50c0b585",
+              "rowId": "3a7631ab-b07f-42a6-bb4b-1455bb78e458",
+              "headerId": "2ef5687f-bc50-451d-b008-449541060aeb",
+              "type": "text",
+              "text": ""
+            }
+          ],
+          "tags": []
+        },
+        "shouldUpdate": false,
+        "viewType": "live-preview"
+      }
+    }
+  },
+  "focusedElement": {
+    "id": "-1",
+    "type": "unfocused"
+  },
+  "excludedFiles": []
+}

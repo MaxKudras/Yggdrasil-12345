@@ -1,0 +1,16 @@
+.horizontal-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px; /* Space between items */
+}
+
+.fmi-plugin-error {
+    color: var(--text-error);
+    /*background-color: var(--background-modifier-error);*/
+    padding: 10px;
+    border-radius: 5px;
+    border-left: 3px solid var(--text-error);
+  }

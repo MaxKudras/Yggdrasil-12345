@@ -1,0 +1,10 @@
+{
+  "id": "calendar-heatmap",
+  "name": "Calendar Heatmap",
+  "description": "Visualize daily notes and writing activity in a calendar heatmap.",
+  "version": "1.6.10",
+  "author": "zen",
+  "authorUrl": "https://github.com/deemsd/",
+  "isDesktopOnly": false,
+  "minAppVersion": "0.9.11"
+}

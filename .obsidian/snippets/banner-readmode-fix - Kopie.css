@@ -1,0 +1,18 @@
+.img-grid .markdown-preview-section {
+    display:flex;
+}
+.img-grid .markdown-preview-section > .internal-embed {
+    flex:1;
+    margin-left:-0.5rem;
+    padding:0 0.5rem 0.5rem 0.5rem;
+}
+.img-grid .markdown-preview-section > *:not(div) {
+    margin-block-start: 0rem;
+    margin-block-end: 1rem;
+}
+.img-grid .markdown-preview-section hr {
+    width:100%;
+}
+.img-grid .markdown-preview-section img:not([width]) {
+    width:100%;
+}

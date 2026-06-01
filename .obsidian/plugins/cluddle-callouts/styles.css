@@ -1,0 +1,233 @@
+.custom-callout-context-menu {
+    min-width: 0;
+    width: min(var(--custom-callout-modal-width, 42rem), calc(100vw - 1rem));
+    max-width: min(var(--custom-callout-modal-width, 42rem), calc(100vw - 1rem));
+}
+
+.custom-callout-context-menu-shell {
+    --custom-callout-column-width: 9rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.45rem;
+    padding: 0.25rem;
+    width: 100%;
+    max-width: 100%;
+    max-height: calc(min(var(--custom-callout-modal-height, 82vh), calc(100vh - 1rem)) - 0.5rem);
+    overflow: auto;
+}
+
+.custom-callout-context-menu-search {
+    position: sticky;
+    top: 0;
+    z-index: 2;
+    background: var(--background-primary);
+    padding-bottom: 0.2rem;
+}
+
+.custom-callout-context-menu-search-input {
+    width: 100%;
+    box-sizing: border-box;
+    border: 1px solid var(--background-modifier-border);
+    background: var(--background-primary-alt);
+    color: var(--text-normal);
+    border-radius: 0.55rem;
+    padding: 0.5rem 0.7rem;
+    font: inherit;
+}
+
+.custom-callout-context-menu-search-input:focus {
+    outline: none;
+    border-color: var(--interactive-accent);
+    box-shadow: 0 0 0 2px color-mix(in srgb, var(--interactive-accent) 22%, transparent);
+}
+
+.custom-callout-context-menu-content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    width: 100%;
+    max-width: 100%;
+}
+
+.custom-callout-context-menu-row {
+    display: grid;
+    grid-template-columns: repeat(var(--custom-callout-group-columns, 3), minmax(var(--custom-callout-column-width), max-content));
+    align-items: start;
+    justify-content: start;
+    gap: 0.25rem 0.45rem;
+    width: 100%;
+    max-width: max-content;
+}
+
+.custom-callout-context-menu-row.is-empty {
+    display: none;
+}
+
+.custom-callout-context-menu-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+    align-self: start;
+    width: var(--custom-callout-column-width);
+    min-width: var(--custom-callout-column-width);
+    max-width: var(--custom-callout-column-width);
+}
+
+.custom-callout-context-menu-group-label {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    padding: 0 0.18rem;
+    width: var(--custom-callout-column-width);
+    box-sizing: border-box;
+}
+
+.custom-callout-context-menu-group-label.is-placeholder {
+    visibility: hidden;
+}
+
+.custom-callout-context-menu-group.is-empty {
+    display: none;
+}
+
+.custom-callout-context-menu-section {
+    display: flex;
+    flex-direction: column;
+    gap: 0.1rem;
+    width: var(--custom-callout-column-width);
+    min-width: var(--custom-callout-column-width);
+    max-width: var(--custom-callout-column-width);
+}
+
+.custom-callout-context-menu-group[data-section="builtin"],
+.custom-callout-context-menu-group[data-section="utility"] {
+    padding-top: 0;
+    border-top: none;
+}
+
+.custom-callout-context-menu-group[data-section="utility"] {
+    border-top: 1px dashed var(--background-modifier-border);
+    padding-top: 0.4rem;
+}
+
+.custom-callout-context-menu-group[data-section="builtin"] {
+    border-top: 1px solid var(--background-modifier-border);
+    padding-top: 0.4rem;
+}
+
+.custom-callout-context-menu-item {
+    position: relative;
+    width: var(--custom-callout-column-width);
+    min-width: var(--custom-callout-column-width);
+    max-width: var(--custom-callout-column-width);
+    cursor: pointer;
+}
+
+.custom-callout-context-menu-appearance {
+    --custom-callout-context-color: var(--callout-color, 128, 128, 128);
+    margin: 0;
+    border: 0;
+    background: transparent;
+    box-shadow: none;
+    color: inherit;
+    display: flex;
+    align-items: center;
+    gap: 0.38rem;
+    box-sizing: border-box;
+    font: inherit;
+    width: 100%;
+    min-height: 1.9rem;
+    border-radius: 0.5rem;
+    padding-left: 0.18rem;
+    padding-right: 0.15rem;
+    transition: background-color 120ms ease, box-shadow 120ms ease, color 120ms ease;
+}
+
+.custom-callout-context-menu-item .menu-item-title {
+    color: rgb(var(--custom-callout-context-color, 128, 128, 128));
+    transition: color 120ms ease;
+}
+
+.custom-callout-context-menu-item .menu-item-icon {
+    color: rgb(var(--custom-callout-context-color, 128, 128, 128));
+    transition: color 120ms ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.15rem;
+    min-width: 1.15rem;
+    opacity: 1;
+}
+
+.custom-callout-context-menu-item .menu-item-icon svg {
+    display: block;
+    width: 1em;
+    height: 1em;
+}
+
+.custom-callout-context-menu-item .menu-item-title {
+    flex: 1 1 auto;
+    line-height: 1.2;
+}
+
+.custom-callout-context-menu-item .menu-item-icon-end {
+    margin-left: auto;
+}
+
+.custom-callout-context-menu-item[data-callout-custom="true"] .menu-item-title {
+    font-weight: 700;
+}
+
+.custom-callout-context-menu-item.is-search-hidden {
+    display: none;
+}
+
+.custom-callout-context-menu-item:hover .custom-callout-context-menu-appearance {
+    background: color-mix(in srgb, rgb(var(--custom-callout-context-color, 128, 128, 128)) 12%, var(--background-primary));
+    box-shadow: inset 0 0 0 1px color-mix(in srgb, rgb(var(--custom-callout-context-color, 128, 128, 128)) 32%, transparent);
+}
+
+.custom-callout-context-menu-item:hover .menu-item-title,
+.custom-callout-context-menu-item:hover .menu-item-icon {
+    color: color-mix(in srgb, rgb(var(--custom-callout-context-color, 128, 128, 128)) 82%, white);
+}
+
+.custom-callout-context-menu-item.is-search-top-result .custom-callout-context-menu-appearance {
+    background: color-mix(in srgb, rgb(var(--custom-callout-context-color, 128, 128, 128)) 16%, var(--background-primary));
+    box-shadow: inset 0 0 0 1px color-mix(in srgb, rgb(var(--custom-callout-context-color, 128, 128, 128)) 40%, transparent);
+}
+
+.callout.custom-callout-has-edited-title {
+    --callout-title-color: var(--custom-callout-nondefault-title-color, #000000);
+}
+
+.custom-callout-bundled-cluddle-enabled .callout[data-callout="cluddle"] {
+    --callout-color: 111, 174, 219;
+    --callout-icon: lucide-cloud;
+    background-color: #f4f6df;
+    border-color: rgba(111, 174, 219, 0.34);
+}
+
+.custom-callout-bundled-cluddle-enabled .callout[data-callout="cluddle"] .callout-title {
+    color: rgb(111, 174, 219);
+}
+
+.callout .callout-icon .svg-icon,
+.callout .callout-title .callout-icon svg {
+    width: 1.2em;
+    height: 1.2em;
+}
+
+.custom-callout-picker-modal .modal {
+    width: min(var(--custom-callout-modal-width, 42rem), calc(100vw - 1rem));
+    max-width: min(var(--custom-callout-modal-width, 42rem), calc(100vw - 1rem));
+    max-height: min(var(--custom-callout-modal-height, 82vh), calc(100vh - 1rem));
+}
+
+.custom-callout-picker-modal .modal-content {
+    padding: 0.25rem;
+    max-height: calc(min(var(--custom-callout-modal-height, 82vh), calc(100vh - 1rem)) - 0.5rem);
+    overflow: hidden;
+}

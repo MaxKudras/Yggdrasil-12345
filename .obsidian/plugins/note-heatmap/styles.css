@@ -1,0 +1,482 @@
+/* Obsidian Note Heatmap Plugin Styles */
+
+/* CSS Variables for dynamic values */
+.heatmap-plugin-wrapper {
+  --heatmap-box-size: 12px;
+  --heatmap-gap: 3px;
+  --heatmap-column-width: 15px;
+}
+
+/* ============================================
+   Layout & Container Styles
+   ============================================ */
+
+/* Main container padding and overflow */
+.note-heatmap-container {
+  padding: 20px;
+  overflow-y: auto;
+}
+
+/* Flex column layout */
+.note-heatmap-flex-col {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Full width with max-width constraint */
+.note-heatmap-width-full {
+  width: 100%;
+  max-width: 850px;
+}
+
+/* ============================================
+   Tooltip Styles
+   ============================================ */
+
+.note-heatmap-tooltip {
+  position: fixed;
+  display: none;
+}
+
+.note-heatmap-tooltip.visible {
+  display: block;
+}
+
+/* ============================================
+   Result Panel Styles
+   ============================================ */
+
+/* Search container */
+.note-heatmap-search-container {
+  margin-bottom: 12px;
+}
+
+/* Search input */
+.note-heatmap-search-input {
+  width: 100%;
+  padding: 6px 10px;
+  border: 1px solid var(--background-modifier-border);
+  border-radius: 4px;
+  background: var(--background-primary);
+  color: var(--text-normal);
+  font-size: 13px;
+  box-sizing: border-box;
+}
+
+/* Sort controls container */
+.note-heatmap-sort-container {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--background-modifier-border);
+  font-size: 12px;
+}
+
+/* Sort button */
+.note-heatmap-sort-btn {
+  background: transparent;
+  border: none;
+  padding: 4px 8px;
+  cursor: pointer;
+  border-radius: 4px;
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.note-heatmap-sort-btn.active {
+  color: var(--text-normal);
+  font-weight: bold;
+}
+
+/* List container with max height */
+.note-heatmap-list-container {
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+/* Unstyled list */
+.note-heatmap-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* ============================================
+   List Item Styles
+   ============================================ */
+
+/* List item row */
+.note-heatmap-list-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+}
+
+/* List item left section */
+.note-heatmap-list-item-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+  min-width: 0;
+}
+
+/* Truncated link text */
+.note-heatmap-link-text {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Days badge */
+.note-heatmap-days-badge {
+  color: var(--text-muted);
+  font-size: 11px;
+  white-space: nowrap;
+  flex-shrink: 0;
+  background: var(--background-secondary);
+  padding: 1px 6px;
+  border-radius: 3px;
+}
+
+/* Time span */
+.note-heatmap-time {
+  color: var(--text-muted);
+  font-size: 11px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* Diff button (VHD) */
+.note-heatmap-container .diff-btn,
+.note-heatmap-container .note-heatmap-vhd-btn {
+  font-size: 11px;
+  padding: 2px 8px;
+  background: var(--interactive-accent);
+  color: var(--text-on-accent);
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+/* Empty state text */
+.note-heatmap-empty {
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+/* Title with note count */
+.note-heatmap-title-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--background-modifier-border);
+  margin-bottom: 12px;
+  font-weight: bold;
+}
+
+/* Month container */
+.heatmap-plugin-wrapper .month-container {
+  position: relative;
+  height: 20px;
+  margin-left: 38px;
+  margin-bottom: 2px;
+}
+
+/* Month name label */
+.heatmap-plugin-wrapper .m-name {
+  position: absolute;
+  font-size: 11px;
+  color: var(--text-muted);
+  white-space: nowrap;
+  cursor: pointer;
+  padding: 2px 0;
+  border-radius: 3px;
+  transition: background 0.1s;
+}
+
+.heatmap-plugin-wrapper .m-name:hover {
+  background-color: var(--background-modifier-hover);
+}
+
+/* Calendar body */
+.heatmap-plugin-wrapper .cal-body {
+  display: flex;
+  margin-bottom: 10px;
+}
+
+/* Week labels */
+.heatmap-plugin-wrapper .w-labs {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 102px;
+  width: 30px;
+  margin-right: 8px;
+}
+
+.heatmap-plugin-wrapper .w-lab {
+  font-size: 10px;
+  color: var(--text-muted);
+  height: 12px;
+  line-height: 12px;
+}
+
+/* Calendar grid */
+.heatmap-plugin-wrapper .cal-grid {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  height: 102px;
+  gap: var(--heatmap-gap);
+  align-content: flex-start;
+}
+
+/* Heat box */
+.heatmap-plugin-wrapper .h-box {
+  width: var(--heatmap-box-size);
+  height: var(--heatmap-box-size);
+  border-radius: 2px;
+  cursor: pointer;
+}
+
+.heatmap-plugin-wrapper .h-box:hover {
+  outline: 1.5px solid var(--interactive-accent);
+  z-index: 10;
+}
+
+.heatmap-plugin-wrapper .h-box.active {
+  outline: 2px solid var(--interactive-accent);
+}
+
+.heatmap-plugin-wrapper .h-box.out-of-year {
+  opacity: 0.25;
+}
+
+/* Scroll container */
+.heatmap-plugin-wrapper .heatmap-scroll-container {
+  overflow-x: auto;
+  padding-bottom: 5px;
+}
+
+.heatmap-plugin-wrapper .heatmap-scroll-container::-webkit-scrollbar {
+  height: 6px;
+}
+
+.heatmap-plugin-wrapper .heatmap-scroll-container::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.heatmap-plugin-wrapper .heatmap-scroll-container::-webkit-scrollbar-thumb {
+  background: var(--background-modifier-border);
+  border-radius: 3px;
+}
+
+/* Heatmap section */
+.heatmap-plugin-wrapper .heatmap-section {
+  min-width: fit-content;
+}
+
+/* Result panel */
+.heatmap-plugin-wrapper #res-panel {
+  width: 100%;
+  padding: 15px;
+  background: var(--background-secondary);
+  border-radius: 8px;
+  font-size: 13px;
+  border: 1px solid var(--background-modifier-border);
+  max-height: 480px;
+  overflow-y: auto;
+  box-sizing: border-box;
+}
+
+.heatmap-plugin-wrapper .res-item {
+  margin-bottom: 6px;
+  list-style: disc;
+  margin-left: 20px;
+  color: var(--text-normal);
+}
+
+.heatmap-plugin-wrapper .res-link {
+  color: var(--link-color);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.heatmap-plugin-wrapper .res-link:hover {
+  text-decoration: underline;
+}
+
+/* Close button */
+.heatmap-plugin-wrapper .close-btn {
+  background: transparent;
+  border: none;
+  font-size: 14px;
+  width: 20px;
+  height: 20px;
+  line-height: 1;
+  cursor: pointer;
+  color: var(--text-muted);
+  padding: 0;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.1s ease;
+}
+
+.heatmap-plugin-wrapper .close-btn:hover {
+  background: var(--background-modifier-hover);
+  color: var(--text-normal);
+}
+
+/* Title left section */
+.heatmap-plugin-wrapper .title-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+/* Mod count badge */
+.heatmap-plugin-wrapper .mod-count {
+  font-size: 11px;
+  color: var(--text-muted);
+  font-weight: normal;
+}
+
+/* Header */
+.heatmap-plugin-wrapper .heatmap-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.heatmap-plugin-wrapper .heatmap-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-normal);
+}
+
+/* Refresh button */
+.heatmap-plugin-wrapper .heatmap-refresh-btn {
+  background: transparent;
+  border: 1px solid var(--background-modifier-border);
+  border-radius: 4px;
+  padding: 3px 8px;
+  font-size: 12px;
+  cursor: pointer;
+  color: var(--text-muted);
+  transition: all 0.1s;
+}
+
+.heatmap-plugin-wrapper .heatmap-refresh-btn:hover {
+  background: var(--background-modifier-hover);
+  color: var(--text-normal);
+}
+
+/* Year navigation */
+.heatmap-plugin-wrapper .year-nav {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.heatmap-plugin-wrapper .year-nav-btn {
+  background: transparent;
+  border: 1px solid var(--background-modifier-border);
+  border-radius: 4px;
+  padding: 3px 8px;
+  font-size: 14px;
+  cursor: pointer;
+  color: var(--text-muted);
+  transition: all 0.1s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 28px;
+  height: 24px;
+}
+
+.heatmap-plugin-wrapper .year-nav-btn:hover {
+  background: var(--background-modifier-hover);
+  color: var(--text-normal);
+}
+
+.heatmap-plugin-wrapper .year-nav-btn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+/* Year display */
+.heatmap-plugin-wrapper .year-display {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-normal);
+  min-width: 50px;
+  text-align: center;
+  cursor: pointer;
+  border-radius: 4px;
+  padding: 2px 8px;
+  transition: background 0.1s;
+}
+
+.heatmap-plugin-wrapper .year-display:hover {
+  background: var(--background-modifier-hover);
+}
+
+.heatmap-plugin-wrapper .year-display.clickable {
+  color: var(--link-color);
+}
+
+/* Tooltip */
+.heatmap-tooltip {
+  position: fixed;
+  background: var(--background-primary);
+  color: var(--text-normal);
+  border: 1px solid var(--background-modifier-border);
+  border-radius: 6px;
+  padding: 4px 8px;
+  font-size: 12px;
+  white-space: nowrap;
+  z-index: 9999;
+  pointer-events: none;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Setting Tab Styles */
+.heatmap-setting-group-header .setting-item-name {
+  font-weight: 600;
+  font-size: 15px;
+  color: var(--text-normal);
+}
+
+.heatmap-setting-group-header .setting-item-description {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.heatmap-setting-subitem {
+  padding-left: 20px;
+  border-left: 2px solid var(--background-modifier-border);
+  margin-left: 4px;
+}
+
+.heatmap-setting-subitem .setting-item-name {
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.heatmap-setting-subitem + .heatmap-setting-subitem {
+  margin-top: -8px;
+}
+
+.heatmap-setting-group-header + .heatmap-setting-subitem {
+  margin-top: -4px;
+}

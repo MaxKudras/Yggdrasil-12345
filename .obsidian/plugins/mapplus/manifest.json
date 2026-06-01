@@ -1,0 +1,11 @@
+{
+	"id": "mapplus",
+	"name": "MapPlus",
+	"version": "1.1.7",
+	"minAppVersion": "1.10.0",
+	"description": "A performant and customizable map inside Bases.",
+	"author": "ccmdi",
+	"authorUrl": "https://github.com/ccmdi",
+	"fundingUrl": "https://github.com/sponsors/ccmdi",
+	"isDesktopOnly": false
+}

@@ -1,0 +1,10 @@
+{
+  "id": "mood-quarter-calendar",
+  "name": "Mood Quarter Calendar",
+  "version": "0.1.9",
+  "minAppVersion": "1.5.0",
+  "description": "A Markdown-first mood calendar with custom SVG faces, tag/frontmatter input, and readable quarter-by-quarter year layout.",
+  "author": "LinneaCai",
+  "authorUrl": "",
+  "isDesktopOnly": false
+}

@@ -1,0 +1,10 @@
+{
+	"id": "tag-aliases",
+	"name": "Tag Aliases",
+	"version": "0.1.4",
+	"minAppVersion": "1.7.2",
+	"description": "Define tag aliases that normalize tag input by suggesting and inserting primary tags for known aliases.",
+	"author": "majiajun",
+	"authorUrl": "https://github.com/yingjialong",
+	"isDesktopOnly": false
+}

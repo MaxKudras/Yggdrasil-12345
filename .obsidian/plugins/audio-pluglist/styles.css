@@ -1,0 +1,339 @@
+
+/* Footer: half width, bottom-right */
+.ap-footer-player{
+  position:fixed;
+  right:0;
+  bottom:0;
+  padding:4px 8px;
+  display:flex;
+  gap:8px;
+  align-items:center;
+  border-top:1px solid var(--background-modifier-border);
+  background:var(--background-primary);
+  z-index:1000;
+  width:52vw;
+}
+.ap-footer-player select{ font-size:12px }
+.ap-footer-player .ap-title{ position:relative; overflow:hidden; white-space:nowrap; width:26ch; max-width:26ch; }
+.ap-footer-player input[type="range"]{ margin:0 4px }
+
+/* Footer title marquee */
+.ap-title .ap-marquee{ display:inline-block; white-space:nowrap; will-change:transform; animation: apl-marquee linear infinite; animation-duration: var(--apl-marquee-duration, 14s); }
+.ap-title .ap-marquee:hover{ animation-play-state: paused; }
+@keyframes apl-marquee{
+  0% { transform: translateX(0); }
+  10% { transform: translateX(0); } /* pause before scroll */
+  90% { transform: translateX(-50%); }
+  100% { transform: translateX(-50%); }
+}
+
+/* Footer segmented pill control */
+.ap-footer-group{
+  display:inline-flex;
+  border:1px solid var(--background-modifier-border);
+  border-radius:999px;
+  overflow:hidden;
+  background: var(--background-secondary);
+}
+.ap-footer-seg{
+  appearance:none;
+  border:0;
+  padding:6px 10px;
+  font-size:16px;
+  line-height:1;
+  background:transparent;
+  color:var(--text-normal);
+  cursor:pointer;
+}
+.ap-footer-seg + .ap-footer-seg{ border-left:1px solid var(--background-modifier-border); }
+.ap-footer-seg:hover{ background: rgba(59,130,246,.12); } /* hover light blue */
+.ap-footer-seg.is-active{
+  background: #3b82f6;
+  color: white;
+}
+
+/* Tab layout */
+.ap-row{display:flex;gap:8px;align-items:center;margin:6px 0}
+.ap-col{display:flex;flex-direction:column;gap:8px}
+.ap-title-large{font-weight:600}
+
+/* Tab controls: subtle border; blue only when active */
+.ap-controls button{ border:1px solid var(--background-modifier-border); border-radius:8px; padding:2px 8px; }
+.ap-controls button + button{ margin-left:6px; }
+.ap-controls button.is-active{ color:#3b82f6; font-weight:600; border-color: var(--interactive-accent); }
+
+/* Seek & Volume */
+.ap-seek{display:flex;align-items:center;gap:6px}
+.ap-seek input[type="range"]{ width:100% }
+.ap-vol-wide{display:flex;justify-content:center;align-items:center;margin:6px 0}
+.ap-vol-wide input[type="range"]{ width:60%; max-width:720px }
+
+/* Track list */
+.audio-list{display:flex;flex-direction:column;gap:4px;margin-top:8px}
+.audio-row{display:flex;gap:8px;align-items:center;padding:4px 6px;border-radius:6px;cursor:pointer}
+.audio-row:hover{background:var(--background-modifier-hover)}
+.audio-row .apl-right{margin-left:auto;opacity:0.8}
+.ap-playing-icon{font-size:12px;line-height:1;color:#3b82f6} /* blue */
+
+/* Ensure Prev/Skip/Stop never show active blue background */
+.ap-footer-seg.no-active.is-active{ background: transparent; color: var(--text-normal); }
+
+/* Force plain white icons for Prev/Skip/Stop (never blue) */
+.ap-footer-seg.plain{
+  color: var(--text-normal) !important;
+  background: transparent !important;
+}
+.ap-footer-seg.plain.is-active{
+  color: var(--text-normal) !important;
+  background: transparent !important;
+}
+
+/* Strong override to keep Prev/Skip/Stop as plain icons, never blue */
+.ap-footer-seg.plain,
+.ap-footer-seg.plain:hover,
+.ap-footer-seg.plain.is-active{
+  background: transparent !important;
+  color: var(--text-normal) !important;
+}
+
+/* Footer plain icons (Prev/Skip/Stop) stronger rules */
+.ap-footer-player .ap-footer-group .ap-footer-seg.plain,
+.ap-footer-player .ap-footer-group .ap-footer-seg.plain:hover,
+.ap-footer-player .ap-footer-group .ap-footer-seg.plain.is-active{
+  background: transparent !important;
+  color: var(--text-normal) !important;
+}
+/* Remove hover tint specifically for plain icons */
+.ap-footer-player .ap-footer-group .ap-footer-seg.plain:hover{
+  background: transparent !important;
+}
+
+/* Tab "table" layout (from 1.0.13b) */
+.audio-header, .audio-row {
+  display: grid;
+  align-items: center;
+  gap: 8px;
+}
+.audio-header {
+  font-weight: 600;
+  opacity: .85;
+  padding: 4px 6px;
+  border-bottom: 1px solid var(--background-modifier-border);
+  margin-top: 8px;
+}
+.audio-row .cell-title,
+.audio-row .cell-artist,
+.audio-row .cell-album {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.audio-row .cell-time { text-align: right; opacity: .8; }
+.audio-row .cell-icon { width: 16px; text-align: center; }
+
+/* 1.0.13d: subtler zebra + stronger left alignment */
+/* Collapse icon column for non-playing rows so they sit further left - pita to get this right */
+.audio-row .cell-icon { width: 0; }
+.audio-row.is-playing .cell-icon { width: 16px; } /* keep space only for the playing row */
+
+/* Nudge left padding: tighter on non-playing, slight pad on playing */
+.audio-row { padding-left: 0; }
+.audio-row.is-playing { padding-left: 2px; }
+
+/* Very faint zebra striping to barely differentiate rows - will need to review on mobile platforms */
+.audio-list .audio-row:nth-child(even){ background: rgba(127,127,127,0.04); }
+.audio-list .audio-row:nth-child(odd){ background: transparent; }
+
+
+/* Audio PlugList Settings spacing (dynamic playlists) */
+.apl-settings-addwrap{ 
+  margin-bottom: 12px; 
+  padding: 10px; 
+  border: 1px dashed var(--background-modifier-border);
+  border-radius:8px;
+}
+.apl-addlabel{ font-weight:600; margin-bottom:6px; }
+.apl-playlist-divider{
+  margin: 14px 0;
+  border-bottom: 1px solid var(--background-modifier-border);
+  opacity: .7;
+}
+.apl-section-break{
+  margin: 18px 0 8px 0;
+  border-top: 2px solid var(--background-modifier-border);
+}
+
+
+/* Settings: Playlist Card - box shadow was glitchy */
+.apl-card{
+  border: 1px solid var(--background-modifier-border);
+  border-radius: 10px;
+  padding: 12px;
+  margin: 10px 0;
+  background: var(--background-primary);
+  box-shadow: 0 1px 2px rgba(0,0,0,.04);
+}
+.apl-card .setting-item-heading{
+  margin-bottom: 6px;
+}
+
+/* Mini external-open button */
+.ap-embed-actions { margin: 6px 0 12px; display: flex; gap: 8px; }
+.ap-open-ext { padding: 6px 10px; border: 1px solid var(--background-modifier-border); border-radius: 6px; cursor: pointer; background: var(--background-secondary); }
+.ap-open-ext--mini { 
+  font-size: 0.7em;
+  padding: 3px 6px;
+  line-height: 1.1;
+  color: var(--text-accent);
+  text-decoration: underline;
+  background: transparent;
+  border-color: transparent;
+}
+.ap-open-ext--mini:hover { text-decoration: underline; color: #3b82f6; }
+
+/* Diagnostics panel (minimal) */
+.ap-diag { margin-top: 8px; }
+.ap-diag-toggle { font-size: 0.8em; padding: 2px 8px; border: 1px solid var(--background-modifier-border); border-radius: 6px; background: var(--background-secondary); cursor: pointer; }
+.ap-diag-toggle:hover { background: var(--background-modifier-hover); }
+.ap-diag-panel { margin-top: 6px; padding: 6px; border: 1px dashed var(--background-modifier-border); border-radius: 6px; font-size: 0.85em; }
+.ap-diag-line { margin: 2px 0; word-break: break-all; }
+
+.ap-embedbox{height:205px} /* set at 205px for youtube tracklist so you can see track2 to skip in case of error 153 */
+.ap-embedbox iframe{display:block;width:100%;height:100%}
+
+/* Make repeat pill match shuffle pill */
+.ap-footer .ap-btn-repeat,
+.ap-footer .ap-btn-shuffle {
+  border-radius: 9999px;
+  padding: 2px 10px;
+  border: 1px solid var(--background-modifier-border);
+  height: 24px;
+  align-items: center;
+  display: inline-flex;
+  gap: 6px;
+}
+.ap-footer .ap-btn-repeat.is-active,
+.ap-footer .ap-btn-shuffle.is-active {
+  background: var(--background-modifier-hover);
+}
+.ap-footer .ap-btn-repeat .icon,
+.ap-footer .ap-btn-shuffle .icon {
+  width: 14px;
+  height: 14px;
+}
+
+/* small refresh button next to playlist dropdowns */
+.ap-refresh-btn{
+  margin-left: 8px;
+  padding: 2px 8px;
+  height: 24px;
+  line-height: 20px;
+  border: 1px solid var(--background-modifier-border);
+  border-radius: 6px;
+  background: var(--background-secondary);
+  cursor: pointer;
+}
+.ap-refresh-btn:hover{ background: var(--background-modifier-hover); }
+
+
+/* Balance shuffle/repeat pill widths */
+.ap-shuffle button, .ap-shuffle {
+  padding-left: 6px !important;
+  padding-right: 6px !important;
+}
+.ap-repeat button, .ap-repeat {
+  padding-left: 6px !important;
+  padding-right: 6px !important;
+}
+
+/* === Audio PlugList EQ Styles (namespaced) === */
+.apl-eq-card{
+  border:1px solid var(--background-modifier-border);
+  border-radius:10px;
+  padding:14px;
+  margin:16px 0 6px;
+  background: var(--background-primary);
+}
+.apl-eq-title{ font-size:1.05rem; font-weight:600; margin-bottom:2px; }
+.apl-eq-sub{ font-size:0.8rem; opacity:0.75; margin:8px 0 12px; }
+.apl-eq-row{
+  display:grid;
+  grid-template-columns:160px 200px 1fr auto;
+  gap:12px;
+  align-items:center;
+  margin:10px 0;
+}
+.apl-eq-label{ font-size:0.85rem; font-weight:600; }
+.apl-eq-graph{
+  width:200px;
+  height:50px;
+  border:1px solid var(--background-modifier-border);
+  border-radius:6px;
+  background: var(--background-secondary);
+}
+.apl-eq-input{
+  width:100%;
+  padding:6px 8px;
+  font-size:0.85rem;
+}
+.apl-eq-reset{
+  padding:6px 10px;
+  font-size:0.85rem;
+}
+
+
+/* === APL modal (moved from JS inline styles for theme compatibility) === */
+.apl-modal-overlay{
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.4);
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.apl-modal{
+  background: var(--background-primary);
+  border: 1px solid var(--background-modifier-border);
+  border-radius: 8px;
+  min-width: 420px;
+  max-height: 70vh;
+  display: flex;
+  flex-direction: column;
+}
+.apl-modal-head{
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--background-modifier-border);
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+.apl-modal-search{
+  flex: 1;
+  margin-left: 8px;
+}
+.apl-modal-body{
+  padding: 8px 12px;
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.apl-modal-footer{
+  padding: 10px 12px;
+  border-top: 1px solid var(--background-modifier-border);
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+}
+.apl-modal-row{
+  padding: 6px 8px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.apl-modal-row:hover{
+  background: var(--background-modifier-hover);
+}
+
+/* Mini rescan button spacing (moved from JS inline style) */
+.ap-open-ext--mini{ margin-left: 8px; }

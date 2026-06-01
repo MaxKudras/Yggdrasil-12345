@@ -1,0 +1,1176 @@
+/* JotDrop — Google Keep-stijl kaartjesweergave */
+
+.jotdrop-view {
+  padding: 16px 20px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  height: 100%;
+  overflow-y: auto;
+}
+
+.jotdrop-toolbar {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: var(--background-primary);
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--background-modifier-border);
+}
+
+.jotdrop-new-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--interactive-accent);
+  color: var(--text-on-accent);
+  border: none;
+  padding: 8px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background 0.15s ease;
+}
+
+.jotdrop-new-btn:hover {
+  background: var(--interactive-accent-hover);
+}
+
+.jotdrop-new-btn-icon {
+  display: inline-flex;
+  align-items: center;
+}
+
+.jotdrop-mic-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  background: var(--background-secondary);
+  color: var(--text-normal);
+  border: 1px solid var(--background-modifier-border);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background 0.15s ease, border-color 0.15s ease, transform 0.15s ease;
+}
+
+.jotdrop-mic-btn:hover {
+  background: var(--background-modifier-hover);
+}
+
+/* Recording state: shape changes (circle with square icon instead of mic) and
+   colour jumps to error-colour. Shape is the primary signal; colour confirms. */
+.jotdrop-mic-btn.is-recording {
+  background: var(--background-modifier-error);
+  border-color: var(--background-modifier-error-hover);
+  color: var(--text-on-accent);
+  animation: jotdrop-mic-pulse 1.4s ease-in-out infinite;
+}
+
+@keyframes jotdrop-mic-pulse {
+  0%, 100% { transform: scale(1.0); }
+  50% { transform: scale(1.08); }
+}
+
+.jotdrop-search {
+  flex: 1;
+  max-width: 360px;
+  padding: 6px 12px;
+  border-radius: 8px;
+  border: 1px solid var(--background-modifier-border);
+  background: var(--background-secondary);
+  color: var(--text-normal);
+}
+
+.jotdrop-search:focus {
+  outline: 2px solid var(--interactive-accent);
+  outline-offset: 1px;
+}
+
+.jotdrop-toolbar.is-hidden,
+.jotdrop-filter-bar.is-hidden {
+  display: none;
+}
+
+/* Selection-mode top-bar — vervangt de normale toolbar terwijl er
+   bulk-selectie actief is. */
+.jotdrop-selection-toolbar {
+  gap: 8px;
+}
+
+.jotdrop-selection-exit,
+.jotdrop-selection-action {
+  background: transparent;
+  border: 1px solid transparent;
+  padding: 6px;
+  border-radius: 8px;
+  color: var(--text-normal);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.jotdrop-selection-exit:hover,
+.jotdrop-selection-action:hover {
+  background: var(--background-modifier-hover);
+}
+
+.jotdrop-selection-action.is-active {
+  color: var(--interactive-accent);
+  border-color: var(--interactive-accent);
+}
+
+.jotdrop-selection-action.is-destructive:hover {
+  background: rgba(220, 60, 60, 0.12);
+  color: #dd3333;
+}
+
+.jotdrop-selection-count {
+  font-weight: 600;
+  flex: 1;
+  color: var(--text-normal);
+}
+
+.jotdrop-selection-spacer {
+  flex: 1;
+}
+
+/* Selection-marker (rechtsboven op kaart). Default verborgen; verschijnt
+   alleen tijdens selection-mode via .is-selecting op de root. Shape-based
+   (gevulde vs lege cirkel) zodat kleurperceptie niet nodig is. */
+.jotdrop-card-select-marker {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  width: 22px;
+  height: 22px;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted);
+  background: var(--background-primary);
+  border-radius: 50%;
+  padding: 1px;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.is-selecting .jotdrop-card-select-marker {
+  display: inline-flex;
+}
+
+.jotdrop-card.is-selected .jotdrop-card-select-marker {
+  color: var(--interactive-accent);
+}
+
+.jotdrop-card.is-selected {
+  outline: 2px solid var(--interactive-accent);
+  outline-offset: -2px;
+}
+
+/* Tijdens selection-mode: action-row verbergen (klikken zou collide-en
+   met toggle) en de pin-emoji-indicator wegmaken zodat 'ie niet onder de
+   selectie-marker valt. */
+.is-selecting .jotdrop-card-actions {
+  display: none;
+}
+
+.is-selecting .jotdrop-card.is-pinned::before {
+  display: none;
+}
+
+/* In selection-mode tonen we ook normaal verborgen action-row niet meer;
+   tap-target = hele kaart-body, dus cursor blijft pointer. */
+.is-selecting .jotdrop-card-body {
+  cursor: pointer;
+}
+
+/* Bevestigings-modal (ConfirmModal) */
+.jotdrop-confirm-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.jotdrop-confirm-cancel,
+.jotdrop-confirm-ok {
+  padding: 6px 14px;
+  border-radius: 8px;
+  border: 1px solid var(--background-modifier-border);
+  background: var(--background-secondary);
+  color: var(--text-normal);
+  cursor: pointer;
+  font-size: 0.95em;
+}
+
+.jotdrop-confirm-cancel:hover {
+  background: var(--background-modifier-hover);
+}
+
+.jotdrop-confirm-ok {
+  background: var(--interactive-accent);
+  color: var(--text-on-accent);
+  border-color: var(--interactive-accent);
+  font-weight: 600;
+}
+
+.jotdrop-confirm-ok:hover {
+  background: var(--interactive-accent-hover);
+}
+
+.jotdrop-confirm-ok.is-destructive {
+  background: #c0392b;
+  border-color: #c0392b;
+  color: #ffffff;
+}
+
+.jotdrop-confirm-ok.is-destructive:hover {
+  background: #a93226;
+}
+
+/* Tag-filter chip-strip onder de toolbar */
+.jotdrop-filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-items: center;
+  padding: 4px 0;
+}
+
+.jotdrop-filter-bar.is-hidden {
+  display: none;
+}
+
+.jotdrop-filter-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  border: 1px solid var(--background-modifier-border);
+  background: var(--background-secondary);
+  color: var(--text-normal);
+  cursor: pointer;
+  font-size: 0.82em;
+  line-height: 1.2;
+}
+
+.jotdrop-filter-chip:hover {
+  background: var(--background-modifier-hover);
+}
+
+/* Geselecteerd chip: accent-achtergrond, sterkere rand én een ✓-symbool.
+   ✓ is essentieel — kleur alléén is niet voldoende voor kleurenblinde
+   gebruikers (pariteit met de Android-FilterChip die ook een Done-icon
+   inblendt). */
+.jotdrop-filter-chip.is-selected {
+  background: var(--interactive-accent);
+  color: var(--text-on-accent);
+  border-color: var(--interactive-accent);
+  font-weight: 600;
+}
+
+.jotdrop-filter-chip-check {
+  display: inline-flex;
+  min-width: 10px;
+  font-weight: 700;
+}
+
+.jotdrop-filter-chip.is-overflow {
+  border-style: dashed;
+  color: var(--text-muted);
+}
+
+.jotdrop-filter-clear {
+  margin-left: 4px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  background: transparent;
+  color: var(--text-muted);
+  cursor: pointer;
+  font-size: 0.8em;
+  text-decoration: underline;
+}
+
+.jotdrop-filter-clear:hover {
+  color: var(--text-normal);
+}
+
+/* Tag-picker modal (overflow-sheet) */
+.jotdrop-tagpicker-search {
+  width: 100%;
+  padding: 6px 12px;
+  border-radius: 8px;
+  border: 1px solid var(--background-modifier-border);
+  background: var(--background-primary);
+  color: var(--text-normal);
+  margin-bottom: 12px;
+}
+
+.jotdrop-tagpicker-search:focus {
+  outline: 2px solid var(--interactive-accent);
+  outline-offset: 1px;
+}
+
+.jotdrop-tagpicker-list {
+  max-height: 60vh;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.jotdrop-tagpicker-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.jotdrop-tagpicker-row:hover {
+  background: var(--background-modifier-hover);
+}
+
+.jotdrop-tagpicker-row.is-selected {
+  background: var(--background-modifier-active-hover);
+}
+
+.jotdrop-tagpicker-check {
+  display: inline-flex;
+  min-width: 14px;
+  font-weight: 700;
+  color: var(--interactive-accent);
+}
+
+.jotdrop-tagpicker-name {
+  flex: 1;
+  color: var(--text-normal);
+}
+
+.jotdrop-tagpicker-count {
+  font-size: 0.78em;
+  color: var(--text-muted);
+  background: var(--background-modifier-hover);
+  padding: 1px 7px;
+  border-radius: 999px;
+}
+
+.jotdrop-tagpicker-empty {
+  padding: 16px;
+  color: var(--text-muted);
+  text-align: center;
+}
+
+.jotdrop-empty-clear {
+  margin-top: 12px;
+  padding: 6px 14px;
+  border-radius: 8px;
+  border: 1px solid var(--background-modifier-border);
+  background: var(--background-secondary);
+  color: var(--text-normal);
+  cursor: pointer;
+  font-size: 0.9em;
+}
+
+.jotdrop-empty-clear:hover {
+  background: var(--background-modifier-hover);
+}
+
+.jotdrop-section {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.jotdrop-section-label {
+  font-size: 0.75em;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+  font-weight: 600;
+  padding: 0 4px;
+}
+
+.jotdrop-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Masonry-achtig grid via CSS columns */
+.jotdrop-grid-inner {
+  --jotdrop-card-width: 240px;
+  column-width: var(--jotdrop-card-width);
+  column-gap: 12px;
+}
+
+/* Kleurpalet — light mode defaults */
+.jotdrop-card {
+  --kc-bg: var(--background-secondary);
+  --kc-border: var(--background-modifier-border);
+  break-inside: avoid;
+  display: inline-block;
+  width: 100%;
+  margin: 0 0 12px;
+  padding: 12px 14px;
+  background: var(--kc-bg);
+  border: 1px solid var(--kc-border);
+  border-radius: 10px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  transition: box-shadow 0.15s ease, transform 0.15s ease, border-color 0.15s ease;
+  position: relative;
+}
+.jotdrop-card[data-color="red"]    { --kc-bg: #FAAFA8; --kc-border: #E7948C; }
+.jotdrop-card[data-color="orange"] { --kc-bg: #F39F76; --kc-border: #DC8559; }
+.jotdrop-card[data-color="yellow"] { --kc-bg: #FFF8B8; --kc-border: #E7DC8E; }
+.jotdrop-card[data-color="green"]  { --kc-bg: #E2F6D3; --kc-border: #BCDDA5; }
+.jotdrop-card[data-color="teal"]   { --kc-bg: #B4DDD3; --kc-border: #8AC1B4; }
+.jotdrop-card[data-color="blue"]   { --kc-bg: #D4E4ED; --kc-border: #ABC4D2; }
+.jotdrop-card[data-color="purple"] { --kc-bg: #D3BFDB; --kc-border: #B499BF; }
+.jotdrop-card[data-color="pink"]   { --kc-bg: #F6E2DD; --kc-border: #E3BBB1; }
+.jotdrop-card[data-color="brown"]  { --kc-bg: #E9E3D4; --kc-border: #CCC0A4; }
+.jotdrop-card[data-color="gray"]   { --kc-bg: #EFEFF1; --kc-border: #CDCDD1; }
+
+/* Donkere modus — vergelijkbaar met Google Keep dark */
+.theme-dark .jotdrop-card[data-color="red"]    { --kc-bg: #5C2B29; --kc-border: #7A3A37; }
+.theme-dark .jotdrop-card[data-color="orange"] { --kc-bg: #614A19; --kc-border: #8A6F2C; }
+.theme-dark .jotdrop-card[data-color="yellow"] { --kc-bg: #635D19; --kc-border: #8B842B; }
+.theme-dark .jotdrop-card[data-color="green"]  { --kc-bg: #345920; --kc-border: #4F7B36; }
+.theme-dark .jotdrop-card[data-color="teal"]   { --kc-bg: #16504D; --kc-border: #26706C; }
+.theme-dark .jotdrop-card[data-color="blue"]   { --kc-bg: #2D555E; --kc-border: #437686; }
+.theme-dark .jotdrop-card[data-color="purple"] { --kc-bg: #42275E; --kc-border: #61417F; }
+.theme-dark .jotdrop-card[data-color="pink"]   { --kc-bg: #5B2A4F; --kc-border: #7C3D6E; }
+.theme-dark .jotdrop-card[data-color="brown"]  { --kc-bg: #442F19; --kc-border: #65472B; }
+.theme-dark .jotdrop-card[data-color="gray"]   { --kc-bg: #3C3F43; --kc-border: #585B5F; }
+
+.theme-dark .jotdrop-card[data-color]:not([data-color="default"]) {
+  color: #ffffff;
+}
+.jotdrop-card[data-color]:not([data-color="default"]) {
+  color: #1f1f1f;
+}
+.jotdrop-card[data-color]:not([data-color="default"]) .jotdrop-card-title,
+.jotdrop-card[data-color]:not([data-color="default"]) .jotdrop-card-preview {
+  color: inherit;
+}
+
+.jotdrop-card:hover {
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
+}
+
+.jotdrop-card.is-archived {
+  opacity: 0.7;
+}
+
+.jotdrop-card.is-pinned::before {
+  content: "📌";
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  font-size: 0.9em;
+  opacity: 0.85;
+}
+
+.jotdrop-card-body {
+  cursor: pointer;
+}
+
+.jotdrop-card-thumbnail {
+  margin: -12px -14px 10px;
+  border-radius: 10px 10px 0 0;
+  overflow: hidden;
+  background: var(--background-secondary);
+  max-height: 220px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.jotdrop-card-thumbnail img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 220px;
+  object-fit: cover;
+}
+
+.jotdrop-card-voice-banner {
+  margin: -12px -14px 10px;
+  border-radius: 10px 10px 0 0;
+  background: var(--background-secondary);
+  aspect-ratio: 16 / 9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.jotdrop-card-voice-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted);
+  opacity: 0.85;
+}
+
+.jotdrop-card-voice-icon svg {
+  width: 56px;
+  height: 56px;
+}
+
+.jotdrop-edit-audio {
+  margin-bottom: 12px;
+}
+
+.jotdrop-edit-audio audio {
+  width: 100%;
+}
+
+.jotdrop-card-title {
+  font-size: 1em;
+  font-weight: 600;
+  margin: 0 0 6px;
+  color: var(--text-normal);
+  word-break: break-word;
+}
+
+.jotdrop-card-preview {
+  font-size: 0.88em;
+  color: var(--text-muted);
+  white-space: pre-wrap;
+  word-break: break-word;
+  line-height: 1.4;
+  max-height: 180px;
+  overflow: hidden;
+}
+
+.jotdrop-wikilink {
+  color: var(--text-accent);
+  text-decoration: underline;
+  text-decoration-style: dashed;
+  cursor: pointer;
+}
+
+.jotdrop-card[data-color]:not([data-color="default"]) .jotdrop-wikilink {
+  color: inherit;
+  text-decoration-style: solid;
+  font-weight: 600;
+}
+
+.jotdrop-url {
+  color: var(--text-accent);
+  text-decoration: underline;
+  cursor: pointer;
+  word-break: break-all;
+}
+
+.jotdrop-url:hover {
+  text-decoration-thickness: 2px;
+}
+
+.jotdrop-card[data-color]:not([data-color="default"]) .jotdrop-url {
+  color: inherit;
+  font-weight: 600;
+}
+
+/* Floating "Link openen"-bar */
+.jotdrop-link-bar {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  max-width: min(420px, calc(100vw - 24px));
+  padding: 8px 10px;
+  border-radius: 10px;
+  background: var(--background-primary);
+  border: 1px solid var(--background-modifier-border);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.18);
+  font-size: 0.85em;
+  color: var(--text-normal);
+  animation: jotdrop-link-bar-in 0.12s ease-out;
+}
+
+@keyframes jotdrop-link-bar-in {
+  from { opacity: 0; transform: translateY(-4px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.jotdrop-link-bar-url {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: var(--text-muted);
+}
+
+.jotdrop-link-bar-open {
+  background: var(--interactive-accent);
+  color: var(--text-on-accent);
+  border: none;
+  padding: 4px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.95em;
+}
+
+.jotdrop-link-bar-open:hover {
+  background: var(--interactive-accent-hover);
+}
+
+.jotdrop-link-bar-close {
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  font-size: 1.1em;
+  line-height: 1;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+.jotdrop-link-bar-close:hover {
+  background: var(--background-modifier-hover);
+  color: var(--text-normal);
+}
+
+.jotdrop-card-reminder {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin: 0 0 6px;
+  padding: 2px 8px;
+  border-radius: 6px;
+  font-size: 0.78em;
+  background: var(--background-modifier-hover);
+  color: var(--text-muted);
+  border: 1px solid var(--background-modifier-border);
+  /* Bewust geen kleur-onderscheid tussen "te doen" en "verlopen": het label
+     ("⏰ Te doen" vs "⚠ Verlopen") en de gestreepte rand dragen de info,
+     zodat het ook zonder kleurperceptie te lezen blijft. */
+}
+
+.jotdrop-card-reminder.is-overdue {
+  border-style: dashed;
+  font-weight: 600;
+  color: var(--text-normal);
+}
+
+.jotdrop-card-reminder-rel {
+  opacity: 0.8;
+}
+
+.jotdrop-reminder-row {
+  align-items: center;
+  gap: 8px;
+}
+
+.jotdrop-edit-reminder {
+  padding: 4px 8px;
+  border-radius: 6px;
+  border: 1px solid var(--background-modifier-border);
+  background: var(--background-primary);
+  color: var(--text-normal);
+  font-family: inherit;
+  font-size: 0.9em;
+}
+
+.jotdrop-reminder-notice {
+  cursor: pointer;
+}
+
+.jotdrop-card-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-top: 8px;
+}
+
+.jotdrop-card-link {
+  font-size: 0.72em;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.06);
+  color: var(--text-accent);
+  text-decoration: none;
+  border: 1px solid transparent;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.jotdrop-card-link::before {
+  content: "🔗 ";
+  opacity: 0.7;
+}
+
+.jotdrop-card-link:hover {
+  border-color: var(--text-accent);
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.theme-dark .jotdrop-card-link {
+  background: rgba(255, 255, 255, 0.08);
+}
+.theme-dark .jotdrop-card-link:hover {
+  background: rgba(255, 255, 255, 0.14);
+}
+
+.jotdrop-card[data-color]:not([data-color="default"]) .jotdrop-card-link {
+  color: inherit;
+  background: rgba(0, 0, 0, 0.12);
+}
+
+.jotdrop-card-link-more {
+  font-size: 0.72em;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.04);
+  color: var(--text-muted);
+  border: 1px dashed var(--background-modifier-border);
+  cursor: pointer;
+}
+
+.theme-dark .jotdrop-card-link-more {
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.jotdrop-card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-top: 8px;
+}
+
+.jotdrop-card-tag {
+  font-size: 0.75em;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.08);
+  color: inherit;
+}
+
+.theme-dark .jotdrop-card-tag {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.jotdrop-card[data-color="default"] .jotdrop-card-tag {
+  background: var(--background-modifier-hover);
+  color: var(--text-accent);
+}
+
+.jotdrop-card-actions {
+  display: flex;
+  gap: 4px;
+  margin-top: 10px;
+  padding-top: 8px;
+  border-top: 1px dashed rgba(0, 0, 0, 0.15);
+  opacity: 0;
+  transition: opacity 0.15s ease;
+}
+
+.theme-dark .jotdrop-card-actions {
+  border-top-color: rgba(255, 255, 255, 0.15);
+}
+
+.jotdrop-card[data-color="default"] .jotdrop-card-actions {
+  border-top-color: var(--background-modifier-border);
+}
+
+.jotdrop-card:hover .jotdrop-card-actions,
+.jotdrop-card:focus-within .jotdrop-card-actions {
+  opacity: 1;
+}
+
+.jotdrop-card-action {
+  background: transparent;
+  border: none;
+  padding: 4px;
+  border-radius: 6px;
+  color: inherit;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.6;
+}
+
+.jotdrop-card-action:hover {
+  background: rgba(0, 0, 0, 0.08);
+  opacity: 1;
+}
+
+.theme-dark .jotdrop-card-action:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.jotdrop-card-action.is-active {
+  opacity: 1;
+  color: var(--text-accent);
+}
+
+.jotdrop-empty {
+  padding: 48px 24px;
+  text-align: center;
+  color: var(--text-muted);
+}
+
+.jotdrop-empty h3 {
+  margin: 0 0 8px;
+  color: var(--text-normal);
+}
+
+/* Quick capture modal */
+
+.jotdrop-capture-controls,
+.jotdrop-edit-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 12px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--background-modifier-border);
+}
+
+.jotdrop-edit-label {
+  font-size: 0.8em;
+  color: var(--text-muted);
+  min-width: 40px;
+}
+
+.jotdrop-edit-colorrow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.jotdrop-edit-tagrow {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.jotdrop-edit-row {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.jotdrop-edit-swatches {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.jotdrop-edit-swatch {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  cursor: pointer;
+  border: 2px solid transparent;
+  background: var(--background-secondary);
+  transition: transform 0.1s ease, box-shadow 0.1s ease;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.jotdrop-edit-swatch:hover { transform: scale(1.15); }
+.jotdrop-edit-swatch.is-active {
+  border-color: var(--text-normal);
+  box-shadow: 0 0 0 2px var(--background-primary), 0 0 0 4px var(--text-normal);
+}
+.jotdrop-edit-swatch-check {
+  font-size: 14px;
+  font-weight: bold;
+  color: #111111;
+  text-shadow: 0 0 2px #ffffff, 0 0 2px #ffffff;
+  line-height: 1;
+  pointer-events: none;
+}
+.jotdrop-edit-swatch[data-color="red"]    { background: #FAAFA8; }
+.jotdrop-edit-swatch[data-color="orange"] { background: #F39F76; }
+.jotdrop-edit-swatch[data-color="yellow"] { background: #FFF8B8; }
+.jotdrop-edit-swatch[data-color="green"]  { background: #E2F6D3; }
+.jotdrop-edit-swatch[data-color="teal"]   { background: #B4DDD3; }
+.jotdrop-edit-swatch[data-color="blue"]   { background: #D4E4ED; }
+.jotdrop-edit-swatch[data-color="purple"] { background: #D3BFDB; }
+.jotdrop-edit-swatch[data-color="pink"]   { background: #F6E2DD; }
+.jotdrop-edit-swatch[data-color="brown"]  { background: #E9E3D4; }
+.jotdrop-edit-swatch[data-color="gray"]   { background: #EFEFF1; }
+.jotdrop-edit-swatch[data-color="default"] {
+  background: linear-gradient(135deg, var(--background-secondary) 50%, var(--background-modifier-border) 50%);
+}
+
+.jotdrop-edit-pin,
+.jotdrop-edit-linkbtn {
+  padding: 6px 12px;
+  border-radius: 8px;
+  border: 1px solid var(--background-modifier-border);
+  background: var(--background-secondary);
+  cursor: pointer;
+  font-size: 0.9em;
+}
+
+.jotdrop-edit-pin.is-active {
+  background: var(--interactive-accent);
+  color: var(--text-on-accent);
+  border-color: var(--interactive-accent);
+}
+
+.jotdrop-edit-pin:hover,
+.jotdrop-edit-linkbtn:hover {
+  background: var(--background-modifier-hover);
+}
+
+.jotdrop-edit-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  flex: 1;
+  align-items: center;
+  min-width: 0;
+}
+
+.jotdrop-edit-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: var(--background-modifier-hover);
+  font-size: 0.85em;
+}
+
+.jotdrop-edit-chip-x {
+  cursor: pointer;
+  opacity: 0.6;
+  font-weight: bold;
+}
+.jotdrop-edit-chip-x:hover {
+  opacity: 1;
+}
+
+.jotdrop-edit-taginput {
+  flex: 1;
+  min-width: 120px;
+  padding: 4px 8px;
+  border-radius: 6px;
+  border: 1px solid var(--background-modifier-border);
+  background: var(--background-primary);
+  color: var(--text-normal);
+}
+
+.jotdrop-edit-thumbnail {
+  margin: 8px 0 12px;
+  border-radius: 8px;
+  overflow: hidden;
+  cursor: zoom-in;
+  background: var(--background-secondary);
+  max-height: 260px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--background-modifier-border);
+}
+
+.jotdrop-edit-thumbnail img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 260px;
+  object-fit: contain;
+}
+
+.jotdrop-edit-thumbnail:hover {
+  border-color: var(--interactive-accent);
+}
+
+.jotdrop-edit-body {
+  width: 100%;
+  min-height: 220px;
+  resize: vertical;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid var(--background-modifier-border);
+  background: var(--background-primary);
+  color: var(--text-normal);
+  font-family: inherit;
+  font-size: 0.95em;
+  line-height: 1.5;
+}
+
+.jotdrop-edit-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.jotdrop-capture-textarea {
+  width: 100%;
+  min-height: 160px;
+  resize: vertical;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid var(--background-modifier-border);
+  background: var(--background-primary);
+  color: var(--text-normal);
+  font-family: inherit;
+  font-size: 0.95em;
+  line-height: 1.5;
+}
+
+.jotdrop-capture-textarea:focus,
+.jotdrop-edit-body:focus,
+.jotdrop-edit-taginput:focus {
+  outline: 2px solid var(--interactive-accent);
+  outline-offset: 1px;
+}
+
+.jotdrop-capture-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.jotdrop-capture-buttons {
+  display: flex;
+  gap: 8px;
+}
+
+.jotdrop-capture-hint {
+  font-size: 0.8em;
+  color: var(--text-muted);
+}
+
+.jotdrop-suggest-path {
+  font-size: 0.75em;
+  color: var(--text-muted);
+}
+
+/* Lightbox-modal: volle-grootte afbeelding bij klik op kaart met thumbnail */
+.jotdrop-lightbox .jotdrop-lightbox-figure {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  background: rgba(0, 0, 0, 0.04);
+  border-radius: 8px;
+  overflow: hidden;
+  max-height: 70vh;
+}
+
+.theme-dark .jotdrop-lightbox .jotdrop-lightbox-figure {
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.jotdrop-lightbox-img {
+  max-width: 100%;
+  max-height: 70vh;
+  object-fit: contain;
+  display: block;
+}
+
+.jotdrop-lightbox-error {
+  padding: 24px;
+  color: var(--text-muted);
+  text-align: center;
+}
+
+.jotdrop-lightbox-actions {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+  align-items: center;
+  margin-top: 14px;
+  flex-wrap: wrap;
+}
+
+.jotdrop-lightbox-actions button,
+.jotdrop-lightbox-external {
+  padding: 6px 12px;
+  border-radius: 8px;
+  border: 1px solid var(--background-modifier-border);
+  background: var(--background-secondary);
+  color: var(--text-normal);
+  text-decoration: none;
+  cursor: pointer;
+  font-size: 0.9em;
+}
+
+.jotdrop-lightbox-actions button:hover,
+.jotdrop-lightbox-external:hover {
+  background: var(--background-modifier-hover);
+}
+
+.jotdrop-lightbox-actions button.mod-cta {
+  background: var(--interactive-accent);
+  color: var(--text-on-accent);
+  border-color: var(--interactive-accent);
+}
+
+.jotdrop-lightbox-actions button.mod-cta:hover {
+  background: var(--interactive-accent-hover);
+}
+
+/* Smal scherm: minder kolombreedte */
+@media (max-width: 480px) {
+  .jotdrop-grid-inner {
+    --jotdrop-card-width: 100%;
+  }
+  .jotdrop-card-actions {
+    opacity: 1;
+  }
+}
+
+/* Over/Steun-sectie in settings tab — discreet, geen CTA-knal */
+.jotdrop-support {
+  margin-top: 28px;
+  padding-top: 20px;
+  border-top: 1px solid var(--background-modifier-border);
+}
+.jotdrop-support h3 {
+  margin: 0 0 8px;
+  font-size: var(--font-ui-medium);
+  color: var(--text-normal);
+}
+.jotdrop-support p {
+  margin: 0 0 12px;
+  color: var(--text-muted);
+  font-size: var(--font-ui-small);
+  line-height: 1.5;
+}
+.jotdrop-support-buttons {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.jotdrop-support-buttons a.jotdrop-support-button {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 14px;
+  border-radius: 6px;
+  background: var(--interactive-normal);
+  color: var(--text-normal);
+  text-decoration: none;
+  font-size: var(--font-ui-small);
+  border: 1px solid var(--background-modifier-border);
+  transition: background 120ms ease;
+}
+.jotdrop-support-buttons a.jotdrop-support-button:hover {
+  background: var(--interactive-hover);
+  text-decoration: none;
+}

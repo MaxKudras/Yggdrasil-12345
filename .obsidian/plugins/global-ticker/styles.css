@@ -1,0 +1,249 @@
+/* Ticker settings that allow resizing */
+
+.workspace-leaf-content[data-type="global-ticker-panel"] .view-content {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  height: 100%;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.workspace-leaf-content[data-type="global-ticker-panel"] .news-section,
+.workspace-leaf-content[data-type="global-ticker-panel"] .stock-section {
+  flex: 1 1 0;
+  min-height: 0;
+}
+
+.workspace-leaf-content[data-type="global-ticker-panel"] .news-section > .scroller,
+.workspace-leaf-content[data-type="global-ticker-panel"] .stock-section > .scroller {
+  flex: 1 1 0;
+  min-height: 0;
+  display: flex;
+  align-items: center;
+}
+
+.workspace-leaf-content[data-type="global-ticker-panel"] .scroller__inner {
+  align-items: center;
+  margin-block: auto;
+  padding-block: 0.75rem;
+}
+
+/* Ticker animation settings */
+
+.scroller[data-animated="true"] {
+  overflow: hidden;
+}
+
+.scroller[data-animated="true"] .scroller__inner {
+  width: max-content;
+  flex-wrap: nowrap;
+  animation: scroll var(--_animation-duration, 40s)
+    var(--_animation-direction, forwards) linear infinite;
+  animation-play-state: var(--_animation-play-state, running);
+}
+
+.scroller[data-animated="true"] .scroller__inner.is-restarting {
+  animation: none !important;
+}
+
+.scroller__inner [data-ticker-clone="true"] {
+  display: inline-flex !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+.scroller[data-direction="right"] {
+  --_animation-direction: reverse;
+}
+
+.scroller[data-direction="left"] {
+  --_animation-direction: forwards;
+}
+
+/* Ticker in general */
+
+.scroller + .scroller {
+  margin: auto;
+  border-top: 1px solid var(--color-base-30);
+}
+
+.scroller__inner {
+  padding-block: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.scroller {
+  width: 100%;
+  height: auto;
+  align-self: stretch;
+  flex: 1 1 auto;
+  min-height: 0;
+}
+
+.tag-list {
+  padding-inline: 0;
+  list-style: none;
+  gap: 3rem;
+}
+
+.tag-list li {
+  border-radius: 0.5rem;
+}
+
+.ticker-divider {
+  height: 1px;
+  width: 100%;
+  background: var(--color-base-30);
+  margin: 0;
+  flex: 0 0 auto;
+}
+
+.news-section,
+.stock-section {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-width: 0;
+}
+
+/* News ticker */
+
+.headline-item {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  white-space: nowrap;
+  gap: 0.25rem;
+}
+
+.headline-link {
+  color: inherit;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.headline-text {
+  white-space: nowrap;
+}
+
+.headline-meta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-size: 0.8rem;
+  color: var(--text-faint);
+  white-space: nowrap;
+}
+
+.headline-meta li {
+  display: inline-flex;
+  align-items: center;
+}
+
+.headline-meta li + li::before {
+  content: "•";
+  margin-right: 0.5rem;
+  color: var(--text-faint);
+}
+
+.headline-link:hover,
+.headline-link:focus-visible {
+  text-decoration: underline;
+}
+
+/* Stock ticker */
+
+.stock-list {
+  list-style: none;
+  padding-inline: 0;
+}
+
+.stock-list li {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.stock-change {
+  color: var(--stock-change-color, var(--text-accent));
+  font-variant-numeric: tabular-nums;
+}
+
+.stock-change.is-negative {
+  color: var(--stock-change-negative-color, var(--text-error));
+}
+
+.stock-price {
+  color: var(--stock-price-color, var(--text-faint));
+  font-variant-numeric: tabular-nums;
+}
+
+.stock-section {
+  margin-top: 0;
+}
+
+/* Ticker footer */
+
+.ticker-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  color: var(--text-faint);
+  font-size: 0.85rem;
+  padding-top: .3rem;
+  padding-bottom: .3rem;
+  padding-left: .5rem;
+  padding-right: .5rem;
+  flex: 0 0 auto;
+}
+
+.ticker-footer-group {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-width: 0;
+  flex: 0 0 auto;
+}
+
+.ticker-refresh-time {
+  font-variant-numeric: tabular-nums;
+}
+
+.ticker-refresh-button {
+  --icon-size: 16px;
+  padding: 2px;
+}
+
+.ticker-refresh-button:disabled {
+  opacity: 0.6;
+  cursor: progress;
+}
+
+/* Settings tab styles */
+
+.setting-section-header {
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  padding-left: var(--size-4-4);
+  padding-right: var(--size-4-4);
+}
+
+.setting-section-header-margin-top {
+  margin-top: 1.5rem;
+}
+
+/* Keyframes for the scrolling animation
+Using a CSS variable for the loop distance to allow dynamic adjustments */
+
+@keyframes scroll {
+  to {
+    transform: translate(calc(-1 * var(--_loop-distance, 50%)));
+  }
+}

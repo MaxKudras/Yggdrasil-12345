@@ -1,0 +1,11 @@
+{
+	"id": "infographic",
+	"name": "Infographic",
+	"version": "0.1.8",
+	"minAppVersion": "1.0.0",
+	"description": "Render AntV Infographic visualizations from fenced code blocks with source code viewing.",
+	"author": "shuuul",
+	"authorUrl": "https://github.com/shuuul",
+	"fundingUrl": "",
+	"isDesktopOnly": false
+}

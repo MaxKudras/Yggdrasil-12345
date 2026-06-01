@@ -1,0 +1,9 @@
+{
+  "excludeNumbers": false,
+  "excludeCommonWords": false,
+  "excludeTags": false,
+  "customExcludedWords": "",
+  "scanOption": "note",
+  "folderPath": "",
+  "notePath": "testets"
+}

@@ -1,0 +1,10 @@
+{
+  "types": {
+    "aliases": "aliases",
+    "cssclasses": "multitext",
+    "tags": "tags",
+    "Ticket": "text",
+    "Ticketname": "text",
+    "TicketbearbeitungsDatum": "date"
+  }
+}

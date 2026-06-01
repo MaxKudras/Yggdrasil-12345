@@ -1,0 +1,10 @@
+{
+	"id": "rpg-stat-tracker",
+	"name": "RPG Stat Tracker",
+	"version": "1.0.6",
+	"minAppVersion": "0.9.12",
+	"description": "RPG-like stat tracker.",
+	"author": "Cunjur",
+	"authorUrl": "https://xn--1-kmb.com/",
+	"isDesktopOnly": true
+}

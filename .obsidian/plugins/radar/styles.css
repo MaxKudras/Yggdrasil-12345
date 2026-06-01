@@ -1,0 +1,334 @@
+/**
+ * Radar Plugin Styles
+ */
+
+/* Main container */
+.radar-view-container {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+	overflow: hidden;
+}
+
+.radar-main {
+	display: flex;
+	flex-direction: column;
+	flex: 1;
+	position: relative;
+	overflow: hidden;
+}
+
+/* Floating controls panel */
+.radar-controls {
+	position: absolute;
+	top: 12px;
+	right: 12px;
+	display: flex;
+	flex-direction: column;
+	gap: 6px;
+	z-index: 10;
+}
+
+.radar-controls-group {
+	display: flex;
+	flex-direction: column;
+	background: var(--background-secondary);
+	border: 1px solid var(--background-modifier-border);
+	border-radius: var(--radius-m);
+	padding: 3px;
+	gap: 1px;
+}
+
+.radar-control-btn {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 32px;
+	height: 32px;
+	padding: 0;
+	border-radius: var(--radius-s);
+	background: transparent;
+	border: none;
+	color: var(--text-normal);
+	cursor: pointer;
+}
+
+.radar-control-btn:hover {
+	background: var(--interactive-hover);
+}
+
+/* SVG Container */
+.radar-svg-container {
+	flex: 1;
+	position: relative;
+	overflow: hidden;
+	padding: 20px;
+	cursor: grab;
+}
+
+.radar-svg {
+	width: 100%;
+	height: 100%;
+	transition: transform 0.2s ease;
+	transform-origin: center center;
+}
+
+.radar-svg-container.panning {
+	cursor: grabbing;
+}
+
+.radar-svg-container.drag-over::after {
+	content: "";
+	position: absolute;
+	inset: 0;
+	border: 2px dashed var(--interactive-accent);
+	border-radius: var(--radius-s);
+	pointer-events: none;
+}
+
+.radar-svg-container.panning .radar-svg,
+.radar-svg.panning {
+	transition: none; /* Disable transition during pan for responsiveness */
+}
+
+/* Priority rings */
+.radar-priority-ring {
+	fill: none;
+	stroke: var(--background-modifier-border);
+	stroke-width: 1;
+}
+
+.radar-priority-segment {
+	fill-opacity: 0.12;
+	fill-rule: evenodd;
+	pointer-events: none;
+}
+
+.radar-priority-label {
+	font-size: 8px;
+	fill: var(--text-muted);
+	font-weight: 500;
+}
+
+/* Category dividers */
+.radar-category-divider {
+	stroke: var(--background-modifier-border);
+	stroke-width: 1;
+}
+
+.radar-category-label {
+	font-size: 10px;
+	fill: var(--text-muted);
+	text-anchor: middle;
+	dominant-baseline: middle;
+	pointer-events: none;
+	user-select: none;
+}
+
+.radar-category-label textPath {
+	text-anchor: middle;
+	dominant-baseline: middle;
+}
+
+.radar-category-label-arc {
+	fill: none;
+	pointer-events: none;
+}
+
+/* Customize modal drag-and-drop */
+.radar-drag-handle {
+	cursor: grab;
+	opacity: 0.4;
+}
+
+.radar-drag-handle:hover {
+	opacity: 1;
+}
+
+.radar-drag-source {
+	opacity: 0.4;
+}
+
+.radar-drag-over {
+	box-shadow: 0 -2px 0 0 var(--interactive-accent);
+}
+
+/* Blips */
+.radar-blip {
+	cursor: grab;
+}
+
+.radar-blip.dragging {
+	cursor: grabbing;
+}
+
+.radar-blip-flare {
+	fill: var(--interactive-accent);
+	opacity: 0.40;
+	filter: blur(6px);
+	transition: opacity 0.15s ease;
+	pointer-events: none;
+}
+
+.radar-blip-dot {
+	fill: var(--interactive-accent);
+	transition: transform 0.1s ease;
+	transform-origin: center;
+	transform-box: fill-box;
+}
+
+.radar-blip-dot--text {
+	fill: none;
+	stroke: var(--interactive-accent);
+	stroke-width: 1.5;
+	pointer-events: all;
+}
+
+.radar-blip:hover .radar-blip-flare {
+	opacity: 0.5;
+}
+
+.radar-blip:hover .radar-blip-dot {
+	transform: scale(1.3);
+}
+
+.radar-blip.dragging .radar-blip-flare {
+	opacity: 0.6;
+}
+
+.radar-blip-title {
+	font-size: 11px;
+	fill: var(--text-normal);
+	text-anchor: middle;
+	pointer-events: none;
+	user-select: none;
+}
+
+.radar-blip-title--full {
+	display: none;
+}
+
+.radar-blip:hover .radar-blip-title--short {
+	display: none;
+}
+
+.radar-blip:hover .radar-blip-title--full {
+	display: block;
+}
+
+/* Glow hidden mode */
+.radar-glow-hidden .radar-blip-flare {
+	display: none;
+}
+
+/* Priority labels hidden mode */
+.radar-priority-labels-hidden .radar-priority-label {
+	display: none;
+}
+
+/* Titles hidden mode: hide all, reveal on hover (full if truncated, plain otherwise) */
+.radar-titles-hidden .radar-blip-title {
+	display: none;
+}
+
+.radar-titles-hidden .radar-blip:hover .radar-blip-title:not(.radar-blip-title--short) {
+	display: block;
+}
+
+/* Full titles mode: always show complete title, suppress cropped variant */
+.radar-titles-full .radar-blip-title--short {
+	display: none;
+}
+
+.radar-titles-full .radar-blip-title--full {
+	display: block;
+}
+
+/* Category segment fills */
+.radar-category-segment {
+	fill-opacity: 0.12;
+	pointer-events: none;
+}
+
+/* Category color swatches */
+.radar-color-swatches {
+	display: flex;
+	align-items: center;
+	gap: 5px;
+	padding: 0 6px;
+}
+
+.radar-color-swatch {
+	width: 18px;
+	height: 18px;
+	border-radius: 50%;
+	cursor: pointer;
+	flex-shrink: 0;
+	position: relative;
+	transition: transform 0.1s ease;
+}
+
+.radar-color-swatch:hover {
+	transform: scale(1.2);
+}
+
+.radar-color-swatch--selected {
+	outline: 2px solid var(--text-normal);
+	outline-offset: 2px;
+}
+
+.radar-color-swatch--custom {
+	background: conic-gradient(
+		hsl(0, 80%, 55%),
+		hsl(60, 80%, 55%),
+		hsl(120, 80%, 55%),
+		hsl(180, 80%, 55%),
+		hsl(240, 80%, 55%),
+		hsl(300, 80%, 55%),
+		hsl(360, 80%, 55%)
+	);
+}
+
+.radar-color-swatch-input {
+	position: absolute;
+	width: 0;
+	height: 0;
+	opacity: 0;
+	pointer-events: none;
+	top: 0;
+	left: 0;
+}
+
+/* Customize modal */
+.radar-modal-section-desc {
+	font-size: var(--font-ui-small);
+	color: var(--text-muted);
+	margin: -8px 0 12px;
+}
+
+/* Error message */
+.radar-error {
+	color: var(--text-error);
+	text-align: center;
+	padding: 20px;
+}
+
+/* Dark mode adjustments */
+.theme-dark .radar-priority-ring {
+	stroke: var(--background-modifier-border);
+}
+
+.theme-dark .radar-category-divider {
+	stroke: var(--background-modifier-border);
+}
+
+/* Mobile adjustments */
+@media (max-width: 600px) {
+	.radar-svg-container {
+		padding: 10px;
+	}
+
+	.radar-blip-title {
+		font-size: 10px;
+	}
+}

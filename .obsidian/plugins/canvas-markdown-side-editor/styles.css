@@ -1,0 +1,664 @@
+/*
+
+This CSS file will be included with your plugin, and
+available in the app when your plugin is enabled.
+
+If your plugin does not need CSS, delete this file.
+
+*/
+
+/* Canvas MD Side Editor panel styles */
+.canvas-md-side-editor-panel {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  min-height: 0;
+  /* Default width; can be overridden via --cmside-panel-width when class is present */
+  width: min(48%, 640px);
+  background: var(--background-primary);
+  border-left: 1px solid var(--background-modifier-border);
+  box-shadow: var(--shadow-s);
+  transform: translateX(100%);
+  transition: transform 180ms ease-out;
+  display: flex;
+  flex-direction: column;
+  z-index: 100;
+  /* Editor padding variables so users/themes can tune spacing */
+  --cmside-editor-padding-top: 36px;
+  --cmside-editor-padding-x: 16px;
+  --cmside-editor-padding-bottom: 16px;
+}
+.canvas-md-side-editor-panel.open { transform: translateX(0); }
+
+/* When JS sets a custom panel width via CSS variable */
+.canvas-md-side-editor-panel.cmside-has-custom-width { width: var(--cmside-panel-width, min(48%, 640px)); }
+
+/* Preset panel widths (themes/snippets can override these values) */
+.canvas-md-side-editor-panel.cmside-width-narrow  { --cmside-panel-width: 320px; }
+.canvas-md-side-editor-panel.cmside-width-medium  { --cmside-panel-width: 420px; }
+.canvas-md-side-editor-panel.cmside-width-wide    { --cmside-panel-width: 560px; }
+.canvas-md-side-editor-panel.cmside-width-xwide   { --cmside-panel-width: 640px; }
+
+/* Quantized panel widths (300..800 step 20) */
+.canvas-md-side-editor-panel.cmside-width-w300 { --cmside-panel-width: 300px; }
+.canvas-md-side-editor-panel.cmside-width-w320 { --cmside-panel-width: 320px; }
+.canvas-md-side-editor-panel.cmside-width-w340 { --cmside-panel-width: 340px; }
+.canvas-md-side-editor-panel.cmside-width-w360 { --cmside-panel-width: 360px; }
+.canvas-md-side-editor-panel.cmside-width-w380 { --cmside-panel-width: 380px; }
+.canvas-md-side-editor-panel.cmside-width-w400 { --cmside-panel-width: 400px; }
+.canvas-md-side-editor-panel.cmside-width-w420 { --cmside-panel-width: 420px; }
+.canvas-md-side-editor-panel.cmside-width-w440 { --cmside-panel-width: 440px; }
+.canvas-md-side-editor-panel.cmside-width-w460 { --cmside-panel-width: 460px; }
+.canvas-md-side-editor-panel.cmside-width-w480 { --cmside-panel-width: 480px; }
+.canvas-md-side-editor-panel.cmside-width-w500 { --cmside-panel-width: 500px; }
+.canvas-md-side-editor-panel.cmside-width-w520 { --cmside-panel-width: 520px; }
+.canvas-md-side-editor-panel.cmside-width-w540 { --cmside-panel-width: 540px; }
+.canvas-md-side-editor-panel.cmside-width-w560 { --cmside-panel-width: 560px; }
+.canvas-md-side-editor-panel.cmside-width-w580 { --cmside-panel-width: 580px; }
+.canvas-md-side-editor-panel.cmside-width-w600 { --cmside-panel-width: 600px; }
+.canvas-md-side-editor-panel.cmside-width-w620 { --cmside-panel-width: 620px; }
+.canvas-md-side-editor-panel.cmside-width-w640 { --cmside-panel-width: 640px; }
+.canvas-md-side-editor-panel.cmside-width-w660 { --cmside-panel-width: 660px; }
+.canvas-md-side-editor-panel.cmside-width-w680 { --cmside-panel-width: 680px; }
+.canvas-md-side-editor-panel.cmside-width-w700 { --cmside-panel-width: 700px; }
+.canvas-md-side-editor-panel.cmside-width-w720 { --cmside-panel-width: 720px; }
+.canvas-md-side-editor-panel.cmside-width-w740 { --cmside-panel-width: 740px; }
+.canvas-md-side-editor-panel.cmside-width-w760 { --cmside-panel-width: 760px; }
+.canvas-md-side-editor-panel.cmside-width-w780 { --cmside-panel-width: 780px; }
+.canvas-md-side-editor-panel.cmside-width-w800 { --cmside-panel-width: 800px; }
+
+/* Container patch class used instead of setting inline position in JS */
+.cmside-container-patched { position: relative; }
+
+/* Disabled-look for dependent settings (e.g., headline title size when
+   headline mode is off). Native `disabled` on the input handles input
+   blocking; this class greys out the row visually so it's obvious why
+   it can't be edited. */
+.cmside-setting-disabled { opacity: 0.5; pointer-events: none; }
+.cmside-setting-disabled input { cursor: not-allowed; }
+
+/* Toolbar */
+.canvas-md-side-editor-panel .cmside-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  height: 36px;
+  padding: 0 8px;
+  border-bottom: 1px solid var(--background-modifier-border);
+  background: var(--background-secondary);
+}
+.canvas-md-side-editor-panel .cmside-title {
+  font-size: 12px;
+  font-weight: 600;
+  opacity: 0.8;
+  /* Don't grow into the rest of the toolbar — leaving free space here is
+     what makes the toolbar draggable in floating mode. The title shrinks
+     to fit its content (input width follows text length). */
+  flex: 0 1 auto;
+  min-width: 0;
+  max-width: 100%;
+}
+.canvas-md-side-editor-panel .cmside-title.cmside-title-editable {
+  opacity: 1;
+}
+.canvas-md-side-editor-panel .cmside-title-input {
+  /* `field-sizing: content` is supported in modern Chromium (Obsidian uses
+     a recent Electron). It makes the input auto-size to its current value,
+     so a short title doesn't reserve a long bar. min/max-width keep the
+     edit affordance reasonable. */
+  field-sizing: content;
+  width: auto;
+  min-width: 4em;
+  max-width: 28em;
+  font: inherit;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-normal);
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  padding: 2px 6px;
+  outline: none;
+}
+.canvas-md-side-editor-panel .cmside-title-input:focus,
+.canvas-md-side-editor-panel .cmside-title-input:hover {
+  border-color: var(--background-modifier-border);
+  background: var(--background-primary);
+}
+.canvas-md-side-editor-panel .cmside-actions { display: flex; gap: 6px; }
+.canvas-md-side-editor-panel .cmside-toggle-preview-btn,
+.canvas-md-side-editor-panel .cmside-close-btn {
+  width: 24px;
+  height: 24px;
+  line-height: 24px;
+  padding: 0;
+  border: 1px solid var(--background-modifier-border);
+  border-radius: 4px;
+  background: var(--background-primary);
+  color: var(--text-normal);
+  cursor: pointer;
+}
+.canvas-md-side-editor-panel .cmside-toggle-preview-btn { width: 24px; padding: 0; display: grid; place-items: center; }
+.canvas-md-side-editor-panel .cmside-close-btn:hover {
+  background: var(--background-modifier-hover);
+}
+.canvas-md-side-editor-panel .cmside-toggle-preview-btn:hover {
+  background: var(--background-modifier-hover);
+}
+
+/* Headline mode (issue #13): when enabled in settings, every canvas card
+   hides its rendered body content and shows only the first H1 (Title) + H2
+   (Subtitle). Full content stays accessible through the side editor.
+   Toggling the body class is the only thing the plugin does at runtime —
+   the rest is pure CSS.
+
+   We hide block-level content tags directly (instead of hiding non-h1/h2
+   children of a wrapper) because Obsidian renders headings nested inside
+   `.markdown-preview-sizer`, so a `> *:not(h1):not(h2)` rule would hide
+   the wrapper and take h1/h2 with it.
+
+   Issue #21: the hide is scoped to `.markdown-preview-view`/`.markdown-rendered`
+   — i.e. the *rendered body of a text/markdown card*. A standalone image
+   card is a Canvas file-node whose content element is itself
+   `.canvas-node-content.media-embed.image-embed` with NO markdown preview
+   inside, so none of these rules can match it and the image always shows.
+   Conversely an inline image in a text card (`![[img.png]]`) lives as a
+   descendant of `.markdown-preview-view`, so it IS collapsed away with the
+   rest of the body, leaving only the headline. */
+body.cmside-headline-mode .canvas-node :is(.markdown-preview-view, .markdown-rendered) :is(
+  p, ul, ol, dl,
+  blockquote, pre, code,
+  hr, table, figure,
+  img, picture, video, iframe, embed, object, audio,
+  h2, h3, h4, h5, h6,
+  .callout, .image-embed, .media-embed, .file-embed,
+  .internal-embed, .markdown-embed-link, .external-link, .footnotes
+) {
+  display: none !important;
+}
+/* Only the first H1 in the card counts as the title — drop any subsequent
+   H1s so multi-H1 cards still produce a clean single-headline look. */
+body.cmside-headline-mode .canvas-node h1 ~ h1 {
+  display: none !important;
+}
+
+/* Hide the duplicate filename Obsidian renders *inside* the card body —
+   the canvas already shows the filename as a label outside the card
+   (`.canvas-node-label`), so the in-card copy reads as redundant text.
+   `.mod-header.mod-ui` is the wrapper Obsidian inserts before the body
+   content; it carries the editable `.inline-title` (filename) and the
+   `.metadata-container` (Properties), neither of which belong in
+   headline view. We deliberately do NOT hide `.canvas-node-label`
+   itself, so the canvas's built-in filename label stays visible. */
+body.cmside-headline-mode .canvas-node .mod-header,
+body.cmside-headline-mode .canvas-node .inline-title,
+body.cmside-headline-mode .canvas-node .metadata-container,
+body.cmside-headline-mode .canvas-node .markdown-embed-title,
+body.cmside-headline-mode .canvas-node .file-embed-title,
+body.cmside-headline-mode .canvas-node .embed-title,
+body.cmside-headline-mode .canvas-node .markdown-embed-link {
+  display: none !important;
+}
+
+/* Establish the card's content area as a CSS container so font sizes can
+   be expressed in `cqi` (1% of container inline size). This makes the
+   Title/Subtitle scale with the card itself — and because canvas zoom is
+   implemented as a transform on the parent, the same rule also makes the
+   text track zoom level visually.
+
+   Issue #21: exclude standalone image/media cards. Their `.canvas-node-content`
+   is a *flex item* of `.canvas-node-container`, and `container-type: inline-size`
+   imposes inline-size containment that collapses such a shrink-to-fit item to
+   ~0 width — squashing the image to nothing. Image cards have no headline text,
+   so they never needed the container anyway. */
+body.cmside-headline-mode .canvas-node .canvas-node-content:not(.image-embed):not(.media-embed),
+body.cmside-headline-mode .canvas-node .markdown-embed,
+body.cmside-headline-mode .canvas-node .markdown-embed-content,
+body.cmside-headline-mode .canvas-node .markdown-preview-view {
+  container-type: inline-size;
+}
+
+/* Centre the (now title-only) content vertically + horizontally inside
+   the card. Multiple selector layers cover the variations in canvas DOM. */
+body.cmside-headline-mode .canvas-node .markdown-preview-view,
+body.cmside-headline-mode .canvas-node .markdown-preview-sizer,
+body.cmside-headline-mode .canvas-node .markdown-rendered,
+body.cmside-headline-mode .canvas-node .markdown-embed-content {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  height: 100% !important;
+  min-height: 0 !important;
+  padding: 3% 4% !important;
+  box-sizing: border-box !important;
+  text-align: center !important;
+}
+
+body.cmside-headline-mode .canvas-node h1 {
+  font-size: clamp(16px, calc(var(--cmside-h1-size, 22) * 1cqi), 240px) !important;
+  font-weight: 700 !important;
+  text-align: center !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: none !important;
+  line-height: 1.1 !important;
+  color: var(--text-normal) !important;
+  word-break: break-word !important;
+  max-width: 100% !important;
+  display: -webkit-box !important;
+  -webkit-line-clamp: 4 !important;
+  -webkit-box-orient: vertical !important;
+  overflow: hidden !important;
+}
+
+/* When a card has no H1, headline mode would render an empty card. Show
+   a faint placeholder so the user can tell the card is intentionally
+   blank in this view (and that they need to add an H1 to give it a
+   title). Uses CSS `:has()`, supported by Obsidian's Electron runtime. */
+body.cmside-headline-mode .canvas-node .markdown-preview-sizer:not(:has(h1))::before {
+  content: "No headline";
+  color: var(--text-faint);
+  font-style: italic;
+  font-size: clamp(11px, calc(var(--cmside-h1-size, 22) * 0.5cqi), 60px);
+  text-align: center;
+  opacity: 0.7;
+}
+
+/* Don't enforce headline view while the card is in inline-edit mode so the
+   user can still see / edit the full markdown if they double-click. */
+body.cmside-headline-mode .canvas-node:is(.is-editing, .editing) :is(
+  p, ul, ol, dl,
+  blockquote, pre, code,
+  hr, table, figure,
+  img, picture, video, iframe, embed, object, audio,
+  h2, h3, h4, h5, h6,
+  .callout, .image-embed, .file-embed, .markdown-embed-link,
+  .internal-embed, .external-link, .footnotes
+),
+body.cmside-headline-mode .canvas-node:is(.is-editing, .editing) h1 ~ h1 {
+  display: revert !important;
+}
+body.cmside-headline-mode .canvas-node:is(.is-editing, .editing) .mod-header,
+body.cmside-headline-mode .canvas-node:is(.is-editing, .editing) .inline-title,
+body.cmside-headline-mode .canvas-node:is(.is-editing, .editing) .metadata-container,
+body.cmside-headline-mode .canvas-node:is(.is-editing, .editing) .markdown-embed-title,
+body.cmside-headline-mode .canvas-node:is(.is-editing, .editing) .file-embed-title,
+body.cmside-headline-mode .canvas-node:is(.is-editing, .editing) .embed-title,
+body.cmside-headline-mode .canvas-node:is(.is-editing, .editing) .markdown-embed-link {
+  display: revert !important;
+}
+body.cmside-headline-mode .canvas-node:is(.is-editing, .editing) .markdown-preview-sizer::before {
+  content: none !important;
+}
+body.cmside-headline-mode .canvas-node:is(.is-editing, .editing) .markdown-preview-view,
+body.cmside-headline-mode .canvas-node:is(.is-editing, .editing) .markdown-preview-sizer,
+body.cmside-headline-mode .canvas-node:is(.is-editing, .editing) .markdown-rendered,
+body.cmside-headline-mode .canvas-node:is(.is-editing, .editing) .markdown-embed-content {
+  display: revert !important;
+  height: revert !important;
+  padding: revert !important;
+  text-align: revert !important;
+}
+
+/* Image cards always fill their frame (issue #21 follow-up). Obsidian's
+   default centres a Canvas image with `object-fit: contain`, which
+   letterboxes (dark gap) whenever the card's aspect ratio differs from the
+   image's, and never upscales past the image's natural size. We force the
+   <img> to fill the whole card with `object-fit: fill` — exact fit, no gap,
+   and it keeps scaling up past natural size (quality degrades, by design).
+   This is NOT scoped to headline mode: it applies to every Canvas image
+   card whenever this plugin is enabled. The content element is a flexbox,
+   so we also zero its padding and override Obsidian's max-width/height. */
+.canvas-node .canvas-node-content:is(.image-embed, .media-embed) {
+  padding: 0 !important;
+}
+.canvas-node .canvas-node-content:is(.image-embed, .media-embed) > img {
+  width: 100% !important;
+  height: 100% !important;
+  max-width: none !important;
+  max-height: none !important;
+  object-fit: fill !important;
+}
+
+.canvas-md-side-editor-panel .cmside-split {
+  flex: 1;
+  min-width: 0;
+  min-height: 0;
+  display: flex;
+  gap: 0;
+  padding: 0;
+  overscroll-behavior: contain;
+}
+/* Preview-only state (issue #16): hide editor and divider; make preview full width.
+   Toggle button stays visible — it now cycles through all three states. */
+.canvas-md-side-editor-panel[data-view-mode="preview"] .cmside-pane-editor { display: none; }
+.canvas-md-side-editor-panel[data-view-mode="preview"] .cmside-divider { display: none; }
+.canvas-md-side-editor-panel[data-view-mode="preview"] .cmside-pane-preview { flex: 1 1 auto; }
+/* Panel left-edge resizer */
+.canvas-md-side-editor-panel .cmside-panel-resizer {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 8px;
+  cursor: ew-resize;
+  background: transparent;
+  z-index: 2;
+}
+.canvas-md-side-editor-panel .cmside-panel-resizer:hover { background: color-mix(in oklab, var(--background-modifier-border) 70%, transparent); }
+.canvas-md-side-editor-panel.resizing-panel, .canvas-md-side-editor-panel.resizing-panel * { user-select: none; cursor: ew-resize; }
+.canvas-md-side-editor-panel .cmside-pane {
+  flex: 1 1 0;
+  min-width: 0;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
+.canvas-md-side-editor-panel .cmside-pane-header {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 6px 10px;
+  border-bottom: 1px solid var(--background-modifier-border);
+  background: var(--background-secondary);
+  color: var(--text-muted);
+}
+/* Editor-only state (issue #16): hide preview pane and divider; editor goes full width. */
+.canvas-md-side-editor-panel[data-view-mode="editor"] .cmside-pane-preview { display: none; }
+.canvas-md-side-editor-panel[data-view-mode="editor"] .cmside-divider { display: none; }
+.canvas-md-side-editor-panel[data-view-mode="editor"] .cmside-pane-editor { flex: 1 1 auto !important; }
+.canvas-md-side-editor-panel[data-view-mode="editor"] .cmside-editor-root { border-right: none; }
+/* Live Preview state (issue #20): same layout as editor-only — the leaf
+   renders Live Preview inline so the side preview pane has nothing to add. */
+.canvas-md-side-editor-panel[data-view-mode="live"] .cmside-pane-preview { display: none; }
+.canvas-md-side-editor-panel[data-view-mode="live"] .cmside-divider { display: none; }
+.canvas-md-side-editor-panel[data-view-mode="live"] .cmside-pane-editor { flex: 1 1 auto !important; }
+.canvas-md-side-editor-panel[data-view-mode="live"] .cmside-editor-root { border-right: none; }
+.canvas-md-side-editor-panel .cmside-editor-root {
+  flex: 1 1 auto;
+  overflow: hidden;
+  min-height: 0;
+  background: var(--background-primary);
+  border-right: 1px solid var(--background-modifier-border);
+  font-size: var(--cmside-editor-font-size, inherit);
+  cursor: text;
+}
+.canvas-md-side-editor-panel .cmside-editor-root .cm-editor { height: 100%; }
+.canvas-md-side-editor-panel .cmside-editor-root .cm-scroller {
+  height: 100%;
+  overflow: auto;
+  overscroll-behavior: contain;
+  padding: var(--cmside-editor-padding-top) var(--cmside-editor-padding-x) var(--cmside-editor-padding-bottom);
+  box-sizing: border-box;
+}
+.canvas-md-side-editor-panel .cmside-preview-root {
+  flex: 1 1 auto;
+  overflow: auto;
+  min-height: 0;
+  height: 100%;
+  /* Match editor scroller padding for alignment */
+  padding: var(--cmside-editor-padding-top) var(--cmside-editor-padding-x) var(--cmside-editor-padding-bottom);
+  box-sizing: border-box;
+  font-size: var(--cmside-preview-font-size, inherit);
+}
+.canvas-md-side-editor-panel .cmside-preview-root.markdown-reading-view,
+.canvas-md-side-editor-panel .cmside-preview-root.markdown-preview-view { height: 100%; min-height: 0; }
+.canvas-md-side-editor-panel .cmside-preview-root img { max-width: 100%; height: auto; }
+
+.canvas-md-side-editor-panel.cmside-editor-font-xs { --cmside-editor-font-size: 12px; }
+.canvas-md-side-editor-panel.cmside-editor-font-sm { --cmside-editor-font-size: 13px; }
+.canvas-md-side-editor-panel.cmside-editor-font-md { --cmside-editor-font-size: 14px; }
+.canvas-md-side-editor-panel.cmside-editor-font-lg { --cmside-editor-font-size: 16px; }
+.canvas-md-side-editor-panel.cmside-editor-font-xl { --cmside-editor-font-size: 18px; }
+
+.canvas-md-side-editor-panel.cmside-preview-font-xs { --cmside-preview-font-size: 12px; }
+.canvas-md-side-editor-panel.cmside-preview-font-sm { --cmside-preview-font-size: 13px; }
+.canvas-md-side-editor-panel.cmside-preview-font-md { --cmside-preview-font-size: 14px; }
+.canvas-md-side-editor-panel.cmside-preview-font-lg { --cmside-preview-font-size: 16px; }
+.canvas-md-side-editor-panel.cmside-preview-font-xl { --cmside-preview-font-size: 18px; }
+
+.canvas-md-side-editor-panel .cmside-divider {
+  width: 6px;
+  cursor: col-resize;
+  background: var(--background-modifier-border);
+  opacity: 0.7;
+}
+.canvas-md-side-editor-panel .cmside-divider:hover { background: var(--interactive-accent); opacity: 0.85; }
+.canvas-md-side-editor-panel.resizing, .canvas-md-side-editor-panel.resizing * { user-select: none; cursor: col-resize; }
+
+/* When the editor width is locked via divider drag, use a CSS variable */
+.canvas-md-side-editor-panel.cmside-editor-fixed .cmside-pane-editor { flex: 0 0 var(--cmside-editor-width, 320px); }
+.canvas-md-side-editor-panel.cmside-editor-fixed .cmside-pane-preview { flex: 1 1 auto; }
+
+/* Preset editor widths for divider drag locking */
+.canvas-md-side-editor-panel.cmside-editor-fixed.cmside-editor-w-320 { --cmside-editor-width: 320px; }
+.canvas-md-side-editor-panel.cmside-editor-fixed.cmside-editor-w-420 { --cmside-editor-width: 420px; }
+.canvas-md-side-editor-panel.cmside-editor-fixed.cmside-editor-w-560 { --cmside-editor-width: 560px; }
+
+/* Quantized editor widths (200..800 step 20) */
+.canvas-md-side-editor-panel.cmside-editor-fixed.cmside-editor-w-200 { --cmside-editor-width: 200px; }
+.canvas-md-side-editor-panel.cmside-editor-fixed.cmside-editor-w-220 { --cmside-editor-width: 220px; }
+.canvas-md-side-editor-panel.cmside-editor-fixed.cmside-editor-w-240 { --cmside-editor-width: 240px; }
+.canvas-md-side-editor-panel.cmside-editor-fixed.cmside-editor-w-260 { --cmside-editor-width: 260px; }
+.canvas-md-side-editor-panel.cmside-editor-fixed.cmside-editor-w-280 { --cmside-editor-width: 280px; }
+.canvas-md-side-editor-panel.cmside-editor-fixed.cmside-editor-w-300 { --cmside-editor-width: 300px; }
+.canvas-md-side-editor-panel.cmside-editor-fixed.cmside-editor-w-320 { --cmside-editor-width: 320px; }
+.canvas-md-side-editor-panel.cmside-editor-fixed.cmside-editor-w-340 { --cmside-editor-width: 340px; }
+.canvas-md-side-editor-panel.cmside-editor-fixed.cmside-editor-w-360 { --cmside-editor-width: 360px; }
+.canvas-md-side-editor-panel.cmside-editor-fixed.cmside-editor-w-380 { --cmside-editor-width: 380px; }
+.canvas-md-side-editor-panel.cmside-editor-fixed.cmside-editor-w-400 { --cmside-editor-width: 400px; }
+.canvas-md-side-editor-panel.cmside-editor-fixed.cmside-editor-w-420 { --cmside-editor-width: 420px; }
+.canvas-md-side-editor-panel.cmside-editor-fixed.cmside-editor-w-440 { --cmside-editor-width: 440px; }
+.canvas-md-side-editor-panel.cmside-editor-fixed.cmside-editor-w-460 { --cmside-editor-width: 460px; }
+.canvas-md-side-editor-panel.cmside-editor-fixed.cmside-editor-w-480 { --cmside-editor-width: 480px; }
+.canvas-md-side-editor-panel.cmside-editor-fixed.cmside-editor-w-500 { --cmside-editor-width: 500px; }
+.canvas-md-side-editor-panel.cmside-editor-fixed.cmside-editor-w-520 { --cmside-editor-width: 520px; }
+.canvas-md-side-editor-panel.cmside-editor-fixed.cmside-editor-w-540 { --cmside-editor-width: 540px; }
+.canvas-md-side-editor-panel.cmside-editor-fixed.cmside-editor-w-560 { --cmside-editor-width: 560px; }
+.canvas-md-side-editor-panel.cmside-editor-fixed.cmside-editor-w-580 { --cmside-editor-width: 580px; }
+.canvas-md-side-editor-panel.cmside-editor-fixed.cmside-editor-w-600 { --cmside-editor-width: 600px; }
+.canvas-md-side-editor-panel.cmside-editor-fixed.cmside-editor-w-620 { --cmside-editor-width: 620px; }
+.canvas-md-side-editor-panel.cmside-editor-fixed.cmside-editor-w-640 { --cmside-editor-width: 640px; }
+.canvas-md-side-editor-panel.cmside-editor-fixed.cmside-editor-w-660 { --cmside-editor-width: 660px; }
+.canvas-md-side-editor-panel.cmside-editor-fixed.cmside-editor-w-680 { --cmside-editor-width: 680px; }
+.canvas-md-side-editor-panel.cmside-editor-fixed.cmside-editor-w-700 { --cmside-editor-width: 700px; }
+.canvas-md-side-editor-panel.cmside-editor-fixed.cmside-editor-w-720 { --cmside-editor-width: 720px; }
+.canvas-md-side-editor-panel.cmside-editor-fixed.cmside-editor-w-740 { --cmside-editor-width: 740px; }
+.canvas-md-side-editor-panel.cmside-editor-fixed.cmside-editor-w-760 { --cmside-editor-width: 760px; }
+.canvas-md-side-editor-panel.cmside-editor-fixed.cmside-editor-w-780 { --cmside-editor-width: 780px; }
+.canvas-md-side-editor-panel.cmside-editor-fixed.cmside-editor-w-800 { --cmside-editor-width: 800px; }
+
+/* Optional active line mask (if used) driven by CSS variables set from JS */
+.canvas-md-side-editor-panel .cmside-active-line-mask {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: var(--cmside-active-mask-top, -9999px);
+  height: var(--cmside-active-mask-height, 0);
+  pointer-events: none;
+}
+
+/* === Docking (issue #11) ===
+ * The base rules above target the right dock (the original default).
+ * Each direction class re-anchors the panel and re-aims the slide-in
+ * animation, the panel border, and the inner-edge resizer accordingly.
+ */
+
+/* Left dock — mirror of right */
+.canvas-md-side-editor-panel.cmside-dock-left {
+  right: auto;
+  left: 0;
+  border-left: none;
+  border-right: 1px solid var(--background-modifier-border);
+  transform: translateX(-100%);
+}
+.canvas-md-side-editor-panel.cmside-dock-left.open { transform: translateX(0); }
+.canvas-md-side-editor-panel.cmside-dock-left .cmside-panel-resizer {
+  left: auto;
+  right: 0;
+}
+
+/* Top dock — full width across the top */
+.canvas-md-side-editor-panel.cmside-dock-top {
+  top: 0;
+  right: 0;
+  bottom: auto;
+  left: 0;
+  width: 100%;
+  height: var(--cmside-panel-height, min(48%, 480px));
+  border-left: none;
+  border-bottom: 1px solid var(--background-modifier-border);
+  transform: translateY(-100%);
+}
+.canvas-md-side-editor-panel.cmside-dock-top.open { transform: translateY(0); }
+.canvas-md-side-editor-panel.cmside-dock-top .cmside-panel-resizer {
+  top: auto;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: auto;
+  height: 8px;
+  cursor: ns-resize;
+}
+
+/* Bottom dock — full width across the bottom */
+.canvas-md-side-editor-panel.cmside-dock-bottom {
+  top: auto;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: var(--cmside-panel-height, min(48%, 480px));
+  border-left: none;
+  border-top: 1px solid var(--background-modifier-border);
+  transform: translateY(100%);
+}
+.canvas-md-side-editor-panel.cmside-dock-bottom.open { transform: translateY(0); }
+.canvas-md-side-editor-panel.cmside-dock-bottom .cmside-panel-resizer {
+  bottom: auto;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: auto;
+  height: 8px;
+  cursor: ns-resize;
+}
+
+/* Resize cursor while dragging on a vertical-axis dock */
+.canvas-md-side-editor-panel.cmside-dock-top.resizing-panel,
+.canvas-md-side-editor-panel.cmside-dock-top.resizing-panel *,
+.canvas-md-side-editor-panel.cmside-dock-bottom.resizing-panel,
+.canvas-md-side-editor-panel.cmside-dock-bottom.resizing-panel * {
+  cursor: ns-resize;
+}
+
+/* Height presets for top/bottom docking (200..700, step 20) */
+.canvas-md-side-editor-panel.cmside-dock-top.cmside-has-custom-width,
+.canvas-md-side-editor-panel.cmside-dock-bottom.cmside-has-custom-width {
+  height: var(--cmside-panel-height, min(48%, 480px));
+  width: 100%;
+}
+.canvas-md-side-editor-panel.cmside-height-h200 { --cmside-panel-height: 200px; }
+.canvas-md-side-editor-panel.cmside-height-h220 { --cmside-panel-height: 220px; }
+.canvas-md-side-editor-panel.cmside-height-h240 { --cmside-panel-height: 240px; }
+.canvas-md-side-editor-panel.cmside-height-h260 { --cmside-panel-height: 260px; }
+.canvas-md-side-editor-panel.cmside-height-h280 { --cmside-panel-height: 280px; }
+.canvas-md-side-editor-panel.cmside-height-h300 { --cmside-panel-height: 300px; }
+.canvas-md-side-editor-panel.cmside-height-h320 { --cmside-panel-height: 320px; }
+.canvas-md-side-editor-panel.cmside-height-h340 { --cmside-panel-height: 340px; }
+.canvas-md-side-editor-panel.cmside-height-h360 { --cmside-panel-height: 360px; }
+.canvas-md-side-editor-panel.cmside-height-h380 { --cmside-panel-height: 380px; }
+.canvas-md-side-editor-panel.cmside-height-h400 { --cmside-panel-height: 400px; }
+.canvas-md-side-editor-panel.cmside-height-h420 { --cmside-panel-height: 420px; }
+.canvas-md-side-editor-panel.cmside-height-h440 { --cmside-panel-height: 440px; }
+.canvas-md-side-editor-panel.cmside-height-h460 { --cmside-panel-height: 460px; }
+.canvas-md-side-editor-panel.cmside-height-h480 { --cmside-panel-height: 480px; }
+.canvas-md-side-editor-panel.cmside-height-h500 { --cmside-panel-height: 500px; }
+.canvas-md-side-editor-panel.cmside-height-h520 { --cmside-panel-height: 520px; }
+.canvas-md-side-editor-panel.cmside-height-h540 { --cmside-panel-height: 540px; }
+.canvas-md-side-editor-panel.cmside-height-h560 { --cmside-panel-height: 560px; }
+.canvas-md-side-editor-panel.cmside-height-h580 { --cmside-panel-height: 580px; }
+.canvas-md-side-editor-panel.cmside-height-h600 { --cmside-panel-height: 600px; }
+.canvas-md-side-editor-panel.cmside-height-h620 { --cmside-panel-height: 620px; }
+.canvas-md-side-editor-panel.cmside-height-h640 { --cmside-panel-height: 640px; }
+.canvas-md-side-editor-panel.cmside-height-h660 { --cmside-panel-height: 660px; }
+.canvas-md-side-editor-panel.cmside-height-h680 { --cmside-panel-height: 680px; }
+.canvas-md-side-editor-panel.cmside-height-h700 { --cmside-panel-height: 700px; }
+
+/* === Floating mode (issue #11) ===
+ * Free-position panel using CSS variables set by JS. Drag handle is the
+ * toolbar; resize handle is a tiny bottom-right corner element.
+ */
+.canvas-md-side-editor-panel.cmside-dock-floating {
+  top: var(--cmside-float-y, 80px);
+  left: var(--cmside-float-x, 80px);
+  right: auto;
+  bottom: auto;
+  width: var(--cmside-float-w, 480px);
+  height: var(--cmside-float-h, 400px);
+  border: 1px solid var(--background-modifier-border);
+  border-radius: 8px;
+  box-shadow: var(--shadow-l, 0 8px 24px rgba(0, 0, 0, 0.2));
+  /* No slide-in animation; appear in place */
+  transform: none;
+  transition: none;
+}
+.canvas-md-side-editor-panel.cmside-dock-floating.open {
+  transform: none;
+}
+/* Hide the edge resizer in floating mode (no edge to attach to) */
+.canvas-md-side-editor-panel.cmside-dock-floating .cmside-panel-resizer {
+  display: none;
+}
+/* Toolbar serves as drag handle */
+.canvas-md-side-editor-panel.cmside-dock-floating .cmside-toolbar {
+  cursor: grab;
+}
+.canvas-md-side-editor-panel.cmside-dock-floating.cmside-floating-dragging .cmside-toolbar,
+.canvas-md-side-editor-panel.cmside-dock-floating.cmside-floating-dragging,
+.canvas-md-side-editor-panel.cmside-dock-floating.cmside-floating-dragging * {
+  cursor: grabbing;
+  user-select: none;
+}
+/* The action buttons and the editable title input keep their normal cursor */
+.canvas-md-side-editor-panel.cmside-dock-floating .cmside-toolbar .cmside-actions,
+.canvas-md-side-editor-panel.cmside-dock-floating .cmside-toolbar .cmside-actions * {
+  cursor: pointer;
+}
+.canvas-md-side-editor-panel.cmside-dock-floating .cmside-title-input {
+  cursor: text;
+}
+
+/* Bottom-right corner resize handle. Only visible when floating. */
+.canvas-md-side-editor-panel .cmside-corner-resizer {
+  display: none;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 14px;
+  height: 14px;
+  cursor: se-resize;
+  background: linear-gradient(
+    135deg,
+    transparent 50%,
+    var(--background-modifier-border) 50%,
+    var(--background-modifier-border) 60%,
+    transparent 60%,
+    transparent 70%,
+    var(--background-modifier-border) 70%,
+    var(--background-modifier-border) 80%,
+    transparent 80%
+  );
+  z-index: 3;
+}
+.canvas-md-side-editor-panel.cmside-dock-floating .cmside-corner-resizer {
+  display: block;
+}
+.canvas-md-side-editor-panel.cmside-dock-floating.cmside-floating-resizing,
+.canvas-md-side-editor-panel.cmside-dock-floating.cmside-floating-resizing * {
+  cursor: se-resize;
+  user-select: none;
+}

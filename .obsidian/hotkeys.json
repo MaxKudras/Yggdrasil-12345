@@ -1,0 +1,50 @@
+{
+  "cmenu-plugin:editor:toggle-highlight": [],
+  "highlightr-plugin:highlighter-plugin-menu": [],
+  "highlightr-plugin:Green": [],
+  "highlightr-plugin:Blue": [],
+  "highlightr-plugin:Cyan": [],
+  "highlightr-plugin:Red": [
+    {
+      "modifiers": [
+        "Alt",
+        "Mod"
+      ],
+      "key": "End"
+    }
+  ],
+  "obsidian-icons-plugin:open-icons-plugin-modal": [],
+  "buttons:inline-button": [
+    {
+      "modifiers": [
+        "Mod"
+      ],
+      "key": "A"
+    }
+  ],
+  "buttons:button-maker": [
+    {
+      "modifiers": [
+        "Mod"
+      ],
+      "key": "Q"
+    }
+  ],
+  "workspaces:open-modal": [
+    {
+      "modifiers": [
+        "Alt"
+      ],
+      "key": "A"
+    }
+  ],
+  "editor:toggle-checklist-status": [],
+  "obsidian-shellcommands:shell-command-z0col2v6su": [
+    {
+      "modifiers": [
+        "Mod"
+      ],
+      "key": "-"
+    }
+  ]
+}

@@ -1,0 +1,229 @@
+/* Floating controls for Glicko arena */
+.glicko-session-bar {
+  position: fixed;
+  left: 50%;
+  bottom: var(--size-4-4); /* 16px */
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: var(--size-4-3); /* 12px */
+  background-color: var(--background-primary);
+  color: var(--text-normal);
+  border: 1px solid var(--background-modifier-border);
+  border-radius: var(--radius-m);
+  padding: var(--size-4-2) var(--size-4-3); /* 8px 12px */
+  box-shadow: var(--shadow-s);
+  z-index: var(--layer-notice);
+  pointer-events: auto;
+
+  /* Typography for UI surface */
+  font-size: var(--font-ui-medium);
+  line-height: var(--line-height-tight);
+}
+
+.glicko-session-bar .glicko-side {
+  min-width: 14ch;
+  text-align: center;
+  font-weight: var(--font-semibold);
+}
+
+.glicko-session-bar .glicko-controls {
+  display: flex;
+  gap: var(--size-4-2); /* 8px */
+  align-items: center;
+}
+
+.glicko-session-bar button {
+  font-size: var(--font-ui-small);
+  line-height: var(--line-height-tight);
+  padding: var(--size-4-1) var(--size-4-2); /* 4px 8px */
+  border-radius: var(--radius-s);
+
+  /* Press-in animation */
+  transition:
+    transform 80ms ease,
+    box-shadow 80ms ease,
+    filter 80ms ease;
+}
+
+/* Mouse/touch press, plus programmatic press (keyboard shortcuts) */
+.glicko-session-bar button:active,
+.glicko-session-bar button.glicko-pressed {
+  transform: translateY(1px);
+  filter: brightness(0.9);
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.25);
+}
+
+.glicko-cohort-item-info {
+  cursor: pointer;
+}
+
+/* Settings accordions */
+.glicko-settings-accordion {
+  margin-top: var(--size-4-3); /* 12px */
+}
+
+.glicko-settings-accordion > summary {
+  cursor: pointer;
+  font-weight: var(--font-semibold);
+  font-size: var(--font-ui-medium);
+  margin-bottom: var(--size-4-2); /* 8px */
+}
+
+.glicko-settings-accordion .glicko-settings-body {
+  padding-top: var(--size-4-3); /* 12px */
+  margin-left: var(--size-4-1); /* 4px */
+  padding-left: var(--size-4-3); /* 12px */
+  border-left: 2px solid var(--background-modifier-border);
+}
+
+/* Generic muted text helper */
+.glicko-muted {
+  color: var(--text-muted);
+}
+
+/* Tag cohort picker: selected tags list */
+.glicko-selected-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--size-2-3); /* 6px */
+  line-height: var(--line-height-tight);
+}
+
+.glicko-tag-wrap {
+  display: inline-flex;
+  align-items: center;
+}
+
+.glicko-tag-remove {
+  margin-left: var(--size-2-3); /* 6px */
+  font-size: var(--font-ui-small);
+  line-height: var(--line-height-tight);
+}
+
+/* Non-interactive setting row (e.g. suggestion rows with a Use button) */
+.glicko-static {
+  cursor: default;
+}
+
+.glicko-warning {
+  display: block;
+  box-sizing: border-box;
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+
+  padding: var(--size-4-2) var(--size-4-3); /* 8px 12px */
+  background-color: var(--background-secondary);
+  color: var(--text-normal);
+  border-radius: var(--radius-s);
+
+  outline: 1px solid var(--background-modifier-border);
+  box-shadow: inset 4px 0 0 var(--text-accent);
+
+  font-size: var(--font-ui-small);
+  line-height: var(--line-height-normal);
+  white-space: pre-wrap;
+
+  transition:
+    max-height 220ms ease,
+    opacity 160ms ease;
+}
+
+.glicko-warning.is-visible {
+  max-height: 10rem;
+  opacity: 1;
+}
+
+.glicko-warning p {
+  margin: 0;
+}
+
+/* Convergence stability progress bar */
+.glicko-stability-track {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 3px;
+  overflow: hidden;
+  border-radius: 0 0 var(--radius-m) var(--radius-m);
+  pointer-events: none;
+}
+
+.glicko-stability-fill {
+  height: 100%;
+  width: var(--stability-width, 0%);
+  background-color: var(--text-accent);
+  border-radius: 0 0 var(--radius-m) var(--radius-m);
+  transition:
+    width 150ms ease,
+    background-color 300ms ease;
+}
+
+.glicko-stability-fill.is-mid {
+  background-color: var(--color-yellow);
+}
+
+.glicko-stability-fill.is-high {
+  background-color: var(--color-green);
+}
+
+.glicko-stability-fill.is-surprise {
+  background-color: var(--color-red);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .glicko-warning {
+    transition: none;
+  }
+
+  .glicko-stability-fill {
+    transition: none;
+  }
+}
+
+/* Phone layout: stack title + controls, stretch to screen width */
+.glicko-session-bar.is-mobile {
+  left: var(--size-4-2);
+  right: var(--size-4-2);
+  transform: none;
+
+  width: auto;
+  max-width: none;
+
+  flex-direction: column;
+  align-items: stretch;
+  gap: var(--size-4-2);
+
+  padding: var(--size-4-2);
+
+  bottom: calc(var(--size-4-4) + var(--view-bottom-spacing)); /* 16px + mobile safe area */
+}
+
+/* Title line for mobile session bar */
+.glicko-mobile-title {
+  text-align: center;
+  font-weight: var(--font-semibold);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Hide left/right labels on mobile */
+.glicko-session-bar.is-mobile .glicko-side {
+  display: none;
+}
+
+/* Mobile-friendly buttons */
+.glicko-session-bar.is-mobile .glicko-controls {
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.glicko-session-bar.is-mobile button {
+  min-height: 44px;
+  padding: var(--size-4-2) var(--size-4-3);
+  font-size: var(--font-ui-medium);
+  flex: 1 1 7rem;
+}

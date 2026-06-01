@@ -1,0 +1,120 @@
+@charset "UTF-8";
+/* ## data-task as content */
+input[type=checkbox]::after {
+  display: block;
+  border-radius: var(--checkbox-radius);
+  text-align: center;
+  font-weight: bold;
+  font-size: calc(var(--checkbox-size) - 4px);
+  line-height: var(--checkbox-size);
+  font-family: var(--font-interface);
+  color: var(--checkbox-marker-color);
+  content: " ";
+}
+
+[data-task] {
+  --task-content: attr(data-task);
+}
+
+input[type=checkbox]:checked::after {
+  -webkit-mask-image: none;
+  mask-image: none;
+  background-color: transparent;
+  content: var(--task-content);
+}
+
+/* ## Custom symbol */
+:is([data-task=x], [data-task=X]) input[type=checkbox]:checked::after,
+input[type=checkbox]:checked:not([data-task])::after {
+  --task-content: '✓';
+}
+
+/* ## Theme compatility */
+/* ### Minimal */
+[data-any-task-theme=Minimal] [data-task="/"] input[type=checkbox]:checked:after {
+  border-radius: 0;
+  background-color: var(--background-modifier-accent);
+  content: " ";
+}
+
+/* ### Blue Topaz */
+body[data-any-task-theme="Blue Topaz"] .HyperMD-task-line:not([data-task=x], [data-task=X], [data-task=">"],
+[data-task="<"], [data-task="?"], [data-task="!"], [data-task="+"], [data-task="-"],
+[data-task=“], [data-task='"'], [data-task=…], [data-task="/"], [data-task="."],
+[data-task=A], [data-task=D], [data-task=￥], [data-task="*"], [data-task=l],
+[data-task=n], [data-task=S], [data-task=i], [data-task=I], [data-task=p],
+[data-task=c], [data-task=b], [data-task=f], [data-task=w], [data-task=k],
+[data-task=u], [data-task=d], [data-task=r], [data-task=m], [data-task=M],
+[data-task=t], [data-task=T], [data-task=P], [data-task="#"], [data-task=F],
+[data-task=L], [data-task=W], [data-task=U]) input[type=checkbox]:checked {
+  background-image: none;
+}
+
+[data-any-task-theme="Blue Topaz"] .HyperMD-task-line:not([data-task=x], [data-task=X], [data-task=">"],
+[data-task="<"], [data-task="?"], [data-task="!"], [data-task="+"], [data-task="-"],
+[data-task=“], [data-task='"'], [data-task=…], [data-task="/"], [data-task="."],
+[data-task=A], [data-task=D], [data-task=￥], [data-task="*"], [data-task=l],
+[data-task=n], [data-task=S], [data-task=i], [data-task=I], [data-task=p],
+[data-task=c], [data-task=b], [data-task=f], [data-task=w], [data-task=k],
+[data-task=u], [data-task=d], [data-task=r], [data-task=m], [data-task=M],
+[data-task=t], [data-task=T], [data-task=P], [data-task="#"], [data-task=F],
+[data-task=L], [data-task=W], [data-task=U]) input[type=checkbox]:checked:after {
+  display: block;
+}
+
+/* ### Things */
+[data-any-task-theme=Things] [data-task="/"] input[type=checkbox]:checked:after {
+  border-radius: 0;
+  background-color: var(--color-accent);
+  content: " ";
+}
+
+/* ### AnuPpuccin */
+[data-any-task-theme=AnuPpuccin] :is([data-task=x], [data-task=">"], [data-task="<"],
+[data-task="!"], [data-task="-"], [data-task="/"], [data-task="?"], [data-task="*"],
+[data-task=n], [data-task=l], [data-task=i], [data-task=I], [data-task=S],
+[data-task=p], [data-task=c], [data-task=b], [data-task='"'], [data-task=u],
+[data-task=d], [data-task=w], [data-task=k], [data-task=f], [data-task="0"],
+[data-task="1"], [data-task="2"], [data-task="3"], [data-task="4"], [data-task="5"],
+[data-task="6"], [data-task="7"], [data-task="8"],
+[data-task="9"]) input[type=checkbox]:checked:after {
+  content: " ";
+}
+
+[data-any-task-theme=AnuPpuccin] [data-task=x] input[type=checkbox]:checked:after {
+  background-color: var(--checkbox-marker-color);
+  -webkit-mask-image: url('data:image/svg+xml; utf8, <svg width="12px" height="10px" viewBox="0 0 12 8" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g transform="translate%28-4.000000, -6.000000%29" fill="%23000000"><path d="M8.1043257,14.0367999 L4.52468714,10.5420499 C4.32525014,10.3497722 4.32525014,10.0368095 4.52468714,9.8424863 L5.24777413,9.1439454 C5.44721114,8.95166768 5.77142411,8.95166768 5.97086112,9.1439454 L8.46638057,11.5903727 L14.0291389,6.1442083 C14.2285759,5.95193057 14.5527889,5.95193057 14.7522259,6.1442083 L15.4753129,6.84377194 C15.6747499,7.03604967 15.6747499,7.35003511 15.4753129,7.54129009 L8.82741268,14.0367999 C8.62797568,14.2290777 8.3037627,14.2290777 8.1043257,14.0367999"></path></g></g></svg>');
+  mask-image: url('data:image/svg+xml; utf8, <svg width="12px" height="10px" viewBox="0 0 12 8" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g transform="translate%28-4.000000, -6.000000%29" fill="%23000000"><path d="M8.1043257,14.0367999 L4.52468714,10.5420499 C4.32525014,10.3497722 4.32525014,10.0368095 4.52468714,9.8424863 L5.24777413,9.1439454 C5.44721114,8.95166768 5.77142411,8.95166768 5.97086112,9.1439454 L8.46638057,11.5903727 L14.0291389,6.1442083 C14.2285759,5.95193057 14.5527889,5.95193057 14.7522259,6.1442083 L15.4753129,6.84377194 C15.6747499,7.03604967 15.6747499,7.35003511 15.4753129,7.54129009 L8.82741268,14.0367999 C8.62797568,14.2290777 8.3037627,14.2290777 8.1043257,14.0367999"></path></g></g></svg>');
+}
+
+/* ### ITS Theme */
+[data-any-task-theme="ITS Theme"] :is([data-task=X], [data-task=">"], [data-task="-"],
+[data-task=D], [data-task="?"], [data-task="/"], [data-task="+"], [data-task=R],
+[data-task="!"], [data-task=i], [data-task=B], [data-task=P], [data-task=C],
+[data-task=Q], [data-task=N], [data-task=b], [data-task=I], [data-task=p],
+[data-task=L], [data-task=E], [data-task=A], [data-task=r], [data-task=c],
+[data-task=o], [data-task=d], [data-task=T], [data-task=t], [data-task=O],
+[data-task=F], [data-task=W], [data-task="~"], [data-task="@"], [data-task=f],
+[data-task=a], [data-task="&"], [data-task=s], [data-task=H],
+[data-task="<"]) input[type=checkbox]::after {
+  font-weight: 10;
+  font-size: inherit;
+  font-family: var(--its);
+}
+
+/* ### Primary */
+[data-any-task-theme=Primary] :is([data-task=x], [data-task=X], [data-task="/"],
+[data-task=">"], [data-task="<"], [data-task="!"], [data-task="-"], [data-task="?"],
+[data-task="*"], [data-task=n], [data-task=l], [data-task=i], [data-task=S],
+[data-task='"'], [data-task=I], [data-task=p], [data-task=c], [data-task=b],
+[data-task=u], [data-task=d], [data-task=r], [data-task=L], [data-task=t],
+[data-task=T]) input[type=checkbox]:checked:after {
+  content: "";
+}
+
+[data-any-task-theme=Primary] :is([data-task=x],
+[data-task=X]) input[type=checkbox]:checked:after {
+  background-color: var(--checkbox-marker-color);
+  -webkit-mask-image: url('data:image/svg+xml; utf8, <svg width="12px" height="10px" viewBox="0 0 12 8" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g transform="translate%28-4.000000, -6.000000%29" fill="%23000000"><path d="M8.1043257,14.0367999 L4.52468714,10.5420499 C4.32525014,10.3497722 4.32525014,10.0368095 4.52468714,9.8424863 L5.24777413,9.1439454 C5.44721114,8.95166768 5.77142411,8.95166768 5.97086112,9.1439454 L8.46638057,11.5903727 L14.0291389,6.1442083 C14.2285759,5.95193057 14.5527889,5.95193057 14.7522259,6.1442083 L15.4753129,6.84377194 C15.6747499,7.03604967 15.6747499,7.35003511 15.4753129,7.54129009 L8.82741268,14.0367999 C8.62797568,14.2290777 8.3037627,14.2290777 8.1043257,14.0367999"></path></g></g></svg>');
+  mask-image: url('data:image/svg+xml; utf8, <svg width="12px" height="10px" viewBox="0 0 12 8" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g transform="translate%28-4.000000, -6.000000%29" fill="%23000000"><path d="M8.1043257,14.0367999 L4.52468714,10.5420499 C4.32525014,10.3497722 4.32525014,10.0368095 4.52468714,9.8424863 L5.24777413,9.1439454 C5.44721114,8.95166768 5.77142411,8.95166768 5.97086112,9.1439454 L8.46638057,11.5903727 L14.0291389,6.1442083 C14.2285759,5.95193057 14.5527889,5.95193057 14.7522259,6.1442083 L15.4753129,6.84377194 C15.6747499,7.03604967 15.6747499,7.35003511 15.4753129,7.54129009 L8.82741268,14.0367999 C8.62797568,14.2290777 8.3037627,14.2290777 8.1043257,14.0367999"></path></g></g></svg>');
+}

@@ -1,0 +1,1353 @@
+/*
+ * Eisenhower Matrix plugin — styles.
+ * Používá Obsidian CSS variables (--background-primary, --text-normal, ...)
+ * pro vizuální konzistenci napříč theme.
+ */
+
+.eisenhower-matrix-root {
+  padding: var(--size-4-3);
+  height: 100%;
+  overflow: hidden;
+}
+
+.em-app {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+}
+
+/*
+ * === MOBILE LAYOUT OVERRIDE ===
+ * Na mobilu rigidní height:100% + tři vnořené overflow:auto kontejnery
+ * (root / em-app-body / em-quadrant-body) kolidovaly s virtuální klávesnicí —
+ * při psaní se layout rozbil (neprůhledný blok přes celý display).
+ *
+ * Fix: jeden přirozený scroll kontejner (sám root). Žádné vnořené overflow,
+ * žádné fixní výšky. Prohlížeč pak řeší scroll k focusnutému inputu sám.
+ */
+.eisenhower-matrix-root.em-mobile {
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.em-mobile .em-app {
+  height: auto;
+}
+
+.em-mobile .em-app-header {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  background-color: var(--background-primary);
+}
+
+.em-mobile .em-app-body {
+  flex: none;
+  min-height: 0;
+  overflow: visible;
+}
+
+.em-mobile .em-quadrant-body {
+  max-height: none;
+  overflow: visible;
+}
+
+/*
+ * Horní část (title, datum nav, controls, banner, filter) — fixed, nescrolluje.
+ * Matrix sám si vlastní scroll dole.
+ */
+.em-app-header {
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--size-4-3);
+  padding-bottom: var(--size-2-3);
+}
+
+.em-app-body {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding-top: var(--size-2-3);
+}
+
+/*
+ * Sbalená hlavička — jen tenký proužek s informací a tlačítkem rozbalení.
+ * Užitečné hlavně na mobilu, kde header zabírá moc místa.
+ */
+.em-app-header-compact {
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--size-2-1) var(--size-2-2);
+  gap: var(--size-2-2);
+}
+
+.em-compact-info {
+  font-size: var(--font-ui-small);
+  color: var(--text-muted);
+  font-weight: var(--font-medium);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Sbalená hlavička: info se zkrátí (…), ovládání (Collapse all/Done/
+   Compact + ▼) si drží místo a nezalomí se. */
+.em-app-header-compact .em-compact-info {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.em-app-header-compact .em-header-right {
+  flex-shrink: 0;
+  flex-wrap: nowrap;
+  gap: var(--size-2-2);
+}
+
+.em-header-collapse-btn {
+  background: none;
+  border: 1px solid transparent;
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: 2px var(--size-2-2);
+  border-radius: var(--radius-s);
+  font-size: var(--font-ui-smaller);
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.em-header-collapse-btn:hover {
+  background-color: var(--background-modifier-hover);
+  color: var(--text-normal);
+}
+
+/* === Header === */
+.em-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--size-4-3);
+  flex-wrap: wrap;
+  padding-bottom: var(--size-2-2);
+  border-bottom: 1px solid var(--background-modifier-border);
+}
+
+.em-header-left {
+  display: flex;
+  align-items: center;
+  gap: var(--size-4-3);
+  flex-wrap: wrap;
+}
+
+.em-header-right {
+  display: flex;
+  align-items: center;
+  gap: var(--size-4-3);
+  flex-wrap: wrap;
+}
+
+.em-title {
+  margin: 0;
+  font-size: var(--font-ui-large);
+  color: var(--text-normal);
+}
+
+.em-subtitle {
+  margin: 0;
+  font-size: var(--font-ui-small);
+  color: var(--text-muted);
+}
+
+.em-warn {
+  color: var(--color-orange);
+}
+
+.em-loading {
+  color: var(--text-faint);
+  font-style: italic;
+}
+
+.em-stats {
+  color: var(--text-faint);
+  font-family: var(--font-monospace);
+}
+
+.em-btn-link {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  font-size: var(--font-ui-small);
+  text-decoration: underline;
+  cursor: pointer;
+  padding: 0;
+}
+
+.em-btn-link:hover {
+  color: var(--text-normal);
+}
+
+.em-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--size-2-1);
+  font-size: var(--font-ui-small);
+  color: var(--text-normal);
+  cursor: pointer;
+  user-select: none;
+}
+
+.em-toggle input {
+  margin: 0;
+}
+
+/* === DateNav === */
+.em-datenav {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--size-2-1);
+  font-size: var(--font-ui-small);
+}
+
+.em-dn-btn,
+.em-dn-date,
+.em-dn-today {
+  background: none;
+  border: 1px solid transparent;
+  color: var(--text-normal);
+  padding: 2px var(--size-2-2);
+  border-radius: var(--radius-s);
+  cursor: pointer;
+  font-size: var(--font-ui-small);
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.em-dn-btn:hover,
+.em-dn-date:hover {
+  background-color: var(--background-modifier-hover);
+}
+
+.em-dn-date {
+  font-family: var(--font-monospace);
+}
+
+.em-dn-today {
+  background-color: var(--background-modifier-hover);
+  margin-left: var(--size-2-1);
+}
+
+.em-dn-today:hover {
+  background-color: var(--background-modifier-border);
+}
+
+.em-dn-dot {
+  display: inline-block;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background-color: var(--color-green);
+  vertical-align: middle;
+}
+
+.em-sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+  /* Chromium-specific: schovej calendar-picker-indicator u type=date,
+     jinak proniká přes clip */
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+.em-sr-only::-webkit-calendar-picker-indicator,
+.em-sr-only::-webkit-inner-spin-button,
+.em-sr-only::-webkit-clear-button {
+  display: none;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+/* === FilterBar === */
+.em-filterbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--size-2-1);
+  padding: var(--size-2-2);
+  border: 1px solid var(--background-modifier-border);
+  border-radius: var(--radius-m);
+  background-color: var(--background-secondary);
+}
+
+.em-filterbar-label {
+  font-size: var(--font-ui-smaller);
+  color: var(--text-muted);
+  margin-right: var(--size-2-1);
+  user-select: none;
+}
+
+.em-chip {
+  font-size: var(--font-ui-smaller);
+  padding: 2px var(--size-2-2);
+  border-radius: var(--radius-s);
+  border: 1px solid var(--background-modifier-border);
+  background-color: var(--background-primary);
+  color: var(--text-muted);
+  cursor: pointer;
+  font-family: var(--font-monospace);
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.em-chip:hover {
+  background-color: var(--background-modifier-hover);
+  color: var(--text-normal);
+}
+
+/* Aktivní filtr-chip — záměrně NEspoléhá na výplň accent barvou:
+   některé komunitní themes (Wasp ap.) rozbíjejí --text-on-accent
+   kontrast a vybraný chip pak splývá. Rozlišovací znaky jsou proto
+   theme-proof: ✓ glyf + tučné písmo + 2px accent rámeček, text
+   zůstává v --text-normal (čitelný na --background-primary všude). */
+.em-chip-active {
+  color: var(--text-normal);
+  border-color: var(--interactive-accent);
+  border-width: 2px;
+  /* 2px rámeček místo 1px → kompenzuj padding, ať chip nemění velikost */
+  padding: 1px calc(var(--size-2-2) - 1px);
+  font-weight: var(--font-bold);
+}
+
+.em-chip-active:hover {
+  background-color: var(--background-modifier-hover);
+  color: var(--text-normal);
+}
+
+.em-chip-check {
+  font-weight: var(--font-bold);
+  margin-right: 1px;
+}
+
+.em-chip-untagged {
+  font-family: inherit;
+  font-style: italic;
+}
+
+.em-chip-count {
+  opacity: 0.6;
+  font-weight: var(--font-normal);
+}
+
+.em-filterbar-sep {
+  color: var(--text-faint);
+  user-select: none;
+}
+
+.em-filterbar-clear {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  font-size: var(--font-ui-smaller);
+  text-decoration: underline;
+  cursor: pointer;
+  padding: 0;
+}
+
+.em-filterbar-clear:hover {
+  color: var(--text-normal);
+}
+
+.em-filterbar-stats {
+  margin-left: auto;
+  font-size: var(--font-ui-smaller);
+  color: var(--text-muted);
+  font-family: var(--font-monospace);
+  user-select: none;
+}
+
+/* === Day-cutoff banner === */
+.em-banner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--size-4-3);
+  padding: var(--size-2-3);
+  border-radius: var(--radius-s);
+  flex-wrap: wrap;
+  font-size: var(--font-ui-small);
+}
+
+.em-banner-warn {
+  background-color: color-mix(in srgb, var(--color-orange) 12%, var(--background-primary));
+  border: 1px solid var(--color-orange);
+  color: var(--text-normal);
+}
+
+.em-banner-actions {
+  display: flex;
+  gap: var(--size-2-2);
+}
+
+.em-btn-primary {
+  background-color: var(--color-orange);
+  color: white;
+  border: none;
+  padding: 4px var(--size-4-2);
+  border-radius: var(--radius-s);
+  cursor: pointer;
+  font-size: var(--font-ui-smaller);
+}
+
+.em-btn-secondary {
+  background: none;
+  border: 1px solid var(--background-modifier-border);
+  color: var(--text-normal);
+  padding: 4px var(--size-4-2);
+  border-radius: var(--radius-s);
+  cursor: pointer;
+  font-size: var(--font-ui-smaller);
+}
+
+.em-btn-secondary:hover {
+  background-color: var(--background-modifier-hover);
+}
+
+/* === Banners === */
+.em-error {
+  padding: var(--size-2-3);
+  background-color: var(--background-modifier-error);
+  color: var(--text-error);
+  border-radius: var(--radius-s);
+  font-size: var(--font-ui-small);
+}
+
+.em-info {
+  padding: var(--size-2-3);
+  background-color: var(--background-secondary);
+  border: 1px solid var(--background-modifier-border);
+  border-radius: var(--radius-s);
+  font-size: var(--font-ui-small);
+  color: var(--text-muted);
+}
+
+/* === Matrix grid === */
+.em-matrix {
+  display: flex;
+  flex-direction: column;
+  gap: var(--size-4-2);
+}
+
+.em-matrix-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--size-4-2);
+}
+
+@media (max-width: 720px) {
+  .em-matrix-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* === Quadrant === */
+.em-quadrant {
+  border: 1px solid var(--background-modifier-border);
+  border-top: 3px solid var(--text-muted);
+  border-radius: var(--radius-m);
+  background-color: var(--background-secondary);
+  display: flex;
+  flex-direction: column;
+  min-height: 80px;
+}
+
+/*
+ * Subtle barevný tint per kvadrant — mix 7 % accent barvy s primary background.
+ * V dark mode automaticky tmavší (background-primary je dark), v light mode světlý.
+ */
+.em-quadrant-do {
+  background-color: color-mix(in srgb, var(--color-red) 7%, var(--background-primary));
+  border-top-color: var(--color-red);
+}
+.em-quadrant-decide {
+  background-color: color-mix(in srgb, var(--color-blue) 7%, var(--background-primary));
+  border-top-color: var(--color-blue);
+}
+.em-quadrant-delegate {
+  background-color: color-mix(in srgb, var(--color-green) 7%, var(--background-primary));
+  border-top-color: var(--color-green);
+}
+.em-quadrant-delete {
+  background-color: color-mix(in srgb, var(--color-yellow) 7%, var(--background-primary));
+  border-top-color: var(--color-yellow);
+}
+.em-quadrant-open {
+  background-color: var(--background-secondary);
+  border-top-color: var(--text-muted);
+}
+
+.em-quadrant-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--size-2-2);
+  padding: var(--size-2-3) var(--size-4-2);
+  user-select: none;
+}
+
+.em-quadrant-collapse {
+  background: none;
+  border: 1px solid transparent;
+  cursor: pointer;
+  padding: 2px 6px;
+  color: var(--text-muted);
+  font-size: var(--font-ui-smaller);
+  border-radius: var(--radius-s);
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.em-quadrant-collapse:hover {
+  background-color: var(--background-modifier-hover);
+  color: var(--text-normal);
+}
+
+.em-quadrant-title {
+  flex: 1;
+}
+
+.em-quadrant-title h3 {
+  margin: 0;
+  font-size: var(--font-ui-medium);
+  font-weight: var(--font-bold);
+  color: var(--text-normal);
+}
+
+.em-quadrant-title p {
+  margin: 0;
+  font-size: var(--font-ui-smaller);
+  color: var(--text-muted);
+}
+
+.em-quadrant-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--size-2-2);
+}
+
+.em-quadrant-add {
+  background: none;
+  border: none;
+  font-size: var(--font-ui-medium);
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: 0 6px;
+  border-radius: var(--radius-s);
+  line-height: 1;
+}
+
+.em-quadrant-add:hover {
+  color: var(--text-normal);
+  background-color: var(--background-modifier-hover);
+}
+
+.em-quadrant-count {
+  font-size: var(--font-ui-small);
+  color: var(--text-muted);
+  font-family: var(--font-monospace);
+}
+
+.em-quadrant-over {
+  outline: 2px solid var(--interactive-accent);
+  outline-offset: -1px;
+}
+
+.em-quadrant-body {
+  padding: 0 var(--size-4-2) var(--size-4-2);
+  max-height: 55vh;
+  overflow-y: auto;
+}
+
+.em-empty {
+  margin: 0;
+  padding: var(--size-2-2) 0;
+  font-style: italic;
+  color: var(--text-faint);
+  font-size: var(--font-ui-small);
+}
+
+/*
+ * Task list — responsive podle ŠÍŘKY KVADRANTU (ne okna):
+ * auto-fit + minmax(240px, 1fr) znamená:
+ *   - každý task má min. 240 px šířky
+ *   - sloupců je tolik, kolik se vejde
+ *   - širší kvadrant = víc sloupců (až 3-4 vedle sebe na 4K monitoru)
+ *   - užší kvadrant = méně sloupců, dolů až na 1
+ */
+.em-task-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: var(--size-2-2);
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+/* === Task card === */
+.em-task {
+  background-color: var(--background-primary);
+  border: 1px solid var(--background-modifier-border);
+  border-radius: var(--radius-s);
+  padding: var(--size-2-1) var(--size-2-2);
+  position: relative;
+  cursor: grab;
+  /* Mobile: zabrání native long-press menu (text selection, "Copy" callout),
+     které by jinak konkurovalo s drag aktivací. */
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+}
+
+.em-task:active {
+  cursor: grabbing;
+}
+
+.em-task-editing {
+  cursor: text;
+  border-color: var(--interactive-accent);
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--interactive-accent) 50%, transparent);
+}
+
+.em-task-checked {
+  opacity: 0.7;
+}
+
+.em-task-checked .em-task-text {
+  text-decoration: line-through;
+  color: var(--text-muted);
+}
+
+/* Canceled task ([-]) — vizuálně stejné jako done (oba jsou „closed"). */
+.em-task-canceled {
+  opacity: 0.7;
+}
+
+.em-task-canceled .em-task-text {
+  text-decoration: line-through;
+  color: var(--text-muted);
+}
+
+/*
+ * Originál tasku během aktivního drágu — zešedne, aby uživatel viděl,
+ * který task se přesouvá. Řízeno přes activeTaskId z parentu (deterministické,
+ * žádný "stuck state" risk jako kdyby šlo o useDraggable.isDragging).
+ */
+.em-task-active-drag {
+  opacity: 0.35;
+  filter: grayscale(0.5);
+}
+
+.em-task-grace {
+  border-color: var(--color-green);
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--color-green) 35%, transparent);
+}
+
+.em-task-grace-hint {
+  margin: var(--size-2-1) 0 0;
+  font-size: var(--font-ui-smaller);
+  color: var(--color-green);
+  user-select: none;
+}
+
+.em-grace-bar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  background-color: var(--color-green);
+  transition: width 250ms linear;
+}
+
+.em-task-overlay {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+  border-color: var(--interactive-accent);
+  cursor: grabbing;
+}
+
+.em-task-overdue {
+  border-color: var(--color-red);
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--color-red) 35%, transparent);
+}
+
+.em-task-row {
+  display: flex;
+  gap: var(--size-2-2);
+  align-items: flex-start;
+}
+
+.em-task-checkbox {
+  margin-top: 2px;
+  flex-shrink: 0;
+  cursor: pointer;
+}
+
+.em-task-body {
+  flex: 1;
+  min-width: 0;
+}
+
+.em-task-text {
+  margin: 0;
+  font-size: var(--font-ui-small);
+  line-height: 1.35;
+  color: var(--text-normal);
+  word-break: break-word;
+}
+
+.em-empty-text {
+  color: var(--text-faint);
+  font-style: italic;
+}
+
+.em-task-source {
+  margin: var(--size-2-1) 0 0;
+  font-size: var(--font-ui-smaller);
+  color: var(--text-faint);
+  font-family: var(--font-monospace);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.em-task-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--size-2-1);
+  margin-top: var(--size-2-1);
+}
+
+/*
+ * Všechny "chip-like" prvky (tagy, priorita, datum badge) sdílí stejné
+ * základní rozměry — především stejnou výšku. inline-flex + line-height
+ * normalizuje rozdíl mezi <span> a <button> defaulty (jinak buttons mají
+ * v Chromiu intrinsic padding/line-height).
+ */
+.em-tag,
+.em-priority,
+.em-badge {
+  display: inline-flex;
+  align-items: center;
+  height: 18px;
+  font-size: var(--font-ui-smaller);
+  line-height: 1;
+  padding: 0 var(--size-2-1);
+  border-radius: var(--radius-s);
+  font-family: var(--font-monospace);
+  box-sizing: border-box;
+}
+
+.em-tag {
+  background-color: var(--background-modifier-hover);
+  color: var(--text-muted);
+  border: 1px solid transparent;
+}
+
+.em-priority {
+  background-color: var(--background-primary-alt);
+  border: 1px solid var(--background-modifier-border);
+}
+
+.em-badge {
+  background-color: var(--background-primary-alt);
+  border: 1px solid var(--background-modifier-border);
+  color: var(--text-muted);
+}
+
+/* Buttony s class .em-badge — reset default button stylů */
+button.em-badge,
+button.em-tag,
+button.em-priority {
+  font-family: var(--font-monospace);
+  margin: 0;
+  cursor: pointer;
+}
+
+/*
+ * Overdue badge — saturovaný červený mix, ne theme-derived "muted error".
+ * Drží vysoký kontrast i v custom themes (Minimal, Things, AnuPpuccin…).
+ */
+.em-badge-overdue {
+  background-color: color-mix(in srgb, var(--color-red) 22%, var(--background-primary));
+  color: var(--color-red);
+  border-color: var(--color-red);
+  font-weight: var(--font-bold);
+}
+
+/* === Badges interactive variants === */
+.em-badge-clickable {
+  cursor: pointer;
+}
+
+.em-badge-clickable:hover {
+  outline: 1px solid var(--background-modifier-border-hover, var(--interactive-accent));
+}
+
+.em-badge-add {
+  border-style: dashed;
+  color: var(--text-faint);
+  cursor: pointer;
+}
+
+.em-badge-add:hover {
+  color: var(--text-normal);
+  border-style: solid;
+}
+
+.em-badge-clear {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 18px;
+  width: 18px;
+  background: none;
+  border: 1px solid transparent;
+  color: var(--text-faint);
+  cursor: pointer;
+  font-size: var(--font-ui-smaller);
+  line-height: 1;
+  padding: 0;
+  border-radius: var(--radius-s);
+  box-sizing: border-box;
+}
+
+.em-badge-clear:hover {
+  color: var(--color-red);
+  background-color: var(--background-modifier-hover);
+}
+
+.em-inline-flex {
+  display: inline-flex;
+}
+
+/* === Popovers (DueDate + Priority) === */
+.em-popover {
+  background-color: var(--background-primary);
+  border: 1px solid var(--background-modifier-border);
+  border-radius: var(--radius-m);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+  padding: var(--size-2-2);
+  display: flex;
+  align-items: center;
+  gap: var(--size-2-2);
+}
+
+.em-popover-menu {
+  flex-direction: column;
+  align-items: stretch;
+  padding: var(--size-2-1);
+  min-width: 140px;
+}
+
+.em-popover-input {
+  font-size: var(--font-ui-small);
+  background-color: var(--background-primary);
+  color: var(--text-normal);
+  border: 1px solid var(--background-modifier-border);
+  border-radius: var(--radius-s);
+  padding: 2px var(--size-2-2);
+}
+
+.em-menu-item {
+  display: flex;
+  align-items: center;
+  gap: var(--size-2-2);
+  background: none;
+  border: none;
+  text-align: left;
+  padding: var(--size-2-1) var(--size-2-2);
+  font-size: var(--font-ui-small);
+  cursor: pointer;
+  border-radius: var(--radius-s);
+}
+
+.em-menu-item:hover {
+  background-color: var(--background-modifier-hover);
+}
+
+.em-menu-item-active {
+  background-color: var(--background-modifier-hover);
+  font-weight: var(--font-semibold);
+}
+
+.em-menu-item-danger {
+  color: var(--color-red);
+  border-top: 1px solid var(--background-modifier-border);
+  margin-top: var(--size-2-1);
+  padding-top: var(--size-2-2);
+  justify-content: center;
+}
+
+.em-btn-ok {
+  background-color: var(--interactive-accent);
+  color: var(--text-on-accent);
+  border: none;
+  padding: 4px var(--size-4-2);
+  border-radius: var(--radius-s);
+  cursor: pointer;
+  font-size: var(--font-ui-smaller);
+}
+
+.em-btn-ok:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.em-btn-danger-link {
+  background: none;
+  border: none;
+  color: var(--color-red);
+  cursor: pointer;
+  font-size: var(--font-ui-smaller);
+  text-decoration: underline;
+  padding: 0 var(--size-2-1);
+}
+
+/* === Add task form === */
+.em-add-form {
+  border: 1px solid var(--background-modifier-border);
+  background-color: var(--background-primary);
+  border-radius: var(--radius-s);
+  padding: var(--size-2-2);
+  margin-bottom: var(--size-2-2);
+  display: flex;
+  flex-direction: column;
+  gap: var(--size-2-1);
+}
+
+.em-add-input {
+  background-color: var(--background-primary);
+  color: var(--text-normal);
+  border: 1px solid var(--background-modifier-border);
+  border-radius: var(--radius-s);
+  padding: 4px var(--size-2-2);
+  outline: none;
+  font-size: var(--font-ui-small);
+  width: 100%;
+}
+
+.em-add-input-text {
+  background: transparent;
+  border: none;
+  padding: 2px 0;
+  font-size: var(--font-ui-medium);
+}
+
+.em-add-input-text:focus {
+  outline: none;
+}
+
+.em-add-input-tags {
+  font-family: var(--font-monospace);
+  font-size: var(--font-ui-smaller);
+  background-color: var(--background-secondary);
+}
+
+.em-add-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--size-2-2);
+  padding-top: var(--size-2-1);
+}
+
+.em-add-hint {
+  margin-left: auto;
+  font-size: var(--font-ui-smaller);
+  color: var(--text-faint);
+  user-select: none;
+}
+
+/* === Edit form === */
+.em-edit-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--size-2-1);
+}
+
+.em-edit-text {
+  width: 100%;
+  font-size: var(--font-ui-small);
+  line-height: 1.4;
+  background-color: var(--background-primary);
+  color: var(--text-normal);
+  border: 1px solid var(--background-modifier-border);
+  border-radius: var(--radius-s);
+  padding: var(--size-2-1) var(--size-2-2);
+  font-family: inherit;
+}
+
+.em-edit-tags {
+  width: 100%;
+  font-size: var(--font-ui-smaller);
+  background-color: var(--background-primary);
+  color: var(--text-normal);
+  border: 1px solid var(--background-modifier-border);
+  border-radius: var(--radius-s);
+  padding: 4px var(--size-2-2);
+  font-family: var(--font-monospace);
+}
+
+.em-edit-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--size-2-2);
+}
+
+.em-edit-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--size-2-2);
+  margin-top: var(--size-2-1);
+}
+
+.em-edit-hint {
+  font-size: var(--font-ui-smaller);
+  color: var(--text-faint);
+  user-select: none;
+}
+
+.em-edit-buttons {
+  margin-left: auto;
+  display: flex;
+  gap: var(--size-2-1);
+}
+
+.em-btn-primary-accent {
+  background-color: var(--interactive-accent);
+  color: var(--text-on-accent);
+  border: none;
+  padding: 4px var(--size-4-2);
+  border-radius: var(--radius-s);
+  cursor: pointer;
+  font-size: var(--font-ui-smaller);
+}
+
+.em-btn-primary-accent:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.em-edit-error {
+  margin: 0;
+  font-size: var(--font-ui-smaller);
+  color: var(--text-error);
+}
+
+/* === Notices (Obsidian Notice) — naše vlastní červená varianta === */
+.em-notice-error {
+  background-color: color-mix(in srgb, var(--color-red) 18%, var(--background-primary));
+  border-left: 4px solid var(--color-red);
+  color: var(--text-normal);
+}
+
+/* === Settings: Excluded folders list === */
+.em-settings-excluded {
+  border-top: 1px solid var(--background-modifier-border);
+  padding-top: var(--size-4-2);
+  margin-top: var(--size-4-2);
+}
+
+.em-settings-excluded h3 {
+  margin: 0 0 var(--size-2-1);
+  font-size: var(--font-ui-medium);
+  color: var(--text-normal);
+}
+
+.em-excluded-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--size-2-1);
+  margin: var(--size-2-3) 0;
+}
+
+.em-excluded-empty {
+  font-style: italic;
+  color: var(--text-faint);
+  font-size: var(--font-ui-small);
+  padding: var(--size-2-2) 0;
+}
+
+.em-excluded-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--size-2-2) var(--size-4-2);
+  border: 1px solid var(--background-modifier-border);
+  border-radius: var(--radius-s);
+  background-color: var(--background-secondary);
+}
+
+.em-excluded-path {
+  font-family: var(--font-monospace);
+  font-size: var(--font-ui-small);
+  color: var(--text-normal);
+}
+
+.em-excluded-remove {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  font-size: var(--font-ui-large);
+  line-height: 1;
+  padding: 0 var(--size-2-2);
+  border-radius: var(--radius-s);
+}
+
+.em-excluded-remove:hover {
+  color: var(--color-red);
+  background-color: var(--background-modifier-hover);
+}
+
+.em-excluded-add {
+  display: flex;
+  gap: var(--size-2-2);
+  align-items: center;
+  margin-top: var(--size-2-3);
+}
+
+.em-excluded-input {
+  flex: 1;
+  background-color: var(--background-primary);
+  color: var(--text-normal);
+  border: 1px solid var(--background-modifier-border);
+  border-radius: var(--radius-s);
+  padding: 4px var(--size-2-2);
+  font-size: var(--font-ui-small);
+}
+
+.em-excluded-add-btn {
+  flex-shrink: 0;
+}
+
+/* === Tag autocomplete dropdown (TagSuggest) ===
+   Některé komunitní themes (např. Wasp) přepisují
+   --background-modifier-hover na téměř průhlednou hodnotu, takže
+   defaultní podsvícení vybraného řádku v Obsidian suggesteru je
+   nečitelné. Vlastní třída + accent barva to vyřeší napříč všemi
+   themes (accent je uživatelská barva, themes ji nesahají). */
+.em-tag-suggestion.is-selected,
+.suggestion-item.em-tag-suggestion.is-selected {
+  background-color: var(--interactive-accent);
+  color: var(--text-on-accent);
+}
+
+/* === Inline markdown v textu tasku === */
+.em-task-text code {
+  font-family: var(--font-monospace);
+  font-size: 0.88em;
+  padding: 0 4px;
+  border-radius: var(--radius-s);
+  background-color: var(--background-modifier-border);
+}
+
+/* === Kompaktní režim — 2řádkové karty ===
+   Řádek 1 = text ořezaný „…" na šířku karty, řádek 2 = priorita +
+   due date. Tagy / cesta / start-done badge jsou v compact skryté. */
+.em-task-text-compact {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  /* line-clamp si poradí s ořezem; nepotřebujeme nowrap */
+}
+
+.em-task-body-compact {
+  gap: var(--size-2-1);
+}
+
+/* === Status checkbox (6 Basic stavů) ===
+   Vlastní button místo nativního <input type="checkbox"> — uvnitř
+   renderujeme Lucide ikonu přes Obsidian `setIcon` (stejné SVG jako
+   u příslušné položky v kontextovém menu, aby si box a menu odpovídaly).
+   Klik = toggle [ ] ↔ [x]; pravý klik / context menu → všechny stavy. */
+.em-task-status {
+  width: 18px;
+  height: 18px;
+  margin-top: 2px;
+  flex-shrink: 0;
+  padding: 0;
+  border: none;
+  border-radius: 4px;
+  background: transparent;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted);
+}
+
+.em-task-status:hover {
+  color: var(--text-normal);
+}
+
+/* Done [x]/[X] — ikona „square-check-big" je sama o sobě hranatá s fajfkou
+   (Things-style); jen ji obarvíme accent barvou, ať done vizuálně vyniká. */
+.em-task-status[data-task='x'],
+.em-task-status[data-task='X'] {
+  color: var(--interactive-accent);
+}
+
+.em-task-status-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 0;
+}
+
+.em-task-status-icon .svg-icon {
+  width: 16px;
+  height: 16px;
+}
+
+/* === Markdown nadpisy v textu tasku === */
+.em-task-heading {
+  display: inline;
+}
+.em-task-heading-1 { font-size: 1.35em; font-weight: var(--font-bold); }
+.em-task-heading-2 { font-size: 1.2em;  font-weight: var(--font-bold); }
+.em-task-heading-3 { font-size: 1.1em;  font-weight: var(--font-bold); }
+.em-task-heading-4 { font-weight: var(--font-bold); }
+.em-task-heading-5 { font-weight: var(--font-bold); }
+.em-task-heading-6 { font-weight: var(--font-bold); }
+
+/* === Kanban view (desktop) ===
+   Zvolený kvadrant na celou šířku se 4 status-sloupci, pod ním zbylé
+   4 kvadranty. Přepíná se ikonou v hlavičce kvadrantu. */
+.em-kanban-btn {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2px;
+  border-radius: var(--radius-s);
+}
+.em-kanban-btn:hover {
+  color: var(--text-normal);
+  background: var(--background-modifier-hover);
+}
+.em-kanban-btn-active {
+  color: var(--interactive-accent);
+}
+/* Kanban toggle s textovým štítkem „Kanban" vedle ikony. */
+.em-kanban-btn-labeled {
+  width: auto;
+  gap: 4px;
+  padding: 2px 6px;
+  font-size: var(--font-ui-smaller);
+}
+/* Tlačítko „Back" v rozbaleném (hlavním) kvadrantu — accent pill + štítek
+   + mřížková ikona, ať je jasné, že vrací do 4D zobrazení. */
+.em-kanban-back {
+  width: auto;
+  gap: 4px;
+  padding: 2px 8px;
+  color: var(--text-on-accent);
+  background: var(--interactive-accent);
+  font-size: var(--font-ui-smaller);
+  font-weight: var(--font-medium);
+}
+.em-kanban-back:hover {
+  color: var(--text-on-accent);
+  background: var(--interactive-accent-hover);
+}
+.em-kanban-icon {
+  display: inline-flex;
+}
+.em-kanban-icon .svg-icon {
+  width: 16px;
+  height: 16px;
+}
+
+.em-kanban {
+  display: flex;
+  flex-direction: column;
+  gap: var(--size-4-2);
+}
+
+/* Status-sloupce v rozbaleném kvadrantu */
+.em-kanban-columns {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--size-2-2);
+  padding: 0 var(--size-4-2) var(--size-4-2);
+}
+
+@media (max-width: 900px) {
+  .em-kanban-columns {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.em-kanban-col {
+  display: flex;
+  flex-direction: column;
+  gap: var(--size-2-1);
+  min-width: 0;
+  border: 1px solid var(--background-modifier-border);
+  border-radius: var(--radius-s);
+  background: var(--background-primary);
+  padding: var(--size-2-1);
+  max-height: 60vh;
+  overflow-y: auto;
+}
+.em-kanban-col-over {
+  border-color: var(--interactive-accent);
+  background: var(--background-modifier-hover);
+}
+.em-kanban-col-header {
+  display: flex;
+  align-items: center;
+  gap: var(--size-2-1);
+  padding: 2px 4px;
+  font-size: var(--font-ui-small);
+  font-weight: var(--font-medium);
+  color: var(--text-muted);
+  position: sticky;
+  top: 0;
+  background: inherit;
+}
+.em-kanban-col-header .svg-icon {
+  width: 14px;
+  height: 14px;
+}
+.em-kanban-col-label {
+  flex: 1;
+}
+
+/* Spodní řada zbylých kvadrantů */
+.em-kanban-bottom {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--size-4-2);
+}
+
+@media (max-width: 900px) {
+  .em-kanban-bottom {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}

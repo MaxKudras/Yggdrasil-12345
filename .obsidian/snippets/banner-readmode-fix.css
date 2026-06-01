@@ -1,0 +1,5 @@
+.obsidian-banner-wrapper {
+    position: static !important; /* Full width banner, remove for banner with same size as note content */
+    margin-top: unset !important;
+    margin-bottom: calc(var(--banner-height) + 0px); /* Adjust spacing between banner & content as needed */
+}

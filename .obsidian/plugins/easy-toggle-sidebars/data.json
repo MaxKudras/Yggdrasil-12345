@@ -1,0 +1,10 @@
+{
+  "useRightMouse": true,
+  "useMiddleMouse": true,
+  "moveThreshold": 150,
+  "autoHide": false,
+  "autoHideRibbon": true,
+  "autoMinRootWidth": false,
+  "minRootWidth": 300,
+  "savedVersion": "1.4.0"
+}

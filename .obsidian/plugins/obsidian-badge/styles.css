@@ -1,0 +1,68 @@
+.block-language-obsidian-badge {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: flex-start;
+}
+
+.block-language-obsidian-badge .obsidian-badge_wrapper {
+  all: initial;
+
+  display: inline-flex;
+  flex-flow: column nowrap;
+
+  background-color: #f3f3f3;
+  border-radius: 0.2em;
+  margin: 0.2em;
+}
+
+.block-language-obsidian-badge .obsidian-badge_wrapper * {
+  all: unset;
+}
+
+.block-language-obsidian-badge .obsidian-badge_text {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: flex-end;
+  font-size: small;
+  padding: 0.3em 0;
+}
+
+.block-language-obsidian-badge .obsidian-badge_value {
+  padding: 0 0.5em 0 0.5em;
+  color: #2978ef;
+}
+
+.block-language-obsidian-badge .obsidian-badge_value>span {
+  color: #c1d7f9;
+}
+
+.block-language-obsidian-badge .obsidian-badge_label {
+  padding: 0 0.5em 0 0.5em;
+  flex: 1 0 auto;
+}
+
+.block-language-obsidian-badge .obsidian-badge_progress-bar {
+  flex: 1 1 auto;
+
+  background-color: #c1d7f9;
+
+  width: 100%;
+  height: 0.3rem;
+
+  display: flex;
+  flex-flow: row nowrap;
+}
+
+.block-language-obsidian-badge .obsidian-badge_progress-bar-fill {
+  display: block;
+  height: 0.3rem;
+  background-color: #2978ef;
+  border-radius: 0 0 0.2rem 0.2rem;
+}
+
+.block-language-obsidian-badge .obsidian-badge_error {
+  padding: 0.1em 0.5em;
+  line-height: 1.2em;
+  color: red;
+  font-size: small;
+}
