@@ -4,6 +4,7 @@
 
 > Automatisch generiertes Inventar aller installierten Obsidian-Plugins.
 
+
 | Name | Kategorie | Sub-Kategorie | GitHub | Beschreibung |
 | ---- | --------- | ------------- | ------ | ------------ |
 | 3D Graph | Visualisierung & UI | Graph-Ansicht | [Link](https://github.com/alexw00/obsidian-3d-graph) | A 3D Graph for Obsidian |
@@ -12,24 +13,24 @@
 | aaaa | Sonstiges | Sonstiges | - | This is a sample plugin for Obsidian. This plugin demonstrates some of the capabilities of the Obsidian API. |
 | Account Linker | Notizen & Organisation | Tags & Metadaten | [Link](https://github.com/qwegat/Obsidian-Account-Linker) | Plugin for describing external service accounts in the front matter |
 | Activity Graph | Daten & Integration | Datenbank & Tabellen | [Link](https://github.com/rwyattwalker/obsidian-activity-graph) | Render activity heatmaps from Dataview query results. |
-| Activity History | Aufgaben & Produktivität | Zeiterfassung | - | Track activity of specified projects, Github like activity board |
+| Activity History | Aufgaben & Produktivität | Zeiterfassung | [Link](https://github.com/Darakah/obsidian-activity-history) | Track activity of specified projects, Github like activity board |
 | Adapt to Current View | Themes & Styling | CSS & Styling | [Link](https://github.com/churnish/adapt-to-current-view) | Set different accent colors for Reading view, Live Preview and Source. |
 | Adjacency Matrix Maker | Medien & Dateien | Bilder & Anhänge | [Link](https://github.com/skepticmystic/adjacency-matrix-maker) | Create an interactive image of an adjacency matrix of your vault |
 | Admonition | Editor & Schreiben | Formatierung | [Link](https://github.com/ebullient/obsidian-admonition) | Enhanced callouts for Obsidian.md |
 | Advanced Canvas | Visualisierung & UI | Diagramme & Charts | [Link](https://github.com/developer-mike/obsidian-advanced-canvas) | Supercharge your canvas experience! Create presentations, flowcharts and more! |
-| Advanced Codeblock | Editor & Schreiben | Codeblöcke | [Link](https://github.com/lijyze/obsidian-advanced-codeblock) | Give additioinal features to code blocks. |
+| Advanced Codeblock | Editor & Schreiben | Codeblöcke | [Link](https://github.com/lijyze/obsidian-advanced-codeblock) | Give additioinal features to  code blocks. |
 | Advanced Cursors | Editor & Schreiben | Textbearbeitung | [Link](https://github.com/skepticmystic/advanced-cursors) | Use multiple cursors even more powerfully. |
 | Advanced Multi Column | Editor & Schreiben | Formatierung | [Link](https://github.com/amatya-aditya/advanced-multi-column) | Allows to create interactive multi-columns. |
 | Advanced Search UI | Suche & Navigation | Suche | [Link](https://github.com/pandanocturne/obsidian-advanced-search-ui) | A powerful search UI that provides AND/OR/NOT operators and easy access to search filters. |
 | Advanced Tables | Wissenschaft & Forschung | Formeln & Mathe | [Link](https://github.com/tgrosinger/advanced-tables-obsidian) | Improved table navigation, formatting, manipulation, and formulas |
-| Advanced Сanvas Filter | Notizen & Organisation | Tags & Metadaten | - | Filter Canvas to show only items with specified tags. |
+| Advanced Сanvas Filter | Notizen & Organisation | Tags & Metadaten | [Link](https://github.com/CHex0K/advanced-canvas-filter) | Filter Canvas to show only items with specified tags. |
 | Agenda Tasks | Aufgaben & Produktivität | Kalender & Planung | [Link](https://github.com/elias-shalom/obsidian-agenda) | Agenda provide intuitive task management interfaces and calendar views. Seamlessly integrate with your existing notes while organizing tasks across... |
 | Agent Skill Graph | KI & Automatisierung | KI-Agenten | [Link](https://github.com/hanamizuki/obsidian-skill-graph) | Visualize AI agent skill structures in graph view. Renames SKILL.md nodes from frontmatter, draws reference edges, and colors nodes by type. |
 | Agentfiles | KI & Automatisierung | KI-Agenten | [Link](https://github.com/railly/agentfiles) | Discover, organize, and edit AI agent skills, commands, and agents across Claude Code, Cursor, Codex, Windsurf, and more. |
 | Agents | KI & Automatisierung | KI-Agenten | [Link](https://github.com/tsilva/obsidian-agents) | Launch AI agents from your vault — right-click any file or folder to open a terminal with context. Supports Claude, Codex, and other AI CLI tools. |
 | AI Nutrition Tracker | KI & Automatisierung | KI-Assistenten | [Link](https://github.com/rnaidenov/obsidian-ai-nutrition-tracker-plugin) | AI-powered nutrition tracking with food image analysis and daily logging. |
-| AidenLx's Folder Note | Notizen & Organisation | Ordner & Navigation | - | Add description, summary and more info to folders with folder notes. |
-| AidenLx's Folder Note - folderv component | Notizen & Organisation | Ordner & Navigation | - | Optional `folderv` Component for alx-folder-note |
+| AidenLx's Folder Note | Notizen & Organisation | Ordner & Navigation | [Link](https://github.com/aidenlx/alx-folder-note) | Add description, summary and more info to folders with folder notes. |
+| AidenLx's Folder Note - folderv component | Notizen & Organisation | Ordner & Navigation | [Link](https://github.com/aidenlx/alx-folder-note) | Optional `folderv` Component for alx-folder-note |
 | Alfonso Money Manager | Finanzen & Gesundheit | Finanztracking | [Link](https://github.com/smartlife-gpt/alfonso-money-manager-obsidian) | A plugin for Alfonso Money Manager to view data in obsidian |
 | Always Color Text | Editor & Schreiben | Formatierung | [Link](https://github.com/kazi-aidah/always-color-text) | Colors specific words throughout the Vault in both editor and preview modes. |
 | Annotator | Medien & Dateien | PDF | [Link](https://github.com/elias-sundqvist/obsidian-annotator) | This is a sample plugin for Obsidian. It allows you to open and annotate PDF and EPUB files. |
@@ -37,7 +38,7 @@
 | Any Task | Aufgaben & Produktivität | Aufgabenverwaltung | [Link](https://github.com/highmagician/obsidian-any-task) | Renders task markers using any character as a visual checkbox. |
 | Apex Dashboard | Aufgaben & Produktivität | Projekt-Management | [Link](https://github.com/pandorareads/apex-dashboard) | Your personal command center — memos, todos, and projects in one stunning glassmorphism dashboard. |
 | API Designer | Daten & Integration | API-Integration | [Link](https://github.com/ruveydayilmaz/obsidian-api-designer-plugin) | Design and document API endpoints visually without leaving your notes. |
-| April's Automatic Timelines | KI & Automatisierung | Automatisierung | - | Simple timeline generator for story tellers |
+| April's Automatic Timelines | KI & Automatisierung | Automatisierung | [Link](https://github.com/April-Gras/obsidian-auto-timelines) | Simple timeline generator for story tellers |
 | Arbor | Notizen & Organisation | Tags & Metadaten | [Link](https://github.com/kpyruy/Arbor) | Write notes as branching Markdown cards while keeping a normal note as the source of truth. |
 | Arbor Family Tree | Suche & Navigation | Navigation | [Link](https://github.com/disparatedan/arbor) | Visualise and navigate a family tree built from person notes in your vault. |
 | Arcana | KI & Automatisierung | KI-Assistenten | [Link](https://github.com/a-f-v/obsidian-arcana) | A collection of AI powered tools |
@@ -52,7 +53,8 @@
 | Auto Folder Collapse | KI & Automatisierung | Automatisierung | [Link](https://github.com/dariocasciato/obsidian-auto-folder-collapse) | Automatically collapses subfolders when a parent folder is collapsed |
 | Auto Hide | Visualisierung & UI | UI-Verbesserungen | [Link](https://github.com/skjar/obsidian-auto-hide) | Collapse sidebars when clicking on the editor/viewer panel |
 | Auto Link Title | KI & Automatisierung | Automatisierung | [Link](https://github.com/zolrath/obsidian-auto-link-title) | This plugin automatically fetches the titles of links from the web |
-| Auto Tags | Notizen & Organisation | Tags & Metadaten | [Link](https://github.com/li-xiu-qi/obsidian-auto-tags) | 分析并一键为笔记生成标签，提升笔记组织效率。 Analyze and tag your document with one click for efficient note organization using AI. |
+| Auto Tags | Notizen & Organisation | Tags & Metadaten | [Link](https://github.com/li-xiu-qi/obsidian-auto-tags) | 分析并一键为笔记生成标签，提升笔记组织效率。
+Analyze and tag your document with one click for efficient note organization using AI. |
 | Avatar | Medien & Dateien | Bilder & Anhänge | [Link](https://github.com/maradotwebp/obsidian-avatar) | Display an avatar image in your notes. |
 | Badges | Editor & Schreiben | Formatierung | [Link](https://github.com/gapmiss/badges) | Add inline badges/callouts to notes. |
 | Banners | Medien & Dateien | Bilder & Anhänge | [Link](https://github.com/noatpad/obsidian-banners) | Add banner images to your notes! |
@@ -77,7 +79,7 @@
 | Better Word Count | Editor & Schreiben | Schreibhilfe | [Link](https://github.com/lukeleppan/better-word-count) | Counts the words of selected text in the editor. |
 | Big Calendar | Aufgaben & Produktivität | Kalender & Planung | [Link](https://github.com/quorafind/Obsidian-Big-Calendar) | Supports drag and drop, resizing, and more for events in Obsidian |
 | Board View | Aufgaben & Produktivität | Projekt-Management | [Link](https://github.com/seventhxiv/obsidian-board-view) | Interactive board view for bases, use as Kanban or Gallery, with grouping for rows and columns. |
-| Booksidian | Daten & Integration | Web-Scraping | - | Connect Obsidian to your Goodreads. |
+| Booksidian | Daten & Integration | Web-Scraping | [Link](https://github.com/MichaBrugger/booksidian-plugin) | Connect Obsidian to your Goodreads. |
 | Brain Atlas | Visualisierung & UI | Graph-Ansicht | [Link](https://github.com/colorpulse6/brain-atlas) | Render your vault as an animated 3D anatomical brain. |
 | Brainframe | Notizen & Organisation | Tags & Metadaten | [Link](https://github.com/pedersen/obsidian-brainframe) | This is a set of tools to help Obsidian manage extras (such as storing links like products and software) that it doesn't currently do. |
 | Brunet | Spiele & Kreativ | RPG & Spiele | [Link](https://github.com/msyaifullah/brunet) | Bruno API format support — view, edit, and run .bru HTTP requests in your vault. |
@@ -142,7 +144,7 @@
 | Code Emitter | Medien & Dateien | PDF | [Link](https://github.com/mokeyish/obsidian-code-emitter) | An Obsidian plugin that allows code blocks to be executed interactively like in Jupyter Notebooks. Supports languages like Rust, Kotlin, Python, Ja... |
 | Code Space | Visualisierung & UI | Dashboard | [Link](https://github.com/unlinearity/Obsidian-CodeSpace) | Professional code file management with visual dashboard, syntax highlighting editor, and Markdown embedding. |
 | CodeBlock Tabs | Editor & Schreiben | Codeblöcke | [Link](https://github.com/jeminmau/Obsidian-CodeBlock-Tabs) | Create tab group for contiguous CodeBlocks. |
-| CodeMirror Options | Editor & Schreiben | Codeblöcke | - | Enhance Obsidian's desktop edit mode with features such as WYSIWYG / Live Preview, Syntax Highlighting, and more. |
+| CodeMirror Options | Editor & Schreiben | Codeblöcke | [Link](https://github.com/nothingislost/obsidian-codemirror-options) | Enhance Obsidian's desktop edit mode with features such as WYSIWYG / Live Preview, Syntax Highlighting, and more. |
 | Cognitive Glow | Suche & Navigation | Navigation | [Link](https://github.com/whatsyourwhy/Cognitive-Glow) | Note activity heatmap in a sidebar. Navigate your vault by visual glow instead of hunting filenames. |
 | Coin Memo | Finanzen & Gesundheit | Finanztracking | [Link](https://github.com/fengshuzi/coin-memo) | 基于日记文件的每日记账插件，支持自动识别和统计记账记录. |
 | Color Palette | Themes & Styling | CSS & Styling | [Link](https://github.com/alegendstale/obsidian-color-palette) | Create and insert color palettes into your notes. |
@@ -150,7 +152,7 @@
 | Colorful Heading Underlines | Editor & Schreiben | Formatierung | [Link](https://github.com/greetclammy/colorful-heading-underlines) | Show colorful underlines to identify heading levels. |
 | Colorful Note Background | Notizen & Organisation | Tags & Metadaten | [Link](https://github.com/andresgongora/obsidian-colorful-note-background) | Set note background based on file location or frontmatter metadata. |
 | Columns | Sonstiges | Sonstiges | [Link](https://github.com/tnichols217/obsidian-columns) | Allows you to create columns in Obsidian Markdown |
-| Commits | Sozial & Kommunikation | GitHub | - | Track & show commits in obsidian vault or specified project. |
+| Commits | Sozial & Kommunikation | GitHub | [Link](https://github.com/Darakah/obsidian-commits) | Track & show commits in obsidian vault or specified project. |
 | Completr | Notizen & Organisation | Tags & Metadaten | [Link](https://github.com/tth05/obsidian-completr) | This plugin provides advanced auto-completion functionality for LaTeX, Frontmatter and standard writing. |
 | Consecutive Lists | Editor & Schreiben | Textbearbeitung | [Link](https://github.com/jtucker2/obsidian-consecutive-lists) | Create consecutive lists that are displayed separately in reading mode. |
 | Contacts | Sonstiges | Sonstiges | [Link](https://github.com/vbeskrovnov/obsidian-contacts) | Allows you to manage and organize your contacts. |
@@ -170,11 +172,11 @@
 | Daily Statistics | Aufgaben & Produktivität | Kalender & Planung | [Link](https://github.com/yefengr/obsidian-daily-statistics) | Count the number of words written each day and display it on a calendar. |
 | Daily Stats | Visualisierung & UI | Diagramme & Charts | [Link](https://github.com/dhruvik7/obsidian-daily-stats) | Track your daily word count across all notes in your vault. |
 | Daily Writing Stats | Visualisierung & UI | Diagramme & Charts | [Link](https://github.com/xsixteen/obsidian-daily-heatmap) | Track your daily word count across all notes in your vaults and display them in a heatmap and on the status bar. |
-| Dashboard navigator | Medien & Dateien | Dateiverwaltung | - | Vault dashboard and navigator. Show recent files by type, files per day, week, month, search files by name, date, tags and more. |
+| Dashboard navigator | Medien & Dateien | Dateiverwaltung | [Link](https://github.com/drbap/dashboard-navigator-for-obsidian) | Vault dashboard and navigator. Show recent files by type, files per day, week, month, search files by name, date, tags and more. |
 | DataCharts | Visualisierung & UI | Diagramme & Charts | [Link](https://github.com/jcf-402/datacharts) | Create charts and visualize data directly inside notes. |
 | Datacore | Daten & Integration | Datenbank & Tabellen | [Link](https://github.com/blacksmithgu/datacore) | Reactive query engine backed by Javascript or a custom query language. |
-| DataLoom | Wissenschaft & Forschung | Akademisches Schreiben | - | Weave together data from diverse sources into different views. Inspired by Excel Spreadsheets and Notion.so. |
-| DataLoom | Wissenschaft & Forschung | Akademisches Schreiben | [Link](https://github.com/aykutkardas/obsidian-dataloom) | Weave together data from diverse sources into different views. Inspired by Excel Spreadsheets and Notion.so. |
+| DataLoom (notion-like-tables) | Wissenschaft & Forschung | Akademisches Schreiben | [Link](https://github.com/decaf-dev/obsidian-dataloom) | Weave together data from diverse sources into different views. Inspired by Excel Spreadsheets and Notion.so. |
+| DataLoom (obisidian-dataloom) | Wissenschaft & Forschung | Akademisches Schreiben | [Link](https://github.com/aykutkardas/obsidian-dataloom) | Weave together data from diverse sources into different views. Inspired by Excel Spreadsheets and Notion.so. |
 | Dataview | Daten & Integration | Datenbank & Tabellen | [Link](https://github.com/blacksmithgu/obsidian-dataview) | Complex data views for the data-obsessed. |
 | Dataview Serializer | Daten & Integration | Datenbank & Tabellen | [Link](https://github.com/dsebastien/obsidian-dataview-serializer) | Serialize Dataview queries to Markdown, and keep the Markdown representation up to date. |
 | Datepicker | Notizen & Organisation | Tagesnotizen | [Link](https://github.com/joycode-hub/datepicker-plugin) | Use a date picker to modify and insert date/time anywhere in your markdown notes. |
@@ -200,7 +202,7 @@
 | Easy Tracker | Aufgaben & Produktivität | Habit Tracking | [Link](https://github.com/hunter-ji/obsidian-easy-tracker) | Instantly track goals and habits. Simple, beautiful, and configuration-free. |
 | Edit in Neovim | Entwicklung & Debug | Entwicklerwerkzeuge | [Link](https://github.com/theseusgrey/edit-in-neovim) | Open a Neovim buffer for the currently open file |
 | Editing Toolbar | Editor & Schreiben | Formatierung | [Link](https://github.com/pkm-er/obsidian-editing-toolbar) | The Obsidian Editing Toolbar is modified from cmenu, which provides more powerful customization settings and has many built-in editing commands to ... |
-| Editor Syntax Highlight | Editor & Schreiben | Codeblöcke | - | Show syntax highlighing in code blocks the editor |
+| Editor Syntax Highlight | Editor & Schreiben | Codeblöcke | [Link](https://github.com/deathau/cm-editor-syntax-highlight-obsidian) | Show syntax highlighing in code blocks the editor |
 | Eisenhower Matrix | Aufgaben & Produktivität | Aufgabenverwaltung | [Link](https://github.com/oamadorr/eisenhower-matrix-obsidian) | Organize your tasks using the Eisenhower Matrix — prioritize by urgency and importance across 4 quadrants. |
 | Embed 3D | Medien & Dateien | 3D-Modelle | [Link](https://github.com/elmoneedsarson/Obsidian-3D-embed) | Embed and view 3DModels in markdown notes. Supports .stl, .obj, 3mf, fbx and .gltf/.glb files. |
 | Embed Code File | Medien & Dateien | Dateiverwaltung | [Link](https://github.com/almariah/embed-code-file) | This is a plugin for Obsidian that allows for embedding code files. |
@@ -236,14 +238,14 @@
 | Folder Bases | Notizen & Organisation | Ordner & Navigation | [Link](https://github.com/scotttomaszewski/obsidian-folder-bases) | Open a folder's associated Base by clicking it in the file explorer, like Folder Notes but for Bases. |
 | Folder Graph View | Visualisierung & UI | Graph-Ansicht | [Link](https://github.com/codaloc/FolderGraph) | Replaces the link-formed graph view by a graph following the folder structure. |
 | Folder Note | Notizen & Organisation | Ordner & Navigation | [Link](https://github.com/xpgo/obsidian-folder-note-plugin) | Click a folder node to show a note describing the folder. |
-| Folder Note Core | Notizen & Organisation | Ordner & Navigation | - | Provide core features and API for folder notes |
+| Folder Note Core | Notizen & Organisation | Ordner & Navigation | [Link](https://github.com/aidenlx/folder-note-core) | Provide core features and API for folder notes |
 | Folders to Graph | Visualisierung & UI | Graph-Ansicht | [Link](https://github.com/ratibus11/folders2graph) | Display your vault folder structure into your graphs. |
 | Food Tracker | Aufgaben & Produktivität | Habit Tracking | [Link](https://github.com/forketyfork/obsidian-food-tracker) | Track your food intake (calories, macronutrients) and nutritional information |
 | Front Matter Timestamps | KI & Automatisierung | Automatisierung | [Link](https://github.com/pookhaosc1/obsidian-front-matter-timestamps) | Automatically manages and updates 'created' and 'modified' timestamps in the frontmatter of your notes |
 | Frontmatter Input | Aufgaben & Produktivität | Aufgabenverwaltung | [Link](https://github.com/scottgrayart/Frontmatter-input) | Use checkboxes and radio buttons in your markdown files to set frontmatter tags. |
 | Full Calendar | Aufgaben & Produktivität | Kalender & Planung | [Link](https://github.com/obsidian-community/obsidian-full-calendar) | Obsidian integration with Full Calendar (fullcalendar.io) |
 | Fullscreen mode plugin | Visualisierung & UI | UI-Verbesserungen | [Link](https://github.com/razumihin/obsidian-fullscreen-plugin) | This plugin allows viewing a single document in fullscreen focus mode |
-| Gallery | Medien & Dateien | Bilder & Anhänge | - | Main Gallery to tag / filter / add notes to images. Display blocks to embed images inside notes. Display block to an image information |
+| Gallery | Medien & Dateien | Bilder & Anhänge | [Link](https://github.com/Darakah/obsidian-gallery) | Main Gallery to tag / filter / add notes to images. Display blocks to embed images inside notes. Display block to an image information |
 | Game Backlog Tracker | Aufgaben & Produktivität | Habit Tracking | [Link](https://github.com/kevmorelli/obsidian-game-backlog) | Track completed games from your game backlog. |
 | Game Search | Suche & Navigation | Suche | [Link](https://github.com/cmorooney/obsidian-game-search-plugin) | Helps you find games and create notes. Optional Steam Library Sync |
 | Gamified Tasks | Aufgaben & Produktivität | Aufgabenverwaltung | [Link](https://github.com/dromse/obsidian-gamified-tasks) | Gamify your task management with rewards system, craft your tasks by tags. |
@@ -290,7 +292,7 @@
 | Iconize | Editor & Schreiben | Formatierung | [Link](https://github.com/florianwoelki/obsidian-iconize) | Add icons to anything you desire in Obsidian, including files, folders, and text. |
 | Iconocolor | Editor & Schreiben | Formatierung | [Link](https://github.com/gavinpicard/iconocolor) | An all-in-one solution for folder icons and coloring, featuring auto-gradients. |
 | Icons | Sonstiges | Sonstiges | [Link](https://github.com/visini/obsidian-icons-plugin) | Add icons to your Obsidian notes. |
-| Image Caption | Medien & Dateien | Bilder & Anhänge | - | Add captions to images. |
+| Image Caption | Medien & Dateien | Bilder & Anhänge | [Link](https://github.com/bicarlsen/obsidian-image-caption) | Add captions to images. |
 | Image Captions | Medien & Dateien | Bilder & Anhänge | [Link](https://github.com/alangrainger/obsidian-image-captions) | Adds captions to images when there is alt-text specified |
 | Image Cluster | Medien & Dateien | Bilder & Anhänge | [Link](https://github.com/tcyeee/obsidian-image-cluster) | Combine multiple images together in your notes for a more beautiful and organized layout. |
 | Image Gallery | Medien & Dateien | Bilder & Anhänge | [Link](https://github.com/lucaorio/obsidian-image-gallery) | A zero setup masonry image gallery for Obsidian |
@@ -331,7 +333,7 @@
 | Limn | Daten & Integration | API-Integration | [Link](https://github.com/tednaleid/limn) | Keyboard-first mind mapping. Open .limn files as interactive mind map views. |
 | Linear Calendar | Aufgaben & Produktivität | Kalender & Planung | [Link](https://github.com/homefulhobo/linear-calendar-plugin-obsidian) | A linear year calendar view that displays all 365 days with notes based on date properties. |
 | Link Exploder | Suche & Navigation | Backlinks & Links | [Link](https://github.com/benhughes/obsidian-link-exploder) | Link Exploder is a Obsidian plugin that creates a canvas from a note, embedding it's incoming (i.e. backlinks) and outgoing links onto the canvas (... |
-| Link Nodes In Canvas | Suche & Navigation | Backlinks & Links | - | A plugin for you to add edges between notes in Canvas based on their links. |
+| Link Nodes In Canvas | Suche & Navigation | Backlinks & Links | [Link](https://github.com/Quorafind/Obsidian-Link-Nodes-In-Canvas) | A plugin for you to add edges between notes in Canvas based on their links. |
 | Link Plus | KI & Automatisierung | Automatisierung | [Link](https://github.com/jabaho9523/obsidian-link-plus) | Build a connected second brain. Find every unlinked mention in your vault and convert them to wikilinks — one click or batch. Grow your knowledge g... |
 | Link Tree | Aufgaben & Produktivität | Kalender & Planung | [Link](https://github.com/j-palindrome/obsidian-link-tree) | View file links and backlinks as a recursively expandable, filterable list with editable text, combining the structure of outliners like Dynalist &... |
 | Linter | Wissenschaft & Forschung | Formeln & Mathe | [Link](https://github.com/platers/obsidian-linter) | Formats and styles your notes. It can be used to format YAML tags, aliases, arrays, and metadata; footnotes; headings; spacing; math blocks; regula... |
@@ -386,7 +388,7 @@
 | My Todo | Aufgaben & Produktivität | Aufgabenverwaltung | [Link](https://github.com/amanxarora/my-todo) | Sorting based personal todo system with categories, weekly and daily planning |
 | MySnippets | Themes & Styling | CSS & Styling | [Link](https://github.com/chetachiezikeuzor/MySnippets-Plugin) | MySnippets is a plugin that adds a status bar menu allowing the user to quickly toggle their snippets on and off 🖌. |
 | Native MCP | KI & Automatisierung | KI-Assistenten | [Link](https://github.com/usrivastava92/obsidian-native-mcp) | MCP server for AI assistants to read, search, create, and modify notes in your vaults |
-| Natural Language Dates | Notizen & Organisation | Tagesnotizen | - | Create date-links based on natural language |
+| Natural Language Dates | Notizen & Organisation | Tagesnotizen | [Link](https://github.com/argenos/nldates-obsidian) | Create date-links based on natural language |
 | Neo4j Graph View | Visualisierung & UI | Graph-Ansicht | [Link](https://github.com/hemile/obsidian-neo4j-graph-view) | An Obsidian plugin for advanced graph visualization and querying using Neo4j. |
 | Nested tags graph | Notizen & Organisation | Tags & Metadaten | [Link](https://github.com/drpilman/obsidian-graph-nested-tags) | Links nested tags in graph view |
 | New 3D Graph | Visualisierung & UI | Graph-Ansicht | [Link](https://github.com/apoo711/obsidian-3d-graph) | Visualize your vault in 3D with a powerful, highly customizable, and filterable graph. |
@@ -409,8 +411,8 @@
 | Numerals | Wissenschaft & Forschung | Formeln & Mathe | [Link](https://github.com/gtg922r/obsidian-numerals) | Numerals turns any code block into an advanced calculator. Evaluates math expressions on each line of a code block, including units, currency, and ... |
 | Nushell | KI & Automatisierung | Automatisierung | [Link](https://github.com/christianlemer/obsidian-nushell) | Render Nushell data files (.nuon) and syntax-highlight Nushell scripts (.nu) using the local Nushell installation. |
 | Obsidian Badge | Editor & Schreiben | Formatierung | [Link](https://github.com/linjunpop/obsidian-badge) | This is a plugin to show badge for Obsidian. |
-| obsidian echarts | Visualisierung & UI | Diagramme & Charts | - | obsidian echarts |
-| Obsidian Functionplot | Wissenschaft & Forschung | Formeln & Mathe | - | A plugin for displaying mathematical graphs in obsidian.md. |
+| obsidian echarts | Visualisierung & UI | Diagramme & Charts | [Link](https://github.com/cumany/obsidian-echarts) | obsidian echarts |
+| Obsidian Functionplot | Wissenschaft & Forschung | Formeln & Mathe | [Link](https://github.com/leonhma/obsidian-functionplot) | A plugin for displaying mathematical graphs in obsidian.md. |
 | Obsidian Tabs | Sonstiges | Sonstiges | [Link](https://github.com/gitobsidiantutorial/obsidian-tabs) | Opens new leaves in tabs. |
 | Odaily | Aufgaben & Produktivität | Kalender & Planung | [Link](https://github.com/guchang/Odaily-Plugin) | A schedule-focused plugin for capturing ideas, managing notes and tasks, and boosting personal productivity. |
 | Odyssey | Aufgaben & Produktivität | Kalender & Planung | [Link](https://github.com/zzzzswh/odyssey) | Visualize your life events on a silky calendar and a beautiful map. Replay your journey. |
@@ -437,7 +439,7 @@
 | Plotly | Visualisierung & UI | Diagramme & Charts | [Link](https://github.com/dmytro-shulha/obsidian-plotly) | Obsidian plugin, which allow user to embed Plotly charts into markdown notes. |
 | Plugin Groups | Notizen & Organisation | Ordner & Navigation | [Link](https://github.com/mocca101/obsidian-plugin-groups) | Manage your Plugins through groups: Enable and disable multiple plugins through a single command, or delay the startup of plugins to speed up your ... |
 | Pluto Hub | KI & Automatisierung | Automatisierung | [Link](https://github.com/xiajianduan/obsidian-pluto-hub) | A powerful plugin that allows users to manage, edit, and run local code modules, providing rich extensibility. |
-| Pocket | Daten & Integration | Web-Scraping | - | Access your Pocket reading list entries and create notes for them easily |
+| Pocket | Daten & Integration | Web-Scraping | [Link](https://github.com/nybbles/obsidian-pocket) | Access your Pocket reading list entries and create notes for them easily |
 | Portals | Notizen & Organisation | Tags & Metadaten | [Link](https://github.com/samaraliwarsi/obsidian-portals) | Pin folders and tags as customizable tabs with icons, colors, and folder notes for easier navigation. |
 | Pretty Properties | Medien & Dateien | Bilder & Anhänge | [Link](https://github.com/anareaty/pretty-properties) | Makes note properties look more fun: adds side image, banners, list property colors and allows to hide specific properties. |
 | Priority Matrix | Aufgaben & Produktivität | Aufgabenverwaltung | [Link](https://github.com/murtazaraza/prioritymatrix-obsidian) | Create and manage priority matrix notes with auto detection of tasks from your vault. |
@@ -446,14 +448,14 @@
 | ProgressBar | Sonstiges | Sonstiges | [Link](https://github.com/zwpaper/obsidian-progressbar) | Render CodeBlock into a ProgressBar based on Time or Manually. |
 | Project Manager | Aufgaben & Produktivität | Kalender & Planung | [Link](https://github.com/stepankropachev/obsidian-pm) | Full-featured project management: stunning Gantt charts, Kanban boards, Table views, customizable fields, due date notifications. |
 | Project View | Aufgaben & Produktivität | Projekt-Management | [Link](https://github.com/ngchenghow/obsidian-project-view) | Organize notes into projects. Each project tracks its folders, notes and last-open tabs - click a project to instantly restore its workspace. |
-| Projects | Aufgaben & Produktivität | Projekt-Management | - | Plain text project planning. |
+| Projects | Aufgaben & Produktivität | Projekt-Management | [Link](https://github.com/marcusolsson/obsidian-projects) | Plain text project planning. |
 | Propsec | Wissenschaft & Forschung | Akademisches Schreiben | [Link](https://github.com/ccmdi/propsec) | Schema enforcement for frontmatter. |
 | QuackBlocks | Daten & Integration | Datenbank & Tabellen | [Link](https://github.com/yllucsyeoj/quackblocks) | Executable SQL code blocks powered by DuckDB WASM — query parquet data and render tables and charts inline. |
 | QuadTasks | Aufgaben & Produktivität | Aufgabenverwaltung | [Link](https://github.com/siranhq/obsidian-QuadTasks) | A task management plugin based on the Eisenhower matrix. |
 | Quick Explorer | Suche & Navigation | Navigation | [Link](https://github.com/pjeby/quick-explorer) | Perform file explorer operations (and see your current file path) from the title bar, using the mouse or keyboard |
 | Quick Latex | Wissenschaft & Forschung | Formeln & Mathe | [Link](https://github.com/joeyuping/quick_latex_obsidian) | Speedup latex math typing with auto fraction, custom shorthand, align block shortcut, matrix shortcut...etc |
 | Quick Memos | Notizen & Organisation | Tagesnotizen | [Link](https://github.com/liqiuyue9597/obsidian-memos) | A flomo-style quick capture and card view for your vault. |
-| Quick Plugin Switcher | Suche & Navigation | Navigation | - | Adds a ribbon icon to quickly switch plugins with filters (all, enabled, disabled, most switched) |
+| Quick Plugin Switcher | Suche & Navigation | Navigation | [Link](https://github.com/1C0D/obsidian-quick-plugin-switcher) | Adds a ribbon icon to quickly switch plugins with filters (all, enabled, disabled, most switched) |
 | QuickAdd | KI & Automatisierung | Automatisierung | [Link](https://github.com/chhoumann/quickadd) | Quickly add new pages or content to your vault. |
 | quizblock | Wissenschaft & Forschung | Akademisches Schreiben | [Link](https://github.com/olliecheng/quizblock) | Render interactive multiple-choice quiz blocks inside your notes |
 | Radar | Visualisierung & UI | Diagramme & Charts | [Link](https://github.com/lfcipriani/obsidian-radar) | Visualize your notes and ideas on a radar. Group them by topic, prioritize by proximity to the center, and keep focus when juggling multiple areas ... |
@@ -479,19 +481,19 @@
 | Semantic Auto-Linker | KI & Automatisierung | KI-Assistenten | [Link](https://github.com/ysf-ad/semantic-auto-linker) | Safe, reviewable auto-linking with local semantic retrieval, vault-wide analysis, and embedding exploration. |
 | Semantic Canvas | Visualisierung & UI | Canvas | [Link](https://github.com/aarongilly/obsidian-semantic-canvas-plugin) | Create semantic knowledge graphs using Canvases to modify note properties graphically. |
 | Semantic JSON | KI & Automatisierung | KI-Assistenten | [Link](https://github.com/syntaxasspiral/semantic-json) | Turn your canvases into easy no-code JSON data structures. Share with LLMs. |
-| Set In Obsidian | Aufgaben & Produktivität | Kalender & Planung | - | Plugin for time planning |
+| Set In Obsidian | Aufgaben & Produktivität | Kalender & Planung | [Link](https://github.com/sandorex/set-in-obsidian) | Plugin for time planning |
 | Settings Sidebar Organizer | Visualisierung & UI | UI-Verbesserungen | [Link](https://github.com/cyrylsz/obsidian-settings-sidebar-organizer) | Groups Community Plugins into folders, allows renaming, reordering, and compacting the sidebar. |
 | Share my plugin list | Daten & Integration | Import/Export | [Link](https://github.com/benature/obsidian-share-my-plugin-list) | Share the enabled plugins in list/table format. |
 | Shell commands | KI & Automatisierung | Automatisierung | [Link](https://github.com/taitava/obsidian-shellcommands) | You can predefine system commands that you want to run frequently, and assign hotkeys for them. For example open external applications. Automatic e... |
 | Short links | Suche & Navigation | Backlinks & Links | [Link](https://github.com/scottwillmoore/obsidian-short-links) | An Obsidian plugin to display short internal links. |
 | SideCards | Notizen & Organisation | Tags & Metadaten | [Link](https://github.com/kazi-aidah/sidecards) | Quickly create cards in your sidebar, color, tag, and drag them straight into your notes. |
 | Simple Columns | Editor & Schreiben | Formatierung | [Link](https://github.com/josie1902/Simple-Columns) | Create and manage columns in your notes effortlessly, featuring customizable columns with easy-to-resize widths. |
-| Simple Embeds | Medien & Dateien | Audio & Video | - | Replaces links, like Twitter and YouTube, with embeds when previewing a file. |
+| Simple Embeds | Medien & Dateien | Audio & Video | [Link](https://github.com/samwarnick/obsidian-simple-embeds) | Replaces links, like Twitter and YouTube, with embeds when previewing a file. |
 | Simple Graph Builder | KI & Automatisierung | KI-Assistenten | [Link](https://github.com/junhewk/simple-graph-builder) | Build a knowledge graph from your notes using LLM-powered entity extraction. Supports Claude, OpenAI, Gemini, and Ollama. |
 | Simple Map | Daten & Integration | API-Integration | [Link](https://github.com/daniel-fiuk/simple-map) | Upload your own maps and plant pins on important locations, each linking back to your notes. |
 | Simple Mindmap | Visualisierung & UI | Mindmaps | [Link](https://github.com/creative781/obsimap) | Create keyboard-centric mind maps with wiki-linked notes, drag-and-drop, and Markdown export. |
-| Slated | Aufgaben & Produktivität | Kalender & Planung | - | Task Management - schedule, move, and repeat tasks |
-| Sliding Panes (Andy's Mode) | Visualisierung & UI | UI-Verbesserungen | - | Sliding Panes! Based on the style of [Andy Matuschak's Notes](https://notes.andymatuschak.org/) |
+| Slated | Aufgaben & Produktivität | Kalender & Planung | [Link](https://github.com/tgrosinger/slated-obsidian) | Task Management - schedule, move, and repeat tasks |
+| Sliding Panes (Andy's Mode) | Visualisierung & UI | UI-Verbesserungen | [Link](https://github.com/deathau/sliding-panes-obsidian) | Sliding Panes! Based on the style of [Andy Matuschak's Notes](https://notes.andymatuschak.org/) |
 | Smart Connections | KI & Automatisierung | KI-Assistenten | [Link](https://github.com/brianpetro/obsidian-smart-connections) | Chat with your notes & see links to related content with Local or Remote models. |
 | Smart Connections Visualizer | KI & Automatisierung | KI-Assistenten | [Link](https://github.com/mossy1022/Smart-Connections-Visualizer) | View your Smart Connections in a visualized format. |
 | Smart Random Note | Suche & Navigation | Navigation | [Link](https://github.com/erichalldev/obsidian-smart-random-note) | A smart random note plugin |
@@ -539,7 +541,7 @@
 | Time Ruler | Aufgaben & Produktivität | Kalender & Planung | [Link](https://github.com/j-palindrome/obsidian-time-ruler) | A drag-and-drop time ruler combining the best of a task list and a calendar view (integrates with Tasks, Full Calendar, and Dataview). |
 | Timeline Canvas Creator | Visualisierung & UI | Diagramme & Charts | [Link](https://github.com/chris-codes1/timeline-canvas-creator) | Quickly create timeline structured canvases. |
 | Timeline Schedule | Aufgaben & Produktivität | Kalender & Planung | [Link](https://github.com/ebonsignori/obsidian-timeline-schedule) | Inline timelines generated from human-readable time strings, e.g. 'Walk dog (30min)' in a ```schedule codeblock. |
-| Timelines | Notizen & Organisation | Tags & Metadaten | - | Create a timeline view of all notes with the specified combination of tags |
+| Timelines | Notizen & Organisation | Tags & Metadaten | [Link](https://github.com/Darakah/obsidian-timelines) | Create a timeline view of all notes with the specified combination of tags |
 | Timelines (Revamped) | Notizen & Organisation | Tags & Metadaten | [Link](https://github.com/seanlowe/obsidian-timelines) | Successor to darakah's Timelines plugin: Generate a chronological timeline in which all 'events' are notes that include a specific tag or set of tags. |
 | Timestamp Notes | Medien & Dateien | Audio & Video | [Link](https://github.com/juliang22/ObsidianTimestampNotes) | This plugin allows side-by-side notetaking with videos. Annotate your notes with timestamps to directly control the video and remember where each n... |
 | Tiny Habits | Aufgaben & Produktivität | Habit Tracking | [Link](https://github.com/nazoadiego/tiny-habits) | Habit tracking table for your markdown notes |
@@ -563,7 +565,7 @@
 | Vega Visualizations | Visualisierung & UI | Diagramme & Charts | [Link](https://github.com/justin-j-k/obsidian-vega) | Create highly-customizable data visualizations like line charts and scatter plots using Vega or Vega-Lite. |
 | Vextab | Medien & Dateien | Audio & Video | [Link](https://github.com/luigman/obsidian-vextab) | An Obsidian plugin for rendering guitar tablature and music notation using Vextab. |
 | Vinyl Catalog Tools | Daten & Integration | Datenbank & Tabellen | [Link](https://github.com/iart0s/obsidian-vinyl-catalog-tools) | Manage your vinyl collection: table/cards view, Discogs CSV import, and export. |
-| Virtual Linker / Glossary | KI & Automatisierung | Automatisierung | - | Automatically creates virtual links for text within your notes that match the titles or aliases of other notes in your vault. Create a glossary-lik... |
+| Virtual Linker / Glossary | KI & Automatisierung | Automatisierung | [Link](https://github.com/vschroeter/obsidian-virtual-linker) | Automatically creates virtual links for text within your notes that match the titles or aliases of other notes in your vault. Create a glossary-lik... |
 | Visited Countries | Daten & Integration | API-Integration | [Link](https://github.com/ivanpeshykov/obsidian-visited-countries) | The interactive map where you can select countries that you've visited. |
 | Waka time box | Aufgaben & Produktivität | Zeiterfassung | [Link](https://github.com/simonla/obsidian_waka_box) | Show daily coding activity from WakaTime |
 | WakaTime | KI & Automatisierung | Automatisierung | [Link](https://github.com/wakatime/obsidian-wakatime) | Automatic time tracking and metrics generated from your Obsidian usage activity. |
