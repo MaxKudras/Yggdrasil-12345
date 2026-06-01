@@ -1,0 +1,7 @@
+{
+  "rhoFolder": "Rho",
+  "rssFeedBaseFile": "Reader.base",
+  "postsFolder": "Posts",
+  "syncConcurrency": 5,
+  "readStateMigrated": true
+}

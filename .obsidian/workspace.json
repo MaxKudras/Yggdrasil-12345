@@ -199,14 +199,23 @@
               "icon": "lucide-ghost",
               "title": "full-calendar-sidebar-view"
             }
+          },
+          {
+            "id": "b69dc35b0d4a9e6a",
+            "type": "leaf",
+            "state": {
+              "type": "rho-reader-pane",
+              "state": {},
+              "icon": "rss",
+              "title": "Rho Reader"
+            }
           }
         ],
         "currentTab": 2
       }
     ],
     "direction": "horizontal",
-    "width": 246.5,
-    "collapsed": true
+    "width": 246.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -231,7 +240,9 @@
       "smart-connections:Open: Smart Chat": false,
       "smart-connections:Smart Connections: Open connections view": false,
       "smart-connections:Smart Connections: Open random connection": true,
-      "smart-second-brain:Open S2B Chat": false
+      "smart-second-brain:Open S2B Chat": false,
+      "easy-toggle-sidebars:autoHide switcher": false,
+      "hide-folders:Show hidden folders": false
     }
   },
   "active": "00c61dcffb9871ec",
