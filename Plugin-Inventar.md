@@ -53,8 +53,7 @@
 | Auto Folder Collapse | KI & Automatisierung | Automatisierung | [Link](https://github.com/dariocasciato/obsidian-auto-folder-collapse) | Automatically collapses subfolders when a parent folder is collapsed |
 | Auto Hide | Visualisierung & UI | UI-Verbesserungen | [Link](https://github.com/skjar/obsidian-auto-hide) | Collapse sidebars when clicking on the editor/viewer panel |
 | Auto Link Title | KI & Automatisierung | Automatisierung | [Link](https://github.com/zolrath/obsidian-auto-link-title) | This plugin automatically fetches the titles of links from the web |
-| Auto Tags | Notizen & Organisation | Tags & Metadaten | [Link](https://github.com/li-xiu-qi/obsidian-auto-tags) | 分析并一键为笔记生成标签，提升笔记组织效率。
-Analyze and tag your document with one click for efficient note organization using AI. |
+| Auto Tags | Notizen & Organisation | Tags & Metadaten | [Link](https://github.com/li-xiu-qi/obsidian-auto-tags) | 分析并一键为笔记生成标签，提升笔记组织效率。Analyze and tag your document with one click for efficient note organization using AI. |
 | Avatar | Medien & Dateien | Bilder & Anhänge | [Link](https://github.com/maradotwebp/obsidian-avatar) | Display an avatar image in your notes. |
 | Badges | Editor & Schreiben | Formatierung | [Link](https://github.com/gapmiss/badges) | Add inline badges/callouts to notes. |
 | Banners | Medien & Dateien | Bilder & Anhänge | [Link](https://github.com/noatpad/obsidian-banners) | Add banner images to your notes! |

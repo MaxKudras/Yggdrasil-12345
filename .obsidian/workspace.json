@@ -4,64 +4,16 @@
     "type": "split",
     "children": [
       {
-        "id": "286d31d29bce6cf4",
+        "id": "8318478a4918368f",
         "type": "tabs",
         "children": [
           {
-            "id": "e44ac6400f91ad30",
+            "id": "00c61dcffb9871ec",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "🎛-Obsidian-/🎛Templates/GenerellesYAMLTemplate.md",
-                "mode": "source",
-                "source": true,
-                "backlinks": true,
-                "backlinkOpts": {
-                  "collapseAll": false,
-                  "extraContext": false,
-                  "sortOrder": "alphabetical",
-                  "showSearch": false,
-                  "searchQuery": "",
-                  "backlinkCollapsed": false,
-                  "unlinkedCollapsed": true
-                }
-              },
-              "icon": "lucide-file",
-              "title": "GenerellesYAMLTemplate"
-            }
-          },
-          {
-            "id": "2a00e57b01749c7d",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "00.📖Lebensplan/Abarbeitungsplan.md",
-                "mode": "source",
-                "source": true,
-                "backlinks": true,
-                "backlinkOpts": {
-                  "collapseAll": false,
-                  "extraContext": false,
-                  "sortOrder": "alphabetical",
-                  "showSearch": false,
-                  "searchQuery": "",
-                  "backlinkCollapsed": false,
-                  "unlinkedCollapsed": true
-                }
-              },
-              "icon": "lucide-file",
-              "title": "Abarbeitungsplan"
-            }
-          },
-          {
-            "id": "ca8ebf38004fa5dd",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Aussortieren/📒Wisften(👨‍🔬️-💵-🔢)/👨‍🔬️Naturwissenschaften (⚕-🌐-🦠-🧪-🧲)/🦠Biologie/🦠🦠Zellbiologie/Histologie/Histologie.md",
+                "file": "Plugin-Inventar.md",
                 "mode": "preview",
                 "source": true,
                 "backlinks": true,
@@ -76,192 +28,10 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "Histologie"
-            }
-          },
-          {
-            "id": "aa07660f2b2e22db",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Aussortieren/📒Wisften(👨‍🔬️-💵-🔢)/👨‍🔬️Naturwissenschaften (⚕-🌐-🦠-🧪-🧲)/🌐Geographie/Reginale Geographie/Meere/Arktischer Ozean/Foxe Basin.md",
-                "mode": "preview",
-                "source": true,
-                "backlinks": true,
-                "backlinkOpts": {
-                  "collapseAll": false,
-                  "extraContext": false,
-                  "sortOrder": "alphabetical",
-                  "showSearch": false,
-                  "searchQuery": "",
-                  "backlinkCollapsed": false,
-                  "unlinkedCollapsed": true
-                }
-              },
-              "icon": "lucide-file",
-              "title": "Foxe Basin"
-            }
-          },
-          {
-            "id": "5ce63d6d9fe55bfc",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Aussortieren/📒Wisften(👨‍🔬️-💵-🔢)/👨‍🔬️Naturwissenschaften (⚕-🌐-🦠-🧪-🧲)/🌐Geographie/Reginale Geographie/Meere/Arktischer Ozean/Grönlandsee/Isfjorden/Isfjorden.md",
-                "mode": "preview",
-                "source": true,
-                "backlinks": true,
-                "backlinkOpts": {
-                  "collapseAll": false,
-                  "extraContext": false,
-                  "sortOrder": "alphabetical",
-                  "showSearch": false,
-                  "searchQuery": "",
-                  "backlinkCollapsed": false,
-                  "unlinkedCollapsed": true
-                }
-              },
-              "icon": "lucide-file",
-              "title": "Isfjorden"
-            }
-          },
-          {
-            "id": "33abf2edf75c4a3e",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Aussortieren/📒Wisften(👨‍🔬️-💵-🔢)/👨‍🔬️Naturwissenschaften (⚕-🌐-🦠-🧪-🧲)/🌐Geographie/Reginale Geographie/Meere/Arktischer Ozean/Beaufortsee/Rasmussen Basin/Rasmussen Basin.md",
-                "mode": "preview",
-                "source": true,
-                "backlinks": true,
-                "backlinkOpts": {
-                  "collapseAll": false,
-                  "extraContext": false,
-                  "sortOrder": "alphabetical",
-                  "showSearch": false,
-                  "searchQuery": "",
-                  "backlinkCollapsed": false,
-                  "unlinkedCollapsed": true
-                }
-              },
-              "icon": "lucide-file",
-              "title": "Rasmussen Basin"
-            }
-          },
-          {
-            "id": "75b8f83bebfcc355",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Aussortieren/-Lebensplan (💵-🕰-🚑)/💵Geldmanagment (💼-〽️-📊)/Finanzielle Ziele/Langfristige Ziele/Langfristige Ziele.md",
-                "mode": "preview",
-                "source": true,
-                "backlinks": true,
-                "backlinkOpts": {
-                  "collapseAll": false,
-                  "extraContext": false,
-                  "sortOrder": "alphabetical",
-                  "showSearch": false,
-                  "searchQuery": "",
-                  "backlinkCollapsed": false,
-                  "unlinkedCollapsed": true
-                }
-              },
-              "icon": "lucide-file",
-              "title": "Langfristige Ziele"
-            }
-          },
-          {
-            "id": "f2eb26ced32bd591",
-            "type": "leaf",
-            "state": {
-              "type": "canvas",
-              "state": {
-                "file": "Sammlung/Untitled.canvas",
-                "viewState": {
-                  "x": 896.5,
-                  "y": -347.5,
-                  "zoom": -1.0209895150235098
-                }
-              },
-              "icon": "lucide-layout-dashboard",
-              "title": "Untitled"
-            }
-          },
-          {
-            "id": "6ff31ef1d6e7869b",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "10.⚙️Systemschmiede/Systemplan/Server/ContaboVPS/Contabo VPS Setup.md",
-                "mode": "source",
-                "source": true,
-                "backlinks": true,
-                "backlinkOpts": {
-                  "collapseAll": false,
-                  "extraContext": false,
-                  "sortOrder": "alphabetical",
-                  "showSearch": false,
-                  "searchQuery": "",
-                  "backlinkCollapsed": false,
-                  "unlinkedCollapsed": true
-                }
-              },
-              "icon": "lucide-file",
-              "title": "Contabo VPS Setup"
-            }
-          },
-          {
-            "id": "216fc361e4460748",
-            "type": "leaf",
-            "state": {
-              "type": "smart-release-notes-view",
-              "state": {},
-              "icon": "lucide-ghost",
-              "title": "smart-release-notes-view"
-            }
-          },
-          {
-            "id": "57f42f5224bb2452",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "README.md",
-                "mode": "source",
-                "source": true,
-                "backlinks": true,
-                "backlinkOpts": {
-                  "collapseAll": false,
-                  "extraContext": false,
-                  "sortOrder": "alphabetical",
-                  "showSearch": false,
-                  "searchQuery": "",
-                  "backlinkCollapsed": false,
-                  "unlinkedCollapsed": true
-                }
-              },
-              "icon": "lucide-file",
-              "title": "README"
-            }
-          },
-          {
-            "id": "048a295170033a2f",
-            "type": "leaf",
-            "state": {
-              "type": "graph",
-              "state": {},
-              "icon": "lucide-git-fork",
-              "title": "Graph-Ansicht"
+              "title": "Plugin-Inventar"
             }
           }
-        ],
-        "currentTab": 11
+        ]
       }
     ],
     "direction": "vertical"
@@ -358,11 +128,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
+                "file": "Plugin-Inventar.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": false
               },
               "icon": "links-going-out",
-              "title": "Ausgehende Links"
+              "title": "Ausgehende Links von Plugin-Inventar öffnen"
             }
           }
         ],
@@ -463,8 +234,9 @@
       "smart-second-brain:Open S2B Chat": false
     }
   },
-  "active": "048a295170033a2f",
+  "active": "00c61dcffb9871ec",
   "lastOpenFiles": [
+    "Plugin-Inventar.md",
     "Aussortieren/-Lebensplan (💵-🕰-🚑)/🕰Zeitmanagment (⌛-🌀-💼-📅-📆-🗓)/🌀Routinen/🌀Monatsroutine/🌀Monatsroutine.md",
     "Aussortieren/-Lebensplan (💵-🕰-🚑)/🕰Zeitmanagment (⌛-🌀-💼-📅-📆-🗓)/Haushaltsaufgabenlisten.md",
     "Aussortieren/-Lebensplan (💵-🕰-🚑)/🕰Zeitmanagment (⌛-🌀-💼-📅-📆-🗓)/🌀Routinen/🌀Routinen.md",
@@ -491,7 +263,6 @@
     "bücher.md",
     "Aussortieren/-Lebensplan (💵-🕰-🚑)/💵Geldmanagment (💼-〽️-📊)/📊Geldverlauf/Geldgrundplan/Notfallfonds.md",
     "Aussortieren/-Lebensplan (💵-🕰-🚑)/💵Geldmanagment (💼-〽️-📊)/📊Geldverlauf/Geldgrundplan/Geldgrundplan.md",
-    "Aussortieren/-Lebensplan (💵-🕰-🚑)/💵Geldmanagment (💼-〽️-📊)/📊Geldverlauf/Geldgrundplan/Finanzielle Ziele.md",
     "wohnung Planen.canvas",
     "Sammlung/Untitled.canvas",
     "Zimmer Planen.base",

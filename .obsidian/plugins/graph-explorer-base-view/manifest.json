@@ -1,0 +1,11 @@
+{
+    "id": "graph-explorer-base-view",
+    "name": "Graph Explorer Base View",
+    "description": "A custom Bases view that renders notes as an interactive force-directed graph with explored/unexplored tracking.",
+    "version": "1.0.2",
+    "minAppVersion": "1.10.0",
+    "isDesktopOnly": false,
+    "author": "Sébastien Dubois",
+    "authorUrl": "https://dsebastien.net",
+    "fundingUrl": "https://www.buymeacoffee.com/dsebastien"
+}

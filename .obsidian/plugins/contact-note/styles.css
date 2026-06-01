@@ -1,0 +1,425 @@
+/* #region Contact Card */
+
+.contact-note-card.is-clickable {
+  cursor: pointer;
+}
+
+.contact-note-card {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+  gap: 16px;
+  padding: 16px 20px;
+  margin-bottom: 24px;
+  border: 1px solid var(--background-modifier-border);
+  border-radius: var(--radius-m, 8px);
+  background-color: var(--background-secondary);
+}
+
+/* Validation Error */
+.contact-note-card-error {
+	width: 100%;
+  padding: 12px 16px;
+  border: 1px solid var(--color-red);
+  border-radius: var(--radius-m, 8px);
+  background-color: var(--background-modifier-error);
+  margin-bottom: 16px;
+}
+
+.contact-note-card-error p {
+  margin: 6px 0 0;
+  font-size: var(--font-ui-small);
+}
+
+/* Photo */
+.contact-note-card-photo {
+  flex-shrink: 0;
+}
+
+.contact-note-card-photo-img,
+.contact-note-card-photo-default {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--background-modifier-border);
+  display: block;
+}
+
+.contact-note-card-photo-default {
+	stroke-width: 1px;
+}
+
+/* Info */
+.contact-note-card-info {
+  flex: 1;
+  min-width: 150px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  justify-content: center;
+}
+
+/* Name */
+.contact-note-card-name {
+  font-size: 1.7rem;
+  font-weight: var(--font-semibold);
+  line-height: 1.3;
+}
+
+/* Title */
+.contact-note-card-title {
+  font-size: 1.1rem;
+  color: var(--text-muted);
+  line-height: 1.3;
+}
+
+/* Birthday */
+.contact-note-card-birthday {
+  font-size: var(--font-ui-small);
+  color: var(--text-muted);
+  line-height: 1.3;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* Last Modified and Last Interaction */
+.contact-note-card-top-strip {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  font-size: var(--font-ui-small);
+  color: var(--text-muted);
+  line-height: 1.3;
+}
+
+.contact-note-card-last-modified,
+.contact-note-card-last-interaction {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.contact-note-card-last-interaction {
+  margin-inline-start: auto;
+}
+
+.contact-note-card-last-modified-icon,
+.contact-note-card-last-interaction-icon {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.contact-note-card-last-modified-icon svg,
+.contact-note-card-last-interaction-icon svg {
+  width: 14px;
+  height: 14px;
+}
+
+/* Company + Department row */
+.contact-note-card-company-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px 14px;
+}
+
+.contact-note-card-company,
+.contact-note-card-department {
+  font-size: 1.1rem;
+  font-weight: var(--font-medium);
+  line-height: 1.3;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  min-width: 0;
+}
+
+.contact-note-card-company .contact-note-card-detail-icon svg,
+.contact-note-card-department .contact-note-card-detail-icon svg {
+  width: 16px;
+  height: 16px;
+}
+
+/* Details */
+.contact-note-card-details {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 32px;
+  padding-top: 4px;
+  border-top: 1px solid var(--background-modifier-border);
+}
+
+.contact-note-card-detail-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.contact-note-card-detail-icon {
+  color: var(--text-faint);
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+}
+
+.contact-note-card-detail-icon svg {
+  width: 14px;
+  height: 14px;
+}
+
+.contact-note-card-detail-value {
+  font-size: var(--font-ui-small);
+  text-decoration: none;
+}
+
+.contact-note-card-detail-value:hover {
+  text-decoration: underline;
+}
+
+/* Socials, Emails, and Phone Numbers */
+.contact-note-card-emails,
+.contact-note-card-phones,
+.contact-note-card-socials {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+/* Socials */
+.contact-note-card-socials .contact-note-card-detail-icon svg {
+  fill: currentColor;
+}
+
+/* Bases and View */
+
+.contact-note-view .contact-note-card:hover,
+.contact-note-bases-view .contact-note-card:hover {
+  background-color: var(--background-modifier-hover);
+  border-color: var(--interactive-accent);
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+
+/* Contact Card Normal */
+.contact-note-view .contact-note-card,
+.contact-note-bases-view .contact-note-card {
+  gap: 12px;
+  padding: 12px 14px;
+  margin-bottom: 17px;
+}
+
+.contact-note-view .contact-note-card-photo-img,
+.contact-note-view .contact-note-card-photo-default,
+.contact-note-bases-view .contact-note-card-photo-img,
+.contact-note-bases-view .contact-note-card-photo-default {
+  width: 108px;
+  height: 108px;
+}
+
+.contact-note-view .contact-note-card-name,
+.contact-note-bases-view .contact-note-card-name {
+  font-size: 1.22rem;
+}
+
+.contact-note-view .contact-note-card-title,
+.contact-note-view .contact-note-card-company,
+.contact-note-view .contact-note-card-department,
+.contact-note-bases-view .contact-note-card-title,
+.contact-note-bases-view .contact-note-card-company,
+.contact-note-bases-view .contact-note-card-department {
+  font-size: 0.79rem;
+}
+
+/* Contact Card Condensed */
+.contact-note-cards-condensed .contact-note-card {
+  padding: 6px 10px;
+  gap: 10px;
+  margin-bottom: 6px;
+}
+
+.contact-note-cards-condensed .contact-note-card-photo-img,
+.contact-note-cards-condensed .contact-note-card-photo-default {
+  width: 40px;
+  height: 40px;
+}
+
+.contact-note-cards-condensed .contact-note-card-name {
+  font-size: 0.95rem;
+}
+
+/* #endregion */
+
+/* #region Contact Note */
+
+/* Hide the native frontmatter block for contact notes.
+   The class is applied directly to the .mod-frontmatter
+   element by the post-processor. */
+.contact-note .mod-header {
+  display: none;
+}
+
+/* #endregion */
+
+/* #region Contacts View */
+
+/* Horizontal Lines */
+.contact-note-view hr {
+	margin: 15px 0 15px 0;
+}
+
+/* Header */
+.contact-note-view-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.contact-note-view-header-btns {
+  display: flex;
+  gap: 4px;
+  flex-shrink: 0;
+}
+
+.contact-note-view-header-btn {
+  width: 28px;
+  height: 28px;
+  cursor: pointer;
+}
+
+.contact-note-view-header-btn svg {
+  width: 14px;
+  height: 14px;
+}
+
+/* Letter filter */
+.contact-note-view-alpha-btns {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2px;
+  padding: 2px 0;
+}
+
+.contact-note-view-alpha-btn {
+  font-size: var(--font-ui-smaller);
+}
+
+/* Search */
+.contact-note-view-search {
+  width: 100%;
+}
+
+/* #endregion */
+
+/* #region Contacts Bases View */
+
+.contact-note-bases-view {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: var(--size-4-2);
+  padding: var(--size-4-2);
+}
+
+.contact-note-bases-view-group-header {
+  grid-column: 1 / -1;
+  margin: var(--size-4-2) 0 var(--size-4-1);
+  padding-bottom: var(--size-2-2);
+  border-bottom: 1px solid var(--background-modifier-border);
+  font-size: var(--font-ui-medium);
+  color: var(--text-muted);
+}
+
+.contact-note-bases-view-group {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: var(--size-4-2);
+}
+
+/* Hide the native Bases New button (but not the injected replacement) */
+.contact-note-bases-view-header
+  .bases-toolbar-new-item-menu .text-icon-button {
+  display: none;
+}
+
+.contact-note-bases-view-new-btn {
+	padding: var(--size-2-2);
+	font-weight: var(--input-font-weight);
+	margin: 2px;
+	font-size: var(--font-ui-small);
+}
+
+.contact-note-bases-view-new-btn svg {
+	color: var(--text-muted);
+	opacity: 1;
+}
+
+.contact-note-bases-view-new-btn .text-button-label {
+	padding-inline-start: 5px;
+}
+
+/* #endregion */
+
+/* #region View Filter Modal */
+
+.contact-note-filter-container {
+	padding: var(--size-4-4);
+}
+
+/* #endregion */
+
+/* #region Frontmatter Customization Grid */
+
+.contact-note-settings-fm-grid {
+	display: grid;
+	grid-template-columns: auto 1fr 1fr;
+	gap: var(--size-4-2);
+	align-items: center;
+	margin-top: var(--size-4-2);
+}
+
+.contact-note-settings-fm-grid-header {
+	font-weight: var(--font-semibold);
+	color: var(--text-muted);
+	font-size: var(--font-ui-small);
+	padding-bottom: var(--size-2-2);
+	border-bottom: 1px solid var(--background-modifier-border);
+}
+
+.contact-note-settings-fm-grid-name {
+	font-family: var(--font-monospace);
+	font-size: var(--font-ui-small);
+}
+
+.contact-note-settings-fm-grid-cell {
+	display: flex;
+	align-items: center;
+	gap: var(--size-2-2);
+}
+
+.contact-note-settings-fm-grid-cell input[type="text"] {
+	flex: 1;
+	min-width: 0;
+}
+
+.contact-note-settings-icon-preview {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 20px;
+	height: 20px;
+	color: var(--text-muted);
+	flex-shrink: 0;
+}
+
+/* #endregion */
+
+/* Version */
+.contact-note-version {
+	text-align: end;
+}
