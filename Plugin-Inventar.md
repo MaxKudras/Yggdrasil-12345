@@ -1,6 +1,6 @@
 # Plugin-Inventar
 
-## 581 installierte Plugins – Stand: 2026-06-01
+## 579 installierte Plugins – Stand: 2026-06-01
 
 > Automatisch generiertes Inventar aller installierten Obsidian-Plugins.
 
@@ -10,7 +10,6 @@
 | 3D Graph | Visualisierung & UI | Graph-Ansicht | [Link](https://github.com/alexw00/obsidian-3d-graph) | A 3D Graph for Obsidian |
 | 3D Graph New | Visualisierung & UI | Graph-Ansicht | [Link](https://github.com/hananoshikayomaru/obsidian-3d-graph) | A 3D Graph for Obsidian |
 | 4D Eisenhower Matrix | Aufgaben & Produktivität | Aufgabenverwaltung | [Link](https://github.com/krcaljaroslav/4D-eisenhower-matrix) | Visualize tasks across your vault in a 5-quadrant Eisenhower matrix (DO / DECIDE / DELEGATE / DELETE / OPEN). Reads and writes standard task syntax... |
-| aaaa | Sonstiges | Sonstiges | - | This is a sample plugin for Obsidian. This plugin demonstrates some of the capabilities of the Obsidian API. |
 | Account Linker | Notizen & Organisation | Tags & Metadaten | [Link](https://github.com/qwegat/Obsidian-Account-Linker) | Plugin for describing external service accounts in the front matter |
 | Activity Graph | Daten & Integration | Datenbank & Tabellen | [Link](https://github.com/rwyattwalker/obsidian-activity-graph) | Render activity heatmaps from Dataview query results. |
 | Activity History | Aufgaben & Produktivität | Zeiterfassung | [Link](https://github.com/Darakah/obsidian-activity-history) | Track activity of specified projects, Github like activity board |
@@ -479,7 +478,6 @@
 | RSS Dashboard | Medien & Dateien | Audio & Video | [Link](https://github.com/amatya-aditya/obsidian-rss-dashboard) | A dashboard for organizing and consuming RSS feeds, YouTube channels, and podcasts with smart tagging, media playback, and seamless content flow. |
 | Runalone Project Manager | Aufgaben & Produktivität | Projekt-Management | [Link](https://github.com/nestedshell/runalone-project-manager) | A minimalist project management tool designed for solo builders. |
 | RunJS | KI & Automatisierung | Automatisierung | [Link](https://github.com/eoureo/obsidian-runjs) | Run easily JavaScript codes for managing Obsidian and its notes. |
-| Sample Plugin | Sonstiges | Sonstiges | - | This is a sample plugin for Obsidian. This plugin demonstrates some of the capabilities of the Obsidian API. |
 | Search External Files | Suche & Navigation | Suche | [Link](https://github.com/tttt-k/obsidian-search-external-files) | Browse external files and search for file or folder paths. |
 | Search Movies and TV Shows TMDB | KI & Automatisierung | Automatisierung | [Link](https://github.com/bernardonogueira8/search-movies-tv-tmdb) | Search for movies and TV shows on TMDB and automatically create notes with ratings. |
 | Semantic Auto-Linker | KI & Automatisierung | KI-Assistenten | [Link](https://github.com/ysf-ad/semantic-auto-linker) | Safe, reviewable auto-linking with local semantic retrieval, vault-wide analysis, and embedding exploration. |
