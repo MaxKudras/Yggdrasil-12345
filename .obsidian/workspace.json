@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Plugin-Inventar.md",
+                "file": "Theme-Inventar.md",
                 "mode": "preview",
                 "source": true,
                 "backlinks": true,
@@ -28,7 +28,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "Plugin-Inventar"
+              "title": "Theme-Inventar"
             }
           }
         ]
@@ -128,12 +128,11 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Plugin-Inventar.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": false
               },
               "icon": "links-going-out",
-              "title": "Ausgehende Links von Plugin-Inventar öffnen"
+              "title": "Ausgehende Links"
             }
           }
         ],
@@ -245,9 +244,12 @@
       "hide-folders:Show hidden folders": false
     }
   },
-  "active": "00c61dcffb9871ec",
+  "active": "413fb37392e1b459",
   "lastOpenFiles": [
+    "Theme-Inventar.md",
+    "Unbenanntes Kanban.md",
     "Plugin-Inventar.md",
+    "note.md",
     "Aussortieren/-Lebensplan (💵-🕰-🚑)/🕰Zeitmanagment (⌛-🌀-💼-📅-📆-🗓)/🌀Routinen/🌀Monatsroutine/🌀Monatsroutine.md",
     "Aussortieren/-Lebensplan (💵-🕰-🚑)/🕰Zeitmanagment (⌛-🌀-💼-📅-📆-🗓)/Haushaltsaufgabenlisten.md",
     "Aussortieren/-Lebensplan (💵-🕰-🚑)/🕰Zeitmanagment (⌛-🌀-💼-📅-📆-🗓)/🌀Routinen/🌀Routinen.md",
@@ -271,9 +273,6 @@
     "Aussortieren/-Lebensplan (💵-🕰-🚑)/💵Geldmanagment (💼-〽️-📊)/📊Geldverlauf/Kontoverlauf/Haspa/Haspa.md",
     "Aussortieren/-Lebensplan (💵-🕰-🚑)/💵Geldmanagment (💼-〽️-📊)/📊Geldverlauf/Kontoverlauf/Kontoverlauf.md",
     "Aussortieren/-Lebensplan (💵-🕰-🚑)/💵Geldmanagment (💼-〽️-📊)/📊Geldverlauf/📊Geldverlauf.md",
-    "bücher.md",
-    "Aussortieren/-Lebensplan (💵-🕰-🚑)/💵Geldmanagment (💼-〽️-📊)/📊Geldverlauf/Geldgrundplan/Notfallfonds.md",
-    "Aussortieren/-Lebensplan (💵-🕰-🚑)/💵Geldmanagment (💼-〽️-📊)/📊Geldverlauf/Geldgrundplan/Geldgrundplan.md",
     "wohnung Planen.canvas",
     "Sammlung/Untitled.canvas",
     "Zimmer Planen.base",
