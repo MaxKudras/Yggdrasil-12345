@@ -1,6 +1,6 @@
 # Plugin-Inventar
 
-## 579 installierte Plugins – Stand: 2026-06-01
+## 576 installierte Plugins – Stand: 2026-06-01
 
 > Automatisch generiertes Inventar aller installierten Obsidian-Plugins.
 
@@ -250,14 +250,11 @@
 | Game Search | Suche & Navigation | Suche | [Link](https://github.com/cmorooney/obsidian-game-search-plugin) | Helps you find games and create notes. Optional Steam Library Sync |
 | Gamified Tasks | Aufgaben & Produktivität | Aufgabenverwaltung | [Link](https://github.com/dromse/obsidian-gamified-tasks) | Gamify your task management with rewards system, craft your tasks by tags. |
 | Gantt Calendar | Aufgaben & Produktivität | Kalender & Planung | [Link](https://github.com/sustcsugar/obsidian-gantt-calendar) | A powerful visual task management plugin. Visualize and manage tasks created by the Tasks plugin, supporting both emoji and Dataview task formats. ... |
-| Gene 🧬 | KI & Automatisierung | KI-Assistenten | - | Gene is an ai assistant for your second brain. It makes it easier than ever to creaate, manage and modify your notes. Gene is a plugin for Obsidian.md |
 | Generic Initiative Tracker | Aufgaben & Produktivität | Habit Tracking | [Link](https://github.com/beaurancourt/obsidian-generic-initiative-tracker) | TTRPG Generic Initiative Tracker for Obsidian.md |
 | Ghost Fade Focus | Editor & Schreiben | Textbearbeitung | [Link](https://github.com/skipadu/obsidian-ghost-fade-focus) | Focused on the current line, others faded like a ghost! |
 | Git | KI & Automatisierung | Automatisierung | [Link](https://github.com/vinzent03/obsidian-git) | Integrate Git version control with automatic backup and other advanced features. |
 | GitLab Activities Importer | Sozial & Kommunikation | GitHub | [Link](https://github.com/anindyaspaul/obsidian-gitlab-activities-importer) | Imports GitLab daily activities into the active daily note. |
 | Global Ticker | Finanzen & Gesundheit | Finanztracking | [Link](https://github.com/cokaizoku/obsidian-global-ticker) | Adds a panel that provides a global ticker for news and stock updates, using Currents and Finnhub APIs. |
-| Google Bard Assistant | KI & Automatisierung | KI-Assistenten | - | Explore new possibilities of learning with Integration of Google Bard! It's totally free! It also can show images from your question! |
-| GPT | KI & Automatisierung | KI-Assistenten | - | Obsidian plugin for getting language model completions from GPT-3, ChatGPT, Cohere, and others |
 | GPT-3 Notes | KI & Automatisierung | KI-Assistenten | [Link](https://github.com/micahke/obsidian-gpt3-notes) | Create a note using OpenAI's GPT-3 language model. |
 | Graph Analysis | Visualisierung & UI | Graph-Ansicht | [Link](https://github.com/SkepticMystic/graph-analysis) | Analyse your Obsidian graph. |
 | Graph Banner | Visualisierung & UI | Graph-Ansicht | [Link](https://github.com/ras0q/obsidian-graph-banner) | Display a local graph view to the note header |
