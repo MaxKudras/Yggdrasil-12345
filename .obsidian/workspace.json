@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Theme-Inventar.md",
+                "file": "Brain-Notes/Theme-Inventar.md",
                 "mode": "preview",
                 "source": true,
                 "backlinks": true,
@@ -128,11 +128,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
+                "file": "Brain-Notes/Theme-Inventar.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": false
               },
               "icon": "links-going-out",
-              "title": "Ausgehende Links"
+              "title": "Ausgehende Links von Theme-Inventar öffnen"
             }
           }
         ],
@@ -140,7 +141,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 379.5
+    "width": 200
   },
   "right": {
     "id": "b064cccbba5473b0",
@@ -205,8 +206,8 @@
             "state": {
               "type": "rho-reader-pane",
               "state": {},
-              "icon": "rss",
-              "title": "Rho Reader"
+              "icon": "lucide-ghost",
+              "title": "rho-reader-pane"
             }
           }
         ],
@@ -214,7 +215,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 246.5
+    "width": 246.5,
+    "collapsed": true
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -239,16 +241,21 @@
       "smart-connections:Open: Smart Chat": false,
       "smart-connections:Smart Connections: Open connections view": false,
       "smart-connections:Smart Connections: Open random connection": true,
-      "smart-second-brain:Open S2B Chat": false,
-      "easy-toggle-sidebars:autoHide switcher": false,
-      "hide-folders:Show hidden folders": false
+      "smart-second-brain:Open S2B Chat": false
     }
   },
   "active": "413fb37392e1b459",
   "lastOpenFiles": [
-    "Theme-Inventar.md",
+    "Brain-Notes/Plugin-Inventar.md",
+    "Ausbildungsvault/Plugin-Inventar.md",
+    "Brain-Notes/Theme-Inventar.md",
+    "Yggdrasil-12345/Plugin-Inventar.md",
+    "Ausbildungsvault/Theme-Inventar.md",
+    "Ausbildungsvault",
+    "Brain-Notes",
+    "Yggdrasil-12345",
+    "Yggdrasil-12345/Theme-Inventar.md",
     "Unbenanntes Kanban.md",
-    "Plugin-Inventar.md",
     "note.md",
     "Aussortieren/-Lebensplan (💵-🕰-🚑)/🕰Zeitmanagment (⌛-🌀-💼-📅-📆-🗓)/🌀Routinen/🌀Monatsroutine/🌀Monatsroutine.md",
     "Aussortieren/-Lebensplan (💵-🕰-🚑)/🕰Zeitmanagment (⌛-🌀-💼-📅-📆-🗓)/Haushaltsaufgabenlisten.md",
@@ -269,10 +276,6 @@
     "Aussortieren/-Lebensplan (💵-🕰-🚑)/💵Geldmanagment (💼-〽️-📊)/📊Geldverlauf/Sparplan/Sparstrategien/Sparstrategien.md",
     "Aussortieren/-Lebensplan (💵-🕰-🚑)/💵Geldmanagment (💼-〽️-📊)/📊Geldverlauf/Sparplan/Sparziele/Sparziele.md",
     "Aussortieren/-Lebensplan (💵-🕰-🚑)/💵Geldmanagment (💼-〽️-📊)/📊Geldverlauf/Kontoverlauf/Paypal/Paypal.md",
-    "Aussortieren/-Lebensplan (💵-🕰-🚑)/💵Geldmanagment (💼-〽️-📊)/📊Geldverlauf/Schulden/Schulden.md",
-    "Aussortieren/-Lebensplan (💵-🕰-🚑)/💵Geldmanagment (💼-〽️-📊)/📊Geldverlauf/Kontoverlauf/Haspa/Haspa.md",
-    "Aussortieren/-Lebensplan (💵-🕰-🚑)/💵Geldmanagment (💼-〽️-📊)/📊Geldverlauf/Kontoverlauf/Kontoverlauf.md",
-    "Aussortieren/-Lebensplan (💵-🕰-🚑)/💵Geldmanagment (💼-〽️-📊)/📊Geldverlauf/📊Geldverlauf.md",
     "wohnung Planen.canvas",
     "Sammlung/Untitled.canvas",
     "Zimmer Planen.base",
@@ -282,9 +285,6 @@
     "10.⚙️Systemschmiede/Systemplan/Server/ContaboVPS/Lebensplan",
     "10.⚙️Systemschmiede/Systemplan/Server/ContaboVPS/n8n",
     "10.⚙️Systemschmiede/Systemplan/Server/ContaboVPS",
-    "10.⚙️Systemschmiede/Systemplan/Server",
-    "Sammlung/Untitled.base",
-    "Sammlung",
     "10.⚙️Systemschmiede/Systemplan/Gesamter Systemplan.canvas",
     "10.⚙️Systemschmiede/Systemplan/PC/Autogen/Lebensplan/AutoGen Lebensplan aufarbeitung.canvas",
     "10.⚙️Systemschmiede/Systemplan/PC/Autogen/Lebensplan/AutoGen Ausbildingsplan.canvas",

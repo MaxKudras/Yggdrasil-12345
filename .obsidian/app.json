@@ -10,7 +10,7 @@
   "promptDelete": false,
   "livePreview": false,
   "tabSize": 3,
-  "readableLineLength": true,
+  "readableLineLength": false,
   "focusNewTab": false,
   "defaultViewMode": "preview",
   "showLineNumber": true,
