@@ -1,6 +1,6 @@
 # Theme-Inventar
 
-## 56 installierte Themes – Stand: 2026-06-01
+## 54 installierte Themes – Stand: 2026-06-01
 
 > Aktives Theme: **Vesnea Vibe**
 
@@ -22,7 +22,6 @@
 | Dark Graphite Pie | Dunkel | kitchenrunner | Dark/Light | [Link](https://github.com/ryjjin/Obsidian-Dark-Graphite-Pie-theme) |
 | Darkyan | Dunkel | johackim | Dark | [Link](https://github.com/johackim/obsidian-darkyan) |
 | Dawn | Sonstige | min | Dark/Light | [Link](https://github.com/ds-package/Dawn) |
-| Deep Work | Schreiben & Fokus | - | - | - |
 | deeper work | Sonstige | lucas | Dark | [Link](https://github.com/lucas-fern/obsidian-deeper-work-theme) |
 | Dracula Gemini | Farbschema | Alex Olshansky | Dark | [Link](https://github.com/clbn/dracula-gemini) |
 | EMRALD | Sonstige | Effort Mastery LLC | Dark/Light | [Link](https://github.com/admiral9k/emrald-obsidian-theme) |
@@ -58,7 +57,6 @@
 | Things | App-inspiriert | colineckert | Light/Dark | [Link](https://github.com/colineckert/obsidian-things) |
 | Typomagical | Schreiben & Fokus | hungsu | Light/Dark | [Link](https://github.com/hungsu/typomagical-obsidian) |
 | Underwater | Sonstige | Seniblue | Dark/Light | [Link](https://github.com/seniblue/Underwater) |
-| Venom | Sonstige | Fatiger | - | - |
 | Vesnea Vibe | Sonstige | Seavalanche | Dark/Light | [Link](https://github.com/seavalanche/vesnea-obsidian-theme) |
 | Vicious | Sonstige | Zaher Al Majed | Light/Dark | [Link](https://github.com/zaheralmajed/vicious-theme-obsidian) |
 | Wasp | Sonstige | Santi Younger | Dark/Light | [Link](https://github.com/santiyounger/Wasp-Obsidian-Theme) |
