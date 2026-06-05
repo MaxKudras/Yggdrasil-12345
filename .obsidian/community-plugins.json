@@ -4,7 +4,6 @@
   "better-pdf-plugin",
   "obsidian-full-calendar",
   "templater-obsidian",
-  "buttons",
   "alx-folder-note-folderv",
   "folder-note-core",
   "heatmap-calendar",
@@ -13,15 +12,12 @@
   "pexels-banner",
   "obsidian-shellcommands",
   "multi-column-markdown",
-  "table-editor-obsidian",
   "waypoint",
-  "better-word-count",
   "most-used",
   "obsidian-git",
   "folder-note-plugin",
   "obsidian-kanban",
   "obsidian-minimal-settings",
-  "advanced-canvas",
   "node-auto-resize",
   "canvas-format-brush",
   "auto-classifier",
@@ -31,5 +27,6 @@
   "gene-ai",
   "easy-toggle-sidebars",
   "hide-folders",
-  "rho-reader"
+  "rho-reader",
+  "caretsort"
 ]
